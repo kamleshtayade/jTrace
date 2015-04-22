@@ -1,0 +1,26 @@
+{
+    "jtraceApp": {
+        "workorderline" : {
+            "home": {
+                "title": "Workorderlines",
+                "createLabel": "Créer un nouveau Workorderline",
+                "createOrEditLabel": "Créer ou éditer un Workorderline"
+            },
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Workorderline {{ id }} ?"
+            },
+            "detail": {
+                "title": "Workorderline"
+            },
+            "workorderheader": "Workorderheader",
+            "bomChildItem": "BomChildItem",
+            "attrition": "Attrition",
+            "requQty": "RequQty",
+            "issuedQty": "IssuedQty",
+            "isCustSupplied": "IsCustSupplied",
+            "itemCtn": "ItemCtn",
+            "remarks": "Remarks"
+        }
+    }
+}
+

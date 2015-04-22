@@ -1,0 +1,62 @@
+{
+    "relationships": [],
+    "fields": [
+        {
+            "fieldId": 1,
+            "fieldName": "code",
+            "fieldType": "String",
+            "fieldNameCapitalized": "Code",
+            "fieldNameUnderscored": "code"
+        },
+        {
+            "fieldId": 2,
+            "fieldName": "name",
+            "fieldType": "String",
+            "fieldNameCapitalized": "Name",
+            "fieldNameUnderscored": "name"
+        },
+        {
+            "fieldId": 3,
+            "fieldName": "billToAddress",
+            "fieldType": "String",
+            "fieldNameCapitalized": "BillToAddress",
+            "fieldNameUnderscored": "bill_to_address"
+        },
+        {
+            "fieldId": 4,
+            "fieldName": "shipToAddress",
+            "fieldType": "String",
+            "fieldNameCapitalized": "ShipToAddress",
+            "fieldNameUnderscored": "ship_to_address"
+        },
+        {
+            "fieldId": 5,
+            "fieldName": "contactName",
+            "fieldType": "String",
+            "fieldNameCapitalized": "ContactName",
+            "fieldNameUnderscored": "contact_name"
+        },
+        {
+            "fieldId": 6,
+            "fieldName": "email",
+            "fieldType": "String",
+            "fieldNameCapitalized": "Email",
+            "fieldNameUnderscored": "email"
+        },
+        {
+            "fieldId": 7,
+            "fieldName": "phone",
+            "fieldType": "String",
+            "fieldNameCapitalized": "Phone",
+            "fieldNameUnderscored": "phone"
+        }
+    ],
+    "fieldsContainOwnerManyToMany": false,
+    "fieldsContainOneToMany": false,
+    "fieldsContainLocalDate": false,
+    "fieldsContainCustomTime": false,
+    "fieldsContainBigDecimal": false,
+    "fieldsContainDateTime": false,
+    "fieldsContainDate": false,
+    "changelogDate": "20150419133708"
+}

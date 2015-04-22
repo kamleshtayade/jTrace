@@ -1,0 +1,30 @@
+{
+    "jtraceApp": {
+        "workorderheader" : {
+            "home": {
+                "title": "Workorderheaders",
+                "createLabel": "Créer un nouveau Workorderheader",
+                "createOrEditLabel": "Créer ou éditer un Workorderheader"
+            },
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Workorderheader {{ id }} ?"
+            },
+            "detail": {
+                "title": "Workorderheader"
+            },
+            "woNumber": "WoNumber",
+            "kitNumber": "KitNumber",
+            "customer": "Customer",
+            "shipToLoc": "ShipToLoc",
+            "plant": "Plant",
+            "plantMfgLine": "PlantMfgLine",
+            "status": "Status",
+            "qty": "Qty",
+            "soNumber": "SoNumber",
+            "item": "Item",
+            "asyCode": "AsyCode",
+            "bom": "Bom"
+        }
+    }
+}
+

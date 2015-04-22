@@ -1,0 +1,136 @@
+<div>
+
+    <h2 translate="jtraceApp.itemmaster.home.title">Itemmaster</h2>
+
+    <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#saveItemmasterModal" ng-click="clear()">
+        <span class="glyphicon glyphicon-flash"></span> <span translate="jtraceApp.itemmaster.home.createLabel">Create a new Itemmaster</span>
+    </button>
+    <div class="modal fade" id="saveItemmasterModal" tabindex="-1" role="dialog" aria-labelledby="myItemmasterLabel"
+         aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form name="editForm" role="form" novalidate
+                      class="ng-scope ng-invalid ng-invalid-required ng-dirty ng-valid-minlength"
+                      ng-submit="create()">
+
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                                ng-click="clear()">&times;</button>
+                        <h4 class="modal-title" id="myItemmasterLabel" translate="jtraceApp.itemmaster.home.createOrEditLabel">Create or edit a Itemmaster</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label>ID</label>
+                            <input type="text" class="form-control" name="id"
+                                   ng-model="itemmaster.id" readonly>
+                        </div>
+
+                        <div class="form-group">
+                            <label translate="jtraceApp.itemmaster.itemCode">ItemCode</label>
+                            <input type="text" class="form-control" name="itemCode"
+                                   ng-model="itemmaster.itemCode">
+                        </div>
+                        <div class="form-group">
+                            <label translate="jtraceApp.itemmaster.description">Description</label>
+                            <input type="text" class="form-control" name="description"
+                                   ng-model="itemmaster.description">
+                        </div>
+                        <div class="form-group">
+                            <label translate="jtraceApp.itemmaster.attributes">Attributes</label>
+                            <input type="text" class="form-control" name="attributes"
+                                   ng-model="itemmaster.attributes">
+                        </div>
+
+                        <div class="form-group">
+                            <label translate="jtraceApp.itemmaster.itemcat">itemcat</label>
+                            <select class="form-control" name="attributes" ng-model="itemmaster.itemcat.id" ng-options="itemcat.id as itemcat.name for itemcat in itemcats">
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label translate="jtraceApp.itemmaster.itemsubcat">itemsubcat</label>
+                            <select class="form-control" name="attributes" ng-model="itemmaster.itemsubcat.id" ng-options="itemsubcat.id as itemsubcat.name for itemsubcat in itemsubcats">
+                            </select>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+                            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
+                        </button>
+                        <button type="submit" ng-disabled="editForm.$invalid" class="btn btn-primary">
+                            <span class="glyphicon glyphicon-save"></span>&nbsp;<span translate="entity.action.save">Save</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="deleteItemmasterConfirmation">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form name="deleteForm" ng-submit="confirmDelete(itemmaster.id)">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                                ng-click="clear()">&times;</button>
+                        <h4 class="modal-title" translate="entity.delete.title">Confirm delete operation</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p translate="jtraceApp.itemmaster.delete.question" translate-values="{id: '{{itemmaster.id}}'}">Are you sure you want to delete this Itemmaster?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+                            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
+                        </button>
+                        <button type="submit" ng-disabled="deleteForm.$invalid" class="btn btn-danger">
+                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span translate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th translate="jtraceApp.itemmaster.itemCode">ItemCode</th>
+                    <th translate="jtraceApp.itemmaster.description">Description</th>
+                    <th translate="jtraceApp.itemmaster.attributes">Attributes</th>
+                    <th translate="jtraceApp.itemmaster.itemcat">itemcat</th>
+                    <th translate="jtraceApp.itemmaster.itemsubcat">itemsubcat</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="itemmaster in itemmasters">
+                    <td><a ui-sref="itemmasterDetail({id:itemmaster.id})">{{itemmaster.id}}</a></td>
+                    <td>{{itemmaster.itemCode}}</td>
+                    <td>{{itemmaster.description}}</td>
+                    <td>{{itemmaster.attributes}}</td>
+                    <td>{{itemmaster.itemcat.name}}</td>
+                    <td>{{itemmaster.itemsubcat.name}}</td>
+                    <td>
+                        <button type="submit"
+                                ui-sref="itemmasterDetail({id:itemmaster.id})"
+                                class="btn btn-info">
+                            <span class="glyphicon glyphicon-eye-open"></span>&nbsp;<span translate="entity.action.view"> View</span>
+                        </button>
+                        <button type="submit"
+                                ng-click="update(itemmaster.id)"
+                                class="btn btn-primary">
+                            <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span translate="entity.action.edit"> Edit</span>
+                        </button>
+                        <button type="submit"
+                                ng-click="delete(itemmaster.id)"
+                                class="btn btn-danger">
+                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span translate="entity.action.delete"> Delete</span>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

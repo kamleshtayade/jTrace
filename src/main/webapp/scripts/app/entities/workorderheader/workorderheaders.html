@@ -1,0 +1,185 @@
+<div>
+
+    <h2 translate="jtraceApp.workorderheader.home.title">Workorderheader</h2>
+
+    <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#saveWorkorderheaderModal" ng-click="clear()">
+        <span class="glyphicon glyphicon-flash"></span> <span translate="jtraceApp.workorderheader.home.createLabel">Create a new Workorderheader</span>
+    </button>
+    <div class="modal fade" id="saveWorkorderheaderModal" tabindex="-1" role="dialog" aria-labelledby="myWorkorderheaderLabel"
+         aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form name="editForm" role="form" novalidate
+                      class="ng-scope ng-invalid ng-invalid-required ng-dirty ng-valid-minlength"
+                      ng-submit="create()">
+
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                                ng-click="clear()">&times;</button>
+                        <h4 class="modal-title" id="myWorkorderheaderLabel" translate="jtraceApp.workorderheader.home.createOrEditLabel">Create or edit a Workorderheader</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label>ID</label>
+                            <input type="text" class="form-control" name="id"
+                                   ng-model="workorderheader.id" readonly>
+                        </div>
+
+                        <div class="form-group">
+                            <label translate="jtraceApp.workorderheader.woNumber">WoNumber</label>
+                            <input type="text" class="form-control" name="woNumber"
+                                   ng-model="workorderheader.woNumber">
+                        </div>
+                        <div class="form-group">
+                            <label translate="jtraceApp.workorderheader.kitNumber">KitNumber</label>
+                            <input type="text" class="form-control" name="kitNumber"
+                                   ng-model="workorderheader.kitNumber">
+                        </div>
+                        <div class="form-group">
+                            <label translate="jtraceApp.workorderheader.customer">Customer</label>
+                            <input type="text" class="form-control" name="customer"
+                                   ng-model="workorderheader.customer">
+                        </div>
+                        <div class="form-group">
+                            <label translate="jtraceApp.workorderheader.shipToLoc">ShipToLoc</label>
+                            <input type="text" class="form-control" name="shipToLoc"
+                                   ng-model="workorderheader.shipToLoc">
+                        </div>
+                        <div class="form-group">
+                            <label translate="jtraceApp.workorderheader.plant">Plant</label>
+                            <input type="text" class="form-control" name="plant"
+                                   ng-model="workorderheader.plant">
+                        </div>
+                        <div class="form-group">
+                            <label translate="jtraceApp.workorderheader.plantMfgLine">PlantMfgLine</label>
+                            <input type="text" class="form-control" name="plantMfgLine"
+                                   ng-model="workorderheader.plantMfgLine">
+                        </div>
+                        <div class="form-group">
+                            <label translate="jtraceApp.workorderheader.status">Status</label>
+                            <input type="text" class="form-control" name="status"
+                                   ng-model="workorderheader.status">
+                        </div>
+                        <div class="form-group">
+                            <label translate="jtraceApp.workorderheader.qty">Qty</label>
+                            <input type="number" class="form-control" name="qty"
+                                   ng-model="workorderheader.qty">
+                        </div>
+                        <div class="form-group">
+                            <label translate="jtraceApp.workorderheader.soNumber">SoNumber</label>
+                            <input type="text" class="form-control" name="soNumber"
+                                   ng-model="workorderheader.soNumber">
+                        </div>
+                        <div class="form-group">
+                            <label translate="jtraceApp.workorderheader.item">Item</label>
+                            <input type="text" class="form-control" name="item"
+                                   ng-model="workorderheader.item">
+                        </div>
+                        <div class="form-group">
+                            <label translate="jtraceApp.workorderheader.asyCode">AsyCode</label>
+                            <input type="text" class="form-control" name="asyCode"
+                                   ng-model="workorderheader.asyCode">
+                        </div>
+                        <div class="form-group">
+                            <label translate="jtraceApp.workorderheader.bom">Bom</label>
+                            <input type="text" class="form-control" name="bom"
+                                   ng-model="workorderheader.bom">
+                        </div>
+
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+                            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
+                        </button>
+                        <button type="submit" ng-disabled="editForm.$invalid" class="btn btn-primary">
+                            <span class="glyphicon glyphicon-save"></span>&nbsp;<span translate="entity.action.save">Save</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="deleteWorkorderheaderConfirmation">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form name="deleteForm" ng-submit="confirmDelete(workorderheader.id)">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                                ng-click="clear()">&times;</button>
+                        <h4 class="modal-title" translate="entity.delete.title">Confirm delete operation</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p translate="jtraceApp.workorderheader.delete.question" translate-values="{id: '{{workorderheader.id}}'}">Are you sure you want to delete this Workorderheader?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+                            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
+                        </button>
+                        <button type="submit" ng-disabled="deleteForm.$invalid" class="btn btn-danger">
+                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span translate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th translate="jtraceApp.workorderheader.woNumber">WoNumber</th>
+                    <th translate="jtraceApp.workorderheader.kitNumber">KitNumber</th>
+                    <th translate="jtraceApp.workorderheader.customer">Customer</th>
+                    <th translate="jtraceApp.workorderheader.shipToLoc">ShipToLoc</th>
+                    <th translate="jtraceApp.workorderheader.plant">Plant</th>
+                    <th translate="jtraceApp.workorderheader.plantMfgLine">PlantMfgLine</th>
+                    <th translate="jtraceApp.workorderheader.status">Status</th>
+                    <th translate="jtraceApp.workorderheader.qty">Qty</th>
+                    <th translate="jtraceApp.workorderheader.soNumber">SoNumber</th>
+                    <th translate="jtraceApp.workorderheader.item">Item</th>
+                    <th translate="jtraceApp.workorderheader.asyCode">AsyCode</th>
+                    <th translate="jtraceApp.workorderheader.bom">Bom</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="workorderheader in workorderheaders">
+                    <td><a ui-sref="workorderheaderDetail({id:workorderheader.id})">{{workorderheader.id}}</a></td>
+                    <td>{{workorderheader.woNumber}}</td>
+                    <td>{{workorderheader.kitNumber}}</td>
+                    <td>{{workorderheader.customer}}</td>
+                    <td>{{workorderheader.shipToLoc}}</td>
+                    <td>{{workorderheader.plant}}</td>
+                    <td>{{workorderheader.plantMfgLine}}</td>
+                    <td>{{workorderheader.status}}</td>
+                    <td>{{workorderheader.qty}}</td>
+                    <td>{{workorderheader.soNumber}}</td>
+                    <td>{{workorderheader.item}}</td>
+                    <td>{{workorderheader.asyCode}}</td>
+                    <td>{{workorderheader.bom}}</td>
+                    <td>
+                        <button type="submit"
+                                ui-sref="workorderheaderDetail({id:workorderheader.id})"
+                                class="btn btn-info">
+                            <span class="glyphicon glyphicon-eye-open"></span>&nbsp;<span translate="entity.action.view"> View</span>
+                        </button>
+                        <button type="submit"
+                                ng-click="update(workorderheader.id)"
+                                class="btn btn-primary">
+                            <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span translate="entity.action.edit"> Edit</span>
+                        </button>
+                        <button type="submit"
+                                ng-click="delete(workorderheader.id)"
+                                class="btn btn-danger">
+                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span translate="entity.action.delete"> Delete</span>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,129 @@
+<div>
+
+    <h2 translate="jtraceApp.itemsubcat.home.title">Itemsubcat</h2>
+
+    <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#saveItemsubcatModal" ng-click="clear()">
+        <span class="glyphicon glyphicon-flash"></span> <span translate="jtraceApp.itemsubcat.home.createLabel">Create a new Itemsubcat</span>
+    </button>
+    <div class="modal fade" id="saveItemsubcatModal" tabindex="-1" role="dialog" aria-labelledby="myItemsubcatLabel"
+         aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form name="editForm" role="form" novalidate
+                      class="ng-scope ng-invalid ng-invalid-required ng-dirty ng-valid-minlength"
+                      ng-submit="create()">
+
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                                ng-click="clear()">&times;</button>
+                        <h4 class="modal-title" id="myItemsubcatLabel" translate="jtraceApp.itemsubcat.home.createOrEditLabel">Create or edit a Itemsubcat</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label>ID</label>
+                            <input type="text" class="form-control" name="id"
+                                   ng-model="itemsubcat.id" readonly>
+                        </div>
+
+                        <div class="form-group">
+                            <label translate="jtraceApp.itemsubcat.name">Name</label>
+                            <input type="text" class="form-control" name="name"
+                                   ng-model="itemsubcat.name">
+                        </div>
+                        <div class="form-group">
+                            <label translate="jtraceApp.itemsubcat.description">Description</label>
+                            <input type="text" class="form-control" name="description"
+                                   ng-model="itemsubcat.description">
+                        </div>
+                        <div class="form-group">
+                            <label translate="jtraceApp.itemsubcat.enabled">Enabled</label>
+                            <input type="checkbox" class="form-control" name="enabled"
+                                   ng-model="itemsubcat.enabled">
+                        </div>
+
+                        <div class="form-group">
+                            <label translate="jtraceApp.itemsubcat.itemcat">itemcat</label>
+                            <select class="form-control" name="enabled" ng-model="itemsubcat.itemcat.id" ng-options="itemcat.id as itemcat.name for itemcat in itemcats">
+                            </select>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+                            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
+                        </button>
+                        <button type="submit" ng-disabled="editForm.$invalid" class="btn btn-primary">
+                            <span class="glyphicon glyphicon-save"></span>&nbsp;<span translate="entity.action.save">Save</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="deleteItemsubcatConfirmation">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form name="deleteForm" ng-submit="confirmDelete(itemsubcat.id)">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                                ng-click="clear()">&times;</button>
+                        <h4 class="modal-title" translate="entity.delete.title">Confirm delete operation</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p translate="jtraceApp.itemsubcat.delete.question" translate-values="{id: '{{itemsubcat.id}}'}">Are you sure you want to delete this Itemsubcat?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+                            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
+                        </button>
+                        <button type="submit" ng-disabled="deleteForm.$invalid" class="btn btn-danger">
+                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span translate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th translate="jtraceApp.itemsubcat.name">Name</th>
+                    <th translate="jtraceApp.itemsubcat.description">Description</th>
+                    <th translate="jtraceApp.itemsubcat.enabled">Enabled</th>
+                    <th translate="jtraceApp.itemsubcat.itemcat">itemcat</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="itemsubcat in itemsubcats">
+                    <td><a ui-sref="itemsubcatDetail({id:itemsubcat.id})">{{itemsubcat.id}}</a></td>
+                    <td>{{itemsubcat.name}}</td>
+                    <td>{{itemsubcat.description}}</td>
+                    <td>{{itemsubcat.enabled}}</td>
+                    <td>{{itemsubcat.itemcat.name}}</td>
+                    <td>
+                        <button type="submit"
+                                ui-sref="itemsubcatDetail({id:itemsubcat.id})"
+                                class="btn btn-info">
+                            <span class="glyphicon glyphicon-eye-open"></span>&nbsp;<span translate="entity.action.view"> View</span>
+                        </button>
+                        <button type="submit"
+                                ng-click="update(itemsubcat.id)"
+                                class="btn btn-primary">
+                            <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span translate="entity.action.edit"> Edit</span>
+                        </button>
+                        <button type="submit"
+                                ng-click="delete(itemsubcat.id)"
+                                class="btn btn-danger">
+                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span translate="entity.action.delete"> Delete</span>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

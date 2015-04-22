@@ -1,0 +1,78 @@
+
+<div>
+    <h2><span translate="jtraceApp.manufacturer.detail.title">Manufacturer</span> {{manufacturer.id}}</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th translate="entity.detail.field">Field</th>
+                    <th translate="entity.detail.value">Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <span translate="jtraceApp.manufacturer.code">Code</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{manufacturer.code}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="jtraceApp.manufacturer.name">Name</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{manufacturer.name}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="jtraceApp.manufacturer.enabled">Enabled</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{manufacturer.enabled}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="jtraceApp.manufacturer.category">Category</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{manufacturer.category}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="jtraceApp.manufacturer.contact">Contact</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{manufacturer.contact}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="jtraceApp.manufacturer.email">Email</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{manufacturer.email}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="jtraceApp.manufacturer.phone">Phone</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{manufacturer.phone}}" readonly>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button type="submit"
+            ui-sref="manufacturer"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
+    </button>
+</div>

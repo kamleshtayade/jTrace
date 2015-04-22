@@ -1,0 +1,32 @@
+{
+    "jtraceApp": {
+        "itemctn" : {
+            "home": {
+                "title": "Itemctns",
+                "createLabel": "Créer un nouveau Itemctn",
+                "createOrEditLabel": "Créer ou éditer un Itemctn"
+            },
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Itemctn {{ id }} ?"
+            },
+            "detail": {
+                "title": "Itemctn"
+            },
+            "ctn": "Ctn",
+            "srNoFrom": "SrNoFrom",
+            "reqdQty": "ReqdQty",
+            "recdDt": "RecdDt",
+            "item": "Item",
+            "srNoTo": "SrNoTo",
+            "selfLife": "SelfLife",
+            "poQty": "PoQty",
+            "invoice": "Invoice",
+            "manufaturer": "Manufaturer",
+            "mfgPartNo": "MfgPartNo",
+            "supplier": "Supplier",
+            "dateCode": "DateCode",
+            "lotCode": "LotCode"
+        }
+    }
+}
+

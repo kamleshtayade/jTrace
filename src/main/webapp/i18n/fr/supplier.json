@@ -1,0 +1,25 @@
+{
+    "jtraceApp": {
+        "supplier" : {
+            "home": {
+                "title": "Suppliers",
+                "createLabel": "Créer un nouveau Supplier",
+                "createOrEditLabel": "Créer ou éditer un Supplier"
+            },
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Supplier {{ id }} ?"
+            },
+            "detail": {
+                "title": "Supplier"
+            },
+            "code": "Code",
+            "name": "Name",
+            "enabled": "Enabled",
+            "contact": "Contact",
+            "email": "Email",
+            "phone": "Phone",
+            "manufacturer": "manufacturer"
+        }
+    }
+}
+

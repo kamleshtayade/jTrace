@@ -1,0 +1,40 @@
+<div ng-cloak>
+    <div class="wall text-center">
+
+        <div class="container">
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div ng-switch="isAuthenticated()">
+                        <div class="alert alert-success" ng-switch-when="true"
+                             translate="main.logged.message" translate-values="{username: '{{account.login}}'}">
+                            You are logged in as user "Admin".
+                        </div>
+
+                        <div class="alert alert-warning" ng-switch-when="false" translate="global.messages.info.authenticated">
+                            If you want to <a href="#/login">authenticate</a>, you can try the default login="admin" and
+                            password="admin".
+                        </div>
+
+                        <div class="alert alert-warning" ng-switch-when="false" translate="global.messages.info.register">
+                            Don't have an account? <a href=\"#/register\">Register</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /.row -->
+
+        </div>
+        <!-- /.container -->
+
+    </div>
+<div ng-switch on="isAuthenticated()" >  
+    <div ng-switch-when="true">
+        <div ng-include="'scripts/app/main/partials/dashboard.html'"></div>
+    </div>
+    <div ng-switch-when="false">
+        <div ng-include="'scripts/app/main/partials/landing.html'"></div>
+    </div>
+</div>
+</div>
+

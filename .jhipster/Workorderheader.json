@@ -1,0 +1,97 @@
+{
+    "relationships": [],
+    "fields": [
+        {
+            "fieldId": 1,
+            "fieldName": "woNumber",
+            "fieldType": "String",
+            "fieldNameCapitalized": "WoNumber",
+            "fieldNameUnderscored": "wo_number"
+        },
+        {
+            "fieldId": 2,
+            "fieldName": "kitNumber",
+            "fieldType": "String",
+            "fieldNameCapitalized": "KitNumber",
+            "fieldNameUnderscored": "kit_number"
+        },
+        {
+            "fieldId": 3,
+            "fieldName": "customer",
+            "fieldType": "String",
+            "fieldNameCapitalized": "Customer",
+            "fieldNameUnderscored": "customer"
+        },
+        {
+            "fieldId": 4,
+            "fieldName": "shipToLoc",
+            "fieldType": "String",
+            "fieldNameCapitalized": "ShipToLoc",
+            "fieldNameUnderscored": "ship_to_loc"
+        },
+        {
+            "fieldId": 5,
+            "fieldName": "plant",
+            "fieldType": "String",
+            "fieldNameCapitalized": "Plant",
+            "fieldNameUnderscored": "plant"
+        },
+        {
+            "fieldId": 6,
+            "fieldName": "plantMfgLine",
+            "fieldType": "String",
+            "fieldNameCapitalized": "PlantMfgLine",
+            "fieldNameUnderscored": "plant_mfg_line"
+        },
+        {
+            "fieldId": 7,
+            "fieldName": "status",
+            "fieldType": "String",
+            "fieldNameCapitalized": "Status",
+            "fieldNameUnderscored": "status"
+        },
+        {
+            "fieldId": 8,
+            "fieldName": "qty",
+            "fieldType": "Integer",
+            "fieldNameCapitalized": "Qty",
+            "fieldNameUnderscored": "qty"
+        },
+        {
+            "fieldId": 9,
+            "fieldName": "soNumber",
+            "fieldType": "String",
+            "fieldNameCapitalized": "SoNumber",
+            "fieldNameUnderscored": "so_number"
+        },
+        {
+            "fieldId": 10,
+            "fieldName": "item",
+            "fieldType": "String",
+            "fieldNameCapitalized": "Item",
+            "fieldNameUnderscored": "item"
+        },
+        {
+            "fieldId": 11,
+            "fieldName": "asyCode",
+            "fieldType": "String",
+            "fieldNameCapitalized": "AsyCode",
+            "fieldNameUnderscored": "asy_code"
+        },
+        {
+            "fieldId": 12,
+            "fieldName": "bom",
+            "fieldType": "String",
+            "fieldNameCapitalized": "Bom",
+            "fieldNameUnderscored": "bom"
+        }
+    ],
+    "fieldsContainOwnerManyToMany": false,
+    "fieldsContainOneToMany": false,
+    "fieldsContainLocalDate": false,
+    "fieldsContainCustomTime": false,
+    "fieldsContainBigDecimal": false,
+    "fieldsContainDateTime": false,
+    "fieldsContainDate": false,
+    "changelogDate": "20150419134315"
+}

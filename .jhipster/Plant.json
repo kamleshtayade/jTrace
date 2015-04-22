@@ -1,0 +1,58 @@
+{
+    "relationships": [
+        {
+            "relationshipId": 1,
+            "relationshipName": "plantmfgline",
+            "relationshipNameCapitalized": "Plantmfgline",
+            "relationshipFieldName": "plantmfgline",
+            "otherEntityName": "plantmfgline",
+            "relationshipType": "one-to-many",
+            "otherEntityNameCapitalized": "Plantmfgline"
+        }
+    ],
+    "fields": [
+        {
+            "fieldId": 1,
+            "fieldName": "code",
+            "fieldType": "String",
+            "fieldNameCapitalized": "Code",
+            "fieldNameUnderscored": "code"
+        },
+        {
+            "fieldId": 2,
+            "fieldName": "location",
+            "fieldType": "String",
+            "fieldNameCapitalized": "Location",
+            "fieldNameUnderscored": "location"
+        },
+        {
+            "fieldId": 3,
+            "fieldName": "address",
+            "fieldType": "String",
+            "fieldNameCapitalized": "Address",
+            "fieldNameUnderscored": "address"
+        },
+        {
+            "fieldId": 4,
+            "fieldName": "isActive",
+            "fieldType": "Boolean",
+            "fieldNameCapitalized": "IsActive",
+            "fieldNameUnderscored": "is_active"
+        },
+        {
+            "fieldId": 5,
+            "fieldName": "capacity",
+            "fieldType": "String",
+            "fieldNameCapitalized": "Capacity",
+            "fieldNameUnderscored": "capacity"
+        }
+    ],
+    "fieldsContainOwnerManyToMany": false,
+    "fieldsContainOneToMany": true,
+    "fieldsContainLocalDate": false,
+    "fieldsContainCustomTime": false,
+    "fieldsContainBigDecimal": false,
+    "fieldsContainDateTime": false,
+    "fieldsContainDate": false,
+    "changelogDate": "20150415134523"
+}

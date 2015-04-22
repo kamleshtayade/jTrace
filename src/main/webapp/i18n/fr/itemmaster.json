@@ -1,0 +1,23 @@
+{
+    "jtraceApp": {
+        "itemmaster" : {
+            "home": {
+                "title": "Itemmasters",
+                "createLabel": "Créer un nouveau Itemmaster",
+                "createOrEditLabel": "Créer ou éditer un Itemmaster"
+            },
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Itemmaster {{ id }} ?"
+            },
+            "detail": {
+                "title": "Itemmaster"
+            },
+            "itemCode": "ItemCode",
+            "description": "Description",
+            "attributes": "Attributes",
+            "itemcat": "itemcat",
+            "itemsubcat": "itemsubcat"
+        }
+    }
+}
+

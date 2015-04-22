@@ -1,0 +1,18 @@
+{
+    "main": {
+        "title": "Traceability App!",
+        "subtitle": "This is App's homepage",
+        "logged": {
+            "message": "You are logged in as user \"{{username}}\"."
+        },
+        "question": "If you have any question on Traceability App:",
+        "link": {
+            "homepage": "Zensar homepage",
+            "stackoverflow": "Zensar on Stack Overflow",
+            "bugtracker": "Zensar bug tracker",
+            "contact": "contact @devTeam on Twitter"
+        },
+        "like": "If you like Traceability, don't forget to give us a star on",
+        "github": "Github"
+    }
+}

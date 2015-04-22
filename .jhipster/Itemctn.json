@@ -1,0 +1,111 @@
+{
+    "relationships": [],
+    "fields": [
+        {
+            "fieldId": 1,
+            "fieldName": "ctn",
+            "fieldType": "String",
+            "fieldNameCapitalized": "Ctn",
+            "fieldNameUnderscored": "ctn"
+        },
+        {
+            "fieldId": 2,
+            "fieldName": "srNoFrom",
+            "fieldType": "String",
+            "fieldNameCapitalized": "SrNoFrom",
+            "fieldNameUnderscored": "sr_no_from"
+        },
+        {
+            "fieldId": 3,
+            "fieldName": "reqdQty",
+            "fieldType": "Integer",
+            "fieldNameCapitalized": "ReqdQty",
+            "fieldNameUnderscored": "reqd_qty"
+        },
+        {
+            "fieldId": 4,
+            "fieldName": "recdDt",
+            "fieldType": "LocalDate",
+            "fieldNameCapitalized": "RecdDt",
+            "fieldNameUnderscored": "recd_dt"
+        },
+        {
+            "fieldId": 5,
+            "fieldName": "item",
+            "fieldType": "String",
+            "fieldNameCapitalized": "Item",
+            "fieldNameUnderscored": "item"
+        },
+        {
+            "fieldId": 6,
+            "fieldName": "srNoTo",
+            "fieldType": "String",
+            "fieldNameCapitalized": "SrNoTo",
+            "fieldNameUnderscored": "sr_no_to"
+        },
+        {
+            "fieldId": 7,
+            "fieldName": "selfLife",
+            "fieldType": "String",
+            "fieldNameCapitalized": "SelfLife",
+            "fieldNameUnderscored": "self_life"
+        },
+        {
+            "fieldId": 8,
+            "fieldName": "poQty",
+            "fieldType": "Integer",
+            "fieldNameCapitalized": "PoQty",
+            "fieldNameUnderscored": "po_qty"
+        },
+        {
+            "fieldId": 9,
+            "fieldName": "invoice",
+            "fieldType": "String",
+            "fieldNameCapitalized": "Invoice",
+            "fieldNameUnderscored": "invoice"
+        },
+        {
+            "fieldId": 10,
+            "fieldName": "manufaturer",
+            "fieldType": "String",
+            "fieldNameCapitalized": "Manufaturer",
+            "fieldNameUnderscored": "manufaturer"
+        },
+        {
+            "fieldId": 11,
+            "fieldName": "mfgPartNo",
+            "fieldType": "String",
+            "fieldNameCapitalized": "MfgPartNo",
+            "fieldNameUnderscored": "mfg_part_no"
+        },
+        {
+            "fieldId": 12,
+            "fieldName": "supplier",
+            "fieldType": "String",
+            "fieldNameCapitalized": "Supplier",
+            "fieldNameUnderscored": "supplier"
+        },
+        {
+            "fieldId": 13,
+            "fieldName": "dateCode",
+            "fieldType": "String",
+            "fieldNameCapitalized": "DateCode",
+            "fieldNameUnderscored": "date_code"
+        },
+        {
+            "fieldId": 14,
+            "fieldName": "lotCode",
+            "fieldType": "String",
+            "fieldNameCapitalized": "LotCode",
+            "fieldNameUnderscored": "lot_code"
+        }
+    ],
+    "fieldsContainOwnerManyToMany": false,
+    "fieldsContainOneToMany": false,
+    "fieldsContainLocalDate": true,
+    "fieldsContainCustomTime": true,
+    "fieldsContainBigDecimal": false,
+    "fieldsContainDateTime": false,
+    "fieldsContainDate": false,
+    "changelogDate": "20150419135600"
+}

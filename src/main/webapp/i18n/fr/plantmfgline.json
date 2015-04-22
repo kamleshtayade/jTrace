@@ -1,0 +1,20 @@
+{
+    "jtraceApp": {
+        "plantmfgline" : {
+            "home": {
+                "title": "Plantmfglines",
+                "createLabel": "Créer un nouveau Plantmfgline",
+                "createOrEditLabel": "Créer ou éditer un Plantmfgline"
+            },
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Plantmfgline {{ id }} ?"
+            },
+            "detail": {
+                "title": "Plantmfgline"
+            },
+            "capacity": "Capacity",
+            "plant": "plant"
+        }
+    }
+}
+

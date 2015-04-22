@@ -1,0 +1,26 @@
+{
+    "jtraceApp": {
+        "manufacturer" : {
+            "home": {
+                "title": "Manufacturers",
+                "createLabel": "Create a new Manufacturer",
+                "createOrEditLabel": "Create or edit a Manufacturer"
+            },
+            "delete": {
+                "question": "Are you sure you want to delete Manufacturer {{ id }}?"
+            },
+            "detail": {
+                "title": "Manufacturer"
+            },
+            "code": "Code",
+            "name": "Name",
+            "enabled": "Enabled",
+            "category": "Category",
+            "contact": "Contact",
+            "email": "e-mail",
+            "phone": "Phone",
+            "itemmfrpart": "Item Manufacture Part",
+            "supplier": "Supplier"
+        }
+    }
+}

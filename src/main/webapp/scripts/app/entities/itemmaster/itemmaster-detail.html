@@ -1,0 +1,62 @@
+
+<div>
+    <h2><span translate="jtraceApp.itemmaster.detail.title">Itemmaster</span> {{itemmaster.id}}</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th translate="entity.detail.field">Field</th>
+                    <th translate="entity.detail.value">Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <span translate="jtraceApp.itemmaster.itemCode">ItemCode</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{itemmaster.itemCode}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="jtraceApp.itemmaster.description">Description</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{itemmaster.description}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="jtraceApp.itemmaster.attributes">Attributes</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{itemmaster.attributes}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="jtraceApp.itemmaster.itemcat">itemcat</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{itemmaster.itemcat.name}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="jtraceApp.itemmaster.itemsubcat">itemsubcat</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{itemmaster.itemsubcat.name}}" readonly>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button type="submit"
+            ui-sref="itemmaster"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
+    </button>
+</div>

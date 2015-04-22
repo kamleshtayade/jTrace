@@ -1,0 +1,19 @@
+{
+  "generator-jhipster": {
+    "baseName": "jtrace",
+    "packageName": "com.spring.app",
+    "packageFolder": "com/spring/app",
+    "authenticationType": "session",
+    "hibernateCache": "ehcache",
+    "clusteredHttpSession": "no",
+    "websocket": "no",
+    "databaseType": "sql",
+    "devDatabaseType": "postgresql",
+    "prodDatabaseType": "postgresql",
+    "useCompass": false,
+    "buildTool": "maven",
+    "frontendBuilder": "grunt",
+    "javaVersion": "7",
+    "rememberMeKey": "c1b2c2b210aa9dbf9b92f9827fe0b5016cea3c2a"
+  }
+}

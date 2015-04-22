@@ -1,0 +1,31 @@
+{
+    "relationships": [
+        {
+            "relationshipId": 1,
+            "relationshipName": "plant",
+            "relationshipNameCapitalized": "Plant",
+            "relationshipFieldName": "plant",
+            "otherEntityName": "plant",
+            "relationshipType": "many-to-one",
+            "otherEntityNameCapitalized": "Plant",
+            "otherEntityField": "code"
+        }
+    ],
+    "fields": [
+        {
+            "fieldId": 1,
+            "fieldName": "capacity",
+            "fieldType": "String",
+            "fieldNameCapitalized": "Capacity",
+            "fieldNameUnderscored": "capacity"
+        }
+    ],
+    "fieldsContainOwnerManyToMany": false,
+    "fieldsContainOneToMany": false,
+    "fieldsContainLocalDate": false,
+    "fieldsContainCustomTime": false,
+    "fieldsContainBigDecimal": false,
+    "fieldsContainDateTime": false,
+    "fieldsContainDate": false,
+    "changelogDate": "20150415134637"
+}

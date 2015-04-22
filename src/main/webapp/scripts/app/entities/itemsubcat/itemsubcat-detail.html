@@ -1,0 +1,54 @@
+
+<div>
+    <h2><span translate="jtraceApp.itemsubcat.detail.title">Itemsubcat</span> {{itemsubcat.id}}</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th translate="entity.detail.field">Field</th>
+                    <th translate="entity.detail.value">Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <span translate="jtraceApp.itemsubcat.name">Name</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{itemsubcat.name}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="jtraceApp.itemsubcat.description">Description</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{itemsubcat.description}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="jtraceApp.itemsubcat.enabled">Enabled</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{itemsubcat.enabled}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="jtraceApp.itemsubcat.itemcat">itemcat</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{itemsubcat.itemcat.name}}" readonly>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button type="submit"
+            ui-sref="itemsubcat"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
+    </button>
+</div>

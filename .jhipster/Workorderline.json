@@ -1,0 +1,69 @@
+{
+    "relationships": [],
+    "fields": [
+        {
+            "fieldId": 1,
+            "fieldName": "workorderheader",
+            "fieldType": "String",
+            "fieldNameCapitalized": "Workorderheader",
+            "fieldNameUnderscored": "workorderheader"
+        },
+        {
+            "fieldId": 2,
+            "fieldName": "bomChildItem",
+            "fieldType": "String",
+            "fieldNameCapitalized": "BomChildItem",
+            "fieldNameUnderscored": "bom_child_item"
+        },
+        {
+            "fieldId": 3,
+            "fieldName": "attrition",
+            "fieldType": "String",
+            "fieldNameCapitalized": "Attrition",
+            "fieldNameUnderscored": "attrition"
+        },
+        {
+            "fieldId": 4,
+            "fieldName": "requQty",
+            "fieldType": "String",
+            "fieldNameCapitalized": "RequQty",
+            "fieldNameUnderscored": "requ_qty"
+        },
+        {
+            "fieldId": 5,
+            "fieldName": "issuedQty",
+            "fieldType": "Integer",
+            "fieldNameCapitalized": "IssuedQty",
+            "fieldNameUnderscored": "issued_qty"
+        },
+        {
+            "fieldId": 6,
+            "fieldName": "isCustSupplied",
+            "fieldType": "Boolean",
+            "fieldNameCapitalized": "IsCustSupplied",
+            "fieldNameUnderscored": "is_cust_supplied"
+        },
+        {
+            "fieldId": 7,
+            "fieldName": "itemCtn",
+            "fieldType": "String",
+            "fieldNameCapitalized": "ItemCtn",
+            "fieldNameUnderscored": "item_ctn"
+        },
+        {
+            "fieldId": 8,
+            "fieldName": "remarks",
+            "fieldType": "String",
+            "fieldNameCapitalized": "Remarks",
+            "fieldNameUnderscored": "remarks"
+        }
+    ],
+    "fieldsContainOwnerManyToMany": false,
+    "fieldsContainOneToMany": false,
+    "fieldsContainLocalDate": false,
+    "fieldsContainCustomTime": false,
+    "fieldsContainBigDecimal": false,
+    "fieldsContainDateTime": false,
+    "fieldsContainDate": false,
+    "changelogDate": "20150419134839"
+}

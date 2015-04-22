@@ -1,0 +1,24 @@
+{
+    "jtraceApp": {
+        "itemmfrpart" : {
+            "home": {
+                "title": "Itemmfrparts",
+                "createLabel": "Créer un nouveau Itemmfrpart",
+                "createOrEditLabel": "Créer ou éditer un Itemmfrpart"
+            },
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Itemmfrpart {{ id }} ?"
+            },
+            "detail": {
+                "title": "Itemmfrpart"
+            },
+            "mfrpart": "Mfrpart",
+            "status": "Status",
+            "suppart": "Suppart",
+            "remarks": "Remarks",
+            "manufacturer": "manufacturer",
+            "itemmaster": "itemmaster"
+        }
+    }
+}
+

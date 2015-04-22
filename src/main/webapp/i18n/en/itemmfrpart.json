@@ -1,0 +1,23 @@
+{
+    "jtraceApp": {
+        "itemmfrpart" : {
+            "home": {
+                "title": "Item Mfr Parts",
+                "createLabel": "Create a new Item Mfr Part",
+                "createOrEditLabel": "Create or edit a Item Mfr Part"
+            },
+            "delete": {
+                "question": "Are you sure you want to delete Item Mfr Part {{ id }}?"
+            },
+            "detail": {
+                "title": "Item Mfr Part"
+            },
+            "mfrpart": "Mfr Part",
+            "status": "Status",
+            "suppart": "Support",
+            "remarks": "Remarks",
+            "manufacturer": "Manufacturer",
+            "itemmaster": "Item Master"
+        }
+    }
+}

@@ -1,0 +1,31 @@
+{
+    "jtraceApp": {
+        "itemctn" : {
+            "home": {
+                "title": "Item CTNs",
+                "createLabel": "Create a new Item CTN",
+                "createOrEditLabel": "Create or edit a Item CTN"
+            },
+            "delete": {
+                "question": "Are you sure you want to delete Item CTN {{ id }}?"
+            },
+            "detail": {
+                "title": "Item CTN"
+            },
+            "ctn": "Ctn",
+            "srNoFrom": "Sr Number From",
+            "reqdQty": "Required Qty",
+            "recdDt": "Recieved Date",
+            "item": "Item",
+            "srNoTo": "Sr Number To",
+            "selfLife": "Self Life",
+            "poQty": "PO Qty",
+            "invoice": "Invoice",
+            "manufaturer": "Manufacturer",
+            "mfgPartNo": "MFG Part No",
+            "supplier": "Supplier",
+            "dateCode": "Date Code",
+            "lotCode": "Lot Code"
+        }
+    }
+}

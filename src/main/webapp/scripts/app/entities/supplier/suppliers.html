@@ -1,0 +1,150 @@
+<div>
+
+    <h2 translate="jtraceApp.supplier.home.title">Supplier</h2>
+
+    <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#saveSupplierModal" ng-click="clear()">
+        <span class="glyphicon glyphicon-flash"></span> <span translate="jtraceApp.supplier.home.createLabel">Create a new Supplier</span>
+    </button>
+    <div class="modal fade" id="saveSupplierModal" tabindex="-1" role="dialog" aria-labelledby="mySupplierLabel"
+         aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form name="editForm" role="form" novalidate
+                      class="ng-scope ng-invalid ng-invalid-required ng-dirty ng-valid-minlength"
+                      ng-submit="create()">
+
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                                ng-click="clear()">&times;</button>
+                        <h4 class="modal-title" id="mySupplierLabel" translate="jtraceApp.supplier.home.createOrEditLabel">Create or edit a Supplier</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label>ID</label>
+                            <input type="text" class="form-control" name="id"
+                                   ng-model="supplier.id" readonly>
+                        </div>
+
+                        <div class="form-group">
+                            <label translate="jtraceApp.supplier.code">Code</label>
+                            <input type="text" class="form-control" name="code"
+                                   ng-model="supplier.code">
+                        </div>
+                        <div class="form-group">
+                            <label translate="jtraceApp.supplier.name">Name</label>
+                            <input type="text" class="form-control" name="name"
+                                   ng-model="supplier.name">
+                        </div>
+                        <div class="form-group">
+                            <label translate="jtraceApp.supplier.enabled">Enabled</label>
+                            <input type="checkbox" class="form-control" name="enabled"
+                                   ng-model="supplier.enabled">
+                        </div>
+                        <div class="form-group">
+                            <label translate="jtraceApp.supplier.contact">Contact</label>
+                            <input type="text" class="form-control" name="contact"
+                                   ng-model="supplier.contact">
+                        </div>
+                        <div class="form-group">
+                            <label translate="jtraceApp.supplier.email">Email</label>
+                            <input type="text" class="form-control" name="email"
+                                   ng-model="supplier.email">
+                        </div>
+                        <div class="form-group">
+                            <label translate="jtraceApp.supplier.phone">Phone</label>
+                            <input type="text" class="form-control" name="phone"
+                                   ng-model="supplier.phone">
+                        </div>
+
+                        <div class="form-group">
+                            <label translate="jtraceApp.supplier.manufacturer">manufacturer</label>
+                            <select class="form-control" name="phone" ng-model="supplier.manufacturer.id" ng-options="manufacturer.id as manufacturer.name for manufacturer in manufacturers">
+                            </select>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+                            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
+                        </button>
+                        <button type="submit" ng-disabled="editForm.$invalid" class="btn btn-primary">
+                            <span class="glyphicon glyphicon-save"></span>&nbsp;<span translate="entity.action.save">Save</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="deleteSupplierConfirmation">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form name="deleteForm" ng-submit="confirmDelete(supplier.id)">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                                ng-click="clear()">&times;</button>
+                        <h4 class="modal-title" translate="entity.delete.title">Confirm delete operation</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p translate="jtraceApp.supplier.delete.question" translate-values="{id: '{{supplier.id}}'}">Are you sure you want to delete this Supplier?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+                            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
+                        </button>
+                        <button type="submit" ng-disabled="deleteForm.$invalid" class="btn btn-danger">
+                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span translate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th translate="jtraceApp.supplier.code">Code</th>
+                    <th translate="jtraceApp.supplier.name">Name</th>
+                    <th translate="jtraceApp.supplier.enabled">Enabled</th>
+                    <th translate="jtraceApp.supplier.contact">Contact</th>
+                    <th translate="jtraceApp.supplier.email">Email</th>
+                    <th translate="jtraceApp.supplier.phone">Phone</th>
+                    <th translate="jtraceApp.supplier.manufacturer">manufacturer</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="supplier in suppliers">
+                    <td><a ui-sref="supplierDetail({id:supplier.id})">{{supplier.id}}</a></td>
+                    <td>{{supplier.code}}</td>
+                    <td>{{supplier.name}}</td>
+                    <td>{{supplier.enabled}}</td>
+                    <td>{{supplier.contact}}</td>
+                    <td>{{supplier.email}}</td>
+                    <td>{{supplier.phone}}</td>
+                    <td>{{supplier.manufacturer.name}}</td>
+                    <td>
+                        <button type="submit"
+                                ui-sref="supplierDetail({id:supplier.id})"
+                                class="btn btn-info">
+                            <span class="glyphicon glyphicon-eye-open"></span>&nbsp;<span translate="entity.action.view"> View</span>
+                        </button>
+                        <button type="submit"
+                                ng-click="update(supplier.id)"
+                                class="btn btn-primary">
+                            <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span translate="entity.action.edit"> Edit</span>
+                        </button>
+                        <button type="submit"
+                                ng-click="delete(supplier.id)"
+                                class="btn btn-danger">
+                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span translate="entity.action.delete"> Delete</span>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

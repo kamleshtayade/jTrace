@@ -1,0 +1,62 @@
+{
+    "relationships": [
+        {
+            "relationshipId": 1,
+            "relationshipName": "manufacturer",
+            "relationshipNameCapitalized": "Manufacturer",
+            "relationshipFieldName": "manufacturer",
+            "otherEntityName": "manufacturer",
+            "relationshipType": "many-to-one",
+            "otherEntityNameCapitalized": "Manufacturer",
+            "otherEntityField": "name"
+        },
+        {
+            "relationshipId": 2,
+            "relationshipName": "itemmaster",
+            "relationshipNameCapitalized": "Itemmaster",
+            "relationshipFieldName": "itemmaster",
+            "otherEntityName": "itemmaster",
+            "relationshipType": "many-to-one",
+            "otherEntityNameCapitalized": "Itemmaster",
+            "otherEntityField": "code"
+        }
+    ],
+    "fields": [
+        {
+            "fieldId": 1,
+            "fieldName": "mfrpart",
+            "fieldType": "String",
+            "fieldNameCapitalized": "Mfrpart",
+            "fieldNameUnderscored": "mfrpart"
+        },
+        {
+            "fieldId": 2,
+            "fieldName": "status",
+            "fieldType": "String",
+            "fieldNameCapitalized": "Status",
+            "fieldNameUnderscored": "status"
+        },
+        {
+            "fieldId": 3,
+            "fieldName": "suppart",
+            "fieldType": "String",
+            "fieldNameCapitalized": "Suppart",
+            "fieldNameUnderscored": "suppart"
+        },
+        {
+            "fieldId": 4,
+            "fieldName": "remarks",
+            "fieldType": "String",
+            "fieldNameCapitalized": "Remarks",
+            "fieldNameUnderscored": "remarks"
+        }
+    ],
+    "fieldsContainOwnerManyToMany": false,
+    "fieldsContainOneToMany": false,
+    "fieldsContainLocalDate": false,
+    "fieldsContainCustomTime": false,
+    "fieldsContainBigDecimal": false,
+    "fieldsContainDateTime": false,
+    "fieldsContainDate": false,
+    "changelogDate": "20150415134109"
+}

@@ -1,0 +1,23 @@
+{
+    "jtraceApp": {
+        "itemcat" : {
+            "home": {
+                "title": "Itemcats",
+                "createLabel": "Créer un nouveau Itemcat",
+                "createOrEditLabel": "Créer ou éditer un Itemcat"
+            },
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Itemcat {{ id }} ?"
+            },
+            "detail": {
+                "title": "Itemcat"
+            },
+            "name": "Name",
+            "description": "Description",
+            "enabled": "Enabled",
+            "itemsubcat": "itemsubcat",
+            "itemmaster": "itemmaster"
+        }
+    }
+}
+

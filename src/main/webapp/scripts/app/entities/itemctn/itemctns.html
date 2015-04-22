@@ -1,0 +1,199 @@
+<div>
+
+    <h2 translate="jtraceApp.itemctn.home.title">Itemctn</h2>
+
+    <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#saveItemctnModal" ng-click="clear()">
+        <span class="glyphicon glyphicon-flash"></span> <span translate="jtraceApp.itemctn.home.createLabel">Create a new Itemctn</span>
+    </button>
+    <div class="modal fade" id="saveItemctnModal" tabindex="-1" role="dialog" aria-labelledby="myItemctnLabel"
+         aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form name="editForm" role="form" novalidate
+                      class="ng-scope ng-invalid ng-invalid-required ng-dirty ng-valid-minlength"
+                      ng-submit="create()">
+
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                                ng-click="clear()">&times;</button>
+                        <h4 class="modal-title" id="myItemctnLabel" translate="jtraceApp.itemctn.home.createOrEditLabel">Create or edit a Itemctn</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label>ID</label>
+                            <input type="text" class="form-control" name="id"
+                                   ng-model="itemctn.id" readonly>
+                        </div>
+
+                        <div class="form-group">
+                            <label translate="jtraceApp.itemctn.ctn">Ctn</label>
+                            <input type="text" class="form-control" name="ctn"
+                                   ng-model="itemctn.ctn">
+                        </div>
+                        <div class="form-group">
+                            <label translate="jtraceApp.itemctn.srNoFrom">SrNoFrom</label>
+                            <input type="text" class="form-control" name="srNoFrom"
+                                   ng-model="itemctn.srNoFrom">
+                        </div>
+                        <div class="form-group">
+                            <label translate="jtraceApp.itemctn.reqdQty">ReqdQty</label>
+                            <input type="number" class="form-control" name="reqdQty"
+                                   ng-model="itemctn.reqdQty">
+                        </div>
+                        <div class="form-group">
+                            <label translate="jtraceApp.itemctn.recdDt">RecdDt</label>
+                            <input type="date" class="form-control" name="recdDt"
+                                   ng-model="itemctn.recdDt">
+                        </div>
+                        <div class="form-group">
+                            <label translate="jtraceApp.itemctn.item">Item</label>
+                            <input type="text" class="form-control" name="item"
+                                   ng-model="itemctn.item">
+                        </div>
+                        <div class="form-group">
+                            <label translate="jtraceApp.itemctn.srNoTo">SrNoTo</label>
+                            <input type="text" class="form-control" name="srNoTo"
+                                   ng-model="itemctn.srNoTo">
+                        </div>
+                        <div class="form-group">
+                            <label translate="jtraceApp.itemctn.selfLife">SelfLife</label>
+                            <input type="text" class="form-control" name="selfLife"
+                                   ng-model="itemctn.selfLife">
+                        </div>
+                        <div class="form-group">
+                            <label translate="jtraceApp.itemctn.poQty">PoQty</label>
+                            <input type="number" class="form-control" name="poQty"
+                                   ng-model="itemctn.poQty">
+                        </div>
+                        <div class="form-group">
+                            <label translate="jtraceApp.itemctn.invoice">Invoice</label>
+                            <input type="text" class="form-control" name="invoice"
+                                   ng-model="itemctn.invoice">
+                        </div>
+                        <div class="form-group">
+                            <label translate="jtraceApp.itemctn.manufaturer">Manufaturer</label>
+                            <input type="text" class="form-control" name="manufaturer"
+                                   ng-model="itemctn.manufaturer">
+                        </div>
+                        <div class="form-group">
+                            <label translate="jtraceApp.itemctn.mfgPartNo">MfgPartNo</label>
+                            <input type="text" class="form-control" name="mfgPartNo"
+                                   ng-model="itemctn.mfgPartNo">
+                        </div>
+                        <div class="form-group">
+                            <label translate="jtraceApp.itemctn.supplier">Supplier</label>
+                            <input type="text" class="form-control" name="supplier"
+                                   ng-model="itemctn.supplier">
+                        </div>
+                        <div class="form-group">
+                            <label translate="jtraceApp.itemctn.dateCode">DateCode</label>
+                            <input type="text" class="form-control" name="dateCode"
+                                   ng-model="itemctn.dateCode">
+                        </div>
+                        <div class="form-group">
+                            <label translate="jtraceApp.itemctn.lotCode">LotCode</label>
+                            <input type="text" class="form-control" name="lotCode"
+                                   ng-model="itemctn.lotCode">
+                        </div>
+
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+                            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
+                        </button>
+                        <button type="submit" ng-disabled="editForm.$invalid" class="btn btn-primary">
+                            <span class="glyphicon glyphicon-save"></span>&nbsp;<span translate="entity.action.save">Save</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="deleteItemctnConfirmation">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form name="deleteForm" ng-submit="confirmDelete(itemctn.id)">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                                ng-click="clear()">&times;</button>
+                        <h4 class="modal-title" translate="entity.delete.title">Confirm delete operation</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p translate="jtraceApp.itemctn.delete.question" translate-values="{id: '{{itemctn.id}}'}">Are you sure you want to delete this Itemctn?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+                            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
+                        </button>
+                        <button type="submit" ng-disabled="deleteForm.$invalid" class="btn btn-danger">
+                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span translate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th translate="jtraceApp.itemctn.ctn">Ctn</th>
+                    <th translate="jtraceApp.itemctn.srNoFrom">SrNoFrom</th>
+                    <th translate="jtraceApp.itemctn.reqdQty">ReqdQty</th>
+                    <th translate="jtraceApp.itemctn.recdDt">RecdDt</th>
+                    <th translate="jtraceApp.itemctn.item">Item</th>
+                    <th translate="jtraceApp.itemctn.srNoTo">SrNoTo</th>
+                    <th translate="jtraceApp.itemctn.selfLife">SelfLife</th>
+                    <th translate="jtraceApp.itemctn.poQty">PoQty</th>
+                    <th translate="jtraceApp.itemctn.invoice">Invoice</th>
+                    <th translate="jtraceApp.itemctn.manufaturer">Manufaturer</th>
+                    <th translate="jtraceApp.itemctn.mfgPartNo">MfgPartNo</th>
+                    <th translate="jtraceApp.itemctn.supplier">Supplier</th>
+                    <th translate="jtraceApp.itemctn.dateCode">DateCode</th>
+                    <th translate="jtraceApp.itemctn.lotCode">LotCode</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="itemctn in itemctns">
+                    <td><a ui-sref="itemctnDetail({id:itemctn.id})">{{itemctn.id}}</a></td>
+                    <td>{{itemctn.ctn}}</td>
+                    <td>{{itemctn.srNoFrom}}</td>
+                    <td>{{itemctn.reqdQty}}</td>
+                    <td>{{itemctn.recdDt}}</td>
+                    <td>{{itemctn.item}}</td>
+                    <td>{{itemctn.srNoTo}}</td>
+                    <td>{{itemctn.selfLife}}</td>
+                    <td>{{itemctn.poQty}}</td>
+                    <td>{{itemctn.invoice}}</td>
+                    <td>{{itemctn.manufaturer}}</td>
+                    <td>{{itemctn.mfgPartNo}}</td>
+                    <td>{{itemctn.supplier}}</td>
+                    <td>{{itemctn.dateCode}}</td>
+                    <td>{{itemctn.lotCode}}</td>
+                    <td>
+                        <button type="submit"
+                                ui-sref="itemctnDetail({id:itemctn.id})"
+                                class="btn btn-info">
+                            <span class="glyphicon glyphicon-eye-open"></span>&nbsp;<span translate="entity.action.view"> View</span>
+                        </button>
+                        <button type="submit"
+                                ng-click="update(itemctn.id)"
+                                class="btn btn-primary">
+                            <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span translate="entity.action.edit"> Edit</span>
+                        </button>
+                        <button type="submit"
+                                ng-click="delete(itemctn.id)"
+                                class="btn btn-danger">
+                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span translate="entity.action.delete"> Delete</span>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

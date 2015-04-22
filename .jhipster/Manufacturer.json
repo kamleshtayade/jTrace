@@ -1,0 +1,81 @@
+{
+    "relationships": [
+        {
+            "relationshipId": 1,
+            "relationshipName": "itemmfrpart",
+            "relationshipNameCapitalized": "Itemmfrpart",
+            "relationshipFieldName": "itemmfrpart",
+            "otherEntityName": "itemmfrpart",
+            "relationshipType": "one-to-many",
+            "otherEntityNameCapitalized": "Itemmfrpart"
+        },
+        {
+            "relationshipId": 2,
+            "relationshipName": "supplier",
+            "relationshipNameCapitalized": "Supplier",
+            "relationshipFieldName": "supplier",
+            "otherEntityName": "supplier",
+            "relationshipType": "one-to-many",
+            "otherEntityNameCapitalized": "Supplier"
+        }
+    ],
+    "fields": [
+        {
+            "fieldId": 1,
+            "fieldName": "code",
+            "fieldType": "String",
+            "fieldNameCapitalized": "Code",
+            "fieldNameUnderscored": "code"
+        },
+        {
+            "fieldId": 2,
+            "fieldName": "name",
+            "fieldType": "String",
+            "fieldNameCapitalized": "Name",
+            "fieldNameUnderscored": "name"
+        },
+        {
+            "fieldId": 3,
+            "fieldName": "enabled",
+            "fieldType": "Boolean",
+            "fieldNameCapitalized": "Enabled",
+            "fieldNameUnderscored": "enabled"
+        },
+        {
+            "fieldId": 4,
+            "fieldName": "category",
+            "fieldType": "String",
+            "fieldNameCapitalized": "Category",
+            "fieldNameUnderscored": "category"
+        },
+        {
+            "fieldId": 5,
+            "fieldName": "contact",
+            "fieldType": "String",
+            "fieldNameCapitalized": "Contact",
+            "fieldNameUnderscored": "contact"
+        },
+        {
+            "fieldId": 6,
+            "fieldName": "email",
+            "fieldType": "String",
+            "fieldNameCapitalized": "Email",
+            "fieldNameUnderscored": "email"
+        },
+        {
+            "fieldId": 7,
+            "fieldName": "phone",
+            "fieldType": "String",
+            "fieldNameCapitalized": "Phone",
+            "fieldNameUnderscored": "phone"
+        }
+    ],
+    "fieldsContainOwnerManyToMany": false,
+    "fieldsContainOneToMany": true,
+    "fieldsContainLocalDate": false,
+    "fieldsContainCustomTime": false,
+    "fieldsContainBigDecimal": false,
+    "fieldsContainDateTime": false,
+    "fieldsContainDate": false,
+    "changelogDate": "20150415133554"
+}

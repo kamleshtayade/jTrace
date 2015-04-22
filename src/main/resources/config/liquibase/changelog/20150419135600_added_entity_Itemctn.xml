@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <property name="now" value="now()" dbms="mysql,h2"/>
+    <property name="now" value="current_timestamp" dbms="postgresql"/>
+
+    <!--
+        Added the entity Itemctn.
+    -->
+    <changeSet id="20150419135600" author="jhipster">
+        <createTable tableName="T_ITEMCTN">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="ctn" type="varchar(255)"/>
+            <column name="sr_no_from" type="varchar(255)"/>
+            <column name="reqd_qty" type="integer"/>
+            <column name="recd_dt" type="date">
+                <constraints nullable="false" />
+            </column>
+            <column name="item" type="varchar(255)"/>
+            <column name="sr_no_to" type="varchar(255)"/>
+            <column name="self_life" type="varchar(255)"/>
+            <column name="po_qty" type="integer"/>
+            <column name="invoice" type="varchar(255)"/>
+            <column name="manufaturer" type="varchar(255)"/>
+            <column name="mfg_part_no" type="varchar(255)"/>
+            <column name="supplier" type="varchar(255)"/>
+            <column name="date_code" type="varchar(255)"/>
+            <column name="lot_code" type="varchar(255)"/>
+        </createTable>
+        
+    </changeSet>
+</databaseChangeLog>

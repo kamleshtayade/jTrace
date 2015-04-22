@@ -1,0 +1,86 @@
+
+<div>
+    <h2><span translate="jtraceApp.workorderline.detail.title">Workorderline</span> {{workorderline.id}}</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th translate="entity.detail.field">Field</th>
+                    <th translate="entity.detail.value">Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <span translate="jtraceApp.workorderline.workorderheader">Workorderheader</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{workorderline.workorderheader}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="jtraceApp.workorderline.bomChildItem">BomChildItem</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{workorderline.bomChildItem}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="jtraceApp.workorderline.attrition">Attrition</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{workorderline.attrition}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="jtraceApp.workorderline.requQty">RequQty</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{workorderline.requQty}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="jtraceApp.workorderline.issuedQty">IssuedQty</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{workorderline.issuedQty}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="jtraceApp.workorderline.isCustSupplied">IsCustSupplied</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{workorderline.isCustSupplied}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="jtraceApp.workorderline.itemCtn">ItemCtn</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{workorderline.itemCtn}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="jtraceApp.workorderline.remarks">Remarks</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{workorderline.remarks}}" readonly>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button type="submit"
+            ui-sref="workorderline"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
+    </button>
+</div>

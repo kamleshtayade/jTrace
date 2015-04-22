@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
+    <changeSet author="ktayade (generated)" id="1429095099451-1">
+        <dropForeignKeyConstraint baseTableName="t_itemctn" constraintName="fk_itemctn_itemmaster_id"/>
+    </changeSet>
+    <changeSet author="ktayade (generated)" id="1429095099451-2">
+        <dropForeignKeyConstraint baseTableName="t_itemctn" constraintName="fk_itemctn_manufacturer_id"/>
+    </changeSet>
+    <changeSet author="ktayade (generated)" id="1429095099451-3">
+        <dropForeignKeyConstraint baseTableName="t_itemctn" constraintName="fk_itemctn_supplier_id"/>
+    </changeSet>
+    <changeSet author="ktayade (generated)" id="1429095099451-4">
+        <dropForeignKeyConstraint baseTableName="t_workorderheader" constraintName="fk_workorderheader_itemmaster_id"/>
+    </changeSet>
+    <changeSet author="ktayade (generated)" id="1429095099451-5">
+        <dropForeignKeyConstraint baseTableName="t_workorderheader" constraintName="fk_workorderheader_plant_id"/>
+    </changeSet>
+    <changeSet author="ktayade (generated)" id="1429095099451-6">
+        <dropForeignKeyConstraint baseTableName="t_workorderheader" constraintName="fk_workorderheader_plantmfgline_id"/>
+    </changeSet>
+    <changeSet author="ktayade (generated)" id="1429095099451-7">
+        <dropForeignKeyConstraint baseTableName="t_workorderline" constraintName="fk_workorderline_workorderheader_id"/>
+    </changeSet>
+    <changeSet author="ktayade (generated)" id="1429095099451-8">
+        <dropTable tableName="t_customer"/>
+    </changeSet>
+    <changeSet author="ktayade (generated)" id="1429095099451-9">
+        <dropTable tableName="t_itemctn"/>
+    </changeSet>
+    <changeSet author="ktayade (generated)" id="1429095099451-10">
+        <dropTable tableName="t_workorderheader"/>
+    </changeSet>
+    <changeSet author="ktayade (generated)" id="1429095099451-11">
+        <dropTable tableName="t_workorderline"/>
+    </changeSet>
+</databaseChangeLog>

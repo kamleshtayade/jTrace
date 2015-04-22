@@ -1,0 +1,66 @@
+{
+    "relationships": [
+        {
+            "relationshipId": 1,
+            "relationshipName": "manufacturer",
+            "relationshipNameCapitalized": "Manufacturer",
+            "relationshipFieldName": "manufacturer",
+            "otherEntityName": "manufacturer",
+            "relationshipType": "many-to-one",
+            "otherEntityNameCapitalized": "Manufacturer",
+            "otherEntityField": "name"
+        }
+    ],
+    "fields": [
+        {
+            "fieldId": 1,
+            "fieldName": "code",
+            "fieldType": "String",
+            "fieldNameCapitalized": "Code",
+            "fieldNameUnderscored": "code"
+        },
+        {
+            "fieldId": 2,
+            "fieldName": "name",
+            "fieldType": "String",
+            "fieldNameCapitalized": "Name",
+            "fieldNameUnderscored": "name"
+        },
+        {
+            "fieldId": 3,
+            "fieldName": "enabled",
+            "fieldType": "Boolean",
+            "fieldNameCapitalized": "Enabled",
+            "fieldNameUnderscored": "enabled"
+        },
+        {
+            "fieldId": 4,
+            "fieldName": "contact",
+            "fieldType": "String",
+            "fieldNameCapitalized": "Contact",
+            "fieldNameUnderscored": "contact"
+        },
+        {
+            "fieldId": 5,
+            "fieldName": "email",
+            "fieldType": "String",
+            "fieldNameCapitalized": "Email",
+            "fieldNameUnderscored": "email"
+        },
+        {
+            "fieldId": 6,
+            "fieldName": "phone",
+            "fieldType": "String",
+            "fieldNameCapitalized": "Phone",
+            "fieldNameUnderscored": "phone"
+        }
+    ],
+    "fieldsContainOwnerManyToMany": false,
+    "fieldsContainOneToMany": false,
+    "fieldsContainLocalDate": false,
+    "fieldsContainCustomTime": false,
+    "fieldsContainBigDecimal": false,
+    "fieldsContainDateTime": false,
+    "fieldsContainDate": false,
+    "changelogDate": "20150415133754"
+}

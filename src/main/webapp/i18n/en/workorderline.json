@@ -1,0 +1,25 @@
+{
+    "jtraceApp": {
+        "workorderline" : {
+            "home": {
+                "title": "Work Order Lines",
+                "createLabel": "Create a new Work Order Line",
+                "createOrEditLabel": "Create or edit a Work Order Line"
+            },
+            "delete": {
+                "question": "Are you sure you want to delete Work Order Line {{ id }}?"
+            },
+            "detail": {
+                "title": "Work Order Line"
+            },
+            "workorderheader": "Work Order Header",
+            "bomChildItem": "BOM Child Item",
+            "attrition": "Line Attrition",
+            "requQty": "Required Qty",
+            "issuedQty": "Issued Qty",
+            "isCustSupplied": "Is Customer Supplied",
+            "itemCtn": "Item CTN",
+            "remarks": "Remarks"
+        }
+    }
+}

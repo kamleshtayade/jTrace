@@ -1,0 +1,136 @@
+<div>
+
+    <h2 translate="jtraceApp.plant.home.title">Plant</h2>
+
+    <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#savePlantModal" ng-click="clear()">
+        <span class="glyphicon glyphicon-flash"></span> <span translate="jtraceApp.plant.home.createLabel">Create a new Plant</span>
+    </button>
+    <div class="modal fade" id="savePlantModal" tabindex="-1" role="dialog" aria-labelledby="myPlantLabel"
+         aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form name="editForm" role="form" novalidate
+                      class="ng-scope ng-invalid ng-invalid-required ng-dirty ng-valid-minlength"
+                      ng-submit="create()">
+
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                                ng-click="clear()">&times;</button>
+                        <h4 class="modal-title" id="myPlantLabel" translate="jtraceApp.plant.home.createOrEditLabel">Create or edit a Plant</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label>ID</label>
+                            <input type="text" class="form-control" name="id"
+                                   ng-model="plant.id" readonly>
+                        </div>
+
+                        <div class="form-group">
+                            <label translate="jtraceApp.plant.code">Code</label>
+                            <input type="text" class="form-control" name="code"
+                                   ng-model="plant.code">
+                        </div>
+                        <div class="form-group">
+                            <label translate="jtraceApp.plant.location">Location</label>
+                            <input type="text" class="form-control" name="location"
+                                   ng-model="plant.location">
+                        </div>
+                        <div class="form-group">
+                            <label translate="jtraceApp.plant.address">Address</label>
+                            <input type="text" class="form-control" name="address"
+                                   ng-model="plant.address">
+                        </div>
+                        <div class="form-group">
+                            <label translate="jtraceApp.plant.isActive">IsActive</label>
+                            <input type="checkbox" class="form-control" name="isActive"
+                                   ng-model="plant.isActive">
+                        </div>
+                        <div class="form-group">
+                            <label translate="jtraceApp.plant.capacity">Capacity</label>
+                            <input type="text" class="form-control" name="capacity"
+                                   ng-model="plant.capacity">
+                        </div>
+
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+                            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
+                        </button>
+                        <button type="submit" ng-disabled="editForm.$invalid" class="btn btn-primary">
+                            <span class="glyphicon glyphicon-save"></span>&nbsp;<span translate="entity.action.save">Save</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="deletePlantConfirmation">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form name="deleteForm" ng-submit="confirmDelete(plant.id)">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                                ng-click="clear()">&times;</button>
+                        <h4 class="modal-title" translate="entity.delete.title">Confirm delete operation</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p translate="jtraceApp.plant.delete.question" translate-values="{id: '{{plant.id}}'}">Are you sure you want to delete this Plant?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+                            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
+                        </button>
+                        <button type="submit" ng-disabled="deleteForm.$invalid" class="btn btn-danger">
+                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span translate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th translate="jtraceApp.plant.code">Code</th>
+                    <th translate="jtraceApp.plant.location">Location</th>
+                    <th translate="jtraceApp.plant.address">Address</th>
+                    <th translate="jtraceApp.plant.isActive">IsActive</th>
+                    <th translate="jtraceApp.plant.capacity">Capacity</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="plant in plants">
+                    <td><a ui-sref="plantDetail({id:plant.id})">{{plant.id}}</a></td>
+                    <td>{{plant.code}}</td>
+                    <td>{{plant.location}}</td>
+                    <td>{{plant.address}}</td>
+                    <td>{{plant.isActive}}</td>
+                    <td>{{plant.capacity}}</td>
+                    <td>
+                        <button type="submit"
+                                ui-sref="plantDetail({id:plant.id})"
+                                class="btn btn-info">
+                            <span class="glyphicon glyphicon-eye-open"></span>&nbsp;<span translate="entity.action.view"> View</span>
+                        </button>
+                        <button type="submit"
+                                ng-click="update(plant.id)"
+                                class="btn btn-primary">
+                            <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span translate="entity.action.edit"> Edit</span>
+                        </button>
+                        <button type="submit"
+                                ng-click="delete(plant.id)"
+                                class="btn btn-danger">
+                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span translate="entity.action.delete"> Delete</span>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

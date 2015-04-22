@@ -1,0 +1,23 @@
+{
+    "jtraceApp": {
+        "plant" : {
+            "home": {
+                "title": "Plants",
+                "createLabel": "Create a new Plant",
+                "createOrEditLabel": "Create or edit a Plant"
+            },
+            "delete": {
+                "question": "Are you sure you want to delete Plant {{ id }}?"
+            },
+            "detail": {
+                "title": "Plant"
+            },
+            "code": "Code",
+            "location": "Location",
+            "address": "Address",
+            "isActive": "Is Active",
+            "capacity": "Capacity",
+            "plantmfgline": "Plant Manufacture Line"
+        }
+    }
+}

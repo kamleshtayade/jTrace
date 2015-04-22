@@ -1,0 +1,19 @@
+{
+    "jtraceApp": {
+        "plantmfgline" : {
+            "home": {
+                "title": "Plant Mfr Lines",
+                "createLabel": "Create a new Plant Mfr Line",
+                "createOrEditLabel": "Create or edit a Plant Mfr Line"
+            },
+            "delete": {
+                "question": "Are you sure you want to delete Plant Mfr Line {{ id }}?"
+            },
+            "detail": {
+                "title": "Plant Mfr Line"
+            },
+            "capacity": "Capacity",
+            "plant": "Plant"
+        }
+    }
+}

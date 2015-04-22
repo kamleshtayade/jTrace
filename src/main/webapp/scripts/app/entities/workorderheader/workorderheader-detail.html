@@ -1,0 +1,118 @@
+
+<div>
+    <h2><span translate="jtraceApp.workorderheader.detail.title">Workorderheader</span> {{workorderheader.id}}</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th translate="entity.detail.field">Field</th>
+                    <th translate="entity.detail.value">Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <span translate="jtraceApp.workorderheader.woNumber">WoNumber</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{workorderheader.woNumber}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="jtraceApp.workorderheader.kitNumber">KitNumber</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{workorderheader.kitNumber}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="jtraceApp.workorderheader.customer">Customer</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{workorderheader.customer}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="jtraceApp.workorderheader.shipToLoc">ShipToLoc</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{workorderheader.shipToLoc}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="jtraceApp.workorderheader.plant">Plant</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{workorderheader.plant}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="jtraceApp.workorderheader.plantMfgLine">PlantMfgLine</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{workorderheader.plantMfgLine}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="jtraceApp.workorderheader.status">Status</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{workorderheader.status}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="jtraceApp.workorderheader.qty">Qty</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{workorderheader.qty}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="jtraceApp.workorderheader.soNumber">SoNumber</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{workorderheader.soNumber}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="jtraceApp.workorderheader.item">Item</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{workorderheader.item}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="jtraceApp.workorderheader.asyCode">AsyCode</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{workorderheader.asyCode}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="jtraceApp.workorderheader.bom">Bom</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{workorderheader.bom}}" readonly>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button type="submit"
+            ui-sref="workorderheader"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
+    </button>
+</div>
