@@ -12,6 +12,7 @@
         <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
         <!-- build:css assets/styles/vendor.css -->
         <!-- bower:css -->
+        <link rel="stylesheet" href="bower_components/normalize-css/normalize.css" />
         <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
         <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.css" />
         <link rel="stylesheet" href="bower_components/morris.js/morris.css" />
@@ -19,6 +20,7 @@
         <!-- endbuild -->
         <!-- build:css assets/styles/main.css -->
         <link rel="stylesheet" href="assets/styles/main.css">
+        <link rel="stylesheet" href="assets/styles/animate.css">
         <!-- endbuild -->
     </head>
     <body ng-app="jtraceApp">
@@ -28,9 +30,12 @@
         <div ng-show="{{ENV === 'dev'}}" class="development" ng-cloak=""></div>
         <div ui-view="navbar" ng-cloak=""></div>
         <div class="container">
-            <div ui-view="content"></div>
-
-            <div ui-view="footer"></div>
+            <div class="row">
+                <div class = "view-animate-container">
+                    <div ui-view="content" class="view-animate"></div>
+                    <div ui-view="footer"></div>
+                </div>
+            </div>            
         </div>
 
         <!-- Google Analytics: uncomment and change UA-XXXXX-X to be your site's ID.
@@ -63,7 +68,7 @@
         <script src="bower_components/raphael/raphael.js"></script>
         <script src="bower_components/mocha/mocha.js"></script>
         <script src="bower_components/morris.js/morris.js"></script>
-        <script src="bower_components/angular-dynforms/dynamic-forms.js"></script>
+        <script src="bower_components/angular-animate/angular-animate.js"></script>
         <!-- endbower -->
         <!-- endbuild -->
 

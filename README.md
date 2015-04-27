@@ -1,4 +1,4 @@
-README for jtrace
+/ README for jtrace
 ==========================
 
 # to create new entity 

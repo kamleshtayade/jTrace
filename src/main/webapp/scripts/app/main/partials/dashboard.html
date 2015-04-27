@@ -1,9 +1,8 @@
 <!-- Page Content -->
-<div class="container">
-
+<div class="container">        
 <!-- /.row -->
             <div class="row">
-                <div class="col-lg-3 col-md-6">
+                <div class="col-lg-3 col-md-6 col-sm-6">
                     <div class="panel panel-primary">
                         <div class="panel-heading">
                             <div class="row">
@@ -11,7 +10,7 @@
                                     <i class="fa fa-comments fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class="huge">26</div>
+                                    <div class="huge"><span class="badge">26</span></div>
                                     <div>New Comments!</div>
                                 </div>
                             </div>
@@ -33,7 +32,7 @@
                                     <i class="fa fa-tasks fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class="huge">12</div>
+                                    <div class="huge"><span class="badge">12</span></div>
                                     <div>New Tasks!</div>
                                 </div>
                             </div>
@@ -55,7 +54,7 @@
                                     <i class="fa fa-shopping-cart fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class="huge">124</div>
+                                    <div class="huge"><span class="badge">124</span></div>
                                     <div>New Orders!</div>
                                 </div>
                             </div>
@@ -77,7 +76,7 @@
                                     <i class="fa fa-support fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class="huge">13</div>
+                                    <div class="huge"><span class="badge">13</span></div>
                                     <div>Support Tickets!</div>
                                 </div>
                             </div>
@@ -93,75 +92,6 @@
                 </div>
             </div>
            <!--/.row -->
-<!-- /collapse-->  
-<div class="row">
-	<a class="btn btn-sm btn-success" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-	  <i class="fa fa-plus-circle fa-2x pull-left"></i>Add</a>
-	
-	<div class="collapse" id="collapseExample">
-	  <div class="well">
-	    <div class="panel panel-primary">
-	      <div class="panel-heading">
-            <i class="fa fa-plus fa-fw"></i> Item Type
-                            <div class="pull-right">
-                                <div class="btn-group">
-                                    <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
-                                        Actions
-                                        <span class="caret"></span>
-                                    </button>
-                                    <ul class="dropdown-menu pull-right" role="menu">
-                                        <li><a href="#">Action</a>
-                                        </li>
-                                        <li><a href="#">Another action</a>
-                                        </li>
-                                        <li><a href="#">Something else here</a>
-                                        </li>
-                                        <li class="divider"></li>
-                                        <li><a href="#">Separated link</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-          </div>
-          <!-- /.panel-heading -->
-          <div class="panel-body">
-                <div class="form-group">
-                	<label>ID</label>
-                    <input type="text" class="form-control" name="id"
-                                   ng-model="itemtype.id" readonly>
-                </div>
-
-                <div class="form-group">
-                    <label translate="jtraceApp.itemtype.name">Name</label>
-                    <input type="text" class="form-control" name="name"
-                                   ng-model="itemtype.name">
-                </div>
-                <div class="form-group">
-                    <label translate="jtraceApp.itemtype.description">Description</label>
-                    <input type="text" class="form-control" name="description"
-                                   ng-model="itemtype.description">
-                </div>
-                <div class="form-group">
-                    <label translate="jtraceApp.itemtype.enabled">Enabled</label>
-                    <input type="checkbox" class="form-control" name="enabled"
-                                   ng-model="itemtype.enabled">
-                </div>
-		 </div>
-		 <!-- /.panel body-->
-		 <div class="panel-footer">
-		 	<button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
-                            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
-                        </button>
-                        <button type="submit" ng-disabled="editForm.$invalid" class="btn btn-primary">
-                            <span class="glyphicon glyphicon-save"></span>&nbsp;<span translate="entity.action.save">Save</span>
-                        </button>
-		 </div>
-		 <!-- /.panel footer-->	
-        </div>
-	  </div>
-	</div>
-</div>
-<!-- /.collapse-->          
             <!-- /.row -->
 <div class="row">
                 <div class="col-lg-8">
