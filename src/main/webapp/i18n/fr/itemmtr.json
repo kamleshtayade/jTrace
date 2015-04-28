@@ -1,0 +1,23 @@
+{
+    "jtraceApp": {
+        "itemmtr" : {
+            "home": {
+                "title": "Itemmtrs",
+                "createLabel": "Créer un nouveau Itemmtr",
+                "createOrEditLabel": "Créer ou éditer un Itemmtr"
+            },
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Itemmtr {{ id }} ?"
+            },
+            "detail": {
+                "title": "Itemmtr"
+            },
+            "code": "Code",
+            "description": "Description",
+            "specification": "Specification",
+            "catid": "Catid",
+            "subcatid": "Subcatid"
+        }
+    }
+}
+

@@ -30,13 +30,29 @@ public class Itemmaster implements Serializable {
     @Column(name = "attributes")
     private String attributes;
 
-    @ManyToOne
-    private Itemcat itemcat;
+    @Column(name = "id_cat")
+    private String idCat;
+    
+    @Column(name = "id_subcat")
+    private String idSubCat;
 
-    @ManyToOne
-    private Itemsubcat itemsubcat;
+	public String getIdCat() {
+		return idCat;
+	}
 
-    public Long getId() {
+	public void setIdCat(String idCat) {
+		this.idCat = idCat;
+	}
+
+	public String getIdSubCat() {
+		return idSubCat;
+	}
+
+	public void setIdSubCat(String idSubCat) {
+		this.idSubCat = idSubCat;
+	}
+
+	public Long getId() {
         return id;
     }
 
@@ -68,23 +84,7 @@ public class Itemmaster implements Serializable {
         this.attributes = attributes;
     }
 
-    public Itemcat getItemcat() {
-        return itemcat;
-    }
-
-    public void setItemcat(Itemcat itemcat) {
-        this.itemcat = itemcat;
-    }
-
-    public Itemsubcat getItemsubcat() {
-        return itemsubcat;
-    }
-
-    public void setItemsubcat(Itemsubcat itemsubcat) {
-        this.itemsubcat = itemsubcat;
-    }
-
-    @Override
+	@Override
     public boolean equals(Object o) {
         if (this == o) {
             return true;
@@ -112,6 +112,8 @@ public class Itemmaster implements Serializable {
                 ", itemCode='" + itemCode + "'" +
                 ", description='" + description + "'" +
                 ", attributes='" + attributes + "'" +
+                ", idCat='" + idCat + "'" +
+                ", idSubCat='" + idSubCat + "'" +
                 '}';
     }
 }

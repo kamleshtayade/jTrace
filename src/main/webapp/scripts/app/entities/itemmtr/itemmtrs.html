@@ -1,0 +1,201 @@
+<div>
+
+    <h2 translate="jtraceApp.itemmtr.home.title">Itemmtr</h2>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <button class="btn btn-primary" data-toggle="modal" data-target="#saveItemmtrModal" ng-click="clear()">
+                    <span class="glyphicon glyphicon-flash"></span> <span translate="jtraceApp.itemmtr.home.createLabel">Create a new Itemmtr</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="saveItemmtrModal" tabindex="-1" role="dialog" aria-labelledby="myItemmtrLabel"
+         aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form name="editForm" role="form" novalidate ng-submit="create()" show-validation>
+
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                                ng-click="clear()">&times;</button>
+                        <h4 class="modal-title" id="myItemmtrLabel" translate="jtraceApp.itemmtr.home.createOrEditLabel">Create or edit a Itemmtr</h4>
+                    </div>
+                    <div class="modal-body">
+                        
+                        <div class="form-group">
+                            <label translate="jtraceApp.itemmtr.code">Code</label>
+                            <input type="text" class="form-control" name="code"
+                                   ng-model="itemmtr.code" required ng-minlength="5">
+
+                            <div ng-show="editForm.code.$invalid">
+                                <p class="help-block"
+                                   ng-show="editForm.code.$error.required" translate="entity.validation.required">
+                                    This field is required.
+                                </p>
+                                <p class="help-block"
+                                   ng-show="editForm.code.$error.minlength" translate="entity.validation.minlength" translate-value-min="5">
+                                    This field is required to be at least 5 characters.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label translate="jtraceApp.itemmtr.description">Description</label>
+                            <input type="text" class="form-control" name="description"
+                                   ng-model="itemmtr.description" required ng-minlength="5">
+
+                            <div ng-show="editForm.description.$invalid">
+                                <p class="help-block"
+                                   ng-show="editForm.description.$error.required" translate="entity.validation.required">
+                                    This field is required.
+                                </p>
+                                <p class="help-block"
+                                   ng-show="editForm.description.$error.minlength" translate="entity.validation.minlength" translate-value-min="5">
+                                    This field is required to be at least 5 characters.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label translate="jtraceApp.itemmtr.catid">Catid</label>
+                            <input type="text" class="form-control" name="catid"
+                                   ng-model="itemmtr.catid" required>
+
+                            <div ng-show="editForm.catid.$invalid">
+                                <p class="help-block"
+                                   ng-show="editForm.catid.$error.required" translate="entity.validation.required">
+                                    This field is required.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label translate="jtraceApp.itemmtr.subcatid">Subcatid</label>
+                            <input type="text" class="form-control" name="subcatid"
+                                   ng-model="itemmtr.subcatid" required>
+
+                            <div ng-show="editForm.subcatid.$invalid">
+                                <p class="help-block"
+                                   ng-show="editForm.subcatid.$error.required" translate="entity.validation.required">
+                                    This field is required.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label translate="jtraceApp.itemmtr.specification">Specification</label>
+                            <input type="text" class="form-control" name="specification"
+                                   ng-model="itemmtr.specification" required>
+
+                            <div ng-show="editForm.specification.$invalid">
+                                <p class="help-block"
+                                   ng-show="editForm.specification.$error.required" translate="entity.validation.required">
+                                    This field is required.
+                                </p>
+                            </div>
+                        </div>
+                        
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+                            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
+                        </button>
+                        <button type="submit" ng-disabled="editForm.$invalid" class="btn btn-primary">
+                            <span class="glyphicon glyphicon-save"></span>&nbsp;<span translate="entity.action.save">Save</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="deleteItemmtrConfirmation">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form name="deleteForm" ng-submit="confirmDelete(itemmtr.id)">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                                ng-click="clear()">&times;</button>
+                        <h4 class="modal-title" translate="entity.delete.title">Confirm delete operation</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p translate="jtraceApp.itemmtr.delete.question" translate-values="{id: '{{itemmtr.id}}'}">Are you sure you want to delete this Itemmtr?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+                            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
+                        </button>
+                        <button type="submit" ng-disabled="deleteForm.$invalid" class="btn btn-danger">
+                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span translate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+<!-- /collapse
+<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseForm" aria-expanded="false" aria-controls="collapseForm">
+  <i class="fa fa-bolt fa-fw"></i><span translate="jtraceApp.itemmtr.home.createLabel">Create a new Itemmtr</span>
+</button>
+<div class="collapse" id="collapseForm">
+    <div class="panel panel-primary">
+      <div class="panel-heading">        
+        <h4 class="panel-title" id="myItemmtrLabel" translate="jtraceApp.itemmtr.home.createOrEditLabel">Create or edit a Itemmtr</h4>
+      </div>
+      <div class="panel-body">
+        Panel content
+      </div>
+      <div class="panel-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span translate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </div> 
+</div>
+ /.collapse-->
+
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th translate="jtraceApp.itemmtr.code">Code</th>
+                    <th translate="jtraceApp.itemmtr.description">Description</th>
+                    <th translate="jtraceApp.itemmtr.specification">Specification</th>
+                    <th translate="jtraceApp.itemmtr.catid">Catid</th>
+                    <th translate="jtraceApp.itemmtr.subcatid">Subcatid</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="itemmtr in itemmtrs">                    
+                    <td><a ui-sref="itemmtrDetail({id:itemmtr.id})">{{itemmtr.code}}</a></td>
+                    <td>{{itemmtr.description}}</td>
+                    <td>{{itemmtr.specification}}</td>
+                    <td>{{itemmtr.catid}}</td>
+                    <td>{{itemmtr.subcatid}}</td>
+                    <td>
+                        <button type="submit"
+                                ui-sref="itemmtrDetail({id:itemmtr.id})"
+                                class="btn btn-info btn-sm">
+                            <span class="glyphicon glyphicon-eye-open"></span>&nbsp;<span translate="entity.action.view"> View</span>
+                        </button>
+                        <button type="submit"
+                                ng-click="update(itemmtr.id)"
+                                class="btn btn-primary btn-sm">
+                            <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span translate="entity.action.edit"> Edit</span>
+                        </button>
+                        <button type="submit"
+                                ng-click="delete(itemmtr.id)"
+                                class="btn btn-danger btn-sm">
+                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span translate="entity.action.delete"> Delete</span>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

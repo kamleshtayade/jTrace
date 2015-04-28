@@ -1,0 +1,62 @@
+
+<div>
+    <h2><span translate="jtraceApp.itemmtr.detail.title">Itemmtr</span> {{itemmtr.id}}</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th translate="entity.detail.field">Field</th>
+                    <th translate="entity.detail.value">Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <span translate="jtraceApp.itemmtr.code">Code</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{itemmtr.code}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="jtraceApp.itemmtr.description">Description</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{itemmtr.description}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="jtraceApp.itemmtr.specification">Specification</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{itemmtr.specification}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="jtraceApp.itemmtr.catid">Catid</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{itemmtr.catid}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="jtraceApp.itemmtr.subcatid">Subcatid</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{itemmtr.subcatid}}" readonly>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button type="submit"
+            ui-sref="itemmtr"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
+    </button>
+</div>

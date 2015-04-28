@@ -1,5 +1,9 @@
 /*!
+<<<<<<< HEAD
+ * jQuery UI Resizable 1.11.4
+=======
  * jQuery UI Resizable 1.11.3
+>>>>>>> 454badbd55f4e0ef280bebb1bdf15eb75a8ebfa9
  * http://jqueryui.com
  *
  * Copyright jQuery Foundation and other contributors
@@ -26,7 +30,11 @@
 }(function( $ ) {
 
 $.widget("ui.resizable", $.ui.mouse, {
+<<<<<<< HEAD
+	version: "1.11.4",
+=======
 	version: "1.11.3",
+>>>>>>> 454badbd55f4e0ef280bebb1bdf15eb75a8ebfa9
 	widgetEventPrefix: "resize",
 	options: {
 		alsoResize: false,
@@ -160,7 +168,12 @@ $.widget("ui.resizable", $.ui.mouse, {
 					nw: ".ui-resizable-nw"
 				} );
 
+<<<<<<< HEAD
+		this._handles = $();
+		if ( this.handles.constructor === String ) {
+=======
 		if (this.handles.constructor === String) {
+>>>>>>> 454badbd55f4e0ef280bebb1bdf15eb75a8ebfa9
 
 			if ( this.handles === "all") {
 				this.handles = "n,e,s,w,se,sw,ne,nw";
@@ -198,6 +211,12 @@ $.widget("ui.resizable", $.ui.mouse, {
 
 				if (this.handles[i].constructor === String) {
 					this.handles[i] = this.element.children( this.handles[ i ] ).first().show();
+<<<<<<< HEAD
+				} else if ( this.handles[ i ].jquery || this.handles[ i ].nodeType ) {
+					this.handles[ i ] = $( this.handles[ i ] );
+					this._on( this.handles[ i ], { "mousedown": that._mouseDown });
+=======
+>>>>>>> 454badbd55f4e0ef280bebb1bdf15eb75a8ebfa9
 				}
 
 				if (this.elementIsWrapper && this.originalElement[0].nodeName.match(/^(textarea|input|select|button)$/i)) {
@@ -214,6 +233,11 @@ $.widget("ui.resizable", $.ui.mouse, {
 					target.css(padPos, padWrapper);
 
 					this._proportionallyResize();
+<<<<<<< HEAD
+				}
+
+				this._handles = this._handles.add( this.handles[ i ] );
+=======
 
 				}
 
@@ -221,14 +245,20 @@ $.widget("ui.resizable", $.ui.mouse, {
 				if (!$(this.handles[i]).length) {
 					continue;
 				}
+>>>>>>> 454badbd55f4e0ef280bebb1bdf15eb75a8ebfa9
 			}
 		};
 
 		// TODO: make renderAxis a prototype function
 		this._renderAxis(this.element);
 
+<<<<<<< HEAD
+		this._handles = this._handles.add( this.element.find( ".ui-resizable-handle" ) );
+		this._handles.disableSelection();
+=======
 		this._handles = $(".ui-resizable-handle", this.element)
 			.disableSelection();
+>>>>>>> 454badbd55f4e0ef280bebb1bdf15eb75a8ebfa9
 
 		this._handles.mouseover(function() {
 			if (!that.resizing) {
@@ -262,7 +292,10 @@ $.widget("ui.resizable", $.ui.mouse, {
 		}
 
 		this._mouseInit();
+<<<<<<< HEAD
+=======
 
+>>>>>>> 454badbd55f4e0ef280bebb1bdf15eb75a8ebfa9
 	},
 
 	_destroy: function() {
@@ -984,6 +1017,17 @@ $.ui.plugin.add("resizable", "alsoResize", {
 
 	start: function() {
 		var that = $(this).resizable( "instance" ),
+<<<<<<< HEAD
+			o = that.options;
+
+		$(o.alsoResize).each(function() {
+			var el = $(this);
+			el.data("ui-resizable-alsoresize", {
+				width: parseInt(el.width(), 10), height: parseInt(el.height(), 10),
+				left: parseInt(el.css("left"), 10), top: parseInt(el.css("top"), 10)
+			});
+		});
+=======
 			o = that.options,
 			_store = function(exp) {
 				$(exp).each(function() {
@@ -1007,6 +1051,7 @@ $.ui.plugin.add("resizable", "alsoResize", {
 		} else {
 			_store(o.alsoResize);
 		}
+>>>>>>> 454badbd55f4e0ef280bebb1bdf15eb75a8ebfa9
 	},
 
 	resize: function(event, ui) {
@@ -1019,6 +1064,25 @@ $.ui.plugin.add("resizable", "alsoResize", {
 				width: (that.size.width - os.width) || 0,
 				top: (that.position.top - op.top) || 0,
 				left: (that.position.left - op.left) || 0
+<<<<<<< HEAD
+			};
+
+			$(o.alsoResize).each(function() {
+				var el = $(this), start = $(this).data("ui-resizable-alsoresize"), style = {},
+					css = el.parents(ui.originalElement[0]).length ?
+							[ "width", "height" ] :
+							[ "width", "height", "top", "left" ];
+
+				$.each(css, function(i, prop) {
+					var sum = (start[prop] || 0) + (delta[prop] || 0);
+					if (sum && sum >= 0) {
+						style[prop] = sum || null;
+					}
+				});
+
+				el.css(style);
+			});
+=======
 			},
 
 			_alsoResize = function(exp, c) {
@@ -1048,6 +1112,7 @@ $.ui.plugin.add("resizable", "alsoResize", {
 		} else {
 			_alsoResize(o.alsoResize);
 		}
+>>>>>>> 454badbd55f4e0ef280bebb1bdf15eb75a8ebfa9
 	},
 
 	stop: function() {

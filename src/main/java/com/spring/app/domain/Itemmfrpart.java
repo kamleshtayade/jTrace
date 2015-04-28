@@ -36,9 +36,6 @@ public class Itemmfrpart implements Serializable {
     @ManyToOne
     private Manufacturer manufacturer;
 
-    @ManyToOne
-    private Itemmaster itemmaster;
-
     public Long getId() {
         return id;
     }
@@ -85,14 +82,6 @@ public class Itemmfrpart implements Serializable {
 
     public void setManufacturer(Manufacturer manufacturer) {
         this.manufacturer = manufacturer;
-    }
-
-    public Itemmaster getItemmaster() {
-        return itemmaster;
-    }
-
-    public void setItemmaster(Itemmaster itemmaster) {
-        this.itemmaster = itemmaster;
     }
 
     @Override

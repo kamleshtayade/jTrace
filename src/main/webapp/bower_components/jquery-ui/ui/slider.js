@@ -1,5 +1,9 @@
 /*!
+<<<<<<< HEAD
+ * jQuery UI Slider 1.11.4
+=======
  * jQuery UI Slider 1.11.3
+>>>>>>> 454badbd55f4e0ef280bebb1bdf15eb75a8ebfa9
  * http://jqueryui.com
  *
  * Copyright jQuery Foundation and other contributors
@@ -26,7 +30,11 @@
 }(function( $ ) {
 
 return $.widget( "ui.slider", $.ui.mouse, {
+<<<<<<< HEAD
+	version: "1.11.4",
+=======
 	version: "1.11.3",
+>>>>>>> 454badbd55f4e0ef280bebb1bdf15eb75a8ebfa9
 	widgetEventPrefix: "slide",
 
 	options: {
@@ -550,7 +558,11 @@ return $.widget( "ui.slider", $.ui.mouse, {
 		var max = this.options.max,
 			min = this._valueMin(),
 			step = this.options.step,
+<<<<<<< HEAD
+			aboveMin = Math.floor( ( +( max - min ).toFixed( this._precision() ) ) / step ) * step;
+=======
 			aboveMin = Math.floor( ( max - min ) / step ) * step;
+>>>>>>> 454badbd55f4e0ef280bebb1bdf15eb75a8ebfa9
 		max = aboveMin + min;
 		this.max = parseFloat( max.toFixed( this._precision() ) );
 	},

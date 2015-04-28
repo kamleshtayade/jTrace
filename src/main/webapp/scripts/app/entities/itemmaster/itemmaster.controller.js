@@ -14,6 +14,7 @@ angular.module('jtraceApp')
 
         $scope.create = function () {
             Itemmaster.save($scope.itemmaster,
+
                 function () {
                     $scope.loadAll();
                     $('#saveItemmasterModal').modal('hide');
@@ -46,5 +47,7 @@ angular.module('jtraceApp')
 
         $scope.clear = function () {
             $scope.itemmaster = {itemCode: null, description: null, attributes: null, id: null};
+            $scope.editForm.$setPristine();
+            $scope.editForm.$setUntouched();
         };
     });

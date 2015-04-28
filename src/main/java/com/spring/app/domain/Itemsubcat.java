@@ -33,11 +33,6 @@ public class Itemsubcat implements Serializable {
     @ManyToOne
     private Itemcat itemcat;
 
-    @OneToMany(mappedBy = "itemsubcat")
-    @JsonIgnore
-    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-    private Set<Itemmaster> itemmasters = new HashSet<>();
-
     public Long getId() {
         return id;
     }
@@ -76,14 +71,6 @@ public class Itemsubcat implements Serializable {
 
     public void setItemcat(Itemcat itemcat) {
         this.itemcat = itemcat;
-    }
-
-    public Set<Itemmaster> getItemmasters() {
-        return itemmasters;
-    }
-
-    public void setItemmasters(Set<Itemmaster> itemmasters) {
-        this.itemmasters = itemmasters;
     }
 
     @Override

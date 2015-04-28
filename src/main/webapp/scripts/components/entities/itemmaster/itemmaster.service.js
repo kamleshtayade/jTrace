@@ -11,5 +11,6 @@ angular.module('jtraceApp')
                     return data;
                 }
             }
+
         });
     });

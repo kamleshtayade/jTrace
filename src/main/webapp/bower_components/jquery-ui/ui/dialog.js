@@ -1,5 +1,9 @@
 /*!
+<<<<<<< HEAD
+ * jQuery UI Dialog 1.11.4
+=======
  * jQuery UI Dialog 1.11.3
+>>>>>>> 454badbd55f4e0ef280bebb1bdf15eb75a8ebfa9
  * http://jqueryui.com
  *
  * Copyright jQuery Foundation and other contributors
@@ -30,7 +34,11 @@
 }(function( $ ) {
 
 return $.widget( "ui.dialog", {
+<<<<<<< HEAD
+	version: "1.11.4",
+=======
 	version: "1.11.3",
+>>>>>>> 454badbd55f4e0ef280bebb1bdf15eb75a8ebfa9
 	options: {
 		appendTo: "body",
 		autoOpen: true,
@@ -150,6 +158,10 @@ return $.widget( "ui.dialog", {
 		var next,
 			originalPosition = this.originalPosition;
 
+<<<<<<< HEAD
+		this._untrackInstance();
+=======
+>>>>>>> 454badbd55f4e0ef280bebb1bdf15eb75a8ebfa9
 		this._destroyOverlay();
 
 		this.element
@@ -228,10 +240,17 @@ return $.widget( "ui.dialog", {
 
 	_moveToTop: function( event, silent ) {
 		var moved = false,
+<<<<<<< HEAD
+			zIndices = this.uiDialog.siblings( ".ui-front:visible" ).map(function() {
+				return +$( this ).css( "z-index" );
+			}).get(),
+			zIndexMax = Math.max.apply( null, zIndices );
+=======
 			zIndicies = this.uiDialog.siblings( ".ui-front:visible" ).map(function() {
 				return +$( this ).css( "z-index" );
 			}).get(),
 			zIndexMax = Math.max.apply( null, zIndicies );
+>>>>>>> 454badbd55f4e0ef280bebb1bdf15eb75a8ebfa9
 
 		if ( zIndexMax >= +this.uiDialog.css( "z-index" ) ) {
 			this.uiDialog.css( "z-index", zIndexMax + 1 );

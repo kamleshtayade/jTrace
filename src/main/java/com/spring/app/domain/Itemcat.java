@@ -35,10 +35,6 @@ public class Itemcat implements Serializable {
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private Set<Itemsubcat> itemsubcats = new HashSet<>();
 
-    @OneToMany(mappedBy = "itemcat")
-    @JsonIgnore
-    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-    private Set<Itemmaster> itemmasters = new HashSet<>();
 
     public Long getId() {
         return id;
@@ -80,13 +76,6 @@ public class Itemcat implements Serializable {
         this.itemsubcats = itemsubcats;
     }
 
-    public Set<Itemmaster> getItemmasters() {
-        return itemmasters;
-    }
-
-    public void setItemmasters(Set<Itemmaster> itemmasters) {
-        this.itemmasters = itemmasters;
-    }
 
     @Override
     public boolean equals(Object o) {

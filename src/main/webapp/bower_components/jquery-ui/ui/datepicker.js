@@ -1,5 +1,9 @@
 /*!
+<<<<<<< HEAD
+ * jQuery UI Datepicker 1.11.4
+=======
  * jQuery UI Datepicker 1.11.3
+>>>>>>> 454badbd55f4e0ef280bebb1bdf15eb75a8ebfa9
  * http://jqueryui.com
  *
  * Copyright jQuery Foundation and other contributors
@@ -23,7 +27,11 @@
 	}
 }(function( $ ) {
 
+<<<<<<< HEAD
+$.extend($.ui, { datepicker: { version: "1.11.4" } });
+=======
 $.extend($.ui, { datepicker: { version: "1.11.3" } });
+>>>>>>> 454badbd55f4e0ef280bebb1bdf15eb75a8ebfa9
 
 var datepicker_instActive;
 
@@ -2077,7 +2085,11 @@ $.fn.datepicker = function(options){
 $.datepicker = new Datepicker(); // singleton instance
 $.datepicker.initialized = false;
 $.datepicker.uuid = new Date().getTime();
+<<<<<<< HEAD
+$.datepicker.version = "1.11.4";
+=======
 $.datepicker.version = "1.11.3";
+>>>>>>> 454badbd55f4e0ef280bebb1bdf15eb75a8ebfa9
 
 return $.datepicker;
 

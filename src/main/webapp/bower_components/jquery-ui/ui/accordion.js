@@ -1,5 +1,9 @@
 /*!
+<<<<<<< HEAD
+ * jQuery UI Accordion 1.11.4
+=======
  * jQuery UI Accordion 1.11.3
+>>>>>>> 454badbd55f4e0ef280bebb1bdf15eb75a8ebfa9
  * http://jqueryui.com
  *
  * Copyright jQuery Foundation and other contributors
@@ -25,7 +29,11 @@
 }(function( $ ) {
 
 return $.widget( "ui.accordion", {
+<<<<<<< HEAD
+	version: "1.11.4",
+=======
 	version: "1.11.3",
+>>>>>>> 454badbd55f4e0ef280bebb1bdf15eb75a8ebfa9
 	options: {
 		active: 0,
 		animate: {},
@@ -516,6 +524,10 @@ return $.widget( "ui.accordion", {
 		var total, easing, duration,
 			that = this,
 			adjust = 0,
+<<<<<<< HEAD
+			boxSizing = toShow.css( "box-sizing" ),
+=======
+>>>>>>> 454badbd55f4e0ef280bebb1bdf15eb75a8ebfa9
 			down = toShow.length &&
 				( !toHide.length || ( toShow.index() < toHide.index() ) ),
 			animate = this.options.animate || {},
@@ -558,7 +570,13 @@ return $.widget( "ui.accordion", {
 				step: function( now, fx ) {
 					fx.now = Math.round( now );
 					if ( fx.prop !== "height" ) {
+<<<<<<< HEAD
+						if ( boxSizing === "content-box" ) {
+							adjust += fx.now;
+						}
+=======
 						adjust += fx.now;
+>>>>>>> 454badbd55f4e0ef280bebb1bdf15eb75a8ebfa9
 					} else if ( that.options.heightStyle !== "content" ) {
 						fx.now = Math.round( total - toHide.outerHeight() - adjust );
 						adjust = 0;

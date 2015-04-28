@@ -2,13 +2,28 @@
 
     <h2 translate="jtraceApp.itemmaster.home.title">Itemmaster</h2>
 
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <button class="btn btn-primary" data-toggle="modal" data-target="#saveItemmasterModal" ng-click="clear()">
+                    <span class="glyphicon glyphicon-flash"></span> <span translate="jtraceApp.itemmaster.home.createLabel">Create a new Itemmaster</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
     <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#saveItemmasterModal" ng-click="clear()">
         <span class="glyphicon glyphicon-flash"></span> <span translate="jtraceApp.itemmaster.home.createLabel">Create a new Itemmaster</span>
     </button>
+
     <div class="modal fade" id="saveItemmasterModal" tabindex="-1" role="dialog" aria-labelledby="myItemmasterLabel"
          aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
+
+                <form name="editForm" role="form" novalidate ng-submit="create()">
+
                 <form name="editForm" role="form" novalidate
                       class="ng-scope ng-invalid ng-invalid-required ng-dirty ng-valid-minlength"
                       ng-submit="create()">
@@ -29,28 +44,40 @@
                             <label translate="jtraceApp.itemmaster.itemCode">ItemCode</label>
                             <input type="text" class="form-control" name="itemCode"
                                    ng-model="itemmaster.itemCode">
+
                         </div>
                         <div class="form-group">
                             <label translate="jtraceApp.itemmaster.description">Description</label>
                             <input type="text" class="form-control" name="description"
                                    ng-model="itemmaster.description">
+
                         </div>
                         <div class="form-group">
                             <label translate="jtraceApp.itemmaster.attributes">Attributes</label>
                             <input type="text" class="form-control" name="attributes"
                                    ng-model="itemmaster.attributes">
+
                         </div>
 
                         <div class="form-group">
                             <label translate="jtraceApp.itemmaster.itemcat">itemcat</label>
+
+                            <select class="form-control" name="itemcat" ng-model="itemmaster.itemcat.id" ng-options="itemcat.id as itemcat.name for itemcat in itemcats">
+
                             <select class="form-control" name="attributes" ng-model="itemmaster.itemcat.id" ng-options="itemcat.id as itemcat.name for itemcat in itemcats">
                             </select>
                         </div>
                         <div class="form-group">
                             <label translate="jtraceApp.itemmaster.itemsubcat">itemsubcat</label>
+
+                            <select class="form-control" name="itemsubcat" ng-model="itemmaster.itemsubcat.id" ng-options="itemsubcat.id as itemsubcat.name for itemsubcat in itemsubcats">
+                            </select>
+                        </div>
+
                             <select class="form-control" name="attributes" ng-model="itemmaster.itemsubcat.id" ng-options="itemsubcat.id as itemsubcat.name for itemsubcat in itemsubcats">
                             </select>
                         </div>
+
 
                     </div>
                     <div class="modal-footer">
@@ -115,17 +142,22 @@
                     <td>
                         <button type="submit"
                                 ui-sref="itemmasterDetail({id:itemmaster.id})"
-                                class="btn btn-info">
+
+                                class="btn btn-info btn-sm">
+
+
                             <span class="glyphicon glyphicon-eye-open"></span>&nbsp;<span translate="entity.action.view"> View</span>
                         </button>
                         <button type="submit"
                                 ng-click="update(itemmaster.id)"
-                                class="btn btn-primary">
+
+                                class="btn btn-primary btn-sm">
+
                             <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span translate="entity.action.edit"> Edit</span>
                         </button>
-                        <button type="submit"
-                                ng-click="delete(itemmaster.id)"
-                                class="btn btn-danger">
+                        <button type="submit" ng-click="delete(itemmaster.id)"
+                                class="btn btn-danger btn-sm">
+
                             <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span translate="entity.action.delete"> Delete</span>
                         </button>
                     </td>

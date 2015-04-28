@@ -1,0 +1,79 @@
+{
+    "relationships": [],
+    "fields": [
+        {
+            "fieldId": 1,
+            "fieldName": "code",
+            "fieldType": "String",
+            "fieldNameCapitalized": "Code",
+            "fieldNameUnderscored": "code",
+            "fieldInJavaBeanMethod": "Code",
+            "fieldValidate": true,
+            "fieldValidateRules": [
+                "required",
+                "minlength"
+            ],
+            "fieldValidateRulesMinlength": "5"
+        },
+        {
+            "fieldId": 2,
+            "fieldName": "description",
+            "fieldType": "String",
+            "fieldNameCapitalized": "Description",
+            "fieldNameUnderscored": "description",
+            "fieldInJavaBeanMethod": "Description",
+            "fieldValidate": true,
+            "fieldValidateRules": [
+                "required",
+                "minlength"
+            ],
+            "fieldValidateRulesMinlength": "5"
+        },
+        {
+            "fieldId": 3,
+            "fieldName": "specification",
+            "fieldType": "String",
+            "fieldNameCapitalized": "Specification",
+            "fieldNameUnderscored": "specification",
+            "fieldInJavaBeanMethod": "Specification",
+            "fieldValidate": true,
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldId": 4,
+            "fieldName": "catid",
+            "fieldType": "String",
+            "fieldNameCapitalized": "Catid",
+            "fieldNameUnderscored": "catid",
+            "fieldInJavaBeanMethod": "Catid",
+            "fieldValidate": true,
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldId": 5,
+            "fieldName": "subcatid",
+            "fieldType": "String",
+            "fieldNameCapitalized": "Subcatid",
+            "fieldNameUnderscored": "subcatid",
+            "fieldInJavaBeanMethod": "Subcatid",
+            "fieldValidate": true,
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "fieldsContainOwnerManyToMany": false,
+    "fieldsContainOneToMany": false,
+    "fieldsContainLocalDate": false,
+    "fieldsContainCustomTime": false,
+    "fieldsContainBigDecimal": false,
+    "fieldsContainDateTime": false,
+    "fieldsContainDate": false,
+    "changelogDate": "20150428043526",
+    "pagination": "no",
+    "validation": true
+}

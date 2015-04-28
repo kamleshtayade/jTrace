@@ -1,5 +1,9 @@
 /*!
+<<<<<<< HEAD
+ * jQuery UI Tooltip 1.11.4
+=======
  * jQuery UI Tooltip 1.11.3
+>>>>>>> 454badbd55f4e0ef280bebb1bdf15eb75a8ebfa9
  * http://jqueryui.com
  *
  * Copyright jQuery Foundation and other contributors
@@ -26,7 +30,11 @@
 }(function( $ ) {
 
 return $.widget( "ui.tooltip", {
+<<<<<<< HEAD
+	version: "1.11.4",
+=======
 	version: "1.11.3",
+>>>>>>> 454badbd55f4e0ef280bebb1bdf15eb75a8ebfa9
 	options: {
 		content: function() {
 			// support: IE<9, Opera in jQuery <1.7
@@ -194,6 +202,10 @@ return $.widget( "ui.tooltip", {
 			});
 		}
 
+<<<<<<< HEAD
+		this._registerCloseHandlers( event, target );
+=======
+>>>>>>> 454badbd55f4e0ef280bebb1bdf15eb75a8ebfa9
 		this._updateContent( target, event );
 	},
 
@@ -208,6 +220,18 @@ return $.widget( "ui.tooltip", {
 		}
 
 		content = contentOption.call( target[0], function( response ) {
+<<<<<<< HEAD
+
+			// IE may instantly serve a cached response for ajax requests
+			// delay this call to _open so the other call to _open runs first
+			that._delay(function() {
+
+				// Ignore async response if tooltip was closed already
+				if ( !target.data( "ui-tooltip-open" ) ) {
+					return;
+				}
+
+=======
 			// ignore async response if tooltip was closed already
 			if ( !target.data( "ui-tooltip-open" ) ) {
 				return;
@@ -215,6 +239,7 @@ return $.widget( "ui.tooltip", {
 			// IE may instantly serve a cached response for ajax requests
 			// delay this call to _open so the other call to _open runs first
 			that._delay(function() {
+>>>>>>> 454badbd55f4e0ef280bebb1bdf15eb75a8ebfa9
 				// jQuery creates a special event for focusin when it doesn't
 				// exist natively. To improve performance, the native event
 				// object is reused and the type is changed. Therefore, we can't
@@ -232,7 +257,11 @@ return $.widget( "ui.tooltip", {
 	},
 
 	_open: function( event, target, content ) {
+<<<<<<< HEAD
+		var tooltipData, tooltip, delayedShow, a11yContent,
+=======
 		var tooltipData, tooltip, events, delayedShow, a11yContent,
+>>>>>>> 454badbd55f4e0ef280bebb1bdf15eb75a8ebfa9
 			positionOption = $.extend( {}, this.options.position );
 
 		if ( !content ) {
@@ -314,8 +343,15 @@ return $.widget( "ui.tooltip", {
 		}
 
 		this._trigger( "open", event, { tooltip: tooltip } );
+<<<<<<< HEAD
+	},
+
+	_registerCloseHandlers: function( event, target ) {
+		var events = {
+=======
 
 		events = {
+>>>>>>> 454badbd55f4e0ef280bebb1bdf15eb75a8ebfa9
 			keyup: function( event ) {
 				if ( event.keyCode === $.ui.keyCode.ESCAPE ) {
 					var fakeEvent = $.Event(event);
@@ -329,7 +365,11 @@ return $.widget( "ui.tooltip", {
 		// tooltips will handle this in destroy.
 		if ( target[ 0 ] !== this.element[ 0 ] ) {
 			events.remove = function() {
+<<<<<<< HEAD
+				this._removeTooltip( this._find( target ).tooltip );
+=======
 				this._removeTooltip( tooltip );
+>>>>>>> 454badbd55f4e0ef280bebb1bdf15eb75a8ebfa9
 			};
 		}
 
@@ -350,6 +390,15 @@ return $.widget( "ui.tooltip", {
 
 		// The tooltip may already be closed
 		if ( !tooltipData ) {
+<<<<<<< HEAD
+
+			// We set ui-tooltip-open immediately upon open (in open()), but only set the
+			// additional data once there's actually content to show (in _open()). So even if the
+			// tooltip doesn't have full data, we always remove ui-tooltip-open in case we're in
+			// the period between open() and _open().
+			target.removeData( "ui-tooltip-open" );
+=======
+>>>>>>> 454badbd55f4e0ef280bebb1bdf15eb75a8ebfa9
 			return;
 		}
 

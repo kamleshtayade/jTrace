@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
+    <changeSet author="ktayade (generated)" id="1430192870908-1">
+        <addColumn tableName="T_ITEMMASTER">
+            <column name="id_cat" type="varchar(255)"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="ktayade (generated)" id="1430192870908-2">
+        <addColumn tableName="T_ITEMMASTER">
+            <column name="id_subcat" type="varchar(255)"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="ktayade (generated)" id="1430192870908-3">
+        <dropColumn columnName="cat_id" tableName="t_itemmaster"/>
+    </changeSet>
+    <changeSet author="ktayade (generated)" id="1430192870908-4">
+        <dropColumn columnName="catsub_id" tableName="t_itemmaster"/>
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
+    <changeSet author="ktayade (generated)" id="1430189652956-1">
+        <addColumn tableName="T_ITEMMASTER">
+            <column name="itemcat" type="bytea"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="ktayade (generated)" id="1430189652956-2">
+        <addColumn tableName="T_ITEMMASTER">
+            <column name="itemsubcat" type="bytea"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="ktayade (generated)" id="1430189652956-3">
+        <dropForeignKeyConstraint baseTableName="t_itemmaster" constraintName="fk_itemmaster_itemcat_id"/>
+    </changeSet>
+    <changeSet author="ktayade (generated)" id="1430189652956-4">
+        <dropForeignKeyConstraint baseTableName="t_itemmaster" constraintName="fk_itemmaster_itemsubcat_id"/>
+    </changeSet>
+    <changeSet author="ktayade (generated)" id="1430189652956-5">
+        <dropColumn columnName="itemcat_id" tableName="t_itemmaster"/>
+    </changeSet>
+    <changeSet author="ktayade (generated)" id="1430189652956-6">
+        <dropColumn columnName="itemsubcat_id" tableName="t_itemmaster"/>
+    </changeSet>
+</databaseChangeLog>

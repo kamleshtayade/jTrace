@@ -1,5 +1,9 @@
 /*!
+<<<<<<< HEAD
+ * jQuery UI CSS Framework 1.11.4
+=======
  * jQuery UI CSS Framework 1.11.3
+>>>>>>> 454badbd55f4e0ef280bebb1bdf15eb75a8ebfa9
  * http://jqueryui.com
  *
  * Copyright jQuery Foundation and other contributors
@@ -396,14 +400,22 @@
 
 /* Overlays */
 .ui-widget-overlay {
+<<<<<<< HEAD
+	background: #aaaaaa url("images/ui-bg_flat_0_aaaaaa_40x100.png") 50% 50% repeat-x;
+=======
 	background: #aaaaaa;
+>>>>>>> 454badbd55f4e0ef280bebb1bdf15eb75a8ebfa9
 	opacity: .3;
 	filter: Alpha(Opacity=30); /* support: IE8 */
 }
 .ui-widget-shadow {
 	margin: -8px 0 0 -8px;
 	padding: 8px;
+<<<<<<< HEAD
+	background: #aaaaaa url("images/ui-bg_flat_0_aaaaaa_40x100.png") 50% 50% repeat-x;
+=======
 	background: #aaaaaa;
+>>>>>>> 454badbd55f4e0ef280bebb1bdf15eb75a8ebfa9
 	opacity: .3;
 	filter: Alpha(Opacity=30); /* support: IE8 */
 	border-radius: 8px;

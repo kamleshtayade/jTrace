@@ -1,5 +1,9 @@
 /*!
+<<<<<<< HEAD
+ * jQuery UI Sortable 1.11.4
+=======
  * jQuery UI Sortable 1.11.3
+>>>>>>> 454badbd55f4e0ef280bebb1bdf15eb75a8ebfa9
  * http://jqueryui.com
  *
  * Copyright jQuery Foundation and other contributors
@@ -26,7 +30,11 @@
 }(function( $ ) {
 
 return $.widget("ui.sortable", $.ui.mouse, {
+<<<<<<< HEAD
+	version: "1.11.4",
+=======
 	version: "1.11.3",
+>>>>>>> 454badbd55f4e0ef280bebb1bdf15eb75a8ebfa9
 	widgetEventPrefix: "sort",
 	ready: false,
 	options: {
@@ -77,17 +85,23 @@ return $.widget("ui.sortable", $.ui.mouse, {
 	},
 
 	_create: function() {
+<<<<<<< HEAD
+=======
 
 		var o = this.options;
+>>>>>>> 454badbd55f4e0ef280bebb1bdf15eb75a8ebfa9
 		this.containerCache = {};
 		this.element.addClass("ui-sortable");
 
 		//Get the items
 		this.refresh();
 
+<<<<<<< HEAD
+=======
 		//Let's determine if the items are being displayed horizontally
 		this.floating = this.items.length ? o.axis === "x" || this._isFloating(this.items[0].item) : false;
 
+>>>>>>> 454badbd55f4e0ef280bebb1bdf15eb75a8ebfa9
 		//Let's determine the parent's offset
 		this.offset = this.element.offset();
 
@@ -731,6 +745,14 @@ return $.widget("ui.sortable", $.ui.mouse, {
 
 	refreshPositions: function(fast) {
 
+<<<<<<< HEAD
+		// Determine whether items are being displayed horizontally
+		this.floating = this.items.length ?
+			this.options.axis === "x" || this._isFloating( this.items[ 0 ].item ) :
+			false;
+
+=======
+>>>>>>> 454badbd55f4e0ef280bebb1bdf15eb75a8ebfa9
 		//This has to be redone because due to the item being moved out/into the offsetParent, the offsetParent's position will change
 		if(this.offsetParent && this.helper) {
 			this.offset.parent = this._getParentOffset();
@@ -788,12 +810,22 @@ return $.widget("ui.sortable", $.ui.mouse, {
 							.addClass(className || that.currentItem[0].className+" ui-sortable-placeholder")
 							.removeClass("ui-sortable-helper");
 
+<<<<<<< HEAD
+					if ( nodeName === "tbody" ) {
+						that._createTrPlaceholder(
+							that.currentItem.find( "tr" ).eq( 0 ),
+							$( "<tr>", that.document[ 0 ] ).appendTo( element )
+						);
+					} else if ( nodeName === "tr" ) {
+						that._createTrPlaceholder( that.currentItem, element );
+=======
 					if ( nodeName === "tr" ) {
 						that.currentItem.children().each(function() {
 							$( "<td>&#160;</td>", that.document[0] )
 								.attr( "colspan", $( this ).attr( "colspan" ) || 1 )
 								.appendTo( element );
 						});
+>>>>>>> 454badbd55f4e0ef280bebb1bdf15eb75a8ebfa9
 					} else if ( nodeName === "img" ) {
 						element.attr( "src", that.currentItem.attr( "src" ) );
 					}
@@ -830,6 +862,19 @@ return $.widget("ui.sortable", $.ui.mouse, {
 
 	},
 
+<<<<<<< HEAD
+	_createTrPlaceholder: function( sourceTr, targetTr ) {
+		var that = this;
+
+		sourceTr.children().each(function() {
+			$( "<td>&#160;</td>", that.document[ 0 ] )
+				.attr( "colspan", $( this ).attr( "colspan" ) || 1 )
+				.appendTo( targetTr );
+		});
+	},
+
+=======
+>>>>>>> 454badbd55f4e0ef280bebb1bdf15eb75a8ebfa9
 	_contactContainers: function(event) {
 		var i, j, dist, itemWithLeastDistance, posProperty, sizeProperty, cur, nearBottom, floating, axis,
 			innermostContainer = null,

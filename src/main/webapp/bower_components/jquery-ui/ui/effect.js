@@ -1,5 +1,9 @@
 /*!
+<<<<<<< HEAD
+ * jQuery UI Effects 1.11.4
+=======
  * jQuery UI Effects 1.11.3
+>>>>>>> 454badbd55f4e0ef280bebb1bdf15eb75a8ebfa9
  * http://jqueryui.com
  *
  * Copyright jQuery Foundation and other contributors
@@ -904,7 +908,11 @@ $.fn.extend({
 (function() {
 
 $.extend( $.effects, {
+<<<<<<< HEAD
+	version: "1.11.4",
+=======
 	version: "1.11.3",
+>>>>>>> 454badbd55f4e0ef280bebb1bdf15eb75a8ebfa9
 
 	// Saves a set of properties in a data storage
 	save: function( element, set ) {

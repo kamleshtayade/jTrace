@@ -1,5 +1,9 @@
 /*!
+<<<<<<< HEAD
+ * jQuery UI Tabs 1.11.4
+=======
  * jQuery UI Tabs 1.11.3
+>>>>>>> 454badbd55f4e0ef280bebb1bdf15eb75a8ebfa9
  * http://jqueryui.com
  *
  * Copyright jQuery Foundation and other contributors
@@ -25,7 +29,11 @@
 }(function( $ ) {
 
 return $.widget( "ui.tabs", {
+<<<<<<< HEAD
+	version: "1.11.4",
+=======
 	version: "1.11.3",
+>>>>>>> 454badbd55f4e0ef280bebb1bdf15eb75a8ebfa9
 	delay: 300,
 	options: {
 		active: null,
@@ -817,6 +825,21 @@ return $.widget( "ui.tabs", {
 			eventData = {
 				tab: tab,
 				panel: panel
+<<<<<<< HEAD
+			},
+			complete = function( jqXHR, status ) {
+				if ( status === "abort" ) {
+					that.panels.stop( false, true );
+				}
+
+				tab.removeClass( "ui-tabs-loading" );
+				panel.removeAttr( "aria-busy" );
+
+				if ( jqXHR === that.xhr ) {
+					delete that.xhr;
+				}
+=======
+>>>>>>> 454badbd55f4e0ef280bebb1bdf15eb75a8ebfa9
 			};
 
 		// not remote
@@ -834,12 +857,27 @@ return $.widget( "ui.tabs", {
 			panel.attr( "aria-busy", "true" );
 
 			this.xhr
+<<<<<<< HEAD
+				.done(function( response, status, jqXHR ) {
+=======
 				.success(function( response ) {
+>>>>>>> 454badbd55f4e0ef280bebb1bdf15eb75a8ebfa9
 					// support: jQuery <1.8
 					// http://bugs.jquery.com/ticket/11778
 					setTimeout(function() {
 						panel.html( response );
 						that._trigger( "load", event, eventData );
+<<<<<<< HEAD
+
+						complete( jqXHR, status );
+					}, 1 );
+				})
+				.fail(function( jqXHR, status ) {
+					// support: jQuery <1.8
+					// http://bugs.jquery.com/ticket/11778
+					setTimeout(function() {
+						complete( jqXHR, status );
+=======
 					}, 1 );
 				})
 				.complete(function( jqXHR, status ) {
@@ -856,6 +894,7 @@ return $.widget( "ui.tabs", {
 						if ( jqXHR === that.xhr ) {
 							delete that.xhr;
 						}
+>>>>>>> 454badbd55f4e0ef280bebb1bdf15eb75a8ebfa9
 					}, 1 );
 				});
 		}

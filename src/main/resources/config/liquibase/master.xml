@@ -18,6 +18,11 @@
     <include file="classpath:config/liquibase/changelog/20150419134315_added_entity_Workorderheader.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20150419134839_added_entity_Workorderline.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20150419135600_added_entity_Itemctn.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20150428043526_added_entity_Itemmtr.xml" relativeToChangelogFile="false"/>
     <!-- JHipster will add liquibase changelogs here -->
-    <include file="classpath:config/liquibase/changelog/20150415105133_changelog.xml"/>
+    <include file="classpath:config/liquibase/changelog/20150428025405_changelog.xml"/>
+    <include file="classpath:config/liquibase/changelog/20150428030425_changelog.xml"/>
+    <include file="classpath:config/liquibase/changelog/20150428032125_changelog.xml"/>
+    <include file="classpath:config/liquibase/changelog/20150428033649_changelog.xml"/>
+    <include file="classpath:config/liquibase/changelog/20150428034742_changelog.xml"/>
 </databaseChangeLog>

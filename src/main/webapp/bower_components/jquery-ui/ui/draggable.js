@@ -1,5 +1,9 @@
 /*!
+<<<<<<< HEAD
+ * jQuery UI Draggable 1.11.4
+=======
  * jQuery UI Draggable 1.11.3
+>>>>>>> 454badbd55f4e0ef280bebb1bdf15eb75a8ebfa9
  * http://jqueryui.com
  *
  * Copyright jQuery Foundation and other contributors
@@ -26,7 +30,11 @@
 }(function( $ ) {
 
 $.widget("ui.draggable", $.ui.mouse, {
+<<<<<<< HEAD
+	version: "1.11.4",
+=======
 	version: "1.11.3",
+>>>>>>> 454badbd55f4e0ef280bebb1bdf15eb75a8ebfa9
 	widgetEventPrefix: "drag",
 	options: {
 		addClasses: true,
@@ -800,6 +808,12 @@ $.ui.plugin.add( "draggable", "connectToSortable", {
 				if ( !sortable.isOver ) {
 					sortable.isOver = 1;
 
+<<<<<<< HEAD
+					// Store draggable's parent in case we need to reappend to it later.
+					draggable._parent = ui.helper.parent();
+
+=======
+>>>>>>> 454badbd55f4e0ef280bebb1bdf15eb75a8ebfa9
 					sortable.currentItem = ui.helper
 						.appendTo( sortable.element )
 						.data( "ui-sortable-item", true );
@@ -876,8 +890,14 @@ $.ui.plugin.add( "draggable", "connectToSortable", {
 						sortable.placeholder.remove();
 					}
 
+<<<<<<< HEAD
+					// Restore and recalculate the draggable's offset considering the sortable
+					// may have modified them in unexpected ways. (#8809, #10669)
+					ui.helper.appendTo( draggable._parent );
+=======
 					// Recalculate the draggable's offset considering the sortable
 					// may have modified them in unexpected ways (#8809)
+>>>>>>> 454badbd55f4e0ef280bebb1bdf15eb75a8ebfa9
 					draggable._refreshOffsets( event );
 					ui.position = draggable._generatePosition( event, true );
 
