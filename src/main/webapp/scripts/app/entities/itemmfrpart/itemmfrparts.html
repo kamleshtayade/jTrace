@@ -31,9 +31,19 @@
                                    ng-model="itemmfrpart.mfrpart">
                         </div>
                         <div class="form-group">
+                            <label translate="jtraceApp.itemmfrpart.itemmaster">itemmaster</label>
+                            <select class="form-control" name="itemmfrpart.itemmtr.id" ng-model="itemmfrpart.itemmtr.id" ng-options="itemmtr.id as itemmtr.code for itemmtr in itemmtrs">
+                            </select>
+                        </div>
+                        <div class="form-group">
                             <label translate="jtraceApp.itemmfrpart.status">Status</label>
                             <input type="text" class="form-control" name="status"
                                    ng-model="itemmfrpart.status">
+                        </div>
+                        <div class="form-group">
+                            <label translate="jtraceApp.itemmfrpart.manufacturer">manufacturer</label>
+                            <select class="form-control" name="itemmfrpart.manufacturer.id" ng-model="itemmfrpart.manufacturer.id" ng-options="manufacturer.id as manufacturer.name for manufacturer in manufacturers">
+                            </select>
                         </div>
                         <div class="form-group">
                             <label translate="jtraceApp.itemmfrpart.suppart">Suppart</label>
@@ -44,17 +54,6 @@
                             <label translate="jtraceApp.itemmfrpart.remarks">Remarks</label>
                             <input type="text" class="form-control" name="remarks"
                                    ng-model="itemmfrpart.remarks">
-                        </div>
-
-                        <div class="form-group">
-                            <label translate="jtraceApp.itemmfrpart.manufacturer">manufacturer</label>
-                            <select class="form-control" name="remarks" ng-model="itemmfrpart.manufacturer.id" ng-options="manufacturer.id as manufacturer.name for manufacturer in manufacturers">
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label translate="jtraceApp.itemmfrpart.itemmaster">itemmaster</label>
-                            <select class="form-control" name="remarks" ng-model="itemmfrpart.itemmaster.id" ng-options="itemmaster.id as itemmaster.code for itemmaster in itemmasters">
-                            </select>
                         </div>
 
                     </div>
@@ -101,22 +100,22 @@
             <thead>
                 <tr>
                     <th translate="jtraceApp.itemmfrpart.mfrpart">Mfrpart</th>
+                    <th translate="jtraceApp.itemmfrpart.itemmaster">itemmaster</th>
                     <th translate="jtraceApp.itemmfrpart.status">Status</th>
+                    <th translate="jtraceApp.itemmfrpart.manufacturer">manufacturer</th>
                     <th translate="jtraceApp.itemmfrpart.suppart">Suppart</th>
                     <th translate="jtraceApp.itemmfrpart.remarks">Remarks</th>
-                    <th translate="jtraceApp.itemmfrpart.manufacturer">manufacturer</th>
-                    <th translate="jtraceApp.itemmfrpart.itemmaster">itemmaster</th>
                     <th></th>
                 </tr>
             </thead>
             <tbody>
                 <tr ng-repeat="itemmfrpart in itemmfrparts">
                     <td><a ui-sref="itemmfrpartDetail({id:itemmfrpart.id})">{{itemmfrpart.mfrpart}}</a></td>
+                    <td>{{itemmfrpart.itemmtr.code}}</td>
                     <td>{{itemmfrpart.status}}</td>
+                    <td>{{itemmfrpart.manufacturer.name}}</td>
                     <td>{{itemmfrpart.suppart}}</td>
                     <td>{{itemmfrpart.remarks}}</td>
-                    <td>{{itemmfrpart.manufacturer.name}}</td>
-                    <td>{{itemmfrpart.itemmaster.code}}</td>
                     <td>
                         <button type="submit"
                                 ui-sref="itemmfrpartDetail({id:itemmfrpart.id})"

@@ -1,10 +1,10 @@
 'use strict';
 
 angular.module('jtraceApp')
-    .controller('ItemmfrpartController', function ($scope, Itemmfrpart, Manufacturer, Itemmaster) {
+    .controller('ItemmfrpartController', function ($scope, Itemmfrpart, Manufacturer, Itemmtr) {
         $scope.itemmfrparts = [];
         $scope.manufacturers = Manufacturer.query();
-        $scope.itemmasters = Itemmaster.query();
+        $scope.itemmtrs = Itemmtr.query();
         $scope.loadAll = function() {
             Itemmfrpart.query(function(result) {
                $scope.itemmfrparts = result;

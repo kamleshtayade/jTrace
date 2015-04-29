@@ -35,8 +35,19 @@ public class Itemmfrpart implements Serializable {
 
     @ManyToOne
     private Manufacturer manufacturer;
+    
+    @ManyToOne
+    private Itemmtr itemmtr;
+    
+    public Itemmtr getItemmtr() {
+		return itemmtr;
+	}
 
-    public Long getId() {
+	public void setItemmtr(Itemmtr itemmtr) {
+		this.itemmtr = itemmtr;
+	}
+
+	public Long getId() {
         return id;
     }
 
