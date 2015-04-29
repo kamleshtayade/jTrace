@@ -44,10 +44,6 @@ public class ItemmtrResourceTest {
     private static final String UPDATED_DESCRIPTION = "UPDATED_TEXT";
     private static final String DEFAULT_SPECIFICATION = "SAMPLE_TEXT";
     private static final String UPDATED_SPECIFICATION = "UPDATED_TEXT";
-    private static final String DEFAULT_CATID = "SAMPLE_TEXT";
-    private static final String UPDATED_CATID = "UPDATED_TEXT";
-    private static final String DEFAULT_SUBCATID = "SAMPLE_TEXT";
-    private static final String UPDATED_SUBCATID = "UPDATED_TEXT";
 
     @Inject
     private ItemmtrRepository itemmtrRepository;
@@ -70,8 +66,6 @@ public class ItemmtrResourceTest {
         itemmtr.setCode(DEFAULT_CODE);
         itemmtr.setDescription(DEFAULT_DESCRIPTION);
         itemmtr.setSpecification(DEFAULT_SPECIFICATION);
-        itemmtr.setCatid(DEFAULT_CATID);
-        itemmtr.setSubcatid(DEFAULT_SUBCATID);
     }
 
     @Test
@@ -92,8 +86,6 @@ public class ItemmtrResourceTest {
         assertThat(testItemmtr.getCode()).isEqualTo(DEFAULT_CODE);
         assertThat(testItemmtr.getDescription()).isEqualTo(DEFAULT_DESCRIPTION);
         assertThat(testItemmtr.getSpecification()).isEqualTo(DEFAULT_SPECIFICATION);
-        assertThat(testItemmtr.getCatid()).isEqualTo(DEFAULT_CATID);
-        assertThat(testItemmtr.getSubcatid()).isEqualTo(DEFAULT_SUBCATID);
     }
 
     @Test
@@ -159,7 +151,7 @@ public class ItemmtrResourceTest {
         // Validate the database is empty
         assertThat(itemmtrRepository.findAll()).hasSize(0);
         // set the field null
-        itemmtr.setCatid(null);
+        itemmtr.setDescription(null);
 
         // Create the Itemmtr, which fails.
         restItemmtrMockMvc.perform(post("/api/itemmtrs")
@@ -204,9 +196,7 @@ public class ItemmtrResourceTest {
                 .andExpect(jsonPath("$.[*].id").value(hasItem(itemmtr.getId().intValue())))
                 .andExpect(jsonPath("$.[*].code").value(hasItem(DEFAULT_CODE.toString())))
                 .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION.toString())))
-                .andExpect(jsonPath("$.[*].specification").value(hasItem(DEFAULT_SPECIFICATION.toString())))
-                .andExpect(jsonPath("$.[*].catid").value(hasItem(DEFAULT_CATID.toString())))
-                .andExpect(jsonPath("$.[*].subcatid").value(hasItem(DEFAULT_SUBCATID.toString())));
+                .andExpect(jsonPath("$.[*].specification").value(hasItem(DEFAULT_SPECIFICATION.toString())));
     }
 
     @Test
@@ -222,9 +212,7 @@ public class ItemmtrResourceTest {
             .andExpect(jsonPath("$.id").value(itemmtr.getId().intValue()))
             .andExpect(jsonPath("$.code").value(DEFAULT_CODE.toString()))
             .andExpect(jsonPath("$.description").value(DEFAULT_DESCRIPTION.toString()))
-            .andExpect(jsonPath("$.specification").value(DEFAULT_SPECIFICATION.toString()))
-            .andExpect(jsonPath("$.catid").value(DEFAULT_CATID.toString()))
-            .andExpect(jsonPath("$.subcatid").value(DEFAULT_SUBCATID.toString()));
+            .andExpect(jsonPath("$.specification").value(DEFAULT_SPECIFICATION.toString()));
     }
 
     @Test
@@ -247,8 +235,6 @@ public class ItemmtrResourceTest {
         itemmtr.setCode(UPDATED_CODE);
         itemmtr.setDescription(UPDATED_DESCRIPTION);
         itemmtr.setSpecification(UPDATED_SPECIFICATION);
-        itemmtr.setCatid(UPDATED_CATID);
-        itemmtr.setSubcatid(UPDATED_SUBCATID);
         restItemmtrMockMvc.perform(put("/api/itemmtrs")
                 .contentType(TestUtil.APPLICATION_JSON_UTF8)
                 .content(TestUtil.convertObjectToJsonBytes(itemmtr)))
@@ -261,8 +247,6 @@ public class ItemmtrResourceTest {
         assertThat(testItemmtr.getCode()).isEqualTo(UPDATED_CODE);
         assertThat(testItemmtr.getDescription()).isEqualTo(UPDATED_DESCRIPTION);
         assertThat(testItemmtr.getSpecification()).isEqualTo(UPDATED_SPECIFICATION);
-        assertThat(testItemmtr.getCatid()).isEqualTo(UPDATED_CATID);
-        assertThat(testItemmtr.getSubcatid()).isEqualTo(UPDATED_SUBCATID);
     }
 
     @Test

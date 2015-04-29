@@ -59,24 +59,29 @@
                         </div>
                         <div class="form-group">
                             <label translate="jtraceApp.itemmtr.catid">Catid</label>
-                            <input type="text" class="form-control" name="catid"
-                                   ng-model="itemmtr.catid" required>
+                            <input type="text" class="form-control" name="itemmtr.subcatid.itemcat.id"
+                                   ng-model="itemmtr.subcatid.itemcat.id" required>
+                            <select class="form-control" name="itemmtr.subcatid.itemcat.id" ng-model="itemmtr.subcatid.itemcat.id" ng-options="itemcat.id as itemcat.name for itemcat in itemcats" required>
+                            </select>
 
-                            <div ng-show="editForm.catid.$invalid">
+                            <div ng-show="editForm.itemmtr.subcatid.itemcat.id.$invalid">
                                 <p class="help-block"
-                                   ng-show="editForm.catid.$error.required" translate="entity.validation.required">
+                                   ng-show="editForm.itemmtr.subcatid.itemcat.id.$error.required" translate="entity.validation.required">
                                     This field is required.
                                 </p>
                             </div>
                         </div>
                         <div class="form-group">
                             <label translate="jtraceApp.itemmtr.subcatid">Subcatid</label>
-                            <input type="text" class="form-control" name="subcatid"
-                                   ng-model="itemmtr.subcatid" required>
+                            <input type="text" class="form-control" name="itemmtr.subcatid.id"
+                                   ng-model="itemmtr.subcatid.id" required>
+                            <select class="form-control" name="itemmtr.subcatid.id" ng-model="itemmtr.subcatid.id" ng-options="itemsubcat.id as itemsubcat.name for itemsubcat in itemsubcats" required>
+                            </select>       
 
-                            <div ng-show="editForm.subcatid.$invalid">
+
+                            <div ng-show="editForm.temmtr.subcatid.id.$invalid">
                                 <p class="help-block"
-                                   ng-show="editForm.subcatid.$error.required" translate="entity.validation.required">
+                                   ng-show="editForm.temmtr.subcatid.id.$error.required" translate="entity.validation.required">
                                     This field is required.
                                 </p>
                             </div>
@@ -175,8 +180,8 @@
                     <td><a ui-sref="itemmtrDetail({id:itemmtr.id})">{{itemmtr.code}}</a></td>
                     <td>{{itemmtr.description}}</td>
                     <td>{{itemmtr.specification}}</td>
-                    <td>{{itemmtr.catid}}</td>
-                    <td>{{itemmtr.subcatid}}</td>
+                    <td>{{itemmtr.subcatid.itemcat.name}}</td>
+                    <td>{{itemmtr.subcatid.name}}</td>
                     <td>
                         <button type="submit"
                                 ui-sref="itemmtrDetail({id:itemmtr.id})"

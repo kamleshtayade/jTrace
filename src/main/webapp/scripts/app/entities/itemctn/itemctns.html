@@ -2,7 +2,7 @@
 
     <h2 translate="jtraceApp.itemctn.home.title">Itemctn</h2>
 
-    <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#saveItemctnModal" ng-click="clear()">
+    <button class="btn btn-primary" data-toggle="modal" data-target="#saveItemctnModal" ng-click="clear()">
         <span class="glyphicon glyphicon-flash"></span> <span translate="jtraceApp.itemctn.home.createLabel">Create a new Itemctn</span>
     </button>
     <div class="modal fade" id="saveItemctnModal" tabindex="-1" role="dialog" aria-labelledby="myItemctnLabel"
@@ -178,17 +178,17 @@
                     <td>
                         <button type="submit"
                                 ui-sref="itemctnDetail({id:itemctn.id})"
-                                class="btn btn-info">
+                                class="btn btn-info btn-sm">
                             <span class="glyphicon glyphicon-eye-open"></span>&nbsp;<span translate="entity.action.view"> View</span>
                         </button>
                         <button type="submit"
                                 ng-click="update(itemctn.id)"
-                                class="btn btn-primary">
+                                class="btn btn-primary btn-sm">
                             <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span translate="entity.action.edit"> Edit</span>
                         </button>
                         <button type="submit"
                                 ng-click="delete(itemctn.id)"
-                                class="btn btn-danger">
+                                class="btn btn-danger btn-sm">
                             <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span translate="entity.action.delete"> Delete</span>
                         </button>
                     </td>

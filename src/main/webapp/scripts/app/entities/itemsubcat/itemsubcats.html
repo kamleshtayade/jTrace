@@ -2,7 +2,7 @@
 
     <h2 translate="jtraceApp.itemsubcat.home.title">Itemsubcat</h2>
 
-    <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#saveItemsubcatModal" ng-click="clear()">
+    <button class="btn btn-primary" data-toggle="modal" data-target="#saveItemsubcatModal" ng-click="clear()">
         <span class="glyphicon glyphicon-flash"></span> <span translate="jtraceApp.itemsubcat.home.createLabel">Create a new Itemsubcat</span>
     </button>
     <div class="modal fade" id="saveItemsubcatModal" tabindex="-1" role="dialog" aria-labelledby="myItemsubcatLabel"
@@ -108,17 +108,17 @@
                     <td>
                         <button type="submit"
                                 ui-sref="itemsubcatDetail({id:itemsubcat.id})"
-                                class="btn btn-info">
+                                class="btn btn-info btn-sm">
                             <span class="glyphicon glyphicon-eye-open"></span>&nbsp;<span translate="entity.action.view"> View</span>
                         </button>
                         <button type="submit"
                                 ng-click="update(itemsubcat.id)"
-                                class="btn btn-primary">
+                                class="btn btn-primary btn-sm">
                             <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span translate="entity.action.edit"> Edit</span>
                         </button>
                         <button type="submit"
                                 ng-click="delete(itemsubcat.id)"
-                                class="btn btn-danger">
+                                class="btn btn-danger btn-sm">
                             <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span translate="entity.action.delete"> Delete</span>
                         </button>
                     </td>

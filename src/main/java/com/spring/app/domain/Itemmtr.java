@@ -5,6 +5,7 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
+
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -34,13 +35,8 @@ public class Itemmtr implements Serializable {
     @Column(name = "specification", nullable = false)
     private String specification;
 
-    @NotNull
-    @Column(name = "catid", nullable = false)
-    private String catid;
-
-    @NotNull
-    @Column(name = "subcatid", nullable = false)
-    private String subcatid;
+    @ManyToOne
+    private Itemsubcat subcatid;
 
     public Long getId() {
         return id;
@@ -74,23 +70,16 @@ public class Itemmtr implements Serializable {
         this.specification = specification;
     }
 
-    public String getCatid() {
-        return catid;
-    }
 
-    public void setCatid(String catid) {
-        this.catid = catid;
-    }
+    public Itemsubcat getSubcatid() {
+		return subcatid;
+	}
 
-    public String getSubcatid() {
-        return subcatid;
-    }
+	public void setSubcatid(Itemsubcat subcatid) {
+		this.subcatid = subcatid;
+	}
 
-    public void setSubcatid(String subcatid) {
-        this.subcatid = subcatid;
-    }
-
-    @Override
+	@Override
     public boolean equals(Object o) {
         if (this == o) {
             return true;
@@ -118,8 +107,6 @@ public class Itemmtr implements Serializable {
                 ", code='" + code + "'" +
                 ", description='" + description + "'" +
                 ", specification='" + specification + "'" +
-                ", catid='" + catid + "'" +
-                ", subcatid='" + subcatid + "'" +
                 '}';
     }
 }

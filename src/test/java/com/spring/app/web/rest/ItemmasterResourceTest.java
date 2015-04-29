@@ -51,8 +51,6 @@ public class ItemmasterResourceTest {
     private static final String UPDATED_ATTRIBUTES = "UPDATED_TEXT";
     private static final String DEFAULT_IDCAT = "SAMPLE_TEXT";
     private static final String UPDATED_IDCAT = "UPDATED_TEXT";
-    private static final String DEFAULT_IDSUBCAT = "SAMPLE_TEXT";
-    private static final String UPDATED_IDSUBCAT = "UPDATED_TEXT";
 
     @Inject
     private ItemmasterRepository itemmasterRepository;
@@ -76,7 +74,6 @@ public class ItemmasterResourceTest {
         itemmaster.setDescription(DEFAULT_DESCRIPTION);
         itemmaster.setAttributes(DEFAULT_ATTRIBUTES);
         itemmaster.setIdCat(DEFAULT_IDCAT);
-        itemmaster.setIdSubCat(DEFAULT_IDSUBCAT);
 
     }
 
@@ -100,7 +97,6 @@ public class ItemmasterResourceTest {
         assertThat(testItemmaster.getDescription()).isEqualTo(DEFAULT_DESCRIPTION);
         assertThat(testItemmaster.getAttributes()).isEqualTo(DEFAULT_ATTRIBUTES);
         assertThat(testItemmaster.getIdCat()).isEqualTo(DEFAULT_IDCAT);
-        assertThat(testItemmaster.getIdSubCat()).isEqualTo(DEFAULT_IDSUBCAT);
     }
 
     @Test
@@ -118,7 +114,6 @@ public class ItemmasterResourceTest {
                 .andExpect(jsonPath("$.[0].description").value(DEFAULT_DESCRIPTION.toString()))
                 .andExpect(jsonPath("$.[0].attributes").value(DEFAULT_ATTRIBUTES.toString()))
                 .andExpect(jsonPath("$.[0].idCat").value(DEFAULT_IDCAT.toString()))
-                .andExpect(jsonPath("$.[0].idSubCat").value(DEFAULT_IDSUBCAT.toString()))
                 .andExpect(jsonPath("$.[0].attributes").value(DEFAULT_ATTRIBUTES.toString()));
     }
 
@@ -137,7 +132,6 @@ public class ItemmasterResourceTest {
             .andExpect(jsonPath("$.description").value(DEFAULT_DESCRIPTION.toString()))
             .andExpect(jsonPath("$.attributes").value(DEFAULT_ATTRIBUTES.toString()))
             .andExpect(jsonPath("$.idCat").value(DEFAULT_IDCAT.toString()))
-            .andExpect(jsonPath("$.idSubCat").value(DEFAULT_IDSUBCAT.toString()))
         	.andExpect(jsonPath("$.attributes").value(DEFAULT_ATTRIBUTES.toString()));
 
     }
@@ -161,7 +155,6 @@ public class ItemmasterResourceTest {
         itemmaster.setDescription(UPDATED_DESCRIPTION);
         itemmaster.setAttributes(UPDATED_ATTRIBUTES);
         itemmaster.setIdCat(UPDATED_IDCAT);
-        itemmaster.setIdSubCat(UPDATED_IDSUBCAT);
 
         restItemmasterMockMvc.perform(post("/api/itemmasters")
                 .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -176,7 +169,6 @@ public class ItemmasterResourceTest {
         assertThat(testItemmaster.getDescription()).isEqualTo(UPDATED_DESCRIPTION);
         assertThat(testItemmaster.getAttributes()).isEqualTo(UPDATED_ATTRIBUTES);
         assertThat(testItemmaster.getIdCat()).isEqualTo(UPDATED_IDCAT);
-        assertThat(testItemmaster.getIdSubCat()).isEqualTo(UPDATED_IDSUBCAT);
     }
 
     @Test
