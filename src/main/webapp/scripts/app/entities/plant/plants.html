@@ -2,7 +2,7 @@
 
     <h2 translate="jtraceApp.plant.home.title">Plant</h2>
 
-    <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#savePlantModal" ng-click="clear()">
+    <button class="btn btn-primary" data-toggle="modal" data-target="#savePlantModal" ng-click="clear()">
         <span class="glyphicon glyphicon-flash"></span> <span translate="jtraceApp.plant.home.createLabel">Create a new Plant</span>
     </button>
     <div class="modal fade" id="savePlantModal" tabindex="-1" role="dialog" aria-labelledby="myPlantLabel"
@@ -91,6 +91,43 @@
         </div>
     </div>
 
+    <!-- /collapse
+    <button class="btn btn-info" type="button" data-toggle="collapse" data-target="#collapseForm" aria-expanded="false" aria-controls="collapseForm">
+    <i class="fa fa-bolt fa-fw"></i><span translate="jtraceApp.plant.home.createLabel">Create a new Itemmtr</span>
+    </button>
+    <br>
+    </br>
+    <div class="collapse" id="collapseForm">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <h4 class="panel-title" id="myItemmtrLabel" translate="jtraceApp.plant.home.createOrEditLabel">Create or edit a Itemmtr</h4>
+            </div>
+            <div class="panel-body">
+                Panel content
+            </div>
+            <div class="panel-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+                <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" ng-disabled="editForm.$invalid" class="btn btn-primary">
+                <span class="glyphicon glyphicon-save"></span>&nbsp;<span translate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </div>
+    </div>
+/.collapse-->
+
+<!-- new model-->
+    <div class="row">
+      <div class="col-sm-12">
+        <h4>Open Wizard Modal</h4>
+        <button class="btn btn-primary"
+          ng-click="openModal({ modalName: 'Create a new Plant' })">
+          <span translate="jtraceApp.plant.home.createLabel">Create a new Plant</span>
+        </button>
+      </div>
+    </div>
+<!--/.new model -->
     <div class="table-responsive">
         <table class="table table-striped">
             <thead>
@@ -115,17 +152,17 @@
                     <td>
                         <button type="submit"
                                 ui-sref="plantDetail({id:plant.id})"
-                                class="btn btn-info">
+                                class="btn btn-info btn-sm">
                             <span class="glyphicon glyphicon-eye-open"></span>&nbsp;<span translate="entity.action.view"> View</span>
                         </button>
                         <button type="submit"
                                 ng-click="update(plant.id)"
-                                class="btn btn-primary">
+                                class="btn btn-primary btn-sm">
                             <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span translate="entity.action.edit"> Edit</span>
                         </button>
                         <button type="submit"
                                 ng-click="delete(plant.id)"
-                                class="btn btn-danger">
+                                class="btn btn-danger btn-sm">
                             <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span translate="entity.action.delete"> Delete</span>
                         </button>
                     </td>

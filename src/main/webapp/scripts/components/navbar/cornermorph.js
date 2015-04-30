@@ -8,7 +8,7 @@
  * Copyright 2014, Codrops
  * http://www.codrops.com
  */
-(function() {
+/*(function() {
 
 	var bodyEl = document.body,
 		content = document.querySelector( '.content-wrap' ),
@@ -47,4 +47,26 @@
 
 	init();
 
+})();*/
+(function() {
+	var bodyEl = document.body,
+		openbtn = document.getElementById('open-button'),
+		isOpen = false;
+
+	function init() {
+		initEvents();
+	}
+
+	function initEvents() {
+		openbtn.addEventListener('mouseenter', toggleMenu);
+		window.addEventListener('click', function() {
+			classie.remove(bodyEl, 'show-menu');
+		});
+	}
+
+	function toggleMenu() {
+		classie.add(bodyEl, 'show-menu');
+		isOpen = !isOpen;
+	}
+	init();
 })();

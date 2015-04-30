@@ -49,4 +49,24 @@ angular.module('jtraceApp')
             $scope.editForm.$setPristine();
             $scope.editForm.$setUntouched();
         };
+
+        /* Specification */
+        $scope.choices = [];
+        $scope.colors =  [
+              {name:'Resistors '},
+              {name:'Capacitors'},
+              {name:'Diode'},
+              {name:'Inductor'},
+              {name:'Wire'}
+                ];
+  
+        $scope.addNewChoice = function() {
+            var newItemNo = $scope.choices.length+1;
+            $scope.choices.push({'id':'choice'+newItemNo});
+        };
+    
+        $scope.removeChoice = function() {
+            var lastItem = $scope.choices.length-1;
+            $scope.choices.splice(lastItem);
+        };
     });

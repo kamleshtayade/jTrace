@@ -59,8 +59,6 @@
                         </div>
                         <div class="form-group">
                             <label translate="jtraceApp.itemmtr.catid">Catid</label>
-                            <input type="text" class="form-control" name="itemmtr.subcatid.itemcat.id"
-                                   ng-model="itemmtr.subcatid.itemcat.id" required>
                             <select class="form-control" name="itemmtr.subcatid.itemcat.id" ng-model="itemmtr.subcatid.itemcat.id" ng-options="itemcat.id as itemcat.name for itemcat in itemcats" required>
                             </select>
 
@@ -73,8 +71,6 @@
                         </div>
                         <div class="form-group">
                             <label translate="jtraceApp.itemmtr.subcatid">Subcatid</label>
-                            <input type="text" class="form-control" name="itemmtr.subcatid.id"
-                                   ng-model="itemmtr.subcatid.id" required>
                             <select class="form-control" name="itemmtr.subcatid.id" ng-model="itemmtr.subcatid.id" ng-options="itemsubcat.id as itemsubcat.name for itemsubcat in itemsubcats" required>
                             </select>       
 
@@ -98,8 +94,25 @@
                                 </p>
                             </div>
                         </div>
-                        
-
+                            {{ choices }}
+                            <button class="btn btn-info" class="addfields" ng-click="addNewChoice()">Add More Specification</button>
+                            <fieldset data-ng-repeat="choice in choices" style="padding-top:10px">                
+                                <div class="form-group">
+                                                <div class="col-md-4">
+                                                    <select class="form-control" ng-model="choice.choice1.name" ng-options="choice1.name for choice1 in colors">
+                                                        
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <input class="form-control" type="text" ng-model="choice.name" name="" placeholder="Enter Specification value">
+                                                    
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <button class="btn btn-primary" class="addfields" ng-show="$last" ng-click="addNewChoice()">+</button>
+                                                    <button class="btn btn-danger" class="form-control" class="remove" ng-show="$last" ng-click="removeChoice()">-</button>
+                                                </div>
+                                </div>                
+                            </fieldset>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
@@ -138,31 +151,7 @@
             </div>
         </div>
     </div>
-
-<!-- /collapse
-<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseForm" aria-expanded="false" aria-controls="collapseForm">
-  <i class="fa fa-bolt fa-fw"></i><span translate="jtraceApp.itemmtr.home.createLabel">Create a new Itemmtr</span>
-</button>
-<div class="collapse" id="collapseForm">
-    <div class="panel panel-primary">
-      <div class="panel-heading">        
-        <h4 class="panel-title" id="myItemmtrLabel" translate="jtraceApp.itemmtr.home.createOrEditLabel">Create or edit a Itemmtr</h4>
-      </div>
-      <div class="panel-body">
-        Panel content
-      </div>
-      <div class="panel-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
-            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
-        </button>
-        <button type="submit" ng-disabled="editForm.$invalid" class="btn btn-primary">
-            <span class="glyphicon glyphicon-save"></span>&nbsp;<span translate="entity.action.save">Save</span>
-        </button>
-      </div>
-    </div> 
-</div>
- /.collapse-->
-
+    </br>
     <div class="table-responsive">
         <table class="table table-striped">
             <thead>

@@ -257,50 +257,37 @@ ul#strength {
 /* Menu Button */
 .menu-button {
     position: fixed;
-    bottom: 0;
+    right: 0;
+	bottom: 0;
     z-index: 1000;
     margin: 1em;
     padding: 0;
-    width: 2.5em;
-    height: 2.25em;
+    width: 2em;
+    height: 1.17em;
     border: none;
     font-size: 1.5em;
     color: #F64747;
     background: transparent;
 }
 
-.menu-button span {
-    display: none;
-}
-
 .menu-button:hover {
-    opacity: 0.6;
+    color: rgba(102,51,153,0.8);
 }
 
 /* Menu */
 .menu-wrap {
     position: fixed;
     z-index: 999;
-    background: #ebedf4;
+    background: #bdc3c7;
     -webkit-transition: width 0.3s, height 0.3s;
     transition: width 0.3s, height 0.3s;
     width: 0;
     height: 0;
     font-size: 1.5em;
-    bottom: 1em;
-    left: 11.5em;
+    bottom: 0;
+    right: 0;
     -webkit-transform-origin: 0% 100%;
     transform-origin: 0% 100%;
-}
-
-@media screen and (max-width: 50em) {
-    .menu-button {
-        margin: 0.25em;
-    }
-    .menu-wrap {
-        bottom: 0.25em;
-        left: 0.25em;
-    }
 }
 
 .menu {
@@ -308,7 +295,7 @@ ul#strength {
     opacity: 0;
     font-size: 0.65em;
     color: #d35400;/* #64697d;*/
-    text-align: right;
+    text-align: left;
 }
 
 .profile {
@@ -319,22 +306,21 @@ ul#strength {
 }
 
 .profile img {
-    float: right;
     border-radius: 50%;
-    margin-left: 10px;
+    margin-left: 1em;
 }
 
 .link-list {
     padding: 1.35em 0;
     margin: 0 0.75em;
-    border-bottom: 3px solid rgba(125,129,148,0.2);
-    border-top: 3px solid rgba(125,129,148,0.2);
+    border-bottom: 3px solid #909090;
+    border-top: 3px solid #909090;
 }
 
 .link-list a {
     display: block;
     margin: 0.25em 0;
-    color: #7d8194;
+    color: #2c3e50;/*#7d8194;*/
     padding: 0.5em 1.5em;
 }
 
@@ -351,7 +337,7 @@ ul#strength {
 
 .icon-list {
     position: absolute;
-    right: 1em;
+    left: 1em;
     bottom: 0.9em;
 }
 
