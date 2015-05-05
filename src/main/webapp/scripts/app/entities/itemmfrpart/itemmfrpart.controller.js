@@ -47,4 +47,6 @@ angular.module('jtraceApp')
         $scope.clear = function () {
             $scope.itemmfrpart = {mfrpart: null, status: null, suppart: null, remarks: null, id: null};
         };
+        /* Mfr Status*/
+        $scope.mfrStatus = ['Active ','Qaulified','Prototype','End of Life','In Active'];
     });

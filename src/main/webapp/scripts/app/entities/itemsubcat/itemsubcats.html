@@ -45,6 +45,7 @@
                             <label translate="jtraceApp.itemsubcat.itemcat">itemcat</label>
                             <select class="form-control" name="enabled" ng-model="itemsubcat.itemcat.id" ng-options="itemcat.id as itemcat.name for itemcat in itemcats">
                             </select>
+                            <!--<input type="text" name="enabled" ng-model="itemsubcat.itemcat.id" typeahead="itemcat.id as itemcat.name for itemcat in itemcats | filter:{name:$viewValue} | limitTo:8" class="form-control">-->
                         </div>
 
                     </div>

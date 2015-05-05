@@ -51,7 +51,7 @@ angular.module('jtraceApp')
           var modalInstance = $modal.open({
             templateUrl: 'scripts/app/entities/plant/modalMain.html',
             controller: 'PlantModalCtrl',
-            size: 'lg', // Sizes: 'sm', 'lg'
+            size: '', // Sizes: 'sm', 'lg'
             resolve: {
               data: function() {
                 return data === null ? {} : data;

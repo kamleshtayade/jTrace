@@ -1,12 +1,16 @@
-<div class="modal-header">
-  <h3>{{data.modalName}}</h3>
+<form name="editForm" role="form" novalidate
+  class="ng-scope ng-invalid ng-invalid-required ng-dirty ng-valid-minlength"
+  ng-submit="create()">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+    ng-click="cancel()">&times;</button>
+    <h4 class="modal-title"  translate="jtraceApp.plant.home.createOrEditLabel">{{data.modalName}}</h4>
   <progressbar class="progress-striped active" max="steps.length" value="currentStep.number" type="warning"><i>{{currentStep.name}}::{{currentStep.number}}/{{steps.length}}</i></progressbar>
 </div>
 <div class="modal-body">
-  <form role="form">
+  <!--<form role="form">
     <div class="row">
-      <div class="col-md-12">
-
+      <div class="col-md-12">-->
         <div ng-switch="currentStep.number">
           <div ng-switch-when="1">
             <ng-include src="'scripts/app/entities/plant/modalStep1.html'"></ng-include>
@@ -18,11 +22,9 @@
             <ng-include src="'scripts/app/entities/plant/modalStep3.html'"></ng-include>
           </div>
         </div>
-
-      </div>
+      <!--</div>
     </div>
-  </form>
-
+  </form>-->
 </div>
 <div class="modal-footer">
   <button class="btn btn-primary" ng-click="previousStep()"><i class="fa fa-arrow-circle-o-left"></i>&nbsp;Previous Step</button>
@@ -30,3 +32,4 @@
   <button class="btn btn-info" ng-click="finalStep()"><i class="fa fa-dot-circle-o"></i>&nbsp;Final Step</button>
   <button class="btn btn-default" ng-click="cancel()"><i class="fa fa-times-circle-o"></i>&nbsp;Close</button>
 </div>
+</form>

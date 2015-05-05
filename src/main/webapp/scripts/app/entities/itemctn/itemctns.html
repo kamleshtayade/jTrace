@@ -96,7 +96,6 @@
                                    ng-model="itemctn.lotCode">
                         </div>
 
-
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
@@ -140,41 +139,20 @@
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <th>ID</th>
                     <th translate="jtraceApp.itemctn.ctn">Ctn</th>
-                    <th translate="jtraceApp.itemctn.srNoFrom">SrNoFrom</th>
-                    <th translate="jtraceApp.itemctn.reqdQty">ReqdQty</th>
-                    <th translate="jtraceApp.itemctn.recdDt">RecdDt</th>
                     <th translate="jtraceApp.itemctn.item">Item</th>
-                    <th translate="jtraceApp.itemctn.srNoTo">SrNoTo</th>
-                    <th translate="jtraceApp.itemctn.selfLife">SelfLife</th>
-                    <th translate="jtraceApp.itemctn.poQty">PoQty</th>
-                    <th translate="jtraceApp.itemctn.invoice">Invoice</th>
-                    <th translate="jtraceApp.itemctn.manufaturer">Manufaturer</th>
-                    <th translate="jtraceApp.itemctn.mfgPartNo">MfgPartNo</th>
-                    <th translate="jtraceApp.itemctn.supplier">Supplier</th>
-                    <th translate="jtraceApp.itemctn.dateCode">DateCode</th>
-                    <th translate="jtraceApp.itemctn.lotCode">LotCode</th>
+                    <th translate="jtraceApp.itemctn.recdDt">RecdDt</th>
+                    <th translate="jtraceApp.itemctn.reqdQty">ReqdQty</th>
                     <th></th>
                 </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="itemctn in itemctns">
-                    <td><a ui-sref="itemctnDetail({id:itemctn.id})">{{itemctn.id}}</a></td>
-                    <td>{{itemctn.ctn}}</td>
-                    <td>{{itemctn.srNoFrom}}</td>
-                    <td>{{itemctn.reqdQty}}</td>
-                    <td>{{itemctn.recdDt}}</td>
+                <tr ng-repeat="itemctn in itemctns">                    
+                    <td><a ui-sref="itemctnDetail({id:itemctn.id})">{{itemctn.ctn}}</a></td>
                     <td>{{itemctn.item}}</td>
-                    <td>{{itemctn.srNoTo}}</td>
-                    <td>{{itemctn.selfLife}}</td>
-                    <td>{{itemctn.poQty}}</td>
-                    <td>{{itemctn.invoice}}</td>
-                    <td>{{itemctn.manufaturer}}</td>
-                    <td>{{itemctn.mfgPartNo}}</td>
-                    <td>{{itemctn.supplier}}</td>
-                    <td>{{itemctn.dateCode}}</td>
-                    <td>{{itemctn.lotCode}}</td>
+                    <td>{{itemctn.recdDt}}</td>
+                    <td>{{itemctn.reqdQty}}</td>
+                    
                     <td>
                         <button type="submit"
                                 ui-sref="itemctnDetail({id:itemctn.id})"
