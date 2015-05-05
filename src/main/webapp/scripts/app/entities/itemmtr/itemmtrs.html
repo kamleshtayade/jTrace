@@ -71,9 +71,8 @@
                         </div>
                         <div class="form-group">
                             <label translate="jtraceApp.itemmtr.subcatid">Subcatid</label>
-                            <select class="form-control" name="itemmtr.subcatid.id" ng-model="itemmtr.subcatid.id" ng-options="itemsubcat.id as itemsubcat.name for itemsubcat in itemsubcats" required>
-                            </select>       
-
+                            <select class="form-control" name="itemmtr.subcatid.id" ng-model="itemmtr.subcatid.id" ng-disabled="!itemmtr.subcatid.itemcat.id" ng-options="itemsubcat.id as itemsubcat.name for itemsubcat in itemsubcats | filter:itemmtr.subcatid.itemcat.id" required>
+                            </select>                            
 
                             <div ng-show="editForm.temmtr.subcatid.id.$invalid">
                                 <p class="help-block"
