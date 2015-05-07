@@ -25,12 +25,6 @@
                     </div>
                     <div class="modal-body">
                         <div class="form-group">
-                            <label>ID</label>
-                            <input type="text" class="form-control" name="id"
-                                   ng-model="itemcat.id" readonly>
-                        </div>
-
-                        <div class="form-group">
                             <label translate="jtraceApp.itemcat.name">Name</label>
                             <input type="text" class="form-control" name="name"
                                    ng-model="itemcat.name">
@@ -43,9 +37,8 @@
 
                         </div>
                         <div class="form-group">
-                            <label translate="jtraceApp.itemcat.enabled">Enabled</label>
-                            <input type="checkbox" class="form-control" name="enabled"
-                                   ng-model="itemcat.enabled">
+                            <input type="checkbox" name="enabled"
+                                   ng-model="itemcat.enabled" style="height: 20px; width: 20px">&nbsp;&nbsp;<label translate="jtraceApp.itemcat.enabled">Enabled</label>
 
                         </div>
 
@@ -92,7 +85,6 @@
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <th>ID</th>
                     <th translate="jtraceApp.itemcat.name">Name</th>
                     <th translate="jtraceApp.itemcat.description">Description</th>
                     <th translate="jtraceApp.itemcat.enabled">Enabled</th>
@@ -101,8 +93,7 @@
             </thead>
             <tbody>
                 <tr ng-repeat="itemcat in itemcats">
-                    <td><a ui-sref="itemcatDetail({id:itemcat.id})">{{itemcat.id}}</a></td>
-                    <td>{{itemcat.name}}</td>
+                    <td><a ui-sref="itemcatDetail({id:itemcat.id})">{{itemcat.name}}<a></td>
                     <td>{{itemcat.description}}</td>
                     <td>{{itemcat.enabled}}</td>
                     <td>

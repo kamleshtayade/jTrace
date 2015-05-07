@@ -24,11 +24,6 @@
                         <h4 class="modal-title" id="myItemctnLabel" translate="jtraceApp.itemctn.home.createOrEditLabel">Create or edit a Itemctn</h4>
                     </div>
                     <div class="modal-body">
-                        <div class="form-group">
-                            <label>ID</label>
-                            <input type="text" class="form-control" name="id"
-                                   ng-model="itemctn.id" readonly>
-                        </div>
 
                         <div class="form-group">
                             <label translate="jtraceApp.itemctn.ctn">Ctn</label>
@@ -71,12 +66,6 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label translate="jtraceApp.itemctn.item">Item</label>
-                            <input type="text" class="form-control" name="item"
-                                   ng-model="itemctn.item">
-
-                        </div>
-                        <div class="form-group">
                             <label translate="jtraceApp.itemctn.srNoTo">SrNoTo</label>
                             <input type="text" class="form-control" name="srNoTo"
                                    ng-model="itemctn.srNoTo">
@@ -105,6 +94,7 @@
                             <label translate="jtraceApp.itemctn.itemmtr">itemmtr</label>
                             <select class="form-control" name="itemmtr" ng-model="itemctn.itemmtr.id" ng-options="itemmtr.id as itemmtr.code for itemmtr in itemmtrs">
                             </select>
+                            <input type="text" ng-model="itemctn.itemmtr.id" typeahead="itemmtr.id as itemmtr.code for itemmtr in itemmtrs | filter:$viewValue | limitTo:8" class="form-control">
                         </div>
                     </div>
                     <div class="modal-footer">

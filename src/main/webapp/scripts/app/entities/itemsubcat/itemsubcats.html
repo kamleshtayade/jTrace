@@ -25,12 +25,6 @@
                     </div>
                     <div class="modal-body">
                         <div class="form-group">
-                            <label>ID</label>
-                            <input type="text" class="form-control" name="id"
-                                   ng-model="itemsubcat.id" readonly>
-                        </div>
-
-                        <div class="form-group">
                             <label translate="jtraceApp.itemsubcat.name">Name</label>
                             <input type="text" class="form-control" name="name"
                                    ng-model="itemsubcat.name">
@@ -97,7 +91,6 @@
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <th>ID</th>
                     <th translate="jtraceApp.itemsubcat.name">Name</th>
                     <th translate="jtraceApp.itemsubcat.description">Description</th>
                     <th translate="jtraceApp.itemsubcat.enabled">Enabled</th>
@@ -107,8 +100,7 @@
             </thead>
             <tbody>
                 <tr ng-repeat="itemsubcat in itemsubcats">
-                    <td><a ui-sref="itemsubcatDetail({id:itemsubcat.id})">{{itemsubcat.id}}</a></td>
-                    <td>{{itemsubcat.name}}</td>
+                    <td><a ui-sref="itemsubcatDetail({id:itemsubcat.id})">{{itemsubcat.name}}</a></td>
                     <td>{{itemsubcat.description}}</td>
                     <td>{{itemsubcat.enabled}}</td>
                     <td>{{itemsubcat.itemcat.name}}</td>

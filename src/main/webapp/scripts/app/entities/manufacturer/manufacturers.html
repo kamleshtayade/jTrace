@@ -25,12 +25,6 @@
                     </div>
                     <div class="modal-body">
                         <div class="form-group">
-                            <label>ID</label>
-                            <input type="text" class="form-control" name="id"
-                                   ng-model="manufacturer.id" readonly>
-                        </div>
-
-                        <div class="form-group">
                             <label translate="jtraceApp.manufacturer.code">Code</label>
                             <input type="text" class="form-control" name="code"
                                    ng-model="manufacturer.code" required>
@@ -120,7 +114,6 @@
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <th>ID</th>
                     <th translate="jtraceApp.manufacturer.code">Code</th>
                     <th translate="jtraceApp.manufacturer.name">Name</th>
                     <th translate="jtraceApp.manufacturer.isenabled">Isenabled</th>
@@ -131,8 +124,7 @@
             </thead>
             <tbody>
                 <tr ng-repeat="manufacturer in manufacturers">
-                    <td><a ui-sref="manufacturerDetail({id:manufacturer.id})">{{manufacturer.id}}</a></td>
-                    <td>{{manufacturer.code}}</td>
+                    <td><a ui-sref="manufacturerDetail({id:manufacturer.id})">{{manufacturer.code}}</a></td>
                     <td>{{manufacturer.name}}</td>
                     <td>{{manufacturer.isenabled}}</td>
                     <td>{{manufacturer.mfrcat}}</td>
