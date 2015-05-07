@@ -24,7 +24,12 @@
                         <h4 class="modal-title" id="myItemmtrLabel" translate="jtraceApp.itemmtr.home.createOrEditLabel">Create or edit a Itemmtr</h4>
                     </div>
                     <div class="modal-body">
-                        
+                        <div class="form-group">
+                            <label>ID</label>
+                            <input type="text" class="form-control" name="id"
+                                   ng-model="itemmtr.id" readonly>
+                        </div>
+
                         <div class="form-group">
                             <label translate="jtraceApp.itemmtr.code">Code</label>
                             <input type="text" class="form-control" name="code"
@@ -44,13 +49,9 @@
                         <div class="form-group">
                             <label translate="jtraceApp.itemmtr.description">Description</label>
                             <input type="text" class="form-control" name="description"
-                                   ng-model="itemmtr.description" required ng-minlength="5">
+                                   ng-model="itemmtr.description" ng-minlength="5">
 
                             <div ng-show="editForm.description.$invalid">
-                                <p class="help-block"
-                                   ng-show="editForm.description.$error.required" translate="entity.validation.required">
-                                    This field is required.
-                                </p>
                                 <p class="help-block"
                                    ng-show="editForm.description.$error.minlength" translate="entity.validation.minlength" translate-value-min="5">
                                     This field is required to be at least 5 characters.
@@ -58,25 +59,23 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label translate="jtraceApp.itemmtr.catid">Catid</label>
-                            <select class="form-control" name="itemmtr.subcatid.itemcat.id" ng-model="itemmtr.subcatid.itemcat.id" ng-options="itemcat.id as itemcat.name for itemcat in itemcats" required>
+                            <label translate="jtraceApp.itemmtr.itemcat">itemcat</label>
+                            <select class="form-control" name="itemcat" ng-model="itemmtr.itemsubcat.itemcat.id" ng-options="itemcat.id as itemcat.name for itemcat in itemcats" required>
                             </select>
-
-                            <div ng-show="editForm.itemmtr.subcatid.itemcat.id.$invalid">
+                            <div ng-show="editForm.itemmtr.itemsubcat.itemcat.id.$invalid">
                                 <p class="help-block"
-                                   ng-show="editForm.itemmtr.subcatid.itemcat.id.$error.required" translate="entity.validation.required">
+                                   ng-show="editForm.itemmtr.itemsubcat.itemcat.id.$error.required" translate="entity.validation.required">
                                     This field is required.
                                 </p>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label translate="jtraceApp.itemmtr.subcatid">Subcatid</label>
-                            <select class="form-control" name="itemmtr.subcatid.id" ng-model="itemmtr.subcatid.id" ng-disabled="!itemmtr.subcatid.itemcat.id" ng-options="itemsubcat.id as itemsubcat.name for itemsubcat in itemsubcats | filter:itemmtr.subcatid.itemcat.id" required>
-                            </select>                            
-
-                            <div ng-show="editForm.temmtr.subcatid.id.$invalid">
+                            <label translate="jtraceApp.itemmtr.itemsubcat">itemsubcat</label>
+                            <select class="form-control" name="itemsubcat" ng-model="itemmtr.itemsubcat.id" ng-disabled="!itemmtr.itemsubcat.itemcat.id" ng-options="itemsubcat.id as itemsubcat.name for itemsubcat in itemsubcats | filter:itemmtr.itemsubcat.itemcat.id" required>
+                            </select>
+                            <div ng-show="editForm.temmtr.itemsubcat.id.$invalid">
                                 <p class="help-block"
-                                   ng-show="editForm.temmtr.subcatid.id.$error.required" translate="entity.validation.required">
+                                   ng-show="editForm.temmtr.itemsubcat.id.$error.required" translate="entity.validation.required">
                                     This field is required.
                                 </p>
                             </div>
@@ -84,16 +83,20 @@
                         <div class="form-group">
                             <label translate="jtraceApp.itemmtr.specification">Specification</label>
                             <input type="text" class="form-control" name="specification"
-                                   ng-model="itemmtr.specification" required>
+                                   ng-model="itemmtr.specification" required ng-minlength="5">
 
                             <div ng-show="editForm.specification.$invalid">
                                 <p class="help-block"
                                    ng-show="editForm.specification.$error.required" translate="entity.validation.required">
                                     This field is required.
                                 </p>
+                                <p class="help-block"
+                                   ng-show="editForm.specification.$error.minlength" translate="entity.validation.minlength" translate-value-min="5">
+                                    This field is required to be at least 5 characters.
+                                </p>
                             </div>
                         </div>
-                            {{ choices }}
+                        {{ choices }}
                             <button class="btn btn-info" class="addfields" ng-click="addNewChoice()">Add More Specification</button>
                             <fieldset data-ng-repeat="choice in choices" style="padding-top:10px">                
                                 <div class="form-group">
@@ -111,7 +114,7 @@
                                                     <button class="btn btn-danger" class="form-control" class="remove" ng-show="$last" ng-click="removeChoice()">-</button>
                                                 </div>
                                 </div>                
-                            </fieldset>
+                            </fieldset>  
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
@@ -150,7 +153,7 @@
             </div>
         </div>
     </div>
-    </br>
+
     <div class="table-responsive">
         <table class="table table-striped">
             <thead>
@@ -158,18 +161,18 @@
                     <th translate="jtraceApp.itemmtr.code">Code</th>
                     <th translate="jtraceApp.itemmtr.description">Description</th>
                     <th translate="jtraceApp.itemmtr.specification">Specification</th>
-                    <th translate="jtraceApp.itemmtr.catid">Catid</th>
-                    <th translate="jtraceApp.itemmtr.subcatid">Subcatid</th>
+                    <th translate="jtraceApp.itemmtr.itemcat">itemcat</th>
+                    <th translate="jtraceApp.itemmtr.itemsubcat">itemsubcat</th>
                     <th></th>
                 </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="itemmtr in itemmtrs">                    
+                <tr ng-repeat="itemmtr in itemmtrs">
                     <td><a ui-sref="itemmtrDetail({id:itemmtr.id})">{{itemmtr.code}}</a></td>
                     <td>{{itemmtr.description}}</td>
                     <td>{{itemmtr.specification}}</td>
-                    <td>{{itemmtr.subcatid.itemcat.name}}</td>
-                    <td>{{itemmtr.subcatid.name}}</td>
+                    <td>{{itemmtr.itemsubcat.itemcat.name}}</td>
+                    <td>{{itemmtr.itemsubcat.name}}</td>
                     <td>
                         <button type="submit"
                                 ui-sref="itemmtrDetail({id:itemmtr.id})"
@@ -190,5 +193,18 @@
                 </tr>
             </tbody>
         </table>
+        <nav>
+            <ul class="pagination">
+                <li ng-show="links['first']" ng-click="loadPage(links['first'])"><a>&lt;&lt;</a></li>
+                <li ng-show="links['prev']" ng-click="loadPage(links['prev'])"><a>&lt;</a></li>
+                <li ng-show="page > 2" ng-click="loadPage(page - 2)"><a>{{page - 2}}</a></li>
+                <li ng-show="page > 1" ng-click="loadPage(page - 1)"><a>{{page - 1}}</a></li>
+                <li class="active"><a>{{page}}</a></li>
+                <li ng-show="page < links['last']" ng-click="loadPage(page + 1)"><a>{{page + 1}}</a></li>
+                <li ng-show="page < links['last'] - 1" ng-click="loadPage(page + 2)"><a>{{page + 2}}</a></li>
+                <li ng-show="links['next']" ng-click="loadPage(links['next'])"><a>&gt;</a></li>
+                <li ng-show="links['last']" ng-click="loadPage(links['last'])"><a>&gt;&gt;</a></li>
+            </ul>
+        </nav>
     </div>
 </div>
