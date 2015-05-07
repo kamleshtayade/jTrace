@@ -1,0 +1,23 @@
+{
+    "jtraceApp": {
+        "plantsec" : {
+            "home": {
+                "title": "Plantsecs",
+                "createLabel": "Créer un nouveau Plantsec",
+                "createOrEditLabel": "Créer ou éditer un Plantsec"
+            },
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Plantsec {{ id }} ?"
+            },
+            "detail": {
+                "title": "Plantsec"
+            },
+            "name": "Name",
+            "description": "Description",
+            "isenabled": "Isenabled",
+            "capacity": "Capacity",
+            "plant": "plant"
+        }
+    }
+}
+

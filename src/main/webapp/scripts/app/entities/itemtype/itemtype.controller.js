@@ -1,17 +1,23 @@
 'use strict';
 
 angular.module('jtraceApp')
-    .controller('ItemtypeController', function ($scope, Itemtype) {
+    .controller('ItemtypeController', function ($scope, Itemtype, ParseLinks) {
         $scope.itemtypes = [];
+        $scope.page = 1;
         $scope.loadAll = function() {
-            Itemtype.query(function(result) {
-               $scope.itemtypes = result;
+            Itemtype.query({page: $scope.page, per_page: 20}, function(result, headers) {
+                $scope.links = ParseLinks.parse(headers('link'));
+                $scope.itemtypes = result;
             });
+        };
+        $scope.loadPage = function(page) {
+            $scope.page = page;
+            $scope.loadAll();
         };
         $scope.loadAll();
 
         $scope.create = function () {
-            Itemtype.save($scope.itemtype,
+            Itemtype.update($scope.itemtype,
                 function () {
                     $scope.loadAll();
                     $('#saveItemtypeModal').modal('hide');
@@ -43,6 +49,8 @@ angular.module('jtraceApp')
         };
 
         $scope.clear = function () {
-            $scope.itemtype = {name: null, description: null, enabled: null, id: null};
+            $scope.itemtype = {name: null, description: null, isenabled: null, id: null};
+            $scope.editForm.$setPristine();
+            $scope.editForm.$setUntouched();
         };
     });

@@ -14,7 +14,7 @@
             },
             "name": "Name",
             "description": "Description",
-            "enabled": "Enabled"
+            "isenabled": "Isenabled"
         }
     }
 }

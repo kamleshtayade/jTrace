@@ -7,6 +7,7 @@ import com.spring.app.repository.ItemtypeRepository;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import static org.hamcrest.Matchers.hasItem;
 import org.mockito.MockitoAnnotations;
 import org.springframework.boot.test.IntegrationTest;
 import org.springframework.boot.test.SpringApplicationConfiguration;
@@ -42,8 +43,8 @@ public class ItemtypeResourceTest {
     private static final String DEFAULT_DESCRIPTION = "SAMPLE_TEXT";
     private static final String UPDATED_DESCRIPTION = "UPDATED_TEXT";
 
-    private static final Boolean DEFAULT_ENABLED = false;
-    private static final Boolean UPDATED_ENABLED = true;
+    private static final Boolean DEFAULT_ISENABLED = false;
+    private static final Boolean UPDATED_ISENABLED = true;
 
     @Inject
     private ItemtypeRepository itemtypeRepository;
@@ -65,28 +66,27 @@ public class ItemtypeResourceTest {
         itemtype = new Itemtype();
         itemtype.setName(DEFAULT_NAME);
         itemtype.setDescription(DEFAULT_DESCRIPTION);
-        itemtype.setEnabled(DEFAULT_ENABLED);
+        itemtype.setIsenabled(DEFAULT_ISENABLED);
     }
 
     @Test
     @Transactional
     public void createItemtype() throws Exception {
-        // Validate the database is empty
-        assertThat(itemtypeRepository.findAll()).hasSize(0);
+        int databaseSizeBeforeCreate = itemtypeRepository.findAll().size();
 
         // Create the Itemtype
         restItemtypeMockMvc.perform(post("/api/itemtypes")
                 .contentType(TestUtil.APPLICATION_JSON_UTF8)
                 .content(TestUtil.convertObjectToJsonBytes(itemtype)))
-                .andExpect(status().isOk());
+                .andExpect(status().isCreated());
 
         // Validate the Itemtype in the database
         List<Itemtype> itemtypes = itemtypeRepository.findAll();
-        assertThat(itemtypes).hasSize(1);
-        Itemtype testItemtype = itemtypes.iterator().next();
+        assertThat(itemtypes).hasSize(databaseSizeBeforeCreate + 1);
+        Itemtype testItemtype = itemtypes.get(itemtypes.size() - 1);
         assertThat(testItemtype.getName()).isEqualTo(DEFAULT_NAME);
         assertThat(testItemtype.getDescription()).isEqualTo(DEFAULT_DESCRIPTION);
-        assertThat(testItemtype.getEnabled()).isEqualTo(DEFAULT_ENABLED);
+        assertThat(testItemtype.getIsenabled()).isEqualTo(DEFAULT_ISENABLED);
     }
 
     @Test
@@ -99,10 +99,10 @@ public class ItemtypeResourceTest {
         restItemtypeMockMvc.perform(get("/api/itemtypes"))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
-                .andExpect(jsonPath("$.[0].id").value(itemtype.getId().intValue()))
-                .andExpect(jsonPath("$.[0].name").value(DEFAULT_NAME.toString()))
-                .andExpect(jsonPath("$.[0].description").value(DEFAULT_DESCRIPTION.toString()))
-                .andExpect(jsonPath("$.[0].enabled").value(DEFAULT_ENABLED.booleanValue()));
+                .andExpect(jsonPath("$.[*].id").value(hasItem(itemtype.getId().intValue())))
+                .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME.toString())))
+                .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION.toString())))
+                .andExpect(jsonPath("$.[*].isenabled").value(hasItem(DEFAULT_ISENABLED.booleanValue())));
     }
 
     @Test
@@ -118,14 +118,14 @@ public class ItemtypeResourceTest {
             .andExpect(jsonPath("$.id").value(itemtype.getId().intValue()))
             .andExpect(jsonPath("$.name").value(DEFAULT_NAME.toString()))
             .andExpect(jsonPath("$.description").value(DEFAULT_DESCRIPTION.toString()))
-            .andExpect(jsonPath("$.enabled").value(DEFAULT_ENABLED.booleanValue()));
+            .andExpect(jsonPath("$.isenabled").value(DEFAULT_ISENABLED.booleanValue()));
     }
 
     @Test
     @Transactional
     public void getNonExistingItemtype() throws Exception {
         // Get the itemtype
-        restItemtypeMockMvc.perform(get("/api/itemtypes/{id}", 1L))
+        restItemtypeMockMvc.perform(get("/api/itemtypes/{id}", Long.MAX_VALUE))
                 .andExpect(status().isNotFound());
     }
 
@@ -135,22 +135,24 @@ public class ItemtypeResourceTest {
         // Initialize the database
         itemtypeRepository.saveAndFlush(itemtype);
 
+		int databaseSizeBeforeUpdate = itemtypeRepository.findAll().size();
+
         // Update the itemtype
         itemtype.setName(UPDATED_NAME);
         itemtype.setDescription(UPDATED_DESCRIPTION);
-        itemtype.setEnabled(UPDATED_ENABLED);
-        restItemtypeMockMvc.perform(post("/api/itemtypes")
+        itemtype.setIsenabled(UPDATED_ISENABLED);
+        restItemtypeMockMvc.perform(put("/api/itemtypes")
                 .contentType(TestUtil.APPLICATION_JSON_UTF8)
                 .content(TestUtil.convertObjectToJsonBytes(itemtype)))
                 .andExpect(status().isOk());
 
         // Validate the Itemtype in the database
         List<Itemtype> itemtypes = itemtypeRepository.findAll();
-        assertThat(itemtypes).hasSize(1);
-        Itemtype testItemtype = itemtypes.iterator().next();
+        assertThat(itemtypes).hasSize(databaseSizeBeforeUpdate);
+        Itemtype testItemtype = itemtypes.get(itemtypes.size() - 1);
         assertThat(testItemtype.getName()).isEqualTo(UPDATED_NAME);
         assertThat(testItemtype.getDescription()).isEqualTo(UPDATED_DESCRIPTION);
-        assertThat(testItemtype.getEnabled()).isEqualTo(UPDATED_ENABLED);
+        assertThat(testItemtype.getIsenabled()).isEqualTo(UPDATED_ISENABLED);
     }
 
     @Test
@@ -159,6 +161,8 @@ public class ItemtypeResourceTest {
         // Initialize the database
         itemtypeRepository.saveAndFlush(itemtype);
 
+		int databaseSizeBeforeDelete = itemtypeRepository.findAll().size();
+
         // Get the itemtype
         restItemtypeMockMvc.perform(delete("/api/itemtypes/{id}", itemtype.getId())
                 .accept(TestUtil.APPLICATION_JSON_UTF8))
@@ -166,6 +170,6 @@ public class ItemtypeResourceTest {
 
         // Validate the database is empty
         List<Itemtype> itemtypes = itemtypeRepository.findAll();
-        assertThat(itemtypes).hasSize(0);
+        assertThat(itemtypes).hasSize(databaseSizeBeforeDelete - 1);
     }
 }

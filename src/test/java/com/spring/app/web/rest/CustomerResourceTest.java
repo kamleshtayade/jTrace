@@ -7,6 +7,7 @@ import com.spring.app.repository.CustomerRepository;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import static org.hamcrest.Matchers.hasItem;
 import org.mockito.MockitoAnnotations;
 import org.springframework.boot.test.IntegrationTest;
 import org.springframework.boot.test.SpringApplicationConfiguration;
@@ -82,19 +83,18 @@ public class CustomerResourceTest {
     @Test
     @Transactional
     public void createCustomer() throws Exception {
-        // Validate the database is empty
-        assertThat(customerRepository.findAll()).hasSize(0);
+        int databaseSizeBeforeCreate = customerRepository.findAll().size();
 
         // Create the Customer
         restCustomerMockMvc.perform(post("/api/customers")
                 .contentType(TestUtil.APPLICATION_JSON_UTF8)
                 .content(TestUtil.convertObjectToJsonBytes(customer)))
-                .andExpect(status().isOk());
+                .andExpect(status().isCreated());
 
         // Validate the Customer in the database
         List<Customer> customers = customerRepository.findAll();
-        assertThat(customers).hasSize(1);
-        Customer testCustomer = customers.iterator().next();
+        assertThat(customers).hasSize(databaseSizeBeforeCreate + 1);
+        Customer testCustomer = customers.get(customers.size() - 1);
         assertThat(testCustomer.getCode()).isEqualTo(DEFAULT_CODE);
         assertThat(testCustomer.getName()).isEqualTo(DEFAULT_NAME);
         assertThat(testCustomer.getBillToAddress()).isEqualTo(DEFAULT_BILL_TO_ADDRESS);
@@ -114,14 +114,14 @@ public class CustomerResourceTest {
         restCustomerMockMvc.perform(get("/api/customers"))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
-                .andExpect(jsonPath("$.[0].id").value(customer.getId().intValue()))
-                .andExpect(jsonPath("$.[0].code").value(DEFAULT_CODE.toString()))
-                .andExpect(jsonPath("$.[0].name").value(DEFAULT_NAME.toString()))
-                .andExpect(jsonPath("$.[0].billToAddress").value(DEFAULT_BILL_TO_ADDRESS.toString()))
-                .andExpect(jsonPath("$.[0].shipToAddress").value(DEFAULT_SHIP_TO_ADDRESS.toString()))
-                .andExpect(jsonPath("$.[0].contactName").value(DEFAULT_CONTACT_NAME.toString()))
-                .andExpect(jsonPath("$.[0].email").value(DEFAULT_EMAIL.toString()))
-                .andExpect(jsonPath("$.[0].phone").value(DEFAULT_PHONE.toString()));
+                .andExpect(jsonPath("$.[*].id").value(hasItem(customer.getId().intValue())))
+                .andExpect(jsonPath("$.[*].code").value(hasItem(DEFAULT_CODE.toString())))
+                .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME.toString())))
+                .andExpect(jsonPath("$.[*].billToAddress").value(hasItem(DEFAULT_BILL_TO_ADDRESS.toString())))
+                .andExpect(jsonPath("$.[*].shipToAddress").value(hasItem(DEFAULT_SHIP_TO_ADDRESS.toString())))
+                .andExpect(jsonPath("$.[*].contactName").value(hasItem(DEFAULT_CONTACT_NAME.toString())))
+                .andExpect(jsonPath("$.[*].email").value(hasItem(DEFAULT_EMAIL.toString())))
+                .andExpect(jsonPath("$.[*].phone").value(hasItem(DEFAULT_PHONE.toString())));
     }
 
     @Test
@@ -148,7 +148,7 @@ public class CustomerResourceTest {
     @Transactional
     public void getNonExistingCustomer() throws Exception {
         // Get the customer
-        restCustomerMockMvc.perform(get("/api/customers/{id}", 1L))
+        restCustomerMockMvc.perform(get("/api/customers/{id}", Long.MAX_VALUE))
                 .andExpect(status().isNotFound());
     }
 
@@ -158,6 +158,8 @@ public class CustomerResourceTest {
         // Initialize the database
         customerRepository.saveAndFlush(customer);
 
+		int databaseSizeBeforeUpdate = customerRepository.findAll().size();
+
         // Update the customer
         customer.setCode(UPDATED_CODE);
         customer.setName(UPDATED_NAME);
@@ -166,15 +168,15 @@ public class CustomerResourceTest {
         customer.setContactName(UPDATED_CONTACT_NAME);
         customer.setEmail(UPDATED_EMAIL);
         customer.setPhone(UPDATED_PHONE);
-        restCustomerMockMvc.perform(post("/api/customers")
+        restCustomerMockMvc.perform(put("/api/customers")
                 .contentType(TestUtil.APPLICATION_JSON_UTF8)
                 .content(TestUtil.convertObjectToJsonBytes(customer)))
                 .andExpect(status().isOk());
 
         // Validate the Customer in the database
         List<Customer> customers = customerRepository.findAll();
-        assertThat(customers).hasSize(1);
-        Customer testCustomer = customers.iterator().next();
+        assertThat(customers).hasSize(databaseSizeBeforeUpdate);
+        Customer testCustomer = customers.get(customers.size() - 1);
         assertThat(testCustomer.getCode()).isEqualTo(UPDATED_CODE);
         assertThat(testCustomer.getName()).isEqualTo(UPDATED_NAME);
         assertThat(testCustomer.getBillToAddress()).isEqualTo(UPDATED_BILL_TO_ADDRESS);
@@ -190,6 +192,8 @@ public class CustomerResourceTest {
         // Initialize the database
         customerRepository.saveAndFlush(customer);
 
+		int databaseSizeBeforeDelete = customerRepository.findAll().size();
+
         // Get the customer
         restCustomerMockMvc.perform(delete("/api/customers/{id}", customer.getId())
                 .accept(TestUtil.APPLICATION_JSON_UTF8))
@@ -197,6 +201,6 @@ public class CustomerResourceTest {
 
         // Validate the database is empty
         List<Customer> customers = customerRepository.findAll();
-        assertThat(customers).hasSize(0);
+        assertThat(customers).hasSize(databaseSizeBeforeDelete - 1);
     }
 }

@@ -11,6 +11,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.inject.Inject;
+import java.net.URI;
+import java.net.URISyntaxException;
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
@@ -33,9 +35,29 @@ public class ItemsubcatResource {
             method = RequestMethod.POST,
             produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
-    public void create(@RequestBody Itemsubcat itemsubcat) {
+    public ResponseEntity<Void> create(@RequestBody Itemsubcat itemsubcat) throws URISyntaxException {
         log.debug("REST request to save Itemsubcat : {}", itemsubcat);
+        if (itemsubcat.getId() != null) {
+            return ResponseEntity.badRequest().header("Failure", "A new itemsubcat cannot already have an ID").build();
+        }
         itemsubcatRepository.save(itemsubcat);
+        return ResponseEntity.created(new URI("/api/itemsubcats/" + itemsubcat.getId())).build();
+    }
+
+    /**
+     * PUT  /itemsubcats -> Updates an existing itemsubcat.
+     */
+    @RequestMapping(value = "/itemsubcats",
+        method = RequestMethod.PUT,
+        produces = MediaType.APPLICATION_JSON_VALUE)
+    @Timed
+    public ResponseEntity<Void> update(@RequestBody Itemsubcat itemsubcat) throws URISyntaxException {
+        log.debug("REST request to update Itemsubcat : {}", itemsubcat);
+        if (itemsubcat.getId() == null) {
+            return create(itemsubcat);
+        }
+        itemsubcatRepository.save(itemsubcat);
+        return ResponseEntity.ok().build();
     }
 
     /**

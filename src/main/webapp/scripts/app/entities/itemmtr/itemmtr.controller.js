@@ -1,14 +1,20 @@
 'use strict';
 
 angular.module('jtraceApp')
-    .controller('ItemmtrController', function ($scope, Itemmtr, Itemcat, Itemsubcat) {
+    .controller('ItemmtrController', function ($scope, Itemmtr, Itemsubcat,Itemcat, ParseLinks) {
         $scope.itemmtrs = [];
-        $scope.itemcats = Itemcat.query();
         $scope.itemsubcats = Itemsubcat.query();
+        $scope.itemcats = Itemcat.query();
+        $scope.page = 1;
         $scope.loadAll = function() {
-            Itemmtr.query(function(result) {
-               $scope.itemmtrs = result;
+            Itemmtr.query({page: $scope.page, per_page: 20}, function(result, headers) {
+                $scope.links = ParseLinks.parse(headers('link'));
+                $scope.itemmtrs = result;
             });
+        };
+        $scope.loadPage = function(page) {
+            $scope.page = page;
+            $scope.loadAll();
         };
         $scope.loadAll();
 
@@ -68,5 +74,5 @@ angular.module('jtraceApp')
         $scope.removeChoice = function() {
             var lastItem = $scope.choices.length-1;
             $scope.choices.splice(lastItem);
-        };
+        };        
     });

@@ -1,10 +1,9 @@
 'use strict';
 
 angular.module('jtraceApp')
-    .controller('ItemsubcatController', function ($scope, Itemsubcat, Itemcat, Itemmaster) {
+    .controller('ItemsubcatController', function ($scope, Itemsubcat, Itemcat) {
         $scope.itemsubcats = [];
         $scope.itemcats = Itemcat.query();
-        $scope.itemmasters = Itemmaster.query();
         $scope.loadAll = function() {
             Itemsubcat.query(function(result) {
                $scope.itemsubcats = result;
@@ -13,7 +12,7 @@ angular.module('jtraceApp')
         $scope.loadAll();
 
         $scope.create = function () {
-            Itemsubcat.save($scope.itemsubcat,
+            Itemsubcat.update($scope.itemsubcat,
                 function () {
                     $scope.loadAll();
                     $('#saveItemsubcatModal').modal('hide');
@@ -46,5 +45,7 @@ angular.module('jtraceApp')
 
         $scope.clear = function () {
             $scope.itemsubcat = {name: null, description: null, enabled: null, id: null};
+            $scope.editForm.$setPristine();
+            $scope.editForm.$setUntouched();
         };
     });

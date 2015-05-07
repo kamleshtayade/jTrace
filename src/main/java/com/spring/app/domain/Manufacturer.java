@@ -1,19 +1,18 @@
 package com.spring.app.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.*;
+import javax.validation.constraints.*;
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.Objects;
 
 /**
  * A Manufacturer.
  */
 @Entity
-@Table(name = "T_MANUFACTURER")
+@Table(name = "MANUFACTURER")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 public class Manufacturer implements Serializable {
 
@@ -21,36 +20,23 @@ public class Manufacturer implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(name = "code")
+    @NotNull
+    @Column(name = "code", nullable = false)
     private String code;
 
-    @Column(name = "name")
+    @NotNull
+    @Size(min = 3)
+    @Column(name = "name", nullable = false)
     private String name;
 
-    @Column(name = "enabled")
-    private Boolean enabled;
+    @Column(name = "isenabled")
+    private Boolean isenabled;
 
-    @Column(name = "category")
-    private String category;
+    @Column(name = "mfrcat")
+    private String mfrcat;
 
-    @Column(name = "contact")
-    private String contact;
-
-    @Column(name = "email")
-    private String email;
-
-    @Column(name = "phone")
-    private String phone;
-
-    @OneToMany(mappedBy = "manufacturer")
-    @JsonIgnore
-    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-    private Set<Itemmfrpart> itemmfrparts = new HashSet<>();
-
-    @OneToMany(mappedBy = "manufacturer")
-    @JsonIgnore
-    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-    private Set<Supplier> suppliers = new HashSet<>();
+    @Column(name = "address")
+    private String address;
 
     public Long getId() {
         return id;
@@ -76,60 +62,28 @@ public class Manufacturer implements Serializable {
         this.name = name;
     }
 
-    public Boolean getEnabled() {
-        return enabled;
+    public Boolean getIsenabled() {
+        return isenabled;
     }
 
-    public void setEnabled(Boolean enabled) {
-        this.enabled = enabled;
+    public void setIsenabled(Boolean isenabled) {
+        this.isenabled = isenabled;
     }
 
-    public String getCategory() {
-        return category;
+    public String getMfrcat() {
+        return mfrcat;
     }
 
-    public void setCategory(String category) {
-        this.category = category;
+    public void setMfrcat(String mfrcat) {
+        this.mfrcat = mfrcat;
     }
 
-    public String getContact() {
-        return contact;
+    public String getAddress() {
+        return address;
     }
 
-    public void setContact(String contact) {
-        this.contact = contact;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
-    public Set<Itemmfrpart> getItemmfrparts() {
-        return itemmfrparts;
-    }
-
-    public void setItemmfrparts(Set<Itemmfrpart> itemmfrparts) {
-        this.itemmfrparts = itemmfrparts;
-    }
-
-    public Set<Supplier> getSuppliers() {
-        return suppliers;
-    }
-
-    public void setSuppliers(Set<Supplier> suppliers) {
-        this.suppliers = suppliers;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     @Override
@@ -143,14 +97,14 @@ public class Manufacturer implements Serializable {
 
         Manufacturer manufacturer = (Manufacturer) o;
 
-        if (id != null ? !id.equals(manufacturer.id) : manufacturer.id != null) return false;
+        if ( ! Objects.equals(id, manufacturer.id)) return false;
 
         return true;
     }
 
     @Override
     public int hashCode() {
-        return (int) (id ^ (id >>> 32));
+        return Objects.hashCode(id);
     }
 
     @Override
@@ -159,11 +113,9 @@ public class Manufacturer implements Serializable {
                 "id=" + id +
                 ", code='" + code + "'" +
                 ", name='" + name + "'" +
-                ", enabled='" + enabled + "'" +
-                ", category='" + category + "'" +
-                ", contact='" + contact + "'" +
-                ", email='" + email + "'" +
-                ", phone='" + phone + "'" +
+                ", isenabled='" + isenabled + "'" +
+                ", mfrcat='" + mfrcat + "'" +
+                ", address='" + address + "'" +
                 '}';
     }
 }

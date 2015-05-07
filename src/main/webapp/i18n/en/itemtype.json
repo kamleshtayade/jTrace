@@ -2,19 +2,19 @@
     "jtraceApp": {
         "itemtype" : {
             "home": {
-                "title": "Item Types",
-                "createLabel": "Create a new Item Type",
-                "createOrEditLabel": "Create or edit a Item Type"
+                "title": "Itemtypes",
+                "createLabel": "Create a new Itemtype",
+                "createOrEditLabel": "Create or edit a Itemtype"
             },
             "delete": {
-                "question": "Are you sure you want to delete Item Type {{ id }}?"
+                "question": "Are you sure you want to delete Itemtype {{ id }}?"
             },
             "detail": {
-                "title": "Item Type"
+                "title": "Itemtype"
             },
             "name": "Name",
             "description": "Description",
-            "enabled": "Enabled"
+            "isenabled": "Isenabled"
         }
     }
 }

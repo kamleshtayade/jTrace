@@ -2,16 +2,21 @@
 
     <h2 translate="jtraceApp.supplier.home.title">Supplier</h2>
 
-    <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#saveSupplierModal" ng-click="clear()">
-        <span class="glyphicon glyphicon-flash"></span> <span translate="jtraceApp.supplier.home.createLabel">Create a new Supplier</span>
-    </button>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <button class="btn btn-primary" data-toggle="modal" data-target="#saveSupplierModal" ng-click="clear()">
+                    <span class="glyphicon glyphicon-flash"></span> <span translate="jtraceApp.supplier.home.createLabel">Create a new Supplier</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
     <div class="modal fade" id="saveSupplierModal" tabindex="-1" role="dialog" aria-labelledby="mySupplierLabel"
          aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
-                <form name="editForm" role="form" novalidate
-                      class="ng-scope ng-invalid ng-invalid-required ng-dirty ng-valid-minlength"
-                      ng-submit="create()">
+                <form name="editForm" role="form" novalidate ng-submit="create()" show-validation>
 
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
@@ -28,38 +33,52 @@
                         <div class="form-group">
                             <label translate="jtraceApp.supplier.code">Code</label>
                             <input type="text" class="form-control" name="code"
-                                   ng-model="supplier.code">
-                        </div>
-                        <div class="form-group">
-                            <label translate="jtraceApp.supplier.name">Name</label>
-                            <input type="text" class="form-control" name="name"
-                                   ng-model="supplier.name">
-                        </div>
-                        <div class="form-group">
-                            <label translate="jtraceApp.supplier.enabled">Enabled</label>
-                            <input type="checkbox" class="form-control" name="enabled"
-                                   ng-model="supplier.enabled">
-                        </div>
-                        <div class="form-group">
-                            <label translate="jtraceApp.supplier.contact">Contact</label>
-                            <input type="text" class="form-control" name="contact"
-                                   ng-model="supplier.contact">
-                        </div>
-                        <div class="form-group">
-                            <label translate="jtraceApp.supplier.email">Email</label>
-                            <input type="text" class="form-control" name="email"
-                                   ng-model="supplier.email">
-                        </div>
-                        <div class="form-group">
-                            <label translate="jtraceApp.supplier.phone">Phone</label>
-                            <input type="text" class="form-control" name="phone"
-                                   ng-model="supplier.phone">
-                        </div>
+                                   ng-model="supplier.code" required ng-minlength="3">
 
+                            <div ng-show="editForm.code.$invalid">
+                                <p class="help-block"
+                                   ng-show="editForm.code.$error.required" translate="entity.validation.required">
+                                    This field is required.
+                                </p>
+                                <p class="help-block"
+                                   ng-show="editForm.code.$error.minlength" translate="entity.validation.minlength" translate-value-min="3">
+                                    This field is required to be at least 3 characters.
+                                </p>
+                            </div>
+                        </div>
                         <div class="form-group">
-                            <label translate="jtraceApp.supplier.manufacturer">manufacturer</label>
-                            <select class="form-control" name="phone" ng-model="supplier.manufacturer.id" ng-options="manufacturer.id as manufacturer.name for manufacturer in manufacturers">
-                            </select>
+                            <label translate="jtraceApp.supplier.isenabled">Isenabled</label>
+                            <input type="checkbox" class="form-control" name="isenabled"
+                                   ng-model="supplier.isenabled">
+
+                        </div>
+                        <div class="form-group">
+                            <label translate="jtraceApp.supplier.address">Address</label>
+                            <input type="text" class="form-control" name="address"
+                                   ng-model="supplier.address" required>
+
+                            <div ng-show="editForm.address.$invalid">
+                                <p class="help-block"
+                                   ng-show="editForm.address.$error.required" translate="entity.validation.required">
+                                    This field is required.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label translate="jtraceApp.supplier.remark">Remark</label>
+                            <input type="text" class="form-control" name="remark"
+                                   ng-model="supplier.remark" required ng-minlength="5">
+
+                            <div ng-show="editForm.remark.$invalid">
+                                <p class="help-block"
+                                   ng-show="editForm.remark.$error.required" translate="entity.validation.required">
+                                    This field is required.
+                                </p>
+                                <p class="help-block"
+                                   ng-show="editForm.remark.$error.minlength" translate="entity.validation.minlength" translate-value-min="5">
+                                    This field is required to be at least 5 characters.
+                                </p>
+                            </div>
                         </div>
 
                     </div>
@@ -107,12 +126,9 @@
                 <tr>
                     <th>ID</th>
                     <th translate="jtraceApp.supplier.code">Code</th>
-                    <th translate="jtraceApp.supplier.name">Name</th>
-                    <th translate="jtraceApp.supplier.enabled">Enabled</th>
-                    <th translate="jtraceApp.supplier.contact">Contact</th>
-                    <th translate="jtraceApp.supplier.email">Email</th>
-                    <th translate="jtraceApp.supplier.phone">Phone</th>
-                    <th translate="jtraceApp.supplier.manufacturer">manufacturer</th>
+                    <th translate="jtraceApp.supplier.isenabled">Isenabled</th>
+                    <th translate="jtraceApp.supplier.address">Address</th>
+                    <th translate="jtraceApp.supplier.remark">Remark</th>
                     <th></th>
                 </tr>
             </thead>
@@ -120,31 +136,41 @@
                 <tr ng-repeat="supplier in suppliers">
                     <td><a ui-sref="supplierDetail({id:supplier.id})">{{supplier.id}}</a></td>
                     <td>{{supplier.code}}</td>
-                    <td>{{supplier.name}}</td>
-                    <td>{{supplier.enabled}}</td>
-                    <td>{{supplier.contact}}</td>
-                    <td>{{supplier.email}}</td>
-                    <td>{{supplier.phone}}</td>
-                    <td>{{supplier.manufacturer.name}}</td>
+                    <td>{{supplier.isenabled}}</td>
+                    <td>{{supplier.address}}</td>
+                    <td>{{supplier.remark}}</td>
                     <td>
                         <button type="submit"
                                 ui-sref="supplierDetail({id:supplier.id})"
-                                class="btn btn-info">
+                                class="btn btn-info btn-sm">
                             <span class="glyphicon glyphicon-eye-open"></span>&nbsp;<span translate="entity.action.view"> View</span>
                         </button>
                         <button type="submit"
                                 ng-click="update(supplier.id)"
-                                class="btn btn-primary">
+                                class="btn btn-primary btn-sm">
                             <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span translate="entity.action.edit"> Edit</span>
                         </button>
                         <button type="submit"
                                 ng-click="delete(supplier.id)"
-                                class="btn btn-danger">
+                                class="btn btn-danger btn-sm">
                             <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span translate="entity.action.delete"> Delete</span>
                         </button>
                     </td>
                 </tr>
             </tbody>
         </table>
+        <nav>
+            <ul class="pagination">
+                <li ng-show="links['first']" ng-click="loadPage(links['first'])"><a>&lt;&lt;</a></li>
+                <li ng-show="links['prev']" ng-click="loadPage(links['prev'])"><a>&lt;</a></li>
+                <li ng-show="page > 2" ng-click="loadPage(page - 2)"><a>{{page - 2}}</a></li>
+                <li ng-show="page > 1" ng-click="loadPage(page - 1)"><a>{{page - 1}}</a></li>
+                <li class="active"><a>{{page}}</a></li>
+                <li ng-show="page < links['last']" ng-click="loadPage(page + 1)"><a>{{page + 1}}</a></li>
+                <li ng-show="page < links['last'] - 1" ng-click="loadPage(page + 2)"><a>{{page + 2}}</a></li>
+                <li ng-show="links['next']" ng-click="loadPage(links['next'])"><a>&gt;</a></li>
+                <li ng-show="links['last']" ng-click="loadPage(links['last'])"><a>&gt;&gt;</a></li>
+            </ul>
+        </nav>
     </div>
 </div>

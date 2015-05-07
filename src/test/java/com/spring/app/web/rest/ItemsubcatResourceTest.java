@@ -7,6 +7,7 @@ import com.spring.app.repository.ItemsubcatRepository;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import static org.hamcrest.Matchers.hasItem;
 import org.mockito.MockitoAnnotations;
 import org.springframework.boot.test.IntegrationTest;
 import org.springframework.boot.test.SpringApplicationConfiguration;
@@ -71,19 +72,18 @@ public class ItemsubcatResourceTest {
     @Test
     @Transactional
     public void createItemsubcat() throws Exception {
-        // Validate the database is empty
-        assertThat(itemsubcatRepository.findAll()).hasSize(0);
+        int databaseSizeBeforeCreate = itemsubcatRepository.findAll().size();
 
         // Create the Itemsubcat
         restItemsubcatMockMvc.perform(post("/api/itemsubcats")
                 .contentType(TestUtil.APPLICATION_JSON_UTF8)
                 .content(TestUtil.convertObjectToJsonBytes(itemsubcat)))
-                .andExpect(status().isOk());
+                .andExpect(status().isCreated());
 
         // Validate the Itemsubcat in the database
         List<Itemsubcat> itemsubcats = itemsubcatRepository.findAll();
-        assertThat(itemsubcats).hasSize(1);
-        Itemsubcat testItemsubcat = itemsubcats.iterator().next();
+        assertThat(itemsubcats).hasSize(databaseSizeBeforeCreate + 1);
+        Itemsubcat testItemsubcat = itemsubcats.get(itemsubcats.size() - 1);
         assertThat(testItemsubcat.getName()).isEqualTo(DEFAULT_NAME);
         assertThat(testItemsubcat.getDescription()).isEqualTo(DEFAULT_DESCRIPTION);
         assertThat(testItemsubcat.getEnabled()).isEqualTo(DEFAULT_ENABLED);
@@ -99,10 +99,10 @@ public class ItemsubcatResourceTest {
         restItemsubcatMockMvc.perform(get("/api/itemsubcats"))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
-                .andExpect(jsonPath("$.[0].id").value(itemsubcat.getId().intValue()))
-                .andExpect(jsonPath("$.[0].name").value(DEFAULT_NAME.toString()))
-                .andExpect(jsonPath("$.[0].description").value(DEFAULT_DESCRIPTION.toString()))
-                .andExpect(jsonPath("$.[0].enabled").value(DEFAULT_ENABLED.booleanValue()));
+                .andExpect(jsonPath("$.[*].id").value(hasItem(itemsubcat.getId().intValue())))
+                .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME.toString())))
+                .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION.toString())))
+                .andExpect(jsonPath("$.[*].enabled").value(hasItem(DEFAULT_ENABLED.booleanValue())));
     }
 
     @Test
@@ -125,7 +125,7 @@ public class ItemsubcatResourceTest {
     @Transactional
     public void getNonExistingItemsubcat() throws Exception {
         // Get the itemsubcat
-        restItemsubcatMockMvc.perform(get("/api/itemsubcats/{id}", 1L))
+        restItemsubcatMockMvc.perform(get("/api/itemsubcats/{id}", Long.MAX_VALUE))
                 .andExpect(status().isNotFound());
     }
 
@@ -135,19 +135,21 @@ public class ItemsubcatResourceTest {
         // Initialize the database
         itemsubcatRepository.saveAndFlush(itemsubcat);
 
+		int databaseSizeBeforeUpdate = itemsubcatRepository.findAll().size();
+
         // Update the itemsubcat
         itemsubcat.setName(UPDATED_NAME);
         itemsubcat.setDescription(UPDATED_DESCRIPTION);
         itemsubcat.setEnabled(UPDATED_ENABLED);
-        restItemsubcatMockMvc.perform(post("/api/itemsubcats")
+        restItemsubcatMockMvc.perform(put("/api/itemsubcats")
                 .contentType(TestUtil.APPLICATION_JSON_UTF8)
                 .content(TestUtil.convertObjectToJsonBytes(itemsubcat)))
                 .andExpect(status().isOk());
 
         // Validate the Itemsubcat in the database
         List<Itemsubcat> itemsubcats = itemsubcatRepository.findAll();
-        assertThat(itemsubcats).hasSize(1);
-        Itemsubcat testItemsubcat = itemsubcats.iterator().next();
+        assertThat(itemsubcats).hasSize(databaseSizeBeforeUpdate);
+        Itemsubcat testItemsubcat = itemsubcats.get(itemsubcats.size() - 1);
         assertThat(testItemsubcat.getName()).isEqualTo(UPDATED_NAME);
         assertThat(testItemsubcat.getDescription()).isEqualTo(UPDATED_DESCRIPTION);
         assertThat(testItemsubcat.getEnabled()).isEqualTo(UPDATED_ENABLED);
@@ -159,6 +161,8 @@ public class ItemsubcatResourceTest {
         // Initialize the database
         itemsubcatRepository.saveAndFlush(itemsubcat);
 
+		int databaseSizeBeforeDelete = itemsubcatRepository.findAll().size();
+
         // Get the itemsubcat
         restItemsubcatMockMvc.perform(delete("/api/itemsubcats/{id}", itemsubcat.getId())
                 .accept(TestUtil.APPLICATION_JSON_UTF8))
@@ -166,6 +170,6 @@ public class ItemsubcatResourceTest {
 
         // Validate the database is empty
         List<Itemsubcat> itemsubcats = itemsubcatRepository.findAll();
-        assertThat(itemsubcats).hasSize(0);
+        assertThat(itemsubcats).hasSize(databaseSizeBeforeDelete - 1);
     }
 }

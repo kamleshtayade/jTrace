@@ -2,16 +2,21 @@
 
     <h2 translate="jtraceApp.itemsubcat.home.title">Itemsubcat</h2>
 
-    <button class="btn btn-primary" data-toggle="modal" data-target="#saveItemsubcatModal" ng-click="clear()">
-        <span class="glyphicon glyphicon-flash"></span> <span translate="jtraceApp.itemsubcat.home.createLabel">Create a new Itemsubcat</span>
-    </button>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <button class="btn btn-primary" data-toggle="modal" data-target="#saveItemsubcatModal" ng-click="clear()">
+                    <span class="glyphicon glyphicon-flash"></span> <span translate="jtraceApp.itemsubcat.home.createLabel">Create a new Itemsubcat</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
     <div class="modal fade" id="saveItemsubcatModal" tabindex="-1" role="dialog" aria-labelledby="myItemsubcatLabel"
          aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
-                <form name="editForm" role="form" novalidate
-                      class="ng-scope ng-invalid ng-invalid-required ng-dirty ng-valid-minlength"
-                      ng-submit="create()">
+                <form name="editForm" role="form" novalidate ng-submit="create()">
 
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
@@ -29,25 +34,26 @@
                             <label translate="jtraceApp.itemsubcat.name">Name</label>
                             <input type="text" class="form-control" name="name"
                                    ng-model="itemsubcat.name">
+
                         </div>
                         <div class="form-group">
                             <label translate="jtraceApp.itemsubcat.description">Description</label>
                             <input type="text" class="form-control" name="description"
                                    ng-model="itemsubcat.description">
+
                         </div>
                         <div class="form-group">
                             <label translate="jtraceApp.itemsubcat.enabled">Enabled</label>
                             <input type="checkbox" class="form-control" name="enabled"
                                    ng-model="itemsubcat.enabled">
+
                         </div>
 
                         <div class="form-group">
                             <label translate="jtraceApp.itemsubcat.itemcat">itemcat</label>
-                            <select class="form-control" name="enabled" ng-model="itemsubcat.itemcat.id" ng-options="itemcat.id as itemcat.name for itemcat in itemcats">
+                            <select class="form-control" name="itemcat" ng-model="itemsubcat.itemcat.id" ng-options="itemcat.id as itemcat.name for itemcat in itemcats">
                             </select>
-                            <!--<input type="text" name="enabled" ng-model="itemsubcat.itemcat.id" typeahead="itemcat.id as itemcat.name for itemcat in itemcats | filter:{name:$viewValue} | limitTo:8" class="form-control">-->
                         </div>
-
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">

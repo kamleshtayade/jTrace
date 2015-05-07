@@ -2,23 +2,13 @@
     "relationships": [
         {
             "relationshipId": 1,
-            "relationshipName": "manufacturer",
-            "relationshipNameCapitalized": "Manufacturer",
-            "relationshipFieldName": "manufacturer",
-            "otherEntityName": "manufacturer",
+            "relationshipName": "itemmtr",
+            "relationshipNameCapitalized": "Itemmtr",
+            "relationshipFieldName": "itemmtr",
+            "otherEntityName": "itemmtr",
             "relationshipType": "many-to-one",
-            "otherEntityNameCapitalized": "Manufacturer",
-            "otherEntityField": "name"
-        },
-        {
-            "relationshipId": 2,
-            "relationshipName": "itemmaster",
-            "relationshipNameCapitalized": "Itemmaster",
-            "relationshipFieldName": "itemmaster",
-            "otherEntityName": "itemmaster",
-            "relationshipType": "many-to-one",
-            "otherEntityNameCapitalized": "Itemmaster",
-            "otherEntityField": "code"
+            "otherEntityNameCapitalized": "Itemmtr",
+            "otherEntityField": "id"
         }
     ],
     "fields": [
@@ -27,28 +17,44 @@
             "fieldName": "mfrpart",
             "fieldType": "String",
             "fieldNameCapitalized": "Mfrpart",
-            "fieldNameUnderscored": "mfrpart"
+            "fieldNameUnderscored": "mfrpart",
+            "fieldInJavaBeanMethod": "Mfrpart",
+            "fieldValidate": true,
+            "fieldValidateRules": [
+                "required"
+            ]
         },
         {
             "fieldId": 2,
             "fieldName": "status",
-            "fieldType": "String",
+            "fieldType": "Boolean",
             "fieldNameCapitalized": "Status",
-            "fieldNameUnderscored": "status"
+            "fieldNameUnderscored": "status",
+            "fieldInJavaBeanMethod": "Status",
+            "fieldValidate": false
         },
         {
             "fieldId": 3,
-            "fieldName": "suppart",
+            "fieldName": "supplier",
             "fieldType": "String",
-            "fieldNameCapitalized": "Suppart",
-            "fieldNameUnderscored": "suppart"
+            "fieldNameCapitalized": "Supplier",
+            "fieldNameUnderscored": "supplier",
+            "fieldInJavaBeanMethod": "Supplier",
+            "fieldValidate": false
         },
         {
             "fieldId": 4,
-            "fieldName": "remarks",
+            "fieldName": "remark",
             "fieldType": "String",
-            "fieldNameCapitalized": "Remarks",
-            "fieldNameUnderscored": "remarks"
+            "fieldNameCapitalized": "Remark",
+            "fieldNameUnderscored": "remark",
+            "fieldInJavaBeanMethod": "Remark",
+            "fieldValidate": true,
+            "fieldValidateRules": [
+                "required",
+                "minlength"
+            ],
+            "fieldValidateRulesMinlength": "10"
         }
     ],
     "fieldsContainOwnerManyToMany": false,
@@ -58,5 +64,7 @@
     "fieldsContainBigDecimal": false,
     "fieldsContainDateTime": false,
     "fieldsContainDate": false,
-    "changelogDate": "20150415134109"
+    "changelogDate": "20150506074712",
+    "pagination": "pagination",
+    "validation": true
 }

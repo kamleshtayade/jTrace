@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('jtraceApp')
-    .controller('ItemmtrDetailController', function ($scope, $stateParams, Itemmtr) {
+    .controller('ItemmtrDetailController', function ($scope, $stateParams, Itemmtr, Itemsubcat) {
         $scope.itemmtr = {};
         $scope.load = function (id) {
             Itemmtr.get({id: id}, function(result) {

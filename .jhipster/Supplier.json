@@ -1,58 +1,54 @@
 {
-    "relationships": [
-        {
-            "relationshipId": 1,
-            "relationshipName": "manufacturer",
-            "relationshipNameCapitalized": "Manufacturer",
-            "relationshipFieldName": "manufacturer",
-            "otherEntityName": "manufacturer",
-            "relationshipType": "many-to-one",
-            "otherEntityNameCapitalized": "Manufacturer",
-            "otherEntityField": "name"
-        }
-    ],
+    "relationships": [],
     "fields": [
         {
             "fieldId": 1,
             "fieldName": "code",
             "fieldType": "String",
             "fieldNameCapitalized": "Code",
-            "fieldNameUnderscored": "code"
+            "fieldNameUnderscored": "code",
+            "fieldInJavaBeanMethod": "Code",
+            "fieldValidate": true,
+            "fieldValidateRules": [
+                "required",
+                "minlength"
+            ],
+            "fieldValidateRulesMinlength": "3"
         },
         {
             "fieldId": 2,
-            "fieldName": "name",
-            "fieldType": "String",
-            "fieldNameCapitalized": "Name",
-            "fieldNameUnderscored": "name"
+            "fieldName": "isenabled",
+            "fieldType": "Boolean",
+            "fieldNameCapitalized": "Isenabled",
+            "fieldNameUnderscored": "isenabled",
+            "fieldInJavaBeanMethod": "Isenabled",
+            "fieldValidate": false
         },
         {
             "fieldId": 3,
-            "fieldName": "enabled",
-            "fieldType": "Boolean",
-            "fieldNameCapitalized": "Enabled",
-            "fieldNameUnderscored": "enabled"
+            "fieldName": "address",
+            "fieldType": "String",
+            "fieldNameCapitalized": "Address",
+            "fieldNameUnderscored": "address",
+            "fieldInJavaBeanMethod": "Address",
+            "fieldValidate": true,
+            "fieldValidateRules": [
+                "required"
+            ]
         },
         {
             "fieldId": 4,
-            "fieldName": "contact",
+            "fieldName": "remark",
             "fieldType": "String",
-            "fieldNameCapitalized": "Contact",
-            "fieldNameUnderscored": "contact"
-        },
-        {
-            "fieldId": 5,
-            "fieldName": "email",
-            "fieldType": "String",
-            "fieldNameCapitalized": "Email",
-            "fieldNameUnderscored": "email"
-        },
-        {
-            "fieldId": 6,
-            "fieldName": "phone",
-            "fieldType": "String",
-            "fieldNameCapitalized": "Phone",
-            "fieldNameUnderscored": "phone"
+            "fieldNameCapitalized": "Remark",
+            "fieldNameUnderscored": "remark",
+            "fieldInJavaBeanMethod": "Remark",
+            "fieldValidate": true,
+            "fieldValidateRules": [
+                "required",
+                "minlength"
+            ],
+            "fieldValidateRulesMinlength": "5"
         }
     ],
     "fieldsContainOwnerManyToMany": false,
@@ -62,5 +58,7 @@
     "fieldsContainBigDecimal": false,
     "fieldsContainDateTime": false,
     "fieldsContainDate": false,
-    "changelogDate": "20150415133754"
+    "changelogDate": "20150506080221",
+    "pagination": "pagination",
+    "validation": true
 }

@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('jtraceApp')
-    .factory('Auth', function Auth($rootScope, $state, $q, $translate, Principal, AuthServerProvider, Account, Register, Activate, Password) {
+    .factory('Auth', function Auth($rootScope, $state, $q, $translate, Principal, AuthServerProvider, Account, Register, Activate, Password, Tracker) {
         return {
             login: function (credentials, callback) {
                 var cb = callback || angular.noop;
@@ -13,9 +13,9 @@ angular.module('jtraceApp')
                         // After the login the language will be changed to
                         // the language selected by the user during his registration
                         $translate.use(account.langKey);
+                        Tracker.sendActivity();
+                        deferred.resolve(data);
                     });
-                    deferred.resolve(data);
-
                     return cb();
                 }).catch(function (err) {
                     this.logout();
@@ -31,8 +31,8 @@ angular.module('jtraceApp')
                 Principal.authenticate(null);
             },
 
-            authorize: function() {
-                return Principal.identity()
+            authorize: function(force) {
+                return Principal.identity(force)
                     .then(function() {
                         var isAuthenticated = Principal.isAuthenticated();
 

@@ -12,8 +12,9 @@
             "detail": {
                 "title": "Plantmfgline"
             },
+            "name": "Name",
             "capacity": "Capacity",
-            "plant": "plant"
+            "plantsec": "plantsec"
         }
     }
 }

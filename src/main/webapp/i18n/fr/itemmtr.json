@@ -15,8 +15,7 @@
             "code": "Code",
             "description": "Description",
             "specification": "Specification",
-            "catid": "Catid",
-            "subcatid": "Subcatid"
+            "itemsubcat": "itemsubcat"
         }
     }
 }

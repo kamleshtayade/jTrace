@@ -7,6 +7,7 @@ import com.spring.app.repository.ManufacturerRepository;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import static org.hamcrest.Matchers.hasItem;
 import org.mockito.MockitoAnnotations;
 import org.springframework.boot.test.IntegrationTest;
 import org.springframework.boot.test.SpringApplicationConfiguration;
@@ -42,16 +43,12 @@ public class ManufacturerResourceTest {
     private static final String DEFAULT_NAME = "SAMPLE_TEXT";
     private static final String UPDATED_NAME = "UPDATED_TEXT";
 
-    private static final Boolean DEFAULT_ENABLED = false;
-    private static final Boolean UPDATED_ENABLED = true;
-    private static final String DEFAULT_CATEGORY = "SAMPLE_TEXT";
-    private static final String UPDATED_CATEGORY = "UPDATED_TEXT";
-    private static final String DEFAULT_CONTACT = "SAMPLE_TEXT";
-    private static final String UPDATED_CONTACT = "UPDATED_TEXT";
-    private static final String DEFAULT_EMAIL = "SAMPLE_TEXT";
-    private static final String UPDATED_EMAIL = "UPDATED_TEXT";
-    private static final String DEFAULT_PHONE = "SAMPLE_TEXT";
-    private static final String UPDATED_PHONE = "UPDATED_TEXT";
+    private static final Boolean DEFAULT_ISENABLED = false;
+    private static final Boolean UPDATED_ISENABLED = true;
+    private static final String DEFAULT_MFRCAT = "SAMPLE_TEXT";
+    private static final String UPDATED_MFRCAT = "UPDATED_TEXT";
+    private static final String DEFAULT_ADDRESS = "SAMPLE_TEXT";
+    private static final String UPDATED_ADDRESS = "UPDATED_TEXT";
 
     @Inject
     private ManufacturerRepository manufacturerRepository;
@@ -73,36 +70,69 @@ public class ManufacturerResourceTest {
         manufacturer = new Manufacturer();
         manufacturer.setCode(DEFAULT_CODE);
         manufacturer.setName(DEFAULT_NAME);
-        manufacturer.setEnabled(DEFAULT_ENABLED);
-        manufacturer.setCategory(DEFAULT_CATEGORY);
-        manufacturer.setContact(DEFAULT_CONTACT);
-        manufacturer.setEmail(DEFAULT_EMAIL);
-        manufacturer.setPhone(DEFAULT_PHONE);
+        manufacturer.setIsenabled(DEFAULT_ISENABLED);
+        manufacturer.setMfrcat(DEFAULT_MFRCAT);
+        manufacturer.setAddress(DEFAULT_ADDRESS);
     }
 
     @Test
     @Transactional
     public void createManufacturer() throws Exception {
-        // Validate the database is empty
-        assertThat(manufacturerRepository.findAll()).hasSize(0);
+        int databaseSizeBeforeCreate = manufacturerRepository.findAll().size();
 
         // Create the Manufacturer
         restManufacturerMockMvc.perform(post("/api/manufacturers")
                 .contentType(TestUtil.APPLICATION_JSON_UTF8)
                 .content(TestUtil.convertObjectToJsonBytes(manufacturer)))
-                .andExpect(status().isOk());
+                .andExpect(status().isCreated());
 
         // Validate the Manufacturer in the database
         List<Manufacturer> manufacturers = manufacturerRepository.findAll();
-        assertThat(manufacturers).hasSize(1);
-        Manufacturer testManufacturer = manufacturers.iterator().next();
+        assertThat(manufacturers).hasSize(databaseSizeBeforeCreate + 1);
+        Manufacturer testManufacturer = manufacturers.get(manufacturers.size() - 1);
         assertThat(testManufacturer.getCode()).isEqualTo(DEFAULT_CODE);
         assertThat(testManufacturer.getName()).isEqualTo(DEFAULT_NAME);
-        assertThat(testManufacturer.getEnabled()).isEqualTo(DEFAULT_ENABLED);
-        assertThat(testManufacturer.getCategory()).isEqualTo(DEFAULT_CATEGORY);
-        assertThat(testManufacturer.getContact()).isEqualTo(DEFAULT_CONTACT);
-        assertThat(testManufacturer.getEmail()).isEqualTo(DEFAULT_EMAIL);
-        assertThat(testManufacturer.getPhone()).isEqualTo(DEFAULT_PHONE);
+        assertThat(testManufacturer.getIsenabled()).isEqualTo(DEFAULT_ISENABLED);
+        assertThat(testManufacturer.getMfrcat()).isEqualTo(DEFAULT_MFRCAT);
+        assertThat(testManufacturer.getAddress()).isEqualTo(DEFAULT_ADDRESS);
+    }
+
+    @Test
+    @Transactional
+    public void checkCodeIsRequired() throws Exception {
+        // Validate the database is empty
+        assertThat(manufacturerRepository.findAll()).hasSize(0);
+        // set the field null
+        manufacturer.setCode(null);
+
+        // Create the Manufacturer, which fails.
+        restManufacturerMockMvc.perform(post("/api/manufacturers")
+                .contentType(TestUtil.APPLICATION_JSON_UTF8)
+                .content(TestUtil.convertObjectToJsonBytes(manufacturer)))
+                .andExpect(status().isBadRequest());
+
+        // Validate the database is still empty
+        List<Manufacturer> manufacturers = manufacturerRepository.findAll();
+        assertThat(manufacturers).hasSize(0);
+    }
+
+    @Test
+    @Transactional
+    public void checkNameIsRequired() throws Exception {
+        // Validate the database is empty
+        assertThat(manufacturerRepository.findAll()).hasSize(0);
+        // set the field null
+        manufacturer.setName(null);
+
+        // Create the Manufacturer, which fails.
+        restManufacturerMockMvc.perform(post("/api/manufacturers")
+                .contentType(TestUtil.APPLICATION_JSON_UTF8)
+                .content(TestUtil.convertObjectToJsonBytes(manufacturer)))
+                .andExpect(status().isBadRequest());
+
+        // Validate the database is still empty
+        List<Manufacturer> manufacturers = manufacturerRepository.findAll();
+        assertThat(manufacturers).hasSize(0);
     }
 
     @Test
@@ -115,14 +145,12 @@ public class ManufacturerResourceTest {
         restManufacturerMockMvc.perform(get("/api/manufacturers"))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
-                .andExpect(jsonPath("$.[0].id").value(manufacturer.getId().intValue()))
-                .andExpect(jsonPath("$.[0].code").value(DEFAULT_CODE.toString()))
-                .andExpect(jsonPath("$.[0].name").value(DEFAULT_NAME.toString()))
-                .andExpect(jsonPath("$.[0].enabled").value(DEFAULT_ENABLED.booleanValue()))
-                .andExpect(jsonPath("$.[0].category").value(DEFAULT_CATEGORY.toString()))
-                .andExpect(jsonPath("$.[0].contact").value(DEFAULT_CONTACT.toString()))
-                .andExpect(jsonPath("$.[0].email").value(DEFAULT_EMAIL.toString()))
-                .andExpect(jsonPath("$.[0].phone").value(DEFAULT_PHONE.toString()));
+                .andExpect(jsonPath("$.[*].id").value(hasItem(manufacturer.getId().intValue())))
+                .andExpect(jsonPath("$.[*].code").value(hasItem(DEFAULT_CODE.toString())))
+                .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME.toString())))
+                .andExpect(jsonPath("$.[*].isenabled").value(hasItem(DEFAULT_ISENABLED.booleanValue())))
+                .andExpect(jsonPath("$.[*].mfrcat").value(hasItem(DEFAULT_MFRCAT.toString())))
+                .andExpect(jsonPath("$.[*].address").value(hasItem(DEFAULT_ADDRESS.toString())));
     }
 
     @Test
@@ -138,18 +166,16 @@ public class ManufacturerResourceTest {
             .andExpect(jsonPath("$.id").value(manufacturer.getId().intValue()))
             .andExpect(jsonPath("$.code").value(DEFAULT_CODE.toString()))
             .andExpect(jsonPath("$.name").value(DEFAULT_NAME.toString()))
-            .andExpect(jsonPath("$.enabled").value(DEFAULT_ENABLED.booleanValue()))
-            .andExpect(jsonPath("$.category").value(DEFAULT_CATEGORY.toString()))
-            .andExpect(jsonPath("$.contact").value(DEFAULT_CONTACT.toString()))
-            .andExpect(jsonPath("$.email").value(DEFAULT_EMAIL.toString()))
-            .andExpect(jsonPath("$.phone").value(DEFAULT_PHONE.toString()));
+            .andExpect(jsonPath("$.isenabled").value(DEFAULT_ISENABLED.booleanValue()))
+            .andExpect(jsonPath("$.mfrcat").value(DEFAULT_MFRCAT.toString()))
+            .andExpect(jsonPath("$.address").value(DEFAULT_ADDRESS.toString()));
     }
 
     @Test
     @Transactional
     public void getNonExistingManufacturer() throws Exception {
         // Get the manufacturer
-        restManufacturerMockMvc.perform(get("/api/manufacturers/{id}", 1L))
+        restManufacturerMockMvc.perform(get("/api/manufacturers/{id}", Long.MAX_VALUE))
                 .andExpect(status().isNotFound());
     }
 
@@ -159,30 +185,28 @@ public class ManufacturerResourceTest {
         // Initialize the database
         manufacturerRepository.saveAndFlush(manufacturer);
 
+		int databaseSizeBeforeUpdate = manufacturerRepository.findAll().size();
+
         // Update the manufacturer
         manufacturer.setCode(UPDATED_CODE);
         manufacturer.setName(UPDATED_NAME);
-        manufacturer.setEnabled(UPDATED_ENABLED);
-        manufacturer.setCategory(UPDATED_CATEGORY);
-        manufacturer.setContact(UPDATED_CONTACT);
-        manufacturer.setEmail(UPDATED_EMAIL);
-        manufacturer.setPhone(UPDATED_PHONE);
-        restManufacturerMockMvc.perform(post("/api/manufacturers")
+        manufacturer.setIsenabled(UPDATED_ISENABLED);
+        manufacturer.setMfrcat(UPDATED_MFRCAT);
+        manufacturer.setAddress(UPDATED_ADDRESS);
+        restManufacturerMockMvc.perform(put("/api/manufacturers")
                 .contentType(TestUtil.APPLICATION_JSON_UTF8)
                 .content(TestUtil.convertObjectToJsonBytes(manufacturer)))
                 .andExpect(status().isOk());
 
         // Validate the Manufacturer in the database
         List<Manufacturer> manufacturers = manufacturerRepository.findAll();
-        assertThat(manufacturers).hasSize(1);
-        Manufacturer testManufacturer = manufacturers.iterator().next();
+        assertThat(manufacturers).hasSize(databaseSizeBeforeUpdate);
+        Manufacturer testManufacturer = manufacturers.get(manufacturers.size() - 1);
         assertThat(testManufacturer.getCode()).isEqualTo(UPDATED_CODE);
         assertThat(testManufacturer.getName()).isEqualTo(UPDATED_NAME);
-        assertThat(testManufacturer.getEnabled()).isEqualTo(UPDATED_ENABLED);
-        assertThat(testManufacturer.getCategory()).isEqualTo(UPDATED_CATEGORY);
-        assertThat(testManufacturer.getContact()).isEqualTo(UPDATED_CONTACT);
-        assertThat(testManufacturer.getEmail()).isEqualTo(UPDATED_EMAIL);
-        assertThat(testManufacturer.getPhone()).isEqualTo(UPDATED_PHONE);
+        assertThat(testManufacturer.getIsenabled()).isEqualTo(UPDATED_ISENABLED);
+        assertThat(testManufacturer.getMfrcat()).isEqualTo(UPDATED_MFRCAT);
+        assertThat(testManufacturer.getAddress()).isEqualTo(UPDATED_ADDRESS);
     }
 
     @Test
@@ -191,6 +215,8 @@ public class ManufacturerResourceTest {
         // Initialize the database
         manufacturerRepository.saveAndFlush(manufacturer);
 
+		int databaseSizeBeforeDelete = manufacturerRepository.findAll().size();
+
         // Get the manufacturer
         restManufacturerMockMvc.perform(delete("/api/manufacturers/{id}", manufacturer.getId())
                 .accept(TestUtil.APPLICATION_JSON_UTF8))
@@ -198,6 +224,6 @@ public class ManufacturerResourceTest {
 
         // Validate the database is empty
         List<Manufacturer> manufacturers = manufacturerRepository.findAll();
-        assertThat(manufacturers).hasSize(0);
+        assertThat(manufacturers).hasSize(databaseSizeBeforeDelete - 1);
     }
 }

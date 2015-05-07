@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('jtraceApp')
-    .controller('ManufacturerDetailController', function ($scope, $stateParams, Manufacturer, Itemmfrpart, Supplier) {
+    .controller('ManufacturerDetailController', function ($scope, $stateParams, Manufacturer) {
         $scope.manufacturer = {};
         $scope.load = function (id) {
             Manufacturer.get({id: id}, function(result) {

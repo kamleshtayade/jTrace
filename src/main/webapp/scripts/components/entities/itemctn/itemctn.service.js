@@ -12,6 +12,7 @@ angular.module('jtraceApp')
                     data.recdDt = new Date(new Date(recdDtFrom[0], recdDtFrom[1] - 1, recdDtFrom[2]));
                     return data;
                 }
-            }
+            },
+            'update': { method:'PUT' }
         });
     });

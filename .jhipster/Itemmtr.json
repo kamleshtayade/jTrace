@@ -1,5 +1,16 @@
 {
-    "relationships": [],
+    "relationships": [
+        {
+            "relationshipId": 1,
+            "relationshipName": "itemsubcat",
+            "relationshipNameCapitalized": "Itemsubcat",
+            "relationshipFieldName": "itemsubcat",
+            "otherEntityName": "itemsubcat",
+            "relationshipType": "many-to-one",
+            "otherEntityNameCapitalized": "Itemsubcat",
+            "otherEntityField": "id"
+        }
+    ],
     "fields": [
         {
             "fieldId": 1,
@@ -24,7 +35,6 @@
             "fieldInJavaBeanMethod": "Description",
             "fieldValidate": true,
             "fieldValidateRules": [
-                "required",
                 "minlength"
             ],
             "fieldValidateRulesMinlength": "5"
@@ -38,32 +48,10 @@
             "fieldInJavaBeanMethod": "Specification",
             "fieldValidate": true,
             "fieldValidateRules": [
-                "required"
-            ]
-        },
-        {
-            "fieldId": 4,
-            "fieldName": "catid",
-            "fieldType": "String",
-            "fieldNameCapitalized": "Catid",
-            "fieldNameUnderscored": "catid",
-            "fieldInJavaBeanMethod": "Catid",
-            "fieldValidate": true,
-            "fieldValidateRules": [
-                "required"
-            ]
-        },
-        {
-            "fieldId": 5,
-            "fieldName": "subcatid",
-            "fieldType": "String",
-            "fieldNameCapitalized": "Subcatid",
-            "fieldNameUnderscored": "subcatid",
-            "fieldInJavaBeanMethod": "Subcatid",
-            "fieldValidate": true,
-            "fieldValidateRules": [
-                "required"
-            ]
+                "required",
+                "minlength"
+            ],
+            "fieldValidateRulesMinlength": "5"
         }
     ],
     "fieldsContainOwnerManyToMany": false,
@@ -73,7 +61,7 @@
     "fieldsContainBigDecimal": false,
     "fieldsContainDateTime": false,
     "fieldsContainDate": false,
-    "changelogDate": "20150428043526",
-    "pagination": "no",
+    "changelogDate": "20150506072652",
+    "pagination": "pagination",
     "validation": true
 }

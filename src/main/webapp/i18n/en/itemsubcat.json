@@ -4,7 +4,7 @@
             "home": {
                 "title": "Item Subcategory",
                 "createLabel": "Create a new Item Subcategory",
-                "createOrEditLabel": "Create or edit an Item Subcategory"
+                "createOrEditLabel": "Create or edit a Item Subcategory"
             },
             "delete": {
                 "question": "Are you sure you want to delete Item Subcategory {{ id }}?"
@@ -15,8 +15,8 @@
             "name": "Name",
             "description": "Description",
             "enabled": "Enabled",
-            "itemcat": "Item Category",
-            "itemmaster": "Item Master"
+            "itemcat": "itemcat",
+            "itemmaster": "itemmaster"
         }
     }
 }

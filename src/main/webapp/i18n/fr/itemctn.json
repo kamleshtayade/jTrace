@@ -13,7 +13,6 @@
                 "title": "Itemctn"
             },
             "ctn": "Ctn",
-            "srNoFrom": "SrNoFrom",
             "reqdQty": "ReqdQty",
             "recdDt": "RecdDt",
             "item": "Item",
@@ -21,11 +20,7 @@
             "selfLife": "SelfLife",
             "poQty": "PoQty",
             "invoice": "Invoice",
-            "manufaturer": "Manufaturer",
-            "mfgPartNo": "MfgPartNo",
-            "supplier": "Supplier",
-            "dateCode": "DateCode",
-            "lotCode": "LotCode"
+            "itemmtr": "itemmtr"
         }
     }
 }

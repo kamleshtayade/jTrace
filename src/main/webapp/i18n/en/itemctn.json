@@ -13,19 +13,14 @@
                 "title": "Item CTN"
             },
             "ctn": "Ctn",
-            "srNoFrom": "Sr Number From",
-            "reqdQty": "Required Qty",
-            "recdDt": "Recieved Date",
+            "reqdQty": "ReqdQty",
+            "recdDt": "RecdDt",
             "item": "Item",
             "srNoTo": "Sr Number To",
             "selfLife": "Self Life",
             "poQty": "PO Qty",
             "invoice": "Invoice",
-            "manufaturer": "Manufacturer",
-            "mfgPartNo": "MFG Part No",
-            "supplier": "Supplier",
-            "dateCode": "Date Code",
-            "lotCode": "Lot Code"
+            "itemmtr": "Item"
         }
     }
 }

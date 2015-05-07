@@ -1,10 +1,12 @@
 {
     "name": "jtrace",
-    "version": "0.0.0",
+    "version": "0.0.2",
     "appPath": "src/main/webapp",
     "testPath": "src/test/javascript/spec",
     "dependencies": {
-    "normalize-css":"3.0.3",    
+    "normalize-css":"3.0.3",
+    "stomp-websocket": "2.3.4",
+    "sockjs-client": "0.3.4",
     "bootstrap": "3.3.4",
     "font-awesome":"4.3.0",
     "modernizr": "2.8.3",
@@ -23,9 +25,10 @@
     "angular-local-storage": "0.1.5",
     "swagger-ui": "2.0.24",
     "angular-cache-buster": "0.4.3",
-    "morris.js":"0.5.1",
+    "ngInfiniteScroll": "1.2.0",
     "angular-animate":"1.3.11",
-    "angular-bootstrap":"0.12.1"
+    "angular-bootstrap":"0.12.1",
+    "morris.js":"0.5.1"
   },
   "devDependencies": {
     "angular-mocks": "1.3.11",

@@ -1,0 +1,22 @@
+{
+    "jtraceApp": {
+        "plantmc" : {
+            "home": {
+                "title": "Plantmcs",
+                "createLabel": "Créer un nouveau Plantmc",
+                "createOrEditLabel": "Créer ou éditer un Plantmc"
+            },
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Plantmc {{ id }} ?"
+            },
+            "detail": {
+                "title": "Plantmc"
+            },
+            "name": "Name",
+            "description": "Description",
+            "specification": "Specification",
+            "plantmfgline": "plantmfgline"
+        }
+    }
+}
+

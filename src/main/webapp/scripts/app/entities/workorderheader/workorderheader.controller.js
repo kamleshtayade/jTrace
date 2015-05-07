@@ -1,17 +1,25 @@
 'use strict';
 
 angular.module('jtraceApp')
-    .controller('WorkorderheaderController', function ($scope, Workorderheader) {
+    .controller('WorkorderheaderController', function ($scope, Workorderheader, Itemmtr, Plantmfgline, ParseLinks) {
         $scope.workorderheaders = [];
+        $scope.itemmtrs = Itemmtr.query();
+        $scope.plantmfglines = Plantmfgline.query();
+        $scope.page = 1;
         $scope.loadAll = function() {
-            Workorderheader.query(function(result) {
-               $scope.workorderheaders = result;
+            Workorderheader.query({page: $scope.page, per_page: 20}, function(result, headers) {
+                $scope.links = ParseLinks.parse(headers('link'));
+                $scope.workorderheaders = result;
             });
+        };
+        $scope.loadPage = function(page) {
+            $scope.page = page;
+            $scope.loadAll();
         };
         $scope.loadAll();
 
         $scope.create = function () {
-            Workorderheader.save($scope.workorderheader,
+            Workorderheader.update($scope.workorderheader,
                 function () {
                     $scope.loadAll();
                     $('#saveWorkorderheaderModal').modal('hide');
@@ -43,6 +51,8 @@ angular.module('jtraceApp')
         };
 
         $scope.clear = function () {
-            $scope.workorderheader = {woNumber: null, kitNumber: null, customer: null, shipToLoc: null, plant: null, plantMfgLine: null, status: null, qty: null, soNumber: null, item: null, asyCode: null, bom: null, id: null};
+            $scope.workorderheader = {woNumber: null, kitNumber: null, status: null, qty: null, id: null};
+            $scope.editForm.$setPristine();
+            $scope.editForm.$setUntouched();
         };
     });

@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('jtraceApp')
-    .factory('Principal', function Principal($q, Account) {
+    .factory('Principal', function Principal($q, Account, Tracker) {
         var _identity,
             _authenticated = false;
 
@@ -13,7 +13,7 @@ angular.module('jtraceApp')
                 return _authenticated;
             },
             isInRole: function (role) {
-                if (!_authenticated || !_identity.roles) {
+                if (!_authenticated || !_identity || !_identity.roles) {
                     return false;
                 }
 
@@ -57,6 +57,7 @@ angular.module('jtraceApp')
                         _identity = account.data;
                         _authenticated = true;
                         deferred.resolve(_identity);
+                        Tracker.connect();
                     })
                     .catch(function() {
                         _identity = null;

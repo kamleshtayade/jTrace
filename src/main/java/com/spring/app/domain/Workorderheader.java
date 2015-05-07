@@ -1,16 +1,20 @@
 package com.spring.app.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.Objects;
 
 /**
  * A Workorderheader.
  */
 @Entity
-@Table(name = "T_WORKORDERHEADER")
+@Table(name = "WORKORDERHEADER")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 public class Workorderheader implements Serializable {
 
@@ -24,35 +28,17 @@ public class Workorderheader implements Serializable {
     @Column(name = "kit_number")
     private String kitNumber;
 
-    @Column(name = "customer")
-    private String customer;
-
-    @Column(name = "ship_to_loc")
-    private String shipToLoc;
-
-    @Column(name = "plant")
-    private String plant;
-
-    @Column(name = "plant_mfg_line")
-    private String plantMfgLine;
-
     @Column(name = "status")
     private String status;
 
     @Column(name = "qty")
     private Integer qty;
 
-    @Column(name = "so_number")
-    private String soNumber;
+    @ManyToOne
+    private Itemmtr itemmtr;
 
-    @Column(name = "item")
-    private String item;
-
-    @Column(name = "asy_code")
-    private String asyCode;
-
-    @Column(name = "bom")
-    private String bom;
+    @ManyToOne
+    private Plantmfgline plantmfgline;
 
     public Long getId() {
         return id;
@@ -78,38 +64,6 @@ public class Workorderheader implements Serializable {
         this.kitNumber = kitNumber;
     }
 
-    public String getCustomer() {
-        return customer;
-    }
-
-    public void setCustomer(String customer) {
-        this.customer = customer;
-    }
-
-    public String getShipToLoc() {
-        return shipToLoc;
-    }
-
-    public void setShipToLoc(String shipToLoc) {
-        this.shipToLoc = shipToLoc;
-    }
-
-    public String getPlant() {
-        return plant;
-    }
-
-    public void setPlant(String plant) {
-        this.plant = plant;
-    }
-
-    public String getPlantMfgLine() {
-        return plantMfgLine;
-    }
-
-    public void setPlantMfgLine(String plantMfgLine) {
-        this.plantMfgLine = plantMfgLine;
-    }
-
     public String getStatus() {
         return status;
     }
@@ -126,36 +80,20 @@ public class Workorderheader implements Serializable {
         this.qty = qty;
     }
 
-    public String getSoNumber() {
-        return soNumber;
+    public Itemmtr getItemmtr() {
+        return itemmtr;
     }
 
-    public void setSoNumber(String soNumber) {
-        this.soNumber = soNumber;
+    public void setItemmtr(Itemmtr itemmtr) {
+        this.itemmtr = itemmtr;
     }
 
-    public String getItem() {
-        return item;
+    public Plantmfgline getPlantmfgline() {
+        return plantmfgline;
     }
 
-    public void setItem(String item) {
-        this.item = item;
-    }
-
-    public String getAsyCode() {
-        return asyCode;
-    }
-
-    public void setAsyCode(String asyCode) {
-        this.asyCode = asyCode;
-    }
-
-    public String getBom() {
-        return bom;
-    }
-
-    public void setBom(String bom) {
-        this.bom = bom;
+    public void setPlantmfgline(Plantmfgline plantmfgline) {
+        this.plantmfgline = plantmfgline;
     }
 
     @Override
@@ -169,14 +107,14 @@ public class Workorderheader implements Serializable {
 
         Workorderheader workorderheader = (Workorderheader) o;
 
-        if (id != null ? !id.equals(workorderheader.id) : workorderheader.id != null) return false;
+        if ( ! Objects.equals(id, workorderheader.id)) return false;
 
         return true;
     }
 
     @Override
     public int hashCode() {
-        return (int) (id ^ (id >>> 32));
+        return Objects.hashCode(id);
     }
 
     @Override
@@ -185,16 +123,8 @@ public class Workorderheader implements Serializable {
                 "id=" + id +
                 ", woNumber='" + woNumber + "'" +
                 ", kitNumber='" + kitNumber + "'" +
-                ", customer='" + customer + "'" +
-                ", shipToLoc='" + shipToLoc + "'" +
-                ", plant='" + plant + "'" +
-                ", plantMfgLine='" + plantMfgLine + "'" +
                 ", status='" + status + "'" +
                 ", qty='" + qty + "'" +
-                ", soNumber='" + soNumber + "'" +
-                ", item='" + item + "'" +
-                ", asyCode='" + asyCode + "'" +
-                ", bom='" + bom + "'" +
                 '}';
     }
 }

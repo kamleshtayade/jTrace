@@ -4,7 +4,7 @@ server:
 
 
 # security configuration (this key should be unique for your application, and kept secret)
-jhipster.security.rememberme.key: c1b2c2b210aa9dbf9b92f9827fe0b5016cea3c2a
+jhipster.security.rememberme.key: 49b6c4849f3f52b5f1476a0df5b0e866e6f9957e
 
 async:
     corePoolSize: 2
@@ -35,14 +35,14 @@ spring:
             hibernate.generate_statistics: true
             hibernate.hbm2ddl.auto: validate
 
-    mail:
-        host: localhost
-        port: 25
-        user:
-        password:
-        protocol: smtp
-        tls: false
-        auth: false
+mail:
+    host: localhost
+    port: 25
+    username:
+    password:
+    protocol: smtp
+    tls: false
+    auth: false
 
 metrics:
     jmx.enabled: false

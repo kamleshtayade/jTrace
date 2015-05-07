@@ -1,5 +1,6 @@
 package com.spring.app.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.spring.app.domain.util.CustomLocalDateSerializer;
@@ -10,13 +11,17 @@ import org.hibernate.annotations.Type;
 import org.joda.time.LocalDate;
 
 import javax.persistence.*;
+import javax.validation.constraints.*;
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.Objects;
 
 /**
  * A Itemctn.
  */
 @Entity
-@Table(name = "T_ITEMCTN")
+@Table(name = "ITEMCTN")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 public class Itemctn implements Serializable {
 
@@ -24,23 +29,21 @@ public class Itemctn implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(name = "ctn")
+    @NotNull
+    @Column(name = "ctn", nullable = false)
     private String ctn;
 
-    @Column(name = "sr_no_from")
-    private String srNoFrom;
-
-    @Column(name = "reqd_qty")
+    @NotNull
+    @Column(name = "reqd_qty", nullable = false)
     private Integer reqdQty;
 
+    @NotNull
     @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalDate")
     @JsonSerialize(using = CustomLocalDateSerializer.class)
     @JsonDeserialize(using = ISO8601LocalDateDeserializer.class)
     @Column(name = "recd_dt", nullable = false)
     private LocalDate recdDt;
 
-    @Column(name = "item")
-    private String item;
 
     @Column(name = "sr_no_to")
     private String srNoTo;
@@ -49,25 +52,13 @@ public class Itemctn implements Serializable {
     private String selfLife;
 
     @Column(name = "po_qty")
-    private Integer poQty;
+    private String poQty;
 
     @Column(name = "invoice")
     private String invoice;
 
-    @Column(name = "manufaturer")
-    private String manufaturer;
-
-    @Column(name = "mfg_part_no")
-    private String mfgPartNo;
-
-    @Column(name = "supplier")
-    private String supplier;
-
-    @Column(name = "date_code")
-    private String dateCode;
-
-    @Column(name = "lot_code")
-    private String lotCode;
+    @ManyToOne
+    private Itemmtr itemmtr;
 
     public Long getId() {
         return id;
@@ -83,14 +74,6 @@ public class Itemctn implements Serializable {
 
     public void setCtn(String ctn) {
         this.ctn = ctn;
-    }
-
-    public String getSrNoFrom() {
-        return srNoFrom;
-    }
-
-    public void setSrNoFrom(String srNoFrom) {
-        this.srNoFrom = srNoFrom;
     }
 
     public Integer getReqdQty() {
@@ -109,14 +92,6 @@ public class Itemctn implements Serializable {
         this.recdDt = recdDt;
     }
 
-    public String getItem() {
-        return item;
-    }
-
-    public void setItem(String item) {
-        this.item = item;
-    }
-
     public String getSrNoTo() {
         return srNoTo;
     }
@@ -133,11 +108,11 @@ public class Itemctn implements Serializable {
         this.selfLife = selfLife;
     }
 
-    public Integer getPoQty() {
+    public String getPoQty() {
         return poQty;
     }
 
-    public void setPoQty(Integer poQty) {
+    public void setPoQty(String poQty) {
         this.poQty = poQty;
     }
 
@@ -149,44 +124,12 @@ public class Itemctn implements Serializable {
         this.invoice = invoice;
     }
 
-    public String getManufaturer() {
-        return manufaturer;
+    public Itemmtr getItemmtr() {
+        return itemmtr;
     }
 
-    public void setManufaturer(String manufaturer) {
-        this.manufaturer = manufaturer;
-    }
-
-    public String getMfgPartNo() {
-        return mfgPartNo;
-    }
-
-    public void setMfgPartNo(String mfgPartNo) {
-        this.mfgPartNo = mfgPartNo;
-    }
-
-    public String getSupplier() {
-        return supplier;
-    }
-
-    public void setSupplier(String supplier) {
-        this.supplier = supplier;
-    }
-
-    public String getDateCode() {
-        return dateCode;
-    }
-
-    public void setDateCode(String dateCode) {
-        this.dateCode = dateCode;
-    }
-
-    public String getLotCode() {
-        return lotCode;
-    }
-
-    public void setLotCode(String lotCode) {
-        this.lotCode = lotCode;
+    public void setItemmtr(Itemmtr itemmtr) {
+        this.itemmtr = itemmtr;
     }
 
     @Override
@@ -200,14 +143,14 @@ public class Itemctn implements Serializable {
 
         Itemctn itemctn = (Itemctn) o;
 
-        if (id != null ? !id.equals(itemctn.id) : itemctn.id != null) return false;
+        if ( ! Objects.equals(id, itemctn.id)) return false;
 
         return true;
     }
 
     @Override
     public int hashCode() {
-        return (int) (id ^ (id >>> 32));
+        return Objects.hashCode(id);
     }
 
     @Override
@@ -215,19 +158,12 @@ public class Itemctn implements Serializable {
         return "Itemctn{" +
                 "id=" + id +
                 ", ctn='" + ctn + "'" +
-                ", srNoFrom='" + srNoFrom + "'" +
                 ", reqdQty='" + reqdQty + "'" +
                 ", recdDt='" + recdDt + "'" +
-                ", item='" + item + "'" +
                 ", srNoTo='" + srNoTo + "'" +
                 ", selfLife='" + selfLife + "'" +
                 ", poQty='" + poQty + "'" +
                 ", invoice='" + invoice + "'" +
-                ", manufaturer='" + manufaturer + "'" +
-                ", mfgPartNo='" + mfgPartNo + "'" +
-                ", supplier='" + supplier + "'" +
-                ", dateCode='" + dateCode + "'" +
-                ", lotCode='" + lotCode + "'" +
                 '}';
     }
 }

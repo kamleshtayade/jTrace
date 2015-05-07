@@ -1,61 +1,77 @@
 {
-    "relationships": [],
+    "relationships": [
+        {
+            "relationshipId": 1,
+            "relationshipName": "itemctn",
+            "relationshipNameCapitalized": "Itemctn",
+            "relationshipFieldName": "itemctn",
+            "otherEntityName": "itemctn",
+            "relationshipType": "many-to-one",
+            "otherEntityNameCapitalized": "Itemctn",
+            "otherEntityField": "id"
+        }
+    ],
     "fields": [
         {
             "fieldId": 1,
-            "fieldName": "workorderheader",
-            "fieldType": "String",
-            "fieldNameCapitalized": "Workorderheader",
-            "fieldNameUnderscored": "workorderheader"
-        },
-        {
-            "fieldId": 2,
             "fieldName": "bomChildItem",
             "fieldType": "String",
             "fieldNameCapitalized": "BomChildItem",
-            "fieldNameUnderscored": "bom_child_item"
+            "fieldNameUnderscored": "bom_child_item",
+            "fieldInJavaBeanMethod": "BomChildItem",
+            "fieldValidate": true,
+            "fieldValidateRules": [
+                "required"
+            ]
         },
         {
-            "fieldId": 3,
+            "fieldId": 2,
             "fieldName": "attrition",
             "fieldType": "String",
             "fieldNameCapitalized": "Attrition",
-            "fieldNameUnderscored": "attrition"
+            "fieldNameUnderscored": "attrition",
+            "fieldInJavaBeanMethod": "Attrition",
+            "fieldValidate": false
+        },
+        {
+            "fieldId": 3,
+            "fieldName": "requQty",
+            "fieldType": "Integer",
+            "fieldNameCapitalized": "RequQty",
+            "fieldNameUnderscored": "requ_qty",
+            "fieldInJavaBeanMethod": "RequQty",
+            "fieldValidate": false
         },
         {
             "fieldId": 4,
-            "fieldName": "requQty",
-            "fieldType": "String",
-            "fieldNameCapitalized": "RequQty",
-            "fieldNameUnderscored": "requ_qty"
-        },
-        {
-            "fieldId": 5,
             "fieldName": "issuedQty",
             "fieldType": "Integer",
             "fieldNameCapitalized": "IssuedQty",
-            "fieldNameUnderscored": "issued_qty"
+            "fieldNameUnderscored": "issued_qty",
+            "fieldInJavaBeanMethod": "IssuedQty",
+            "fieldValidate": false
         },
         {
-            "fieldId": 6,
+            "fieldId": 5,
             "fieldName": "isCustSupplied",
             "fieldType": "Boolean",
             "fieldNameCapitalized": "IsCustSupplied",
-            "fieldNameUnderscored": "is_cust_supplied"
+            "fieldNameUnderscored": "is_cust_supplied",
+            "fieldInJavaBeanMethod": "IsCustSupplied",
+            "fieldValidate": false
         },
         {
-            "fieldId": 7,
-            "fieldName": "itemCtn",
+            "fieldId": 6,
+            "fieldName": "remark",
             "fieldType": "String",
-            "fieldNameCapitalized": "ItemCtn",
-            "fieldNameUnderscored": "item_ctn"
-        },
-        {
-            "fieldId": 8,
-            "fieldName": "remarks",
-            "fieldType": "String",
-            "fieldNameCapitalized": "Remarks",
-            "fieldNameUnderscored": "remarks"
+            "fieldNameCapitalized": "Remark",
+            "fieldNameUnderscored": "remark",
+            "fieldInJavaBeanMethod": "Remark",
+            "fieldValidate": true,
+            "fieldValidateRules": [
+                "minlength"
+            ],
+            "fieldValidateRulesMinlength": "5"
         }
     ],
     "fieldsContainOwnerManyToMany": false,
@@ -65,5 +81,7 @@
     "fieldsContainBigDecimal": false,
     "fieldsContainDateTime": false,
     "fieldsContainDate": false,
-    "changelogDate": "20150419134839"
+    "changelogDate": "20150506080806",
+    "pagination": "pagination",
+    "validation": true
 }

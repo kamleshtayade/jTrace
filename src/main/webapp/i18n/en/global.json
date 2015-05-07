@@ -6,21 +6,22 @@
             "home": "Home",
             "entities": {
                 "main": "Entities",
-                "itemtype": "Item Type",
                 "itemcat": "Item Category",
                 "itemsubcat": "Item SubCategory",
-                "itemmaster": "Item Master old",
+                "itemmtr": "Item Master",
+                "itemctn": "Item CTN",
+                "itemmfrpart": "Item MFR Part",
+                "itemtype": "Item Type",
                 "manufacturer": "Manufacturer",
-                "supplier": "Supplier",
-                "itemmfrpart": "Item MFG part",
                 "plant": "Plant",
+                "plantsec": "Plant Section",
                 "plantmfgline": "Plant MFG Line",
-                "customer": "Customer",
+                "plantmc": "Plant Machine",
+                "supplier": "Supplier",
                 "workorderheader": "Work Order Header",
                 "workorderline": "Work Order Line",
-                "itemctn": "Item CTN",
-                "itemmtr": "Item Master",
-                "additionalEntity": "JHipster will add addtional entities"
+                "customer": "Customer",
+                "additionalEntity": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {
                 "main": "Account",
@@ -56,7 +57,7 @@
         },
         "messages": {
             "info": {
-                "authenticated": "If you want to <a href=\"#/login\">authenticate</a>, you can try the default accounts:<br/>- Administrator (login=\"admin\" and password=\"admin\") <br/>- User (login=\"user\" and password=\"user\") <br/>- Operator (login=\"operator\" and password=\"operator\").",
+                "authenticated": "If you want to <a href=\"#/login\">authenticate</a>, you can try the default accounts:<br/>- Administrator (login=\"admin\" and password=\"admin\") <br/>- User (login=\"user\" and password=\"user\").",
                 "register": "You don't have an account yet? <a href=\"#/register\">Register a new account</a>"
             },
             "error": {
@@ -65,20 +66,20 @@
             "validate": {
                 "newpassword": {
                     "required": "Your password is required.",
-                    "minlength": "Your password is required to be at least 5 characters",
-                    "maxlength": "Your password cannot be longer than 50 characters",
+                    "minlength": "Your password is required to be at least 5 characters.",
+                    "maxlength": "Your password cannot be longer than 50 characters.",
                     "strength": "Password strength:"
                 },
                 "confirmpassword": {
                     "required": "Your confirmation password is required.",
-                    "minlength": "Your confirmation password is required to be at least 5 characters",
-                    "maxlength": "Your confirmation password cannot be longer than 50 characters"
+                    "minlength": "Your confirmation password is required to be at least 5 characters.",
+                    "maxlength": "Your confirmation password cannot be longer than 50 characters."
                 },
                 "email": {
                     "required": "Your e-mail is required.",
                     "invalid": "Your e-mail is invalid.",
-                    "minlength": "Your e-mail is required to be at least 5 characters",
-                    "maxlength": "Your e-mail cannot be longer than 50 characters"
+                    "minlength": "Your e-mail is required to be at least 5 characters.",
+                    "maxlength": "Your e-mail cannot be longer than 50 characters."
                 }
             }
         }

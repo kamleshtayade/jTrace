@@ -8,12 +8,13 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.Objects;
 
 /**
  * A Itemsubcat.
  */
 @Entity
-@Table(name = "T_ITEMSUBCAT")
+@Table(name = "ITEMSUBCAT")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 public class Itemsubcat implements Serializable {
 
@@ -84,14 +85,14 @@ public class Itemsubcat implements Serializable {
 
         Itemsubcat itemsubcat = (Itemsubcat) o;
 
-        if (id != null ? !id.equals(itemsubcat.id) : itemsubcat.id != null) return false;
+        if ( ! Objects.equals(id, itemsubcat.id)) return false;
 
         return true;
     }
 
     @Override
     public int hashCode() {
-        return (int) (id ^ (id >>> 32));
+        return Objects.hashCode(id);
     }
 
     @Override

@@ -1,16 +1,21 @@
 package com.spring.app.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.*;
+import javax.validation.constraints.*;
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.Objects;
 
 /**
  * A Workorderline.
  */
 @Entity
-@Table(name = "T_WORKORDERLINE")
+@Table(name = "WORKORDERLINE")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 public class Workorderline implements Serializable {
 
@@ -18,17 +23,15 @@ public class Workorderline implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(name = "workorderheader")
-    private String workorderheader;
-
-    @Column(name = "bom_child_item")
+    @NotNull
+    @Column(name = "bom_child_item", nullable = false)
     private String bomChildItem;
 
     @Column(name = "attrition")
     private String attrition;
 
     @Column(name = "requ_qty")
-    private String requQty;
+    private Integer requQty;
 
     @Column(name = "issued_qty")
     private Integer issuedQty;
@@ -36,11 +39,12 @@ public class Workorderline implements Serializable {
     @Column(name = "is_cust_supplied")
     private Boolean isCustSupplied;
 
-    @Column(name = "item_ctn")
-    private String itemCtn;
+    @Size(min = 5)
+    @Column(name = "remark")
+    private String remark;
 
-    @Column(name = "remarks")
-    private String remarks;
+    @ManyToOne
+    private Itemctn itemctn;
 
     public Long getId() {
         return id;
@@ -48,14 +52,6 @@ public class Workorderline implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getWorkorderheader() {
-        return workorderheader;
-    }
-
-    public void setWorkorderheader(String workorderheader) {
-        this.workorderheader = workorderheader;
     }
 
     public String getBomChildItem() {
@@ -74,11 +70,11 @@ public class Workorderline implements Serializable {
         this.attrition = attrition;
     }
 
-    public String getRequQty() {
+    public Integer getRequQty() {
         return requQty;
     }
 
-    public void setRequQty(String requQty) {
+    public void setRequQty(Integer requQty) {
         this.requQty = requQty;
     }
 
@@ -98,20 +94,20 @@ public class Workorderline implements Serializable {
         this.isCustSupplied = isCustSupplied;
     }
 
-    public String getItemCtn() {
-        return itemCtn;
+    public String getRemark() {
+        return remark;
     }
 
-    public void setItemCtn(String itemCtn) {
-        this.itemCtn = itemCtn;
+    public void setRemark(String remark) {
+        this.remark = remark;
     }
 
-    public String getRemarks() {
-        return remarks;
+    public Itemctn getItemctn() {
+        return itemctn;
     }
 
-    public void setRemarks(String remarks) {
-        this.remarks = remarks;
+    public void setItemctn(Itemctn itemctn) {
+        this.itemctn = itemctn;
     }
 
     @Override
@@ -125,28 +121,26 @@ public class Workorderline implements Serializable {
 
         Workorderline workorderline = (Workorderline) o;
 
-        if (id != null ? !id.equals(workorderline.id) : workorderline.id != null) return false;
+        if ( ! Objects.equals(id, workorderline.id)) return false;
 
         return true;
     }
 
     @Override
     public int hashCode() {
-        return (int) (id ^ (id >>> 32));
+        return Objects.hashCode(id);
     }
 
     @Override
     public String toString() {
         return "Workorderline{" +
                 "id=" + id +
-                ", workorderheader='" + workorderheader + "'" +
                 ", bomChildItem='" + bomChildItem + "'" +
                 ", attrition='" + attrition + "'" +
                 ", requQty='" + requQty + "'" +
                 ", issuedQty='" + issuedQty + "'" +
                 ", isCustSupplied='" + isCustSupplied + "'" +
-                ", itemCtn='" + itemCtn + "'" +
-                ", remarks='" + remarks + "'" +
+                ", remark='" + remark + "'" +
                 '}';
     }
 }

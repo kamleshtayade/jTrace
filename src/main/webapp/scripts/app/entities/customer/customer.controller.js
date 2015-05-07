@@ -11,7 +11,7 @@ angular.module('jtraceApp')
         $scope.loadAll();
 
         $scope.create = function () {
-            Customer.save($scope.customer,
+            Customer.update($scope.customer,
                 function () {
                     $scope.loadAll();
                     $('#saveCustomerModal').modal('hide');
@@ -44,5 +44,7 @@ angular.module('jtraceApp')
 
         $scope.clear = function () {
             $scope.customer = {code: null, name: null, billToAddress: null, shipToAddress: null, contactName: null, email: null, phone: null, id: null};
+            $scope.editForm.$setPristine();
+            $scope.editForm.$setUntouched();
         };
     });

@@ -1,0 +1,62 @@
+
+<div>
+    <h2><span translate="jtraceApp.plantsec.detail.title">Plantsec</span> {{plantsec.id}}</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th translate="entity.detail.field">Field</th>
+                    <th translate="entity.detail.value">Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <span translate="jtraceApp.plantsec.name">Name</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{plantsec.name}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="jtraceApp.plantsec.description">Description</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{plantsec.description}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="jtraceApp.plantsec.isenabled">Isenabled</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{plantsec.isenabled}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="jtraceApp.plantsec.capacity">Capacity</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{plantsec.capacity}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="jtraceApp.plantsec.plant">plant</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{plantsec.plant.id}}" readonly>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button type="submit"
+            ui-sref="plantsec"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
+    </button>
+</div>

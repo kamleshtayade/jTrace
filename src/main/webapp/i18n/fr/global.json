@@ -6,20 +6,22 @@
             "home": "Accueil",
             "entities": {
                 "main": "Entités",
-                "itemtype": "Itemtype",
                 "itemcat": "Itemcat",
                 "itemsubcat": "Itemsubcat",
-                "itemmaster": "Itemmaster",
-                "manufacturer": "Manufacturer",
-                "supplier": "Supplier",
+                "itemmtr": "Itemmtr",
+                "itemctn": "Itemctn",
                 "itemmfrpart": "Itemmfrpart",
+                "itemtype": "Itemtype",
+                "manufacturer": "Manufacturer",
                 "plant": "Plant",
+                "plantsec": "Plantsec",
                 "plantmfgline": "Plantmfgline",
-                "customer": "Customer",
+                "plantmc": "Plantmc",
+                "supplier": "Supplier",
                 "workorderheader": "Workorderheader",
                 "workorderline": "Workorderline",
-                "itemctn": "Itemctn",
-                "additionalEntity": "JHipster will add addtional entities"
+                "customer": "Customer",
+                "additionalEntity": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {
                 "main": "Compte",
@@ -92,11 +94,21 @@
             "view": "Voir"
         },
         "detail": {
-            "field": "Champ",
+            "field": "Champs",
             "value": "Valeur"
         },
         "delete": {
             "title": "Confirmation de suppression"
+        },
+        "validation": {
+            "required": "Ce champs est obligatoire.",
+            "minlength": "Ce champs doit faire au minimum {{min}} caractères.",
+            "maxlength": "Ce champs doit faire moins de {{max}} caractères.",
+            "min": "Ce champs doit être inférieur à {{min}}.",
+            "max": "Ce champs doit être supérieur à {{max}}.",
+            "pattern": "Ce champs doit suivre l'expression régluière {{pattern}}.",
+            "number": "Ce champs doit être un nombre.",
+            "datetimelocal": "Ce champs doit être une date et une heure."
         }
     },
     "footer": "Ceci est votre pied de page"

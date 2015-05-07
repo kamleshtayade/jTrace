@@ -1,17 +1,24 @@
 'use strict';
 
 angular.module('jtraceApp')
-    .controller('WorkorderlineController', function ($scope, Workorderline) {
+    .controller('WorkorderlineController', function ($scope, Workorderline, Itemctn, ParseLinks) {
         $scope.workorderlines = [];
+        $scope.itemctns = Itemctn.query();
+        $scope.page = 1;
         $scope.loadAll = function() {
-            Workorderline.query(function(result) {
-               $scope.workorderlines = result;
+            Workorderline.query({page: $scope.page, per_page: 20}, function(result, headers) {
+                $scope.links = ParseLinks.parse(headers('link'));
+                $scope.workorderlines = result;
             });
+        };
+        $scope.loadPage = function(page) {
+            $scope.page = page;
+            $scope.loadAll();
         };
         $scope.loadAll();
 
         $scope.create = function () {
-            Workorderline.save($scope.workorderline,
+            Workorderline.update($scope.workorderline,
                 function () {
                     $scope.loadAll();
                     $('#saveWorkorderlineModal').modal('hide');
@@ -43,6 +50,8 @@ angular.module('jtraceApp')
         };
 
         $scope.clear = function () {
-            $scope.workorderline = {workorderheader: null, bomChildItem: null, attrition: null, requQty: null, issuedQty: null, isCustSupplied: null, itemCtn: null, remarks: null, id: null};
+            $scope.workorderline = {bomChildItem: null, attrition: null, requQty: null, issuedQty: null, isCustSupplied: null, remark: null, id: null};
+            $scope.editForm.$setPristine();
+            $scope.editForm.$setUntouched();
         };
     });

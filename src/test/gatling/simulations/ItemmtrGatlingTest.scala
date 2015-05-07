@@ -67,7 +67,7 @@ class ItemmtrGatlingTest extends Simulation {
             .exec(http("Create new itemmtr")
             .put("/api/itemmtrs")
             .headers(headers_http_authenticated)
-            .body(StringBody("""{"id":null, "code":"SAMPLE_TEXT", "description":"SAMPLE_TEXT", "specification":"SAMPLE_TEXT", "catid":"SAMPLE_TEXT", "subcatid":"SAMPLE_TEXT"}""")).asJSON
+            .body(StringBody("""{"id":null, "code":"SAMPLE_TEXT", "description":"SAMPLE_TEXT", "specification":"SAMPLE_TEXT"}""")).asJSON
             .check(status.is(201))
             .check(headerRegex("Location", "(.*)").saveAs("new_itemmtr_url")))
             .pause(10)

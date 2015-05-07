@@ -1,0 +1,21 @@
+{
+    "jtraceApp": {
+        "plantmc" : {
+            "home": {
+                "title": "Plant Machines",
+                "createLabel": "Create a new Plant Machine",
+                "createOrEditLabel": "Create or edit a Plant Machine"
+            },
+            "delete": {
+                "question": "Are you sure you want to delete Plant Machine {{ id }}?"
+            },
+            "detail": {
+                "title": "Plant Machine"
+            },
+            "name": "Name",
+            "description": "Description",
+            "specification": "Specification",
+            "plantmfgline": "Plant MFG Line"
+        }
+    }
+}

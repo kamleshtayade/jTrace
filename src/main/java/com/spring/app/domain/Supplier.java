@@ -1,19 +1,18 @@
 package com.spring.app.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.*;
+import javax.validation.constraints.*;
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.Objects;
 
 /**
  * A Supplier.
  */
 @Entity
-@Table(name = "T_SUPPLIER")
+@Table(name = "SUPPLIER")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 public class Supplier implements Serializable {
 
@@ -21,26 +20,22 @@ public class Supplier implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(name = "code")
+    @NotNull
+    @Size(min = 3)
+    @Column(name = "code", nullable = false)
     private String code;
 
-    @Column(name = "name")
-    private String name;
+    @Column(name = "isenabled")
+    private Boolean isenabled;
 
-    @Column(name = "enabled")
-    private Boolean enabled;
+    @NotNull
+    @Column(name = "address", nullable = false)
+    private String address;
 
-    @Column(name = "contact")
-    private String contact;
-
-    @Column(name = "email")
-    private String email;
-
-    @Column(name = "phone")
-    private String phone;
-
-    @ManyToOne
-    private Manufacturer manufacturer;
+    @NotNull
+    @Size(min = 5)
+    @Column(name = "remark", nullable = false)
+    private String remark;
 
     public Long getId() {
         return id;
@@ -58,52 +53,28 @@ public class Supplier implements Serializable {
         this.code = code;
     }
 
-    public String getName() {
-        return name;
+    public Boolean getIsenabled() {
+        return isenabled;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setIsenabled(Boolean isenabled) {
+        this.isenabled = isenabled;
     }
 
-    public Boolean getEnabled() {
-        return enabled;
+    public String getAddress() {
+        return address;
     }
 
-    public void setEnabled(Boolean enabled) {
-        this.enabled = enabled;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
-    public String getContact() {
-        return contact;
+    public String getRemark() {
+        return remark;
     }
 
-    public void setContact(String contact) {
-        this.contact = contact;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
-    public Manufacturer getManufacturer() {
-        return manufacturer;
-    }
-
-    public void setManufacturer(Manufacturer manufacturer) {
-        this.manufacturer = manufacturer;
+    public void setRemark(String remark) {
+        this.remark = remark;
     }
 
     @Override
@@ -117,14 +88,14 @@ public class Supplier implements Serializable {
 
         Supplier supplier = (Supplier) o;
 
-        if (id != null ? !id.equals(supplier.id) : supplier.id != null) return false;
+        if ( ! Objects.equals(id, supplier.id)) return false;
 
         return true;
     }
 
     @Override
     public int hashCode() {
-        return (int) (id ^ (id >>> 32));
+        return Objects.hashCode(id);
     }
 
     @Override
@@ -132,11 +103,9 @@ public class Supplier implements Serializable {
         return "Supplier{" +
                 "id=" + id +
                 ", code='" + code + "'" +
-                ", name='" + name + "'" +
-                ", enabled='" + enabled + "'" +
-                ", contact='" + contact + "'" +
-                ", email='" + email + "'" +
-                ", phone='" + phone + "'" +
+                ", isenabled='" + isenabled + "'" +
+                ", address='" + address + "'" +
+                ", remark='" + remark + "'" +
                 '}';
     }
 }

@@ -1,12 +1,14 @@
 package com.spring.app.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
-
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.Objects;
 
 /**
@@ -26,17 +28,17 @@ public class Itemmtr implements Serializable {
     @Column(name = "code", nullable = false)
     private String code;
 
-    @NotNull
     @Size(min = 5)
-    @Column(name = "description", nullable = false)
+    @Column(name = "description")
     private String description;
 
     @NotNull
+    @Size(min = 5)
     @Column(name = "specification", nullable = false)
     private String specification;
 
     @ManyToOne
-    private Itemsubcat subcatid;
+    private Itemsubcat itemsubcat;
 
     public Long getId() {
         return id;
@@ -70,16 +72,15 @@ public class Itemmtr implements Serializable {
         this.specification = specification;
     }
 
+    public Itemsubcat getItemsubcat() {
+        return itemsubcat;
+    }
 
-    public Itemsubcat getSubcatid() {
-		return subcatid;
-	}
+    public void setItemsubcat(Itemsubcat itemsubcat) {
+        this.itemsubcat = itemsubcat;
+    }
 
-	public void setSubcatid(Itemsubcat subcatid) {
-		this.subcatid = subcatid;
-	}
-
-	@Override
+    @Override
     public boolean equals(Object o) {
         if (this == o) {
             return true;

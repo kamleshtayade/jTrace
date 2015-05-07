@@ -12,14 +12,13 @@
             "detail": {
                 "title": "Work Order Line"
             },
-            "workorderheader": "Work Order Header",
             "bomChildItem": "BOM Child Item",
-            "attrition": "Line Attrition",
+            "attrition": "Attrition",
             "requQty": "Required Qty",
             "issuedQty": "Issued Qty",
             "isCustSupplied": "Is Customer Supplied",
-            "itemCtn": "Item CTN",
-            "remarks": "Remarks"
+            "remark": "Remark",
+            "itemctn": "Item CTN"
         }
     }
 }

@@ -5,12 +5,13 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Objects;
 
 /**
  * A Customer.
  */
 @Entity
-@Table(name = "T_CUSTOMER")
+@Table(name = "CUSTOMER")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 public class Customer implements Serializable {
 
@@ -114,14 +115,14 @@ public class Customer implements Serializable {
 
         Customer customer = (Customer) o;
 
-        if (id != null ? !id.equals(customer.id) : customer.id != null) return false;
+        if ( ! Objects.equals(id, customer.id)) return false;
 
         return true;
     }
 
     @Override
     public int hashCode() {
-        return (int) (id ^ (id >>> 32));
+        return Objects.hashCode(id);
     }
 
     @Override

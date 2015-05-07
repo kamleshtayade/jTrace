@@ -1,17 +1,24 @@
 'use strict';
 
 angular.module('jtraceApp')
-    .controller('ItemctnController', function ($scope, Itemctn) {
+    .controller('ItemctnController', function ($scope, Itemctn, Itemmtr, ParseLinks) {
         $scope.itemctns = [];
+        $scope.itemmtrs = Itemmtr.query();
+        $scope.page = 1;
         $scope.loadAll = function() {
-            Itemctn.query(function(result) {
-               $scope.itemctns = result;
+            Itemctn.query({page: $scope.page, per_page: 20}, function(result, headers) {
+                $scope.links = ParseLinks.parse(headers('link'));
+                $scope.itemctns = result;
             });
+        };
+        $scope.loadPage = function(page) {
+            $scope.page = page;
+            $scope.loadAll();
         };
         $scope.loadAll();
 
         $scope.create = function () {
-            Itemctn.save($scope.itemctn,
+            Itemctn.update($scope.itemctn,
                 function () {
                     $scope.loadAll();
                     $('#saveItemctnModal').modal('hide');
@@ -43,6 +50,8 @@ angular.module('jtraceApp')
         };
 
         $scope.clear = function () {
-            $scope.itemctn = {ctn: null, srNoFrom: null, reqdQty: null, recdDt: null, item: null, srNoTo: null, selfLife: null, poQty: null, invoice: null, manufaturer: null, mfgPartNo: null, supplier: null, dateCode: null, lotCode: null, id: null};
+            $scope.itemctn = {ctn: null, reqdQty: null, recdDt: null, item: null, srNoTo: null, selfLife: null, poQty: null, invoice: null, id: null};
+            $scope.editForm.$setPristine();
+            $scope.editForm.$setUntouched();
         };
     });

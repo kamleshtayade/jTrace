@@ -11,7 +11,7 @@
         Added the entity Itemsubcat.
     -->
     <changeSet id="20150415132407" author="jhipster">
-        <createTable tableName="T_ITEMSUBCAT">
+        <createTable tableName="ITEMSUBCAT">
             <column name="id" type="bigint" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
@@ -22,10 +22,10 @@
         </createTable>
         
         <addForeignKeyConstraint baseColumnNames="itemcat_id"
-                                 baseTableName="T_ITEMSUBCAT"
+                                 baseTableName="ITEMSUBCAT"
                                  constraintName="fk_itemsubcat_itemcat_id"
                                  referencedColumnNames="id"
-                                 referencedTableName="T_ITEMCAT"/>
+                                 referencedTableName="ITEMCAT"/>
 
     </changeSet>
 </databaseChangeLog>

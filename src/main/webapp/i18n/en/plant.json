@@ -13,11 +13,9 @@
                 "title": "Plant"
             },
             "code": "Code",
-            "location": "Location",
             "address": "Address",
-            "isActive": "Is Active",
-            "capacity": "Capacity",
-            "plantmfgline": "Plant Manufacture Line"
+            "isenabled": "Is Enabled",
+            "capacity": "Capacity"
         }
     }
 }

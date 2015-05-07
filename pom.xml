@@ -5,13 +5,13 @@
     <parent>
         <artifactId>spring-boot-starter-parent</artifactId>
         <groupId>org.springframework.boot</groupId>
-        <version>1.2.1.RELEASE</version>
+        <version>1.2.3.RELEASE</version>
         <relativePath/>
     </parent>
 
     <groupId>com.spring.app</groupId>
     <artifactId>jtrace</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.2.1-SNAPSHOT</version>
     <packaging>war</packaging>
 
     <name>jtrace</name>
@@ -26,8 +26,12 @@
         <awaitility.version>1.4.0</awaitility.version>
         <commons-io.version>2.4</commons-io.version>
         <commons-lang.version>2.6</commons-lang.version>
+        <gatling.version>2.1.5</gatling.version>
+        <gatling-maven-plugin.version>2.1.5</gatling-maven-plugin.version>
         <hibernate.version>4.3.6.Final</hibernate.version>
         <java.version>1.7</java.version>
+        <maven.compiler.source>${java.version}</maven.compiler.source>
+        <maven.compiler.target>${java.version}</maven.compiler.target>
         <javax.inject.version>1</javax.inject.version>
         <joda-time-hibernate.version>1.3</joda-time-hibernate.version>
         <json-path.version>0.9.1</json-path.version>
@@ -38,11 +42,11 @@
         <maven-enforcer-plugin.version>1.3.1</maven-enforcer-plugin.version>
         <maven-sortpom-plugin.version>2.3.0</maven-sortpom-plugin.version>
         <metrics-spark-reporter.version>1.2</metrics-spark-reporter.version>
-        <metrics-spring.version>3.0.3</metrics-spring.version>
+        <metrics-spring.version>3.0.4</metrics-spring.version>
         <postgresql.version>9.3-1102-jdbc41</postgresql.version>
         <run.addResources>false</run.addResources>
         <sonar-maven-plugin.version>2.3</sonar-maven-plugin.version>
-        <spring-cloud.version>1.1.0.RELEASE</spring-cloud.version>
+        <spring-security.version>4.0.0.RELEASE</spring-security.version>
         <swagger-springmvc.version>0.9.5</swagger-springmvc.version>
         <usertype-core.version>3.2.0.GA</usertype-core.version>
     </properties>
@@ -204,6 +208,12 @@
             <version>${commons-lang.version}</version>
         </dependency>
         <dependency>
+            <groupId>io.gatling.highcharts</groupId>
+            <artifactId>gatling-charts-highcharts</artifactId>
+            <version>${gatling.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
             <groupId>javax.inject</groupId>
             <artifactId>javax.inject</artifactId>
             <version>${javax.inject.version}</version>
@@ -314,27 +324,35 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-websocket</artifactId>
+        </dependency>
         <!-- Spring Cloud -->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-cloudfoundry-connector</artifactId>
-            <version>${spring-cloud.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-spring-service-connector</artifactId>
-            <version>${spring-cloud.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-localconfig-connector</artifactId>
-            <version>${spring-cloud.version}</version>
+        </dependency>
+        <!-- security -->
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-data</artifactId>
+            <version>${spring-security.version}</version>
         </dependency>
         <dependency>
-            <groupId>fr.ippon.spark.metrics</groupId>
-            <artifactId>metrics-spark-reporter</artifactId>
-            <version>${metrics-spark-reporter.version}</version>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-messaging</artifactId>
+            <version>${spring-security.version}</version>
         </dependency>
+        <!-- reporting -->
     </dependencies>
     <build>
         <resources>
@@ -433,6 +451,21 @@
                 </configuration>
             </plugin>
             <plugin>
+                <groupId>io.gatling</groupId>
+                <artifactId>gatling-maven-plugin</artifactId>
+                <version>${gatling-maven-plugin.version}</version>
+                <configuration>
+                    <configFolder>src/test/gatling/conf</configFolder>
+                    <dataFolder>src/test/gatling/data</dataFolder>
+                    <resultsFolder>target/gatling/results</resultsFolder>
+                    <bodiesFolder>src/test/gatling/bodies</bodiesFolder>
+                    <simulationsFolder>src/test/gatling/simulations</simulationsFolder>
+                    <!-- This will force Gatling to ask which simulation to run
+                         This is useful when you have multiple simulations -->
+                    <simulationClass>*</simulationClass>
+                </configuration>
+            </plugin>
+            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-eclipse-plugin</artifactId>
                 <configuration>
@@ -470,8 +503,6 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <configuration>
                     <argLine>-XX:MaxPermSize=128m -Xmx256m</argLine>
-                    <forkCount>1</forkCount>
-                    <reuseForks>true</reuseForks>
                     <!-- Force alphabetical order to have a reproducible build -->
                     <runOrder>alphabetical</runOrder>
                 </configuration>
@@ -499,7 +530,7 @@
                     <url>jdbc:postgresql://localhost/jtrace</url>
                     <defaultSchemaName></defaultSchemaName>
                     <username>jtrace</username>
-                    <password>root</password> <!-- update dev pwd for liquibase diff -->
+                    <password>root</password>
                     <referenceUrl>hibernate:spring:com.spring.app.domain?dialect=org.hibernate.dialect.PostgreSQL82Dialect</referenceUrl>
                     <verbose>true</verbose>
                     <logging>debug</logging>
@@ -518,7 +549,7 @@
                     <dependency>
                         <groupId>org.springframework.boot</groupId>
                         <artifactId>spring-boot-starter-data-jpa</artifactId>
-                        <version>1.2.0.RELEASE</version>
+                        <version>${project.parent.version}</version>
                     </dependency>
                 </dependencies>
             </plugin>
@@ -526,7 +557,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <jvmArguments>-Djava.rmi.server.hostname=localhost -Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=5005</jvmArguments>
+                    <jvmArguments>-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5005</jvmArguments>
                     <arguments>
                         <argument>--spring.profiles.active=dev</argument>
                     </arguments>

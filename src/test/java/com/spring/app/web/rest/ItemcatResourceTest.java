@@ -7,6 +7,7 @@ import com.spring.app.repository.ItemcatRepository;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import static org.hamcrest.Matchers.hasItem;
 import org.mockito.MockitoAnnotations;
 import org.springframework.boot.test.IntegrationTest;
 import org.springframework.boot.test.SpringApplicationConfiguration;
@@ -71,19 +72,18 @@ public class ItemcatResourceTest {
     @Test
     @Transactional
     public void createItemcat() throws Exception {
-        // Validate the database is empty
-        assertThat(itemcatRepository.findAll()).hasSize(0);
+        int databaseSizeBeforeCreate = itemcatRepository.findAll().size();
 
         // Create the Itemcat
         restItemcatMockMvc.perform(post("/api/itemcats")
                 .contentType(TestUtil.APPLICATION_JSON_UTF8)
                 .content(TestUtil.convertObjectToJsonBytes(itemcat)))
-                .andExpect(status().isOk());
+                .andExpect(status().isCreated());
 
         // Validate the Itemcat in the database
         List<Itemcat> itemcats = itemcatRepository.findAll();
-        assertThat(itemcats).hasSize(1);
-        Itemcat testItemcat = itemcats.iterator().next();
+        assertThat(itemcats).hasSize(databaseSizeBeforeCreate + 1);
+        Itemcat testItemcat = itemcats.get(itemcats.size() - 1);
         assertThat(testItemcat.getName()).isEqualTo(DEFAULT_NAME);
         assertThat(testItemcat.getDescription()).isEqualTo(DEFAULT_DESCRIPTION);
         assertThat(testItemcat.getEnabled()).isEqualTo(DEFAULT_ENABLED);
@@ -99,10 +99,10 @@ public class ItemcatResourceTest {
         restItemcatMockMvc.perform(get("/api/itemcats"))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
-                .andExpect(jsonPath("$.[0].id").value(itemcat.getId().intValue()))
-                .andExpect(jsonPath("$.[0].name").value(DEFAULT_NAME.toString()))
-                .andExpect(jsonPath("$.[0].description").value(DEFAULT_DESCRIPTION.toString()))
-                .andExpect(jsonPath("$.[0].enabled").value(DEFAULT_ENABLED.booleanValue()));
+                .andExpect(jsonPath("$.[*].id").value(hasItem(itemcat.getId().intValue())))
+                .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME.toString())))
+                .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION.toString())))
+                .andExpect(jsonPath("$.[*].enabled").value(hasItem(DEFAULT_ENABLED.booleanValue())));
     }
 
     @Test
@@ -125,7 +125,7 @@ public class ItemcatResourceTest {
     @Transactional
     public void getNonExistingItemcat() throws Exception {
         // Get the itemcat
-        restItemcatMockMvc.perform(get("/api/itemcats/{id}", 1L))
+        restItemcatMockMvc.perform(get("/api/itemcats/{id}", Long.MAX_VALUE))
                 .andExpect(status().isNotFound());
     }
 
@@ -135,19 +135,21 @@ public class ItemcatResourceTest {
         // Initialize the database
         itemcatRepository.saveAndFlush(itemcat);
 
+		int databaseSizeBeforeUpdate = itemcatRepository.findAll().size();
+
         // Update the itemcat
         itemcat.setName(UPDATED_NAME);
         itemcat.setDescription(UPDATED_DESCRIPTION);
         itemcat.setEnabled(UPDATED_ENABLED);
-        restItemcatMockMvc.perform(post("/api/itemcats")
+        restItemcatMockMvc.perform(put("/api/itemcats")
                 .contentType(TestUtil.APPLICATION_JSON_UTF8)
                 .content(TestUtil.convertObjectToJsonBytes(itemcat)))
                 .andExpect(status().isOk());
 
         // Validate the Itemcat in the database
         List<Itemcat> itemcats = itemcatRepository.findAll();
-        assertThat(itemcats).hasSize(1);
-        Itemcat testItemcat = itemcats.iterator().next();
+        assertThat(itemcats).hasSize(databaseSizeBeforeUpdate);
+        Itemcat testItemcat = itemcats.get(itemcats.size() - 1);
         assertThat(testItemcat.getName()).isEqualTo(UPDATED_NAME);
         assertThat(testItemcat.getDescription()).isEqualTo(UPDATED_DESCRIPTION);
         assertThat(testItemcat.getEnabled()).isEqualTo(UPDATED_ENABLED);
@@ -159,6 +161,8 @@ public class ItemcatResourceTest {
         // Initialize the database
         itemcatRepository.saveAndFlush(itemcat);
 
+		int databaseSizeBeforeDelete = itemcatRepository.findAll().size();
+
         // Get the itemcat
         restItemcatMockMvc.perform(delete("/api/itemcats/{id}", itemcat.getId())
                 .accept(TestUtil.APPLICATION_JSON_UTF8))
@@ -166,6 +170,6 @@ public class ItemcatResourceTest {
 
         // Validate the database is empty
         List<Itemcat> itemcats = itemcatRepository.findAll();
-        assertThat(itemcats).hasSize(0);
+        assertThat(itemcats).hasSize(databaseSizeBeforeDelete - 1);
     }
 }

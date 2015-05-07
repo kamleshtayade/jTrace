@@ -17,7 +17,7 @@ import java.util.Set;
  * A user.
  */
 @Entity
-@Table(name = "T_USER")
+@Table(name = "JHI_USER")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 public class User extends AbstractAuditingEntity implements Serializable {
 
@@ -59,12 +59,13 @@ public class User extends AbstractAuditingEntity implements Serializable {
 
     @Size(max = 20)
     @Column(name = "activation_key", length = 20)
+    @JsonIgnore
     private String activationKey;
 
     @JsonIgnore
     @ManyToMany
     @JoinTable(
-            name = "T_USER_AUTHORITY",
+            name = "JHI_USER_AUTHORITY",
             joinColumns = {@JoinColumn(name = "user_id", referencedColumnName = "id")},
             inverseJoinColumns = {@JoinColumn(name = "authority_name", referencedColumnName = "name")})
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)

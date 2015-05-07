@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.annotation.security.RolesAllowed;
 import javax.inject.Inject;
+import java.util.List;
 import javax.servlet.http.HttpServletResponse;
 
 /**
@@ -29,13 +29,24 @@ public class UserResource {
     private UserRepository userRepository;
 
     /**
+     * GET  /users -> get all users.
+     */
+    @RequestMapping(value = "/users",
+        method = RequestMethod.GET,
+        produces = MediaType.APPLICATION_JSON_VALUE)
+    @Timed
+    public List<User> getAll() {
+        log.debug("REST request to get all Users");
+        return userRepository.findAll();
+    }
+
+    /**
      * GET  /users/:login -> get the "login" user.
      */
     @RequestMapping(value = "/users/{login}",
             method = RequestMethod.GET,
             produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
-    @RolesAllowed(AuthoritiesConstants.ADMIN)
     public User getUser(@PathVariable String login, HttpServletResponse response) {
         log.debug("REST request to get User : {}", login);
         User user = userRepository.findOneByLogin(login);

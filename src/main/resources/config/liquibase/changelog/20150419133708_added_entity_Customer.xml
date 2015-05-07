@@ -11,7 +11,7 @@
         Added the entity Customer.
     -->
     <changeSet id="20150419133708" author="jhipster">
-        <createTable tableName="T_CUSTOMER">
+        <createTable tableName="CUSTOMER">
             <column name="id" type="bigint" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
             </column>

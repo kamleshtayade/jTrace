@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('jtraceApp')
-    .controller('WorkorderlineDetailController', function ($scope, $stateParams, Workorderline) {
+    .controller('WorkorderlineDetailController', function ($scope, $stateParams, Workorderline, Itemctn) {
         $scope.workorderline = {};
         $scope.load = function (id) {
             Workorderline.get({id: id}, function(result) {

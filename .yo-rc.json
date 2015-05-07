@@ -6,7 +6,7 @@
     "authenticationType": "session",
     "hibernateCache": "ehcache",
     "clusteredHttpSession": "no",
-    "websocket": "no",
+    "websocket": "spring-websocket",
     "databaseType": "sql",
     "devDatabaseType": "postgresql",
     "prodDatabaseType": "postgresql",
@@ -14,6 +14,7 @@
     "buildTool": "maven",
     "frontendBuilder": "grunt",
     "javaVersion": "7",
-    "rememberMeKey": "c1b2c2b210aa9dbf9b92f9827fe0b5016cea3c2a"
+    "rememberMeKey": "49b6c4849f3f52b5f1476a0df5b0e866e6f9957e",
+    "searchEngine": "no"
   }
 }

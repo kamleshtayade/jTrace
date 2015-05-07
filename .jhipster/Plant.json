@@ -1,58 +1,60 @@
 {
-    "relationships": [
-        {
-            "relationshipId": 1,
-            "relationshipName": "plantmfgline",
-            "relationshipNameCapitalized": "Plantmfgline",
-            "relationshipFieldName": "plantmfgline",
-            "otherEntityName": "plantmfgline",
-            "relationshipType": "one-to-many",
-            "otherEntityNameCapitalized": "Plantmfgline"
-        }
-    ],
+    "relationships": [],
     "fields": [
         {
             "fieldId": 1,
             "fieldName": "code",
             "fieldType": "String",
             "fieldNameCapitalized": "Code",
-            "fieldNameUnderscored": "code"
+            "fieldNameUnderscored": "code",
+            "fieldInJavaBeanMethod": "Code",
+            "fieldValidate": true,
+            "fieldValidateRules": [
+                "required"
+            ]
         },
         {
             "fieldId": 2,
-            "fieldName": "location",
-            "fieldType": "String",
-            "fieldNameCapitalized": "Location",
-            "fieldNameUnderscored": "location"
-        },
-        {
-            "fieldId": 3,
             "fieldName": "address",
             "fieldType": "String",
             "fieldNameCapitalized": "Address",
-            "fieldNameUnderscored": "address"
+            "fieldNameUnderscored": "address",
+            "fieldInJavaBeanMethod": "Address",
+            "fieldValidate": true,
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldId": 3,
+            "fieldName": "isenabled",
+            "fieldType": "Boolean",
+            "fieldNameCapitalized": "Isenabled",
+            "fieldNameUnderscored": "isenabled",
+            "fieldInJavaBeanMethod": "Isenabled",
+            "fieldValidate": false
         },
         {
             "fieldId": 4,
-            "fieldName": "isActive",
-            "fieldType": "Boolean",
-            "fieldNameCapitalized": "IsActive",
-            "fieldNameUnderscored": "is_active"
-        },
-        {
-            "fieldId": 5,
             "fieldName": "capacity",
-            "fieldType": "String",
+            "fieldType": "Integer",
             "fieldNameCapitalized": "Capacity",
-            "fieldNameUnderscored": "capacity"
+            "fieldNameUnderscored": "capacity",
+            "fieldInJavaBeanMethod": "Capacity",
+            "fieldValidate": true,
+            "fieldValidateRules": [
+                "required"
+            ]
         }
     ],
     "fieldsContainOwnerManyToMany": false,
-    "fieldsContainOneToMany": true,
+    "fieldsContainOneToMany": false,
     "fieldsContainLocalDate": false,
     "fieldsContainCustomTime": false,
     "fieldsContainBigDecimal": false,
     "fieldsContainDateTime": false,
     "fieldsContainDate": false,
-    "changelogDate": "20150415134523"
+    "changelogDate": "20150506075343",
+    "pagination": "pagination",
+    "validation": true
 }

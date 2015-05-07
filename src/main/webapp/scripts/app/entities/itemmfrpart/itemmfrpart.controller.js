@@ -1,19 +1,24 @@
 'use strict';
 
 angular.module('jtraceApp')
-    .controller('ItemmfrpartController', function ($scope, Itemmfrpart, Manufacturer, Itemmtr) {
+    .controller('ItemmfrpartController', function ($scope, Itemmfrpart, Itemmtr, ParseLinks) {
         $scope.itemmfrparts = [];
-        $scope.manufacturers = Manufacturer.query();
         $scope.itemmtrs = Itemmtr.query();
+        $scope.page = 1;
         $scope.loadAll = function() {
-            Itemmfrpart.query(function(result) {
-               $scope.itemmfrparts = result;
+            Itemmfrpart.query({page: $scope.page, per_page: 20}, function(result, headers) {
+                $scope.links = ParseLinks.parse(headers('link'));
+                $scope.itemmfrparts = result;
             });
+        };
+        $scope.loadPage = function(page) {
+            $scope.page = page;
+            $scope.loadAll();
         };
         $scope.loadAll();
 
         $scope.create = function () {
-            Itemmfrpart.save($scope.itemmfrpart,
+            Itemmfrpart.update($scope.itemmfrpart,
                 function () {
                     $scope.loadAll();
                     $('#saveItemmfrpartModal').modal('hide');
@@ -45,8 +50,8 @@ angular.module('jtraceApp')
         };
 
         $scope.clear = function () {
-            $scope.itemmfrpart = {mfrpart: null, status: null, suppart: null, remarks: null, id: null};
+            $scope.itemmfrpart = {mfrpart: null, status: null, supplier: null, remark: null, id: null};
+            $scope.editForm.$setPristine();
+            $scope.editForm.$setUntouched();
         };
-        /* Mfr Status*/
-        $scope.mfrStatus = ['Active ','Qaulified','Prototype','End of Life','In Active'];
     });

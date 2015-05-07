@@ -5,15 +5,17 @@ import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.*;
+import javax.validation.constraints.*;
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.Objects;
 
 /**
  * A Plantmfgline.
  */
 @Entity
-@Table(name = "T_PLANTMFGLINE")
+@Table(name = "PLANTMFGLINE")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 public class Plantmfgline implements Serializable {
 
@@ -21,11 +23,16 @@ public class Plantmfgline implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(name = "capacity")
+    @NotNull
+    @Column(name = "name", nullable = false)
+    private String name;
+
+    @NotNull
+    @Column(name = "capacity", nullable = false)
     private String capacity;
 
     @ManyToOne
-    private Plant plant;
+    private Plantsec plantsec;
 
     public Long getId() {
         return id;
@@ -33,6 +40,14 @@ public class Plantmfgline implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getCapacity() {
@@ -43,12 +58,12 @@ public class Plantmfgline implements Serializable {
         this.capacity = capacity;
     }
 
-    public Plant getPlant() {
-        return plant;
+    public Plantsec getPlantsec() {
+        return plantsec;
     }
 
-    public void setPlant(Plant plant) {
-        this.plant = plant;
+    public void setPlantsec(Plantsec plantsec) {
+        this.plantsec = plantsec;
     }
 
     @Override
@@ -62,20 +77,21 @@ public class Plantmfgline implements Serializable {
 
         Plantmfgline plantmfgline = (Plantmfgline) o;
 
-        if (id != null ? !id.equals(plantmfgline.id) : plantmfgline.id != null) return false;
+        if ( ! Objects.equals(id, plantmfgline.id)) return false;
 
         return true;
     }
 
     @Override
     public int hashCode() {
-        return (int) (id ^ (id >>> 32));
+        return Objects.hashCode(id);
     }
 
     @Override
     public String toString() {
         return "Plantmfgline{" +
                 "id=" + id +
+                ", name='" + name + "'" +
                 ", capacity='" + capacity + "'" +
                 '}';
     }

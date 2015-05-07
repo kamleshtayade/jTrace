@@ -1,18 +1,17 @@
 package com.spring.app.web.rest;
 
-import java.io.IOException;
-import java.nio.charset.Charset;
-
-import org.joda.time.DateTime;
-import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.format.datetime.joda.DateTimeFormatterFactory;
-import org.springframework.http.MediaType;
-
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.joda.JodaModule;
 import com.fasterxml.jackson.datatype.joda.ser.DateTimeSerializer;
 import com.fasterxml.jackson.datatype.joda.ser.JacksonJodaFormat;
+import org.joda.time.DateTime;
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.datetime.joda.DateTimeFormatterFactory;
+import org.springframework.http.MediaType;
+
+import java.io.IOException;
+import java.nio.charset.Charset;
 
 /**
  * Utility class for testing REST controllers.
@@ -34,7 +33,7 @@ public class TestUtil {
      */
     public static byte[] convertObjectToJsonBytes(Object object)
             throws IOException {
-    	ObjectMapper mapper = new ObjectMapper();
+        ObjectMapper mapper = new ObjectMapper();
         mapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
         JodaModule module = new JodaModule();
         DateTimeFormatterFactory formatterFactory = new DateTimeFormatterFactory();

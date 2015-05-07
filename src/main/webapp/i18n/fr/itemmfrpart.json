@@ -14,10 +14,9 @@
             },
             "mfrpart": "Mfrpart",
             "status": "Status",
-            "suppart": "Suppart",
-            "remarks": "Remarks",
-            "manufacturer": "manufacturer",
-            "itemmaster": "itemmaster"
+            "supplier": "Supplier",
+            "remark": "Remark",
+            "itemmtr": "itemmtr"
         }
     }
 }

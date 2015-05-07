@@ -14,13 +14,9 @@
             },
             "code": "Code",
             "name": "Name",
-            "enabled": "Enabled",
-            "category": "Category",
-            "contact": "Contact",
-            "email": "e-mail",
-            "phone": "Phone",
-            "itemmfrpart": "Item Manufacture Part",
-            "supplier": "Supplier"
+            "isenabled": "Isenabled",
+            "mfrcat": "Manufacturer Category",
+            "address": "Address"
         }
     }
 }

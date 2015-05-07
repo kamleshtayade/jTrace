@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('jtraceApp', ['LocalStorageModule', 'tmh.dynamicLocale',
-    'ngResource', 'ui.router', 'ngCookies', 'pascalprecht.translate', 'ngCacheBuster','ngAnimate','ui.bootstrap'])
+    'ngResource', 'ui.router', 'ngCookies', 'pascalprecht.translate', 'ngCacheBuster', 'infinite-scroll','ngAnimate','ui.bootstrap'])
 
     .run(function ($rootScope, $location, $window, $http, $state, $translate, Auth, Principal, Language, ENV, VERSION) {
         $rootScope.ENV = ENV;
@@ -64,7 +64,7 @@ angular.module('jtraceApp', ['LocalStorageModule', 'tmh.dynamicLocale',
                     controller: 'NavbarController'
                 },
                 'footer@':{
-                    templateUrl: 'scripts/components/footer/footer.html'
+                    templateUrl:'scripts/components/footer/footer.html'
                 }
             },
             resolve: {
@@ -80,7 +80,7 @@ angular.module('jtraceApp', ['LocalStorageModule', 'tmh.dynamicLocale',
                 }]
             }
         });
-        
+
 
         // Initialize angular-translate
         $translateProvider.useLoader('$translatePartialLoader', {

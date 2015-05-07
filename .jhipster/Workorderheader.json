@@ -1,89 +1,62 @@
 {
-    "relationships": [],
+    "relationships": [
+        {
+            "relationshipId": 1,
+            "relationshipName": "itemmtr",
+            "relationshipNameCapitalized": "Itemmtr",
+            "relationshipFieldName": "itemmtr",
+            "otherEntityName": "itemmtr",
+            "relationshipType": "many-to-one",
+            "otherEntityNameCapitalized": "Itemmtr",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipId": 2,
+            "relationshipName": "plantmfgline",
+            "relationshipNameCapitalized": "Plantmfgline",
+            "relationshipFieldName": "plantmfgline",
+            "otherEntityName": "plantmfgline",
+            "relationshipType": "many-to-one",
+            "otherEntityNameCapitalized": "Plantmfgline",
+            "otherEntityField": "id"
+        }
+    ],
     "fields": [
         {
             "fieldId": 1,
             "fieldName": "woNumber",
             "fieldType": "String",
             "fieldNameCapitalized": "WoNumber",
-            "fieldNameUnderscored": "wo_number"
+            "fieldNameUnderscored": "wo_number",
+            "fieldInJavaBeanMethod": "WoNumber",
+            "fieldValidate": false
         },
         {
             "fieldId": 2,
             "fieldName": "kitNumber",
             "fieldType": "String",
             "fieldNameCapitalized": "KitNumber",
-            "fieldNameUnderscored": "kit_number"
+            "fieldNameUnderscored": "kit_number",
+            "fieldInJavaBeanMethod": "KitNumber",
+            "fieldValidate": false
         },
         {
             "fieldId": 3,
-            "fieldName": "customer",
-            "fieldType": "String",
-            "fieldNameCapitalized": "Customer",
-            "fieldNameUnderscored": "customer"
-        },
-        {
-            "fieldId": 4,
-            "fieldName": "shipToLoc",
-            "fieldType": "String",
-            "fieldNameCapitalized": "ShipToLoc",
-            "fieldNameUnderscored": "ship_to_loc"
-        },
-        {
-            "fieldId": 5,
-            "fieldName": "plant",
-            "fieldType": "String",
-            "fieldNameCapitalized": "Plant",
-            "fieldNameUnderscored": "plant"
-        },
-        {
-            "fieldId": 6,
-            "fieldName": "plantMfgLine",
-            "fieldType": "String",
-            "fieldNameCapitalized": "PlantMfgLine",
-            "fieldNameUnderscored": "plant_mfg_line"
-        },
-        {
-            "fieldId": 7,
             "fieldName": "status",
             "fieldType": "String",
             "fieldNameCapitalized": "Status",
-            "fieldNameUnderscored": "status"
+            "fieldNameUnderscored": "status",
+            "fieldInJavaBeanMethod": "Status",
+            "fieldValidate": false
         },
         {
-            "fieldId": 8,
+            "fieldId": 4,
             "fieldName": "qty",
             "fieldType": "Integer",
             "fieldNameCapitalized": "Qty",
-            "fieldNameUnderscored": "qty"
-        },
-        {
-            "fieldId": 9,
-            "fieldName": "soNumber",
-            "fieldType": "String",
-            "fieldNameCapitalized": "SoNumber",
-            "fieldNameUnderscored": "so_number"
-        },
-        {
-            "fieldId": 10,
-            "fieldName": "item",
-            "fieldType": "String",
-            "fieldNameCapitalized": "Item",
-            "fieldNameUnderscored": "item"
-        },
-        {
-            "fieldId": 11,
-            "fieldName": "asyCode",
-            "fieldType": "String",
-            "fieldNameCapitalized": "AsyCode",
-            "fieldNameUnderscored": "asy_code"
-        },
-        {
-            "fieldId": 12,
-            "fieldName": "bom",
-            "fieldType": "String",
-            "fieldNameCapitalized": "Bom",
-            "fieldNameUnderscored": "bom"
+            "fieldNameUnderscored": "qty",
+            "fieldInJavaBeanMethod": "Qty",
+            "fieldValidate": false
         }
     ],
     "fieldsContainOwnerManyToMany": false,
@@ -93,5 +66,7 @@
     "fieldsContainBigDecimal": false,
     "fieldsContainDateTime": false,
     "fieldsContainDate": false,
-    "changelogDate": "20150419134315"
+    "changelogDate": "20150506080538",
+    "pagination": "pagination",
+    "validation": false
 }

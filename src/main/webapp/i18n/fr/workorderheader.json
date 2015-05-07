@@ -14,16 +14,10 @@
             },
             "woNumber": "WoNumber",
             "kitNumber": "KitNumber",
-            "customer": "Customer",
-            "shipToLoc": "ShipToLoc",
-            "plant": "Plant",
-            "plantMfgLine": "PlantMfgLine",
             "status": "Status",
             "qty": "Qty",
-            "soNumber": "SoNumber",
-            "item": "Item",
-            "asyCode": "AsyCode",
-            "bom": "Bom"
+            "itemmtr": "itemmtr",
+            "plantmfgline": "plantmfgline"
         }
     }
 }

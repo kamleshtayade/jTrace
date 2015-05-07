@@ -14,6 +14,8 @@ module.exports = function (config) {
             // bower:js
             'main/webapp/bower_components/modernizr/modernizr.js',
             'main/webapp/bower_components/jquery/dist/jquery.js',
+            'main/webapp/bower_components/stomp-websocket/lib/stomp.min.js',
+            'main/webapp/bower_components/sockjs-client/dist/sockjs.js',
             'main/webapp/bower_components/bootstrap/dist/js/bootstrap.js',
             'main/webapp/bower_components/json3/lib/json3.js',
             'main/webapp/bower_components/angular/angular.js',
@@ -27,16 +29,17 @@ module.exports = function (config) {
             'main/webapp/bower_components/angular-dynamic-locale/src/tmhDynamicLocale.js',
             'main/webapp/bower_components/angular-local-storage/dist/angular-local-storage.js',
             'main/webapp/bower_components/angular-cache-buster/angular-cache-buster.js',
+            'main/webapp/bower_components/ngInfiniteScroll/build/ng-infinite-scroll.js',
+            'main/webapp/bower_components/angular-animate/angular-animate.js',
+            'main/webapp/bower_components/angular-bootstrap/ui-bootstrap-tpls.js',
             'main/webapp/bower_components/raphael/raphael.js',
             'main/webapp/bower_components/mocha/mocha.js',
             'main/webapp/bower_components/morris.js/morris.js',
-            'main/webapp/bower_components/angular-animate/angular-animate.js',
-            'main/webapp/bower_components/angular-bootstrap/ui-bootstrap-tpls.js',
             'main/webapp/bower_components/angular-mocks/angular-mocks.js',
             // endbower
             'main/webapp/scripts/app/app.js',
             'main/webapp/scripts/app/**/*.js',
-            'main/webapp/scripts/components/**/*.js',
+            'main/webapp/scripts/components/**/*.{js,html}',
             'test/javascript/**/!(karma.conf).js'
         ],
 

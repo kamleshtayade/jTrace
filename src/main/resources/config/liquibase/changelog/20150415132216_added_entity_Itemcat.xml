@@ -11,7 +11,7 @@
         Added the entity Itemcat.
     -->
     <changeSet id="20150415132216" author="jhipster">
-        <createTable tableName="T_ITEMCAT">
+        <createTable tableName="ITEMCAT">
             <column name="id" type="bigint" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
             </column>

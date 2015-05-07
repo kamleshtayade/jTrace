@@ -2,16 +2,21 @@
 
     <h2 translate="jtraceApp.plantmfgline.home.title">Plantmfgline</h2>
 
-    <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#savePlantmfglineModal" ng-click="clear()">
-        <span class="glyphicon glyphicon-flash"></span> <span translate="jtraceApp.plantmfgline.home.createLabel">Create a new Plantmfgline</span>
-    </button>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <button class="btn btn-primary" data-toggle="modal" data-target="#savePlantmfglineModal" ng-click="clear()">
+                    <span class="glyphicon glyphicon-flash"></span> <span translate="jtraceApp.plantmfgline.home.createLabel">Create a new Plantmfgline</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
     <div class="modal fade" id="savePlantmfglineModal" tabindex="-1" role="dialog" aria-labelledby="myPlantmfglineLabel"
          aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
-                <form name="editForm" role="form" novalidate
-                      class="ng-scope ng-invalid ng-invalid-required ng-dirty ng-valid-minlength"
-                      ng-submit="create()">
+                <form name="editForm" role="form" novalidate ng-submit="create()" show-validation>
 
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
@@ -26,17 +31,35 @@
                         </div>
 
                         <div class="form-group">
+                            <label translate="jtraceApp.plantmfgline.name">Name</label>
+                            <input type="text" class="form-control" name="name"
+                                   ng-model="plantmfgline.name" required>
+
+                            <div ng-show="editForm.name.$invalid">
+                                <p class="help-block"
+                                   ng-show="editForm.name.$error.required" translate="entity.validation.required">
+                                    This field is required.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="form-group">
                             <label translate="jtraceApp.plantmfgline.capacity">Capacity</label>
                             <input type="text" class="form-control" name="capacity"
-                                   ng-model="plantmfgline.capacity">
+                                   ng-model="plantmfgline.capacity" required>
+
+                            <div ng-show="editForm.capacity.$invalid">
+                                <p class="help-block"
+                                   ng-show="editForm.capacity.$error.required" translate="entity.validation.required">
+                                    This field is required.
+                                </p>
+                            </div>
                         </div>
 
                         <div class="form-group">
-                            <label translate="jtraceApp.plantmfgline.plant">plant</label>
-                            <select class="form-control" name="capacity" ng-model="plantmfgline.plant.id" ng-options="plant.id as plant.code for plant in plants">
+                            <label translate="jtraceApp.plantmfgline.plantsec">plantsec</label>
+                            <select class="form-control" name="plantsec" ng-model="plantmfgline.plantsec.id" ng-options="plantsec.id as plantsec.id for plantsec in plantsecs">
                             </select>
                         </div>
-
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
@@ -81,35 +104,50 @@
             <thead>
                 <tr>
                     <th>ID</th>
+                    <th translate="jtraceApp.plantmfgline.name">Name</th>
                     <th translate="jtraceApp.plantmfgline.capacity">Capacity</th>
-                    <th translate="jtraceApp.plantmfgline.plant">plant</th>
+                    <th translate="jtraceApp.plantmfgline.plantsec">plantsec</th>
                     <th></th>
                 </tr>
             </thead>
             <tbody>
                 <tr ng-repeat="plantmfgline in plantmfglines">
                     <td><a ui-sref="plantmfglineDetail({id:plantmfgline.id})">{{plantmfgline.id}}</a></td>
+                    <td>{{plantmfgline.name}}</td>
                     <td>{{plantmfgline.capacity}}</td>
-                    <td>{{plantmfgline.plant.code}}</td>
+                    <td>{{plantmfgline.plantsec.id}}</td>
                     <td>
                         <button type="submit"
                                 ui-sref="plantmfglineDetail({id:plantmfgline.id})"
-                                class="btn btn-info">
+                                class="btn btn-info btn-sm">
                             <span class="glyphicon glyphicon-eye-open"></span>&nbsp;<span translate="entity.action.view"> View</span>
                         </button>
                         <button type="submit"
                                 ng-click="update(plantmfgline.id)"
-                                class="btn btn-primary">
+                                class="btn btn-primary btn-sm">
                             <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span translate="entity.action.edit"> Edit</span>
                         </button>
                         <button type="submit"
                                 ng-click="delete(plantmfgline.id)"
-                                class="btn btn-danger">
+                                class="btn btn-danger btn-sm">
                             <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span translate="entity.action.delete"> Delete</span>
                         </button>
                     </td>
                 </tr>
             </tbody>
         </table>
+        <nav>
+            <ul class="pagination">
+                <li ng-show="links['first']" ng-click="loadPage(links['first'])"><a>&lt;&lt;</a></li>
+                <li ng-show="links['prev']" ng-click="loadPage(links['prev'])"><a>&lt;</a></li>
+                <li ng-show="page > 2" ng-click="loadPage(page - 2)"><a>{{page - 2}}</a></li>
+                <li ng-show="page > 1" ng-click="loadPage(page - 1)"><a>{{page - 1}}</a></li>
+                <li class="active"><a>{{page}}</a></li>
+                <li ng-show="page < links['last']" ng-click="loadPage(page + 1)"><a>{{page + 1}}</a></li>
+                <li ng-show="page < links['last'] - 1" ng-click="loadPage(page + 2)"><a>{{page + 2}}</a></li>
+                <li ng-show="links['next']" ng-click="loadPage(links['next'])"><a>&gt;</a></li>
+                <li ng-show="links['last']" ng-click="loadPage(links['last'])"><a>&gt;&gt;</a></li>
+            </ul>
+        </nav>
     </div>
 </div>

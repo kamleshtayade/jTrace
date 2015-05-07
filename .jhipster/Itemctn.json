@@ -1,103 +1,97 @@
 {
-    "relationships": [],
+    "relationships": [
+        {
+            "relationshipId": 1,
+            "relationshipName": "itemmtr",
+            "relationshipNameCapitalized": "Itemmtr",
+            "relationshipFieldName": "itemmtr",
+            "otherEntityName": "itemmtr",
+            "relationshipType": "many-to-one",
+            "otherEntityNameCapitalized": "Itemmtr",
+            "otherEntityField": "id"
+        }
+    ],
     "fields": [
         {
             "fieldId": 1,
             "fieldName": "ctn",
             "fieldType": "String",
             "fieldNameCapitalized": "Ctn",
-            "fieldNameUnderscored": "ctn"
+            "fieldNameUnderscored": "ctn",
+            "fieldInJavaBeanMethod": "Ctn",
+            "fieldValidate": true,
+            "fieldValidateRules": [
+                "required"
+            ]
         },
         {
             "fieldId": 2,
-            "fieldName": "srNoFrom",
-            "fieldType": "String",
-            "fieldNameCapitalized": "SrNoFrom",
-            "fieldNameUnderscored": "sr_no_from"
-        },
-        {
-            "fieldId": 3,
             "fieldName": "reqdQty",
             "fieldType": "Integer",
             "fieldNameCapitalized": "ReqdQty",
-            "fieldNameUnderscored": "reqd_qty"
+            "fieldNameUnderscored": "reqd_qty",
+            "fieldInJavaBeanMethod": "ReqdQty",
+            "fieldValidate": true,
+            "fieldValidateRules": [
+                "required"
+            ]
         },
         {
-            "fieldId": 4,
+            "fieldId": 3,
             "fieldName": "recdDt",
             "fieldType": "LocalDate",
             "fieldNameCapitalized": "RecdDt",
-            "fieldNameUnderscored": "recd_dt"
+            "fieldNameUnderscored": "recd_dt",
+            "fieldInJavaBeanMethod": "RecdDt",
+            "fieldValidate": true,
+            "fieldValidateRules": [
+                "required"
+            ]
         },
         {
-            "fieldId": 5,
+            "fieldId": 4,
             "fieldName": "item",
             "fieldType": "String",
             "fieldNameCapitalized": "Item",
-            "fieldNameUnderscored": "item"
+            "fieldNameUnderscored": "item",
+            "fieldInJavaBeanMethod": "Item",
+            "fieldValidate": false
         },
         {
-            "fieldId": 6,
+            "fieldId": 5,
             "fieldName": "srNoTo",
             "fieldType": "String",
             "fieldNameCapitalized": "SrNoTo",
-            "fieldNameUnderscored": "sr_no_to"
+            "fieldNameUnderscored": "sr_no_to",
+            "fieldInJavaBeanMethod": "SrNoTo",
+            "fieldValidate": false
         },
         {
-            "fieldId": 7,
+            "fieldId": 6,
             "fieldName": "selfLife",
             "fieldType": "String",
             "fieldNameCapitalized": "SelfLife",
-            "fieldNameUnderscored": "self_life"
+            "fieldNameUnderscored": "self_life",
+            "fieldInJavaBeanMethod": "SelfLife",
+            "fieldValidate": false
+        },
+        {
+            "fieldId": 7,
+            "fieldName": "poQty",
+            "fieldType": "String",
+            "fieldNameCapitalized": "PoQty",
+            "fieldNameUnderscored": "po_qty",
+            "fieldInJavaBeanMethod": "PoQty",
+            "fieldValidate": false
         },
         {
             "fieldId": 8,
-            "fieldName": "poQty",
-            "fieldType": "Integer",
-            "fieldNameCapitalized": "PoQty",
-            "fieldNameUnderscored": "po_qty"
-        },
-        {
-            "fieldId": 9,
             "fieldName": "invoice",
             "fieldType": "String",
             "fieldNameCapitalized": "Invoice",
-            "fieldNameUnderscored": "invoice"
-        },
-        {
-            "fieldId": 10,
-            "fieldName": "manufaturer",
-            "fieldType": "String",
-            "fieldNameCapitalized": "Manufaturer",
-            "fieldNameUnderscored": "manufaturer"
-        },
-        {
-            "fieldId": 11,
-            "fieldName": "mfgPartNo",
-            "fieldType": "String",
-            "fieldNameCapitalized": "MfgPartNo",
-            "fieldNameUnderscored": "mfg_part_no"
-        },
-        {
-            "fieldId": 12,
-            "fieldName": "supplier",
-            "fieldType": "String",
-            "fieldNameCapitalized": "Supplier",
-            "fieldNameUnderscored": "supplier"
-        },
-        {
-            "fieldId": 13,
-            "fieldName": "dateCode",
-            "fieldType": "String",
-            "fieldNameCapitalized": "DateCode",
-            "fieldNameUnderscored": "date_code"
-        },
-        {
-            "fieldId": 14,
-            "fieldName": "lotCode",
-            "fieldType": "String",
-            "fieldNameCapitalized": "LotCode",
-            "fieldNameUnderscored": "lot_code"
+            "fieldNameUnderscored": "invoice",
+            "fieldInJavaBeanMethod": "Invoice",
+            "fieldValidate": false
         }
     ],
     "fieldsContainOwnerManyToMany": false,
@@ -107,5 +101,7 @@
     "fieldsContainBigDecimal": false,
     "fieldsContainDateTime": false,
     "fieldsContainDate": false,
-    "changelogDate": "20150419135600"
+    "changelogDate": "20150506074221",
+    "pagination": "pagination",
+    "validation": true
 }

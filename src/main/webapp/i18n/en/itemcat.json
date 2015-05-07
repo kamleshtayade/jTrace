@@ -14,8 +14,8 @@
             },
             "name": "Name",
             "description": "Description",
-            "enabled": "Enabled",
-            "itemsubcat": "Item Subcategory",
+            "enabled": "is Enabled",
+            "itemsubcat": "Item SubCategory",
             "itemmaster": "Item Master"
         }
     }

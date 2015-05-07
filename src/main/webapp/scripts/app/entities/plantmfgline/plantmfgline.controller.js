@@ -1,18 +1,24 @@
 'use strict';
 
 angular.module('jtraceApp')
-    .controller('PlantmfglineController', function ($scope, Plantmfgline, Plant) {
+    .controller('PlantmfglineController', function ($scope, Plantmfgline, Plantsec, ParseLinks) {
         $scope.plantmfglines = [];
-        $scope.plants = Plant.query();
+        $scope.plantsecs = Plantsec.query();
+        $scope.page = 1;
         $scope.loadAll = function() {
-            Plantmfgline.query(function(result) {
-               $scope.plantmfglines = result;
+            Plantmfgline.query({page: $scope.page, per_page: 20}, function(result, headers) {
+                $scope.links = ParseLinks.parse(headers('link'));
+                $scope.plantmfglines = result;
             });
+        };
+        $scope.loadPage = function(page) {
+            $scope.page = page;
+            $scope.loadAll();
         };
         $scope.loadAll();
 
         $scope.create = function () {
-            Plantmfgline.save($scope.plantmfgline,
+            Plantmfgline.update($scope.plantmfgline,
                 function () {
                     $scope.loadAll();
                     $('#savePlantmfglineModal').modal('hide');
@@ -44,6 +50,8 @@ angular.module('jtraceApp')
         };
 
         $scope.clear = function () {
-            $scope.plantmfgline = {capacity: null, id: null};
+            $scope.plantmfgline = {name: null, capacity: null, id: null};
+            $scope.editForm.$setPristine();
+            $scope.editForm.$setUntouched();
         };
     });

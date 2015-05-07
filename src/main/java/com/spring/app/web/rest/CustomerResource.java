@@ -11,6 +11,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.inject.Inject;
+import java.net.URI;
+import java.net.URISyntaxException;
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
@@ -33,9 +35,29 @@ public class CustomerResource {
             method = RequestMethod.POST,
             produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
-    public void create(@RequestBody Customer customer) {
+    public ResponseEntity<Void> create(@RequestBody Customer customer) throws URISyntaxException {
         log.debug("REST request to save Customer : {}", customer);
+        if (customer.getId() != null) {
+            return ResponseEntity.badRequest().header("Failure", "A new customer cannot already have an ID").build();
+        }
         customerRepository.save(customer);
+        return ResponseEntity.created(new URI("/api/customers/" + customer.getId())).build();
+    }
+
+    /**
+     * PUT  /customers -> Updates an existing customer.
+     */
+    @RequestMapping(value = "/customers",
+        method = RequestMethod.PUT,
+        produces = MediaType.APPLICATION_JSON_VALUE)
+    @Timed
+    public ResponseEntity<Void> update(@RequestBody Customer customer) throws URISyntaxException {
+        log.debug("REST request to update Customer : {}", customer);
+        if (customer.getId() == null) {
+            return create(customer);
+        }
+        customerRepository.save(customer);
+        return ResponseEntity.ok().build();
     }
 
     /**

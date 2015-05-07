@@ -5,15 +5,17 @@ import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.*;
+import javax.validation.constraints.*;
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.Objects;
 
 /**
  * A Itemmfrpart.
  */
 @Entity
-@Table(name = "T_ITEMMFRPART")
+@Table(name = "ITEMMFRPART")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 public class Itemmfrpart implements Serializable {
 
@@ -21,33 +23,25 @@ public class Itemmfrpart implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(name = "mfrpart")
+    @NotNull
+    @Column(name = "mfrpart", nullable = false)
     private String mfrpart;
 
     @Column(name = "status")
-    private String status;
+    private Boolean status;
 
-    @Column(name = "suppart")
-    private String suppart;
+    @Column(name = "supplier")
+    private String supplier;
 
-    @Column(name = "remarks")
-    private String remarks;
+    @NotNull
+    @Size(min = 10)
+    @Column(name = "remark", nullable = false)
+    private String remark;
 
-    @ManyToOne
-    private Manufacturer manufacturer;
-    
     @ManyToOne
     private Itemmtr itemmtr;
-    
-    public Itemmtr getItemmtr() {
-		return itemmtr;
-	}
 
-	public void setItemmtr(Itemmtr itemmtr) {
-		this.itemmtr = itemmtr;
-	}
-
-	public Long getId() {
+    public Long getId() {
         return id;
     }
 
@@ -63,36 +57,36 @@ public class Itemmfrpart implements Serializable {
         this.mfrpart = mfrpart;
     }
 
-    public String getStatus() {
+    public Boolean getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(Boolean status) {
         this.status = status;
     }
 
-    public String getSuppart() {
-        return suppart;
+    public String getSupplier() {
+        return supplier;
     }
 
-    public void setSuppart(String suppart) {
-        this.suppart = suppart;
+    public void setSupplier(String supplier) {
+        this.supplier = supplier;
     }
 
-    public String getRemarks() {
-        return remarks;
+    public String getRemark() {
+        return remark;
     }
 
-    public void setRemarks(String remarks) {
-        this.remarks = remarks;
+    public void setRemark(String remark) {
+        this.remark = remark;
     }
 
-    public Manufacturer getManufacturer() {
-        return manufacturer;
+    public Itemmtr getItemmtr() {
+        return itemmtr;
     }
 
-    public void setManufacturer(Manufacturer manufacturer) {
-        this.manufacturer = manufacturer;
+    public void setItemmtr(Itemmtr itemmtr) {
+        this.itemmtr = itemmtr;
     }
 
     @Override
@@ -106,14 +100,14 @@ public class Itemmfrpart implements Serializable {
 
         Itemmfrpart itemmfrpart = (Itemmfrpart) o;
 
-        if (id != null ? !id.equals(itemmfrpart.id) : itemmfrpart.id != null) return false;
+        if ( ! Objects.equals(id, itemmfrpart.id)) return false;
 
         return true;
     }
 
     @Override
     public int hashCode() {
-        return (int) (id ^ (id >>> 32));
+        return Objects.hashCode(id);
     }
 
     @Override
@@ -122,8 +116,8 @@ public class Itemmfrpart implements Serializable {
                 "id=" + id +
                 ", mfrpart='" + mfrpart + "'" +
                 ", status='" + status + "'" +
-                ", suppart='" + suppart + "'" +
-                ", remarks='" + remarks + "'" +
+                ", supplier='" + supplier + "'" +
+                ", remark='" + remark + "'" +
                 '}';
     }
 }

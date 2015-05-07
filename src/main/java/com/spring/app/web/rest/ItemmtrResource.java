@@ -3,8 +3,11 @@ package com.spring.app.web.rest;
 import com.codahale.metrics.annotation.Timed;
 import com.spring.app.domain.Itemmtr;
 import com.spring.app.repository.ItemmtrRepository;
+import com.spring.app.web.rest.util.PaginationUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.data.domain.Page;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -68,9 +71,12 @@ public class ItemmtrResource {
             method = RequestMethod.GET,
             produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
-    public List<Itemmtr> getAll() {
-        log.debug("REST request to get all Itemmtrs");
-        return itemmtrRepository.findAll();
+    public ResponseEntity<List<Itemmtr>> getAll(@RequestParam(value = "page" , required = false) Integer offset,
+                                  @RequestParam(value = "per_page", required = false) Integer limit)
+        throws URISyntaxException {
+        Page<Itemmtr> page = itemmtrRepository.findAll(PaginationUtil.generatePageRequest(offset, limit));
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/itemmtrs", offset, limit);
+        return new ResponseEntity<List<Itemmtr>>(page.getContent(), headers, HttpStatus.OK);
     }
 
     /**

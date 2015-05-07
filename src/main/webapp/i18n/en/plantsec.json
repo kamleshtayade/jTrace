@@ -1,0 +1,22 @@
+{
+    "jtraceApp": {
+        "plantsec" : {
+            "home": {
+                "title": "Plant Sections",
+                "createLabel": "Create a new Plant Section",
+                "createOrEditLabel": "Create or edit a Plant Section"
+            },
+            "delete": {
+                "question": "Are you sure you want to delete Plant Section {{ id }}?"
+            },
+            "detail": {
+                "title": "Plant Section"
+            },
+            "name": "Name",
+            "description": "Description",
+            "isenabled": "Is Enabled",
+            "capacity": "Capacity",
+            "plant": "Plant"
+        }
+    }
+}

@@ -109,68 +109,11 @@ public class ItemmtrResourceTest {
 
     @Test
     @Transactional
-    public void checkDescriptionIsRequired() throws Exception {
-        // Validate the database is empty
-        assertThat(itemmtrRepository.findAll()).hasSize(0);
-        // set the field null
-        itemmtr.setDescription(null);
-
-        // Create the Itemmtr, which fails.
-        restItemmtrMockMvc.perform(post("/api/itemmtrs")
-                .contentType(TestUtil.APPLICATION_JSON_UTF8)
-                .content(TestUtil.convertObjectToJsonBytes(itemmtr)))
-                .andExpect(status().isBadRequest());
-
-        // Validate the database is still empty
-        List<Itemmtr> itemmtrs = itemmtrRepository.findAll();
-        assertThat(itemmtrs).hasSize(0);
-    }
-
-    @Test
-    @Transactional
     public void checkSpecificationIsRequired() throws Exception {
         // Validate the database is empty
         assertThat(itemmtrRepository.findAll()).hasSize(0);
         // set the field null
         itemmtr.setSpecification(null);
-
-        // Create the Itemmtr, which fails.
-        restItemmtrMockMvc.perform(post("/api/itemmtrs")
-                .contentType(TestUtil.APPLICATION_JSON_UTF8)
-                .content(TestUtil.convertObjectToJsonBytes(itemmtr)))
-                .andExpect(status().isBadRequest());
-
-        // Validate the database is still empty
-        List<Itemmtr> itemmtrs = itemmtrRepository.findAll();
-        assertThat(itemmtrs).hasSize(0);
-    }
-
-    @Test
-    @Transactional
-    public void checkCatidIsRequired() throws Exception {
-        // Validate the database is empty
-        assertThat(itemmtrRepository.findAll()).hasSize(0);
-        // set the field null
-        itemmtr.setDescription(null);
-
-        // Create the Itemmtr, which fails.
-        restItemmtrMockMvc.perform(post("/api/itemmtrs")
-                .contentType(TestUtil.APPLICATION_JSON_UTF8)
-                .content(TestUtil.convertObjectToJsonBytes(itemmtr)))
-                .andExpect(status().isBadRequest());
-
-        // Validate the database is still empty
-        List<Itemmtr> itemmtrs = itemmtrRepository.findAll();
-        assertThat(itemmtrs).hasSize(0);
-    }
-
-    @Test
-    @Transactional
-    public void checkSubcatidIsRequired() throws Exception {
-        // Validate the database is empty
-        assertThat(itemmtrRepository.findAll()).hasSize(0);
-        // set the field null
-        itemmtr.setSubcatid(null);
 
         // Create the Itemmtr, which fails.
         restItemmtrMockMvc.perform(post("/api/itemmtrs")

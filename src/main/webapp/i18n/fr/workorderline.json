@@ -12,14 +12,13 @@
             "detail": {
                 "title": "Workorderline"
             },
-            "workorderheader": "Workorderheader",
             "bomChildItem": "BomChildItem",
             "attrition": "Attrition",
             "requQty": "RequQty",
             "issuedQty": "IssuedQty",
             "isCustSupplied": "IsCustSupplied",
-            "itemCtn": "ItemCtn",
-            "remarks": "Remarks"
+            "remark": "Remark",
+            "itemctn": "itemctn"
         }
     }
 }

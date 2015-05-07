@@ -2,22 +2,39 @@
     "relationships": [
         {
             "relationshipId": 1,
-            "relationshipName": "plant",
-            "relationshipNameCapitalized": "Plant",
-            "relationshipFieldName": "plant",
-            "otherEntityName": "plant",
+            "relationshipName": "plantsec",
+            "relationshipNameCapitalized": "Plantsec",
+            "relationshipFieldName": "plantsec",
+            "otherEntityName": "plantsec",
             "relationshipType": "many-to-one",
-            "otherEntityNameCapitalized": "Plant",
-            "otherEntityField": "code"
+            "otherEntityNameCapitalized": "Plantsec",
+            "otherEntityField": "id"
         }
     ],
     "fields": [
         {
             "fieldId": 1,
+            "fieldName": "name",
+            "fieldType": "String",
+            "fieldNameCapitalized": "Name",
+            "fieldNameUnderscored": "name",
+            "fieldInJavaBeanMethod": "Name",
+            "fieldValidate": true,
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldId": 2,
             "fieldName": "capacity",
             "fieldType": "String",
             "fieldNameCapitalized": "Capacity",
-            "fieldNameUnderscored": "capacity"
+            "fieldNameUnderscored": "capacity",
+            "fieldInJavaBeanMethod": "Capacity",
+            "fieldValidate": true,
+            "fieldValidateRules": [
+                "required"
+            ]
         }
     ],
     "fieldsContainOwnerManyToMany": false,
@@ -27,5 +44,7 @@
     "fieldsContainBigDecimal": false,
     "fieldsContainDateTime": false,
     "fieldsContainDate": false,
-    "changelogDate": "20150415134637"
+    "changelogDate": "20150506075806",
+    "pagination": "pagination",
+    "validation": true
 }

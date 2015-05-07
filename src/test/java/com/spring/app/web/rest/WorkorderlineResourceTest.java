@@ -7,6 +7,7 @@ import com.spring.app.repository.WorkorderlineRepository;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import static org.hamcrest.Matchers.hasItem;
 import org.mockito.MockitoAnnotations;
 import org.springframework.boot.test.IntegrationTest;
 import org.springframework.boot.test.SpringApplicationConfiguration;
@@ -37,24 +38,21 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @IntegrationTest
 public class WorkorderlineResourceTest {
 
-    private static final String DEFAULT_WORKORDERHEADER = "SAMPLE_TEXT";
-    private static final String UPDATED_WORKORDERHEADER = "UPDATED_TEXT";
     private static final String DEFAULT_BOM_CHILD_ITEM = "SAMPLE_TEXT";
     private static final String UPDATED_BOM_CHILD_ITEM = "UPDATED_TEXT";
     private static final String DEFAULT_ATTRITION = "SAMPLE_TEXT";
     private static final String UPDATED_ATTRITION = "UPDATED_TEXT";
-    private static final String DEFAULT_REQU_QTY = "SAMPLE_TEXT";
-    private static final String UPDATED_REQU_QTY = "UPDATED_TEXT";
+
+    private static final Integer DEFAULT_REQU_QTY = 0;
+    private static final Integer UPDATED_REQU_QTY = 1;
 
     private static final Integer DEFAULT_ISSUED_QTY = 0;
     private static final Integer UPDATED_ISSUED_QTY = 1;
 
     private static final Boolean DEFAULT_IS_CUST_SUPPLIED = false;
     private static final Boolean UPDATED_IS_CUST_SUPPLIED = true;
-    private static final String DEFAULT_ITEM_CTN = "SAMPLE_TEXT";
-    private static final String UPDATED_ITEM_CTN = "UPDATED_TEXT";
-    private static final String DEFAULT_REMARKS = "SAMPLE_TEXT";
-    private static final String UPDATED_REMARKS = "UPDATED_TEXT";
+    private static final String DEFAULT_REMARK = "SAMPLE_TEXT";
+    private static final String UPDATED_REMARK = "UPDATED_TEXT";
 
     @Inject
     private WorkorderlineRepository workorderlineRepository;
@@ -74,40 +72,54 @@ public class WorkorderlineResourceTest {
     @Before
     public void initTest() {
         workorderline = new Workorderline();
-        workorderline.setWorkorderheader(DEFAULT_WORKORDERHEADER);
         workorderline.setBomChildItem(DEFAULT_BOM_CHILD_ITEM);
         workorderline.setAttrition(DEFAULT_ATTRITION);
         workorderline.setRequQty(DEFAULT_REQU_QTY);
         workorderline.setIssuedQty(DEFAULT_ISSUED_QTY);
         workorderline.setIsCustSupplied(DEFAULT_IS_CUST_SUPPLIED);
-        workorderline.setItemCtn(DEFAULT_ITEM_CTN);
-        workorderline.setRemarks(DEFAULT_REMARKS);
+        workorderline.setRemark(DEFAULT_REMARK);
     }
 
     @Test
     @Transactional
     public void createWorkorderline() throws Exception {
-        // Validate the database is empty
-        assertThat(workorderlineRepository.findAll()).hasSize(0);
+        int databaseSizeBeforeCreate = workorderlineRepository.findAll().size();
 
         // Create the Workorderline
         restWorkorderlineMockMvc.perform(post("/api/workorderlines")
                 .contentType(TestUtil.APPLICATION_JSON_UTF8)
                 .content(TestUtil.convertObjectToJsonBytes(workorderline)))
-                .andExpect(status().isOk());
+                .andExpect(status().isCreated());
 
         // Validate the Workorderline in the database
         List<Workorderline> workorderlines = workorderlineRepository.findAll();
-        assertThat(workorderlines).hasSize(1);
-        Workorderline testWorkorderline = workorderlines.iterator().next();
-        assertThat(testWorkorderline.getWorkorderheader()).isEqualTo(DEFAULT_WORKORDERHEADER);
+        assertThat(workorderlines).hasSize(databaseSizeBeforeCreate + 1);
+        Workorderline testWorkorderline = workorderlines.get(workorderlines.size() - 1);
         assertThat(testWorkorderline.getBomChildItem()).isEqualTo(DEFAULT_BOM_CHILD_ITEM);
         assertThat(testWorkorderline.getAttrition()).isEqualTo(DEFAULT_ATTRITION);
         assertThat(testWorkorderline.getRequQty()).isEqualTo(DEFAULT_REQU_QTY);
         assertThat(testWorkorderline.getIssuedQty()).isEqualTo(DEFAULT_ISSUED_QTY);
         assertThat(testWorkorderline.getIsCustSupplied()).isEqualTo(DEFAULT_IS_CUST_SUPPLIED);
-        assertThat(testWorkorderline.getItemCtn()).isEqualTo(DEFAULT_ITEM_CTN);
-        assertThat(testWorkorderline.getRemarks()).isEqualTo(DEFAULT_REMARKS);
+        assertThat(testWorkorderline.getRemark()).isEqualTo(DEFAULT_REMARK);
+    }
+
+    @Test
+    @Transactional
+    public void checkBomChildItemIsRequired() throws Exception {
+        // Validate the database is empty
+        assertThat(workorderlineRepository.findAll()).hasSize(0);
+        // set the field null
+        workorderline.setBomChildItem(null);
+
+        // Create the Workorderline, which fails.
+        restWorkorderlineMockMvc.perform(post("/api/workorderlines")
+                .contentType(TestUtil.APPLICATION_JSON_UTF8)
+                .content(TestUtil.convertObjectToJsonBytes(workorderline)))
+                .andExpect(status().isBadRequest());
+
+        // Validate the database is still empty
+        List<Workorderline> workorderlines = workorderlineRepository.findAll();
+        assertThat(workorderlines).hasSize(0);
     }
 
     @Test
@@ -120,15 +132,13 @@ public class WorkorderlineResourceTest {
         restWorkorderlineMockMvc.perform(get("/api/workorderlines"))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
-                .andExpect(jsonPath("$.[0].id").value(workorderline.getId().intValue()))
-                .andExpect(jsonPath("$.[0].workorderheader").value(DEFAULT_WORKORDERHEADER.toString()))
-                .andExpect(jsonPath("$.[0].bomChildItem").value(DEFAULT_BOM_CHILD_ITEM.toString()))
-                .andExpect(jsonPath("$.[0].attrition").value(DEFAULT_ATTRITION.toString()))
-                .andExpect(jsonPath("$.[0].requQty").value(DEFAULT_REQU_QTY.toString()))
-                .andExpect(jsonPath("$.[0].issuedQty").value(DEFAULT_ISSUED_QTY))
-                .andExpect(jsonPath("$.[0].isCustSupplied").value(DEFAULT_IS_CUST_SUPPLIED.booleanValue()))
-                .andExpect(jsonPath("$.[0].itemCtn").value(DEFAULT_ITEM_CTN.toString()))
-                .andExpect(jsonPath("$.[0].remarks").value(DEFAULT_REMARKS.toString()));
+                .andExpect(jsonPath("$.[*].id").value(hasItem(workorderline.getId().intValue())))
+                .andExpect(jsonPath("$.[*].bomChildItem").value(hasItem(DEFAULT_BOM_CHILD_ITEM.toString())))
+                .andExpect(jsonPath("$.[*].attrition").value(hasItem(DEFAULT_ATTRITION.toString())))
+                .andExpect(jsonPath("$.[*].requQty").value(hasItem(DEFAULT_REQU_QTY)))
+                .andExpect(jsonPath("$.[*].issuedQty").value(hasItem(DEFAULT_ISSUED_QTY)))
+                .andExpect(jsonPath("$.[*].isCustSupplied").value(hasItem(DEFAULT_IS_CUST_SUPPLIED.booleanValue())))
+                .andExpect(jsonPath("$.[*].remark").value(hasItem(DEFAULT_REMARK.toString())));
     }
 
     @Test
@@ -142,21 +152,19 @@ public class WorkorderlineResourceTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON))
             .andExpect(jsonPath("$.id").value(workorderline.getId().intValue()))
-            .andExpect(jsonPath("$.workorderheader").value(DEFAULT_WORKORDERHEADER.toString()))
             .andExpect(jsonPath("$.bomChildItem").value(DEFAULT_BOM_CHILD_ITEM.toString()))
             .andExpect(jsonPath("$.attrition").value(DEFAULT_ATTRITION.toString()))
-            .andExpect(jsonPath("$.requQty").value(DEFAULT_REQU_QTY.toString()))
+            .andExpect(jsonPath("$.requQty").value(DEFAULT_REQU_QTY))
             .andExpect(jsonPath("$.issuedQty").value(DEFAULT_ISSUED_QTY))
             .andExpect(jsonPath("$.isCustSupplied").value(DEFAULT_IS_CUST_SUPPLIED.booleanValue()))
-            .andExpect(jsonPath("$.itemCtn").value(DEFAULT_ITEM_CTN.toString()))
-            .andExpect(jsonPath("$.remarks").value(DEFAULT_REMARKS.toString()));
+            .andExpect(jsonPath("$.remark").value(DEFAULT_REMARK.toString()));
     }
 
     @Test
     @Transactional
     public void getNonExistingWorkorderline() throws Exception {
         // Get the workorderline
-        restWorkorderlineMockMvc.perform(get("/api/workorderlines/{id}", 1L))
+        restWorkorderlineMockMvc.perform(get("/api/workorderlines/{id}", Long.MAX_VALUE))
                 .andExpect(status().isNotFound());
     }
 
@@ -166,32 +174,30 @@ public class WorkorderlineResourceTest {
         // Initialize the database
         workorderlineRepository.saveAndFlush(workorderline);
 
+		int databaseSizeBeforeUpdate = workorderlineRepository.findAll().size();
+
         // Update the workorderline
-        workorderline.setWorkorderheader(UPDATED_WORKORDERHEADER);
         workorderline.setBomChildItem(UPDATED_BOM_CHILD_ITEM);
         workorderline.setAttrition(UPDATED_ATTRITION);
         workorderline.setRequQty(UPDATED_REQU_QTY);
         workorderline.setIssuedQty(UPDATED_ISSUED_QTY);
         workorderline.setIsCustSupplied(UPDATED_IS_CUST_SUPPLIED);
-        workorderline.setItemCtn(UPDATED_ITEM_CTN);
-        workorderline.setRemarks(UPDATED_REMARKS);
-        restWorkorderlineMockMvc.perform(post("/api/workorderlines")
+        workorderline.setRemark(UPDATED_REMARK);
+        restWorkorderlineMockMvc.perform(put("/api/workorderlines")
                 .contentType(TestUtil.APPLICATION_JSON_UTF8)
                 .content(TestUtil.convertObjectToJsonBytes(workorderline)))
                 .andExpect(status().isOk());
 
         // Validate the Workorderline in the database
         List<Workorderline> workorderlines = workorderlineRepository.findAll();
-        assertThat(workorderlines).hasSize(1);
-        Workorderline testWorkorderline = workorderlines.iterator().next();
-        assertThat(testWorkorderline.getWorkorderheader()).isEqualTo(UPDATED_WORKORDERHEADER);
+        assertThat(workorderlines).hasSize(databaseSizeBeforeUpdate);
+        Workorderline testWorkorderline = workorderlines.get(workorderlines.size() - 1);
         assertThat(testWorkorderline.getBomChildItem()).isEqualTo(UPDATED_BOM_CHILD_ITEM);
         assertThat(testWorkorderline.getAttrition()).isEqualTo(UPDATED_ATTRITION);
         assertThat(testWorkorderline.getRequQty()).isEqualTo(UPDATED_REQU_QTY);
         assertThat(testWorkorderline.getIssuedQty()).isEqualTo(UPDATED_ISSUED_QTY);
         assertThat(testWorkorderline.getIsCustSupplied()).isEqualTo(UPDATED_IS_CUST_SUPPLIED);
-        assertThat(testWorkorderline.getItemCtn()).isEqualTo(UPDATED_ITEM_CTN);
-        assertThat(testWorkorderline.getRemarks()).isEqualTo(UPDATED_REMARKS);
+        assertThat(testWorkorderline.getRemark()).isEqualTo(UPDATED_REMARK);
     }
 
     @Test
@@ -200,6 +206,8 @@ public class WorkorderlineResourceTest {
         // Initialize the database
         workorderlineRepository.saveAndFlush(workorderline);
 
+		int databaseSizeBeforeDelete = workorderlineRepository.findAll().size();
+
         // Get the workorderline
         restWorkorderlineMockMvc.perform(delete("/api/workorderlines/{id}", workorderline.getId())
                 .accept(TestUtil.APPLICATION_JSON_UTF8))
@@ -207,6 +215,6 @@ public class WorkorderlineResourceTest {
 
         // Validate the database is empty
         List<Workorderline> workorderlines = workorderlineRepository.findAll();
-        assertThat(workorderlines).hasSize(0);
+        assertThat(workorderlines).hasSize(databaseSizeBeforeDelete - 1);
     }
 }

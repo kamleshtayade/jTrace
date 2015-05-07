@@ -1,18 +1,24 @@
 'use strict';
 
 angular.module('jtraceApp')
-    .controller('PlantController', function ($scope, $modal, Plant, Plantmfgline) {
+    .controller('PlantController', function ($scope,$modal, Plant, Plantmfgline, ParseLinks) {
         $scope.plants = [];
         $scope.plantmfglines = Plantmfgline.query();
+        $scope.page = 1;
         $scope.loadAll = function() {
-            Plant.query(function(result) {
-               $scope.plants = result;
+            Plant.query({page: $scope.page, per_page: 20}, function(result, headers) {
+                $scope.links = ParseLinks.parse(headers('link'));
+                $scope.plants = result;
             });
+        };
+        $scope.loadPage = function(page) {
+            $scope.page = page;
+            $scope.loadAll();
         };
         $scope.loadAll();
 
         $scope.create = function () {
-            Plant.save($scope.plant,
+            Plant.update($scope.plant,
                 function () {
                     $scope.loadAll();
                     $('#savePlantModal').modal('hide');
@@ -44,10 +50,13 @@ angular.module('jtraceApp')
         };
 
         $scope.clear = function () {
-            $scope.plant = {code: null, location: null, address: null, isActive: null, capacity: null, id: null};
+            $scope.plant = {code: null, address: null, isenabled: null, capacity: null, id: null};
+            $scope.editForm.$setPristine();
+            $scope.editForm.$setUntouched();
         };
 
         $scope.openModal = function(data) {
+
           var modalInstance = $modal.open({
             templateUrl: 'scripts/app/entities/plant/modalMain.html',
             controller: 'PlantModalCtrl',
@@ -65,9 +74,9 @@ angular.module('jtraceApp')
               // ...do something on modal close result
             }
           }, function() {
-            //$log.info('Modal dismissed at: ' + new Date());
+            $log.info('Modal dismissed at: ' + new Date());
           });
-        };
+        };  
 
     });
 

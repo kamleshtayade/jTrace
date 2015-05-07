@@ -10,20 +10,14 @@
                 "question": "Are you sure you want to delete Work Order Header {{ id }}?"
             },
             "detail": {
-                "title": "Work Order Header"
+                "title": "Workorderheader"
             },
             "woNumber": "WO Number",
             "kitNumber": "Kit Number",
-            "customer": "Customer",
-            "shipToLoc": "Ship To Location",
-            "plant": "Plant",
-            "plantMfgLine": "Plant Mfg Line",
             "status": "Status",
             "qty": "Qty",
-            "soNumber": "SO Number",
-            "item": "Assembly Item",
-            "asyCode": "Assembly Code",
-            "bom": "Bom"
+            "itemmtr": "Item",
+            "plantmfgline": "Plant MFG Line"
         }
     }
 }

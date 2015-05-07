@@ -5,12 +5,13 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Objects;
 
 /**
  * A Itemtype.
  */
 @Entity
-@Table(name = "T_ITEMTYPE")
+@Table(name = "ITEMTYPE")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 public class Itemtype implements Serializable {
 
@@ -24,8 +25,8 @@ public class Itemtype implements Serializable {
     @Column(name = "description")
     private String description;
 
-    @Column(name = "enabled")
-    private Boolean enabled;
+    @Column(name = "isenabled")
+    private Boolean isenabled;
 
     public Long getId() {
         return id;
@@ -51,12 +52,12 @@ public class Itemtype implements Serializable {
         this.description = description;
     }
 
-    public Boolean getEnabled() {
-        return enabled;
+    public Boolean getIsenabled() {
+        return isenabled;
     }
 
-    public void setEnabled(Boolean enabled) {
-        this.enabled = enabled;
+    public void setIsenabled(Boolean isenabled) {
+        this.isenabled = isenabled;
     }
 
     @Override
@@ -70,14 +71,14 @@ public class Itemtype implements Serializable {
 
         Itemtype itemtype = (Itemtype) o;
 
-        if (id != null ? !id.equals(itemtype.id) : itemtype.id != null) return false;
+        if ( ! Objects.equals(id, itemtype.id)) return false;
 
         return true;
     }
 
     @Override
     public int hashCode() {
-        return (int) (id ^ (id >>> 32));
+        return Objects.hashCode(id);
     }
 
     @Override
@@ -86,7 +87,7 @@ public class Itemtype implements Serializable {
                 "id=" + id +
                 ", name='" + name + "'" +
                 ", description='" + description + "'" +
-                ", enabled='" + enabled + "'" +
+                ", isenabled='" + isenabled + "'" +
                 '}';
     }
 }

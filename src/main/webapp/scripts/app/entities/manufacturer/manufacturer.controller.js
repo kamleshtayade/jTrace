@@ -1,19 +1,23 @@
 'use strict';
 
 angular.module('jtraceApp')
-    .controller('ManufacturerController', function ($scope, Manufacturer, Itemmfrpart, Supplier) {
+    .controller('ManufacturerController', function ($scope, Manufacturer, ParseLinks) {
         $scope.manufacturers = [];
-        $scope.itemmfrparts = Itemmfrpart.query();
-        $scope.suppliers = Supplier.query();
+        $scope.page = 1;
         $scope.loadAll = function() {
-            Manufacturer.query(function(result) {
-               $scope.manufacturers = result;
+            Manufacturer.query({page: $scope.page, per_page: 20}, function(result, headers) {
+                $scope.links = ParseLinks.parse(headers('link'));
+                $scope.manufacturers = result;
             });
+        };
+        $scope.loadPage = function(page) {
+            $scope.page = page;
+            $scope.loadAll();
         };
         $scope.loadAll();
 
         $scope.create = function () {
-            Manufacturer.save($scope.manufacturer,
+            Manufacturer.update($scope.manufacturer,
                 function () {
                     $scope.loadAll();
                     $('#saveManufacturerModal').modal('hide');
@@ -45,6 +49,8 @@ angular.module('jtraceApp')
         };
 
         $scope.clear = function () {
-            $scope.manufacturer = {code: null, name: null, enabled: null, category: null, contact: null, email: null, phone: null, id: null};
+            $scope.manufacturer = {code: null, name: null, isenabled: null, mfrcat: null, address: null, id: null};
+            $scope.editForm.$setPristine();
+            $scope.editForm.$setUntouched();
         };
     });

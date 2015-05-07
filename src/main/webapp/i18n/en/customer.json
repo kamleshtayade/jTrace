@@ -14,10 +14,10 @@
             },
             "code": "Code",
             "name": "Name",
-            "billToAddress": "Bill To Address",
-            "shipToAddress": "Ship To Address",
-            "contactName": "Contact Name",
-            "email": "email",
+            "billToAddress": "BillToAddress",
+            "shipToAddress": "ShipToAddress",
+            "contactName": "ContactName",
+            "email": "Email",
             "phone": "Phone"
         }
     }

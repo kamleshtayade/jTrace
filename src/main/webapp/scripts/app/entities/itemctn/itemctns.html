@@ -2,16 +2,21 @@
 
     <h2 translate="jtraceApp.itemctn.home.title">Itemctn</h2>
 
-    <button class="btn btn-primary" data-toggle="modal" data-target="#saveItemctnModal" ng-click="clear()">
-        <span class="glyphicon glyphicon-flash"></span> <span translate="jtraceApp.itemctn.home.createLabel">Create a new Itemctn</span>
-    </button>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <button class="btn btn-primary" data-toggle="modal" data-target="#saveItemctnModal" ng-click="clear()">
+                    <span class="glyphicon glyphicon-flash"></span> <span translate="jtraceApp.itemctn.home.createLabel">Create a new Itemctn</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
     <div class="modal fade" id="saveItemctnModal" tabindex="-1" role="dialog" aria-labelledby="myItemctnLabel"
          aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
-                <form name="editForm" role="form" novalidate
-                      class="ng-scope ng-invalid ng-invalid-required ng-dirty ng-valid-minlength"
-                      ng-submit="create()">
+                <form name="editForm" role="form" novalidate ng-submit="create()" show-validation>
 
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
@@ -28,74 +33,79 @@
                         <div class="form-group">
                             <label translate="jtraceApp.itemctn.ctn">Ctn</label>
                             <input type="text" class="form-control" name="ctn"
-                                   ng-model="itemctn.ctn">
-                        </div>
-                        <div class="form-group">
-                            <label translate="jtraceApp.itemctn.srNoFrom">SrNoFrom</label>
-                            <input type="text" class="form-control" name="srNoFrom"
-                                   ng-model="itemctn.srNoFrom">
+                                   ng-model="itemctn.ctn" required>
+
+                            <div ng-show="editForm.ctn.$invalid">
+                                <p class="help-block"
+                                   ng-show="editForm.ctn.$error.required" translate="entity.validation.required">
+                                    This field is required.
+                                </p>
+                            </div>
                         </div>
                         <div class="form-group">
                             <label translate="jtraceApp.itemctn.reqdQty">ReqdQty</label>
                             <input type="number" class="form-control" name="reqdQty"
-                                   ng-model="itemctn.reqdQty">
+                                   ng-model="itemctn.reqdQty" required>
+
+                            <div ng-show="editForm.reqdQty.$invalid">
+                                <p class="help-block"
+                                   ng-show="editForm.reqdQty.$error.required" translate="entity.validation.required">
+                                    This field is required.
+                                </p>
+                                <p class="help-block"
+                                   ng-show="editForm.reqdQty.$error.number" translate="entity.validation.number">
+                                    This field should be a number.
+                                </p>
+                            </div>
                         </div>
                         <div class="form-group">
                             <label translate="jtraceApp.itemctn.recdDt">RecdDt</label>
                             <input type="date" class="form-control" name="recdDt"
-                                   ng-model="itemctn.recdDt">
+                                   ng-model="itemctn.recdDt" required>
+
+                            <div ng-show="editForm.recdDt.$invalid">
+                                <p class="help-block"
+                                   ng-show="editForm.recdDt.$error.required" translate="entity.validation.required">
+                                    This field is required.
+                                </p>
+                            </div>
                         </div>
                         <div class="form-group">
                             <label translate="jtraceApp.itemctn.item">Item</label>
                             <input type="text" class="form-control" name="item"
                                    ng-model="itemctn.item">
+
                         </div>
                         <div class="form-group">
                             <label translate="jtraceApp.itemctn.srNoTo">SrNoTo</label>
                             <input type="text" class="form-control" name="srNoTo"
                                    ng-model="itemctn.srNoTo">
+
                         </div>
                         <div class="form-group">
                             <label translate="jtraceApp.itemctn.selfLife">SelfLife</label>
                             <input type="text" class="form-control" name="selfLife"
                                    ng-model="itemctn.selfLife">
+
                         </div>
                         <div class="form-group">
                             <label translate="jtraceApp.itemctn.poQty">PoQty</label>
-                            <input type="number" class="form-control" name="poQty"
+                            <input type="text" class="form-control" name="poQty"
                                    ng-model="itemctn.poQty">
+
                         </div>
                         <div class="form-group">
                             <label translate="jtraceApp.itemctn.invoice">Invoice</label>
                             <input type="text" class="form-control" name="invoice"
                                    ng-model="itemctn.invoice">
-                        </div>
-                        <div class="form-group">
-                            <label translate="jtraceApp.itemctn.manufaturer">Manufaturer</label>
-                            <input type="text" class="form-control" name="manufaturer"
-                                   ng-model="itemctn.manufaturer">
-                        </div>
-                        <div class="form-group">
-                            <label translate="jtraceApp.itemctn.mfgPartNo">MfgPartNo</label>
-                            <input type="text" class="form-control" name="mfgPartNo"
-                                   ng-model="itemctn.mfgPartNo">
-                        </div>
-                        <div class="form-group">
-                            <label translate="jtraceApp.itemctn.supplier">Supplier</label>
-                            <input type="text" class="form-control" name="supplier"
-                                   ng-model="itemctn.supplier">
-                        </div>
-                        <div class="form-group">
-                            <label translate="jtraceApp.itemctn.dateCode">DateCode</label>
-                            <input type="text" class="form-control" name="dateCode"
-                                   ng-model="itemctn.dateCode">
-                        </div>
-                        <div class="form-group">
-                            <label translate="jtraceApp.itemctn.lotCode">LotCode</label>
-                            <input type="text" class="form-control" name="lotCode"
-                                   ng-model="itemctn.lotCode">
+
                         </div>
 
+                        <div class="form-group">
+                            <label translate="jtraceApp.itemctn.itemmtr">itemmtr</label>
+                            <select class="form-control" name="itemmtr" ng-model="itemctn.itemmtr.id" ng-options="itemmtr.id as itemmtr.code for itemmtr in itemmtrs">
+                            </select>
+                        </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
@@ -140,19 +150,28 @@
             <thead>
                 <tr>
                     <th translate="jtraceApp.itemctn.ctn">Ctn</th>
-                    <th translate="jtraceApp.itemctn.item">Item</th>
-                    <th translate="jtraceApp.itemctn.recdDt">RecdDt</th>
                     <th translate="jtraceApp.itemctn.reqdQty">ReqdQty</th>
+                    <th translate="jtraceApp.itemctn.recdDt">RecdDt</th>
+                    <th translate="jtraceApp.itemctn.item">Item</th>
+                    <th translate="jtraceApp.itemctn.srNoTo">SrNoTo</th>
+                    <th translate="jtraceApp.itemctn.selfLife">SelfLife</th>
+                    <th translate="jtraceApp.itemctn.poQty">PoQty</th>
+                    <th translate="jtraceApp.itemctn.invoice">Invoice</th>
+                    <th translate="jtraceApp.itemctn.itemmtr">itemmtr</th>
                     <th></th>
                 </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="itemctn in itemctns">                    
+                <tr ng-repeat="itemctn in itemctns">
                     <td><a ui-sref="itemctnDetail({id:itemctn.id})">{{itemctn.ctn}}</a></td>
-                    <td>{{itemctn.item}}</td>
-                    <td>{{itemctn.recdDt}}</td>
                     <td>{{itemctn.reqdQty}}</td>
-                    
+                    <td>{{itemctn.recdDt}}</td>
+                    <td>{{itemctn.item}}</td>
+                    <td>{{itemctn.srNoTo}}</td>
+                    <td>{{itemctn.selfLife}}</td>
+                    <td>{{itemctn.poQty}}</td>
+                    <td>{{itemctn.invoice}}</td>
+                    <td>{{itemctn.itemmtr.code}}</td>
                     <td>
                         <button type="submit"
                                 ui-sref="itemctnDetail({id:itemctn.id})"
@@ -173,5 +192,18 @@
                 </tr>
             </tbody>
         </table>
+        <nav>
+            <ul class="pagination">
+                <li ng-show="links['first']" ng-click="loadPage(links['first'])"><a>&lt;&lt;</a></li>
+                <li ng-show="links['prev']" ng-click="loadPage(links['prev'])"><a>&lt;</a></li>
+                <li ng-show="page > 2" ng-click="loadPage(page - 2)"><a>{{page - 2}}</a></li>
+                <li ng-show="page > 1" ng-click="loadPage(page - 1)"><a>{{page - 1}}</a></li>
+                <li class="active"><a>{{page}}</a></li>
+                <li ng-show="page < links['last']" ng-click="loadPage(page + 1)"><a>{{page + 1}}</a></li>
+                <li ng-show="page < links['last'] - 1" ng-click="loadPage(page + 2)"><a>{{page + 2}}</a></li>
+                <li ng-show="links['next']" ng-click="loadPage(links['next'])"><a>&gt;</a></li>
+                <li ng-show="links['last']" ng-click="loadPage(links['last'])"><a>&gt;&gt;</a></li>
+            </ul>
+        </nav>
     </div>
 </div>

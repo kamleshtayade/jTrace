@@ -7,6 +7,7 @@ import com.spring.app.repository.ItemmfrpartRepository;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import static org.hamcrest.Matchers.hasItem;
 import org.mockito.MockitoAnnotations;
 import org.springframework.boot.test.IntegrationTest;
 import org.springframework.boot.test.SpringApplicationConfiguration;
@@ -39,12 +40,13 @@ public class ItemmfrpartResourceTest {
 
     private static final String DEFAULT_MFRPART = "SAMPLE_TEXT";
     private static final String UPDATED_MFRPART = "UPDATED_TEXT";
-    private static final String DEFAULT_STATUS = "SAMPLE_TEXT";
-    private static final String UPDATED_STATUS = "UPDATED_TEXT";
-    private static final String DEFAULT_SUPPART = "SAMPLE_TEXT";
-    private static final String UPDATED_SUPPART = "UPDATED_TEXT";
-    private static final String DEFAULT_REMARKS = "SAMPLE_TEXT";
-    private static final String UPDATED_REMARKS = "UPDATED_TEXT";
+
+    private static final Boolean DEFAULT_STATUS = false;
+    private static final Boolean UPDATED_STATUS = true;
+    private static final String DEFAULT_SUPPLIER = "SAMPLE_TEXT";
+    private static final String UPDATED_SUPPLIER = "UPDATED_TEXT";
+    private static final String DEFAULT_REMARK = "SAMPLE_TEXT";
+    private static final String UPDATED_REMARK = "UPDATED_TEXT";
 
     @Inject
     private ItemmfrpartRepository itemmfrpartRepository;
@@ -66,30 +68,67 @@ public class ItemmfrpartResourceTest {
         itemmfrpart = new Itemmfrpart();
         itemmfrpart.setMfrpart(DEFAULT_MFRPART);
         itemmfrpart.setStatus(DEFAULT_STATUS);
-        itemmfrpart.setSuppart(DEFAULT_SUPPART);
-        itemmfrpart.setRemarks(DEFAULT_REMARKS);
+        itemmfrpart.setSupplier(DEFAULT_SUPPLIER);
+        itemmfrpart.setRemark(DEFAULT_REMARK);
     }
 
     @Test
     @Transactional
     public void createItemmfrpart() throws Exception {
-        // Validate the database is empty
-        assertThat(itemmfrpartRepository.findAll()).hasSize(0);
+        int databaseSizeBeforeCreate = itemmfrpartRepository.findAll().size();
 
         // Create the Itemmfrpart
         restItemmfrpartMockMvc.perform(post("/api/itemmfrparts")
                 .contentType(TestUtil.APPLICATION_JSON_UTF8)
                 .content(TestUtil.convertObjectToJsonBytes(itemmfrpart)))
-                .andExpect(status().isOk());
+                .andExpect(status().isCreated());
 
         // Validate the Itemmfrpart in the database
         List<Itemmfrpart> itemmfrparts = itemmfrpartRepository.findAll();
-        assertThat(itemmfrparts).hasSize(1);
-        Itemmfrpart testItemmfrpart = itemmfrparts.iterator().next();
+        assertThat(itemmfrparts).hasSize(databaseSizeBeforeCreate + 1);
+        Itemmfrpart testItemmfrpart = itemmfrparts.get(itemmfrparts.size() - 1);
         assertThat(testItemmfrpart.getMfrpart()).isEqualTo(DEFAULT_MFRPART);
         assertThat(testItemmfrpart.getStatus()).isEqualTo(DEFAULT_STATUS);
-        assertThat(testItemmfrpart.getSuppart()).isEqualTo(DEFAULT_SUPPART);
-        assertThat(testItemmfrpart.getRemarks()).isEqualTo(DEFAULT_REMARKS);
+        assertThat(testItemmfrpart.getSupplier()).isEqualTo(DEFAULT_SUPPLIER);
+        assertThat(testItemmfrpart.getRemark()).isEqualTo(DEFAULT_REMARK);
+    }
+
+    @Test
+    @Transactional
+    public void checkMfrpartIsRequired() throws Exception {
+        // Validate the database is empty
+        assertThat(itemmfrpartRepository.findAll()).hasSize(0);
+        // set the field null
+        itemmfrpart.setMfrpart(null);
+
+        // Create the Itemmfrpart, which fails.
+        restItemmfrpartMockMvc.perform(post("/api/itemmfrparts")
+                .contentType(TestUtil.APPLICATION_JSON_UTF8)
+                .content(TestUtil.convertObjectToJsonBytes(itemmfrpart)))
+                .andExpect(status().isBadRequest());
+
+        // Validate the database is still empty
+        List<Itemmfrpart> itemmfrparts = itemmfrpartRepository.findAll();
+        assertThat(itemmfrparts).hasSize(0);
+    }
+
+    @Test
+    @Transactional
+    public void checkRemarkIsRequired() throws Exception {
+        // Validate the database is empty
+        assertThat(itemmfrpartRepository.findAll()).hasSize(0);
+        // set the field null
+        itemmfrpart.setRemark(null);
+
+        // Create the Itemmfrpart, which fails.
+        restItemmfrpartMockMvc.perform(post("/api/itemmfrparts")
+                .contentType(TestUtil.APPLICATION_JSON_UTF8)
+                .content(TestUtil.convertObjectToJsonBytes(itemmfrpart)))
+                .andExpect(status().isBadRequest());
+
+        // Validate the database is still empty
+        List<Itemmfrpart> itemmfrparts = itemmfrpartRepository.findAll();
+        assertThat(itemmfrparts).hasSize(0);
     }
 
     @Test
@@ -102,11 +141,11 @@ public class ItemmfrpartResourceTest {
         restItemmfrpartMockMvc.perform(get("/api/itemmfrparts"))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
-                .andExpect(jsonPath("$.[0].id").value(itemmfrpart.getId().intValue()))
-                .andExpect(jsonPath("$.[0].mfrpart").value(DEFAULT_MFRPART.toString()))
-                .andExpect(jsonPath("$.[0].status").value(DEFAULT_STATUS.toString()))
-                .andExpect(jsonPath("$.[0].suppart").value(DEFAULT_SUPPART.toString()))
-                .andExpect(jsonPath("$.[0].remarks").value(DEFAULT_REMARKS.toString()));
+                .andExpect(jsonPath("$.[*].id").value(hasItem(itemmfrpart.getId().intValue())))
+                .andExpect(jsonPath("$.[*].mfrpart").value(hasItem(DEFAULT_MFRPART.toString())))
+                .andExpect(jsonPath("$.[*].status").value(hasItem(DEFAULT_STATUS.booleanValue())))
+                .andExpect(jsonPath("$.[*].supplier").value(hasItem(DEFAULT_SUPPLIER.toString())))
+                .andExpect(jsonPath("$.[*].remark").value(hasItem(DEFAULT_REMARK.toString())));
     }
 
     @Test
@@ -121,16 +160,16 @@ public class ItemmfrpartResourceTest {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON))
             .andExpect(jsonPath("$.id").value(itemmfrpart.getId().intValue()))
             .andExpect(jsonPath("$.mfrpart").value(DEFAULT_MFRPART.toString()))
-            .andExpect(jsonPath("$.status").value(DEFAULT_STATUS.toString()))
-            .andExpect(jsonPath("$.suppart").value(DEFAULT_SUPPART.toString()))
-            .andExpect(jsonPath("$.remarks").value(DEFAULT_REMARKS.toString()));
+            .andExpect(jsonPath("$.status").value(DEFAULT_STATUS.booleanValue()))
+            .andExpect(jsonPath("$.supplier").value(DEFAULT_SUPPLIER.toString()))
+            .andExpect(jsonPath("$.remark").value(DEFAULT_REMARK.toString()));
     }
 
     @Test
     @Transactional
     public void getNonExistingItemmfrpart() throws Exception {
         // Get the itemmfrpart
-        restItemmfrpartMockMvc.perform(get("/api/itemmfrparts/{id}", 1L))
+        restItemmfrpartMockMvc.perform(get("/api/itemmfrparts/{id}", Long.MAX_VALUE))
                 .andExpect(status().isNotFound());
     }
 
@@ -140,24 +179,26 @@ public class ItemmfrpartResourceTest {
         // Initialize the database
         itemmfrpartRepository.saveAndFlush(itemmfrpart);
 
+		int databaseSizeBeforeUpdate = itemmfrpartRepository.findAll().size();
+
         // Update the itemmfrpart
         itemmfrpart.setMfrpart(UPDATED_MFRPART);
         itemmfrpart.setStatus(UPDATED_STATUS);
-        itemmfrpart.setSuppart(UPDATED_SUPPART);
-        itemmfrpart.setRemarks(UPDATED_REMARKS);
-        restItemmfrpartMockMvc.perform(post("/api/itemmfrparts")
+        itemmfrpart.setSupplier(UPDATED_SUPPLIER);
+        itemmfrpart.setRemark(UPDATED_REMARK);
+        restItemmfrpartMockMvc.perform(put("/api/itemmfrparts")
                 .contentType(TestUtil.APPLICATION_JSON_UTF8)
                 .content(TestUtil.convertObjectToJsonBytes(itemmfrpart)))
                 .andExpect(status().isOk());
 
         // Validate the Itemmfrpart in the database
         List<Itemmfrpart> itemmfrparts = itemmfrpartRepository.findAll();
-        assertThat(itemmfrparts).hasSize(1);
-        Itemmfrpart testItemmfrpart = itemmfrparts.iterator().next();
+        assertThat(itemmfrparts).hasSize(databaseSizeBeforeUpdate);
+        Itemmfrpart testItemmfrpart = itemmfrparts.get(itemmfrparts.size() - 1);
         assertThat(testItemmfrpart.getMfrpart()).isEqualTo(UPDATED_MFRPART);
         assertThat(testItemmfrpart.getStatus()).isEqualTo(UPDATED_STATUS);
-        assertThat(testItemmfrpart.getSuppart()).isEqualTo(UPDATED_SUPPART);
-        assertThat(testItemmfrpart.getRemarks()).isEqualTo(UPDATED_REMARKS);
+        assertThat(testItemmfrpart.getSupplier()).isEqualTo(UPDATED_SUPPLIER);
+        assertThat(testItemmfrpart.getRemark()).isEqualTo(UPDATED_REMARK);
     }
 
     @Test
@@ -166,6 +207,8 @@ public class ItemmfrpartResourceTest {
         // Initialize the database
         itemmfrpartRepository.saveAndFlush(itemmfrpart);
 
+		int databaseSizeBeforeDelete = itemmfrpartRepository.findAll().size();
+
         // Get the itemmfrpart
         restItemmfrpartMockMvc.perform(delete("/api/itemmfrparts/{id}", itemmfrpart.getId())
                 .accept(TestUtil.APPLICATION_JSON_UTF8))
@@ -173,6 +216,6 @@ public class ItemmfrpartResourceTest {
 
         // Validate the database is empty
         List<Itemmfrpart> itemmfrparts = itemmfrpartRepository.findAll();
-        assertThat(itemmfrparts).hasSize(0);
+        assertThat(itemmfrparts).hasSize(databaseSizeBeforeDelete - 1);
     }
 }

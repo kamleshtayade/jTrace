@@ -13,12 +13,9 @@
                 "title": "Supplier"
             },
             "code": "Code",
-            "name": "Name",
-            "enabled": "Enabled",
-            "contact": "Contact",
-            "email": "Email",
-            "phone": "Phone",
-            "manufacturer": "manufacturer"
+            "isenabled": "Isenabled",
+            "address": "Address",
+            "remark": "Remark"
         }
     }
 }

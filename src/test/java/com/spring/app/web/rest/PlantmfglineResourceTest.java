@@ -7,6 +7,7 @@ import com.spring.app.repository.PlantmfglineRepository;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import static org.hamcrest.Matchers.hasItem;
 import org.mockito.MockitoAnnotations;
 import org.springframework.boot.test.IntegrationTest;
 import org.springframework.boot.test.SpringApplicationConfiguration;
@@ -37,6 +38,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @IntegrationTest
 public class PlantmfglineResourceTest {
 
+    private static final String DEFAULT_NAME = "SAMPLE_TEXT";
+    private static final String UPDATED_NAME = "UPDATED_TEXT";
     private static final String DEFAULT_CAPACITY = "SAMPLE_TEXT";
     private static final String UPDATED_CAPACITY = "UPDATED_TEXT";
 
@@ -58,26 +61,65 @@ public class PlantmfglineResourceTest {
     @Before
     public void initTest() {
         plantmfgline = new Plantmfgline();
+        plantmfgline.setName(DEFAULT_NAME);
         plantmfgline.setCapacity(DEFAULT_CAPACITY);
     }
 
     @Test
     @Transactional
     public void createPlantmfgline() throws Exception {
-        // Validate the database is empty
-        assertThat(plantmfglineRepository.findAll()).hasSize(0);
+        int databaseSizeBeforeCreate = plantmfglineRepository.findAll().size();
 
         // Create the Plantmfgline
         restPlantmfglineMockMvc.perform(post("/api/plantmfglines")
                 .contentType(TestUtil.APPLICATION_JSON_UTF8)
                 .content(TestUtil.convertObjectToJsonBytes(plantmfgline)))
-                .andExpect(status().isOk());
+                .andExpect(status().isCreated());
 
         // Validate the Plantmfgline in the database
         List<Plantmfgline> plantmfglines = plantmfglineRepository.findAll();
-        assertThat(plantmfglines).hasSize(1);
-        Plantmfgline testPlantmfgline = plantmfglines.iterator().next();
+        assertThat(plantmfglines).hasSize(databaseSizeBeforeCreate + 1);
+        Plantmfgline testPlantmfgline = plantmfglines.get(plantmfglines.size() - 1);
+        assertThat(testPlantmfgline.getName()).isEqualTo(DEFAULT_NAME);
         assertThat(testPlantmfgline.getCapacity()).isEqualTo(DEFAULT_CAPACITY);
+    }
+
+    @Test
+    @Transactional
+    public void checkNameIsRequired() throws Exception {
+        // Validate the database is empty
+        assertThat(plantmfglineRepository.findAll()).hasSize(0);
+        // set the field null
+        plantmfgline.setName(null);
+
+        // Create the Plantmfgline, which fails.
+        restPlantmfglineMockMvc.perform(post("/api/plantmfglines")
+                .contentType(TestUtil.APPLICATION_JSON_UTF8)
+                .content(TestUtil.convertObjectToJsonBytes(plantmfgline)))
+                .andExpect(status().isBadRequest());
+
+        // Validate the database is still empty
+        List<Plantmfgline> plantmfglines = plantmfglineRepository.findAll();
+        assertThat(plantmfglines).hasSize(0);
+    }
+
+    @Test
+    @Transactional
+    public void checkCapacityIsRequired() throws Exception {
+        // Validate the database is empty
+        assertThat(plantmfglineRepository.findAll()).hasSize(0);
+        // set the field null
+        plantmfgline.setCapacity(null);
+
+        // Create the Plantmfgline, which fails.
+        restPlantmfglineMockMvc.perform(post("/api/plantmfglines")
+                .contentType(TestUtil.APPLICATION_JSON_UTF8)
+                .content(TestUtil.convertObjectToJsonBytes(plantmfgline)))
+                .andExpect(status().isBadRequest());
+
+        // Validate the database is still empty
+        List<Plantmfgline> plantmfglines = plantmfglineRepository.findAll();
+        assertThat(plantmfglines).hasSize(0);
     }
 
     @Test
@@ -90,8 +132,9 @@ public class PlantmfglineResourceTest {
         restPlantmfglineMockMvc.perform(get("/api/plantmfglines"))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
-                .andExpect(jsonPath("$.[0].id").value(plantmfgline.getId().intValue()))
-                .andExpect(jsonPath("$.[0].capacity").value(DEFAULT_CAPACITY.toString()));
+                .andExpect(jsonPath("$.[*].id").value(hasItem(plantmfgline.getId().intValue())))
+                .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME.toString())))
+                .andExpect(jsonPath("$.[*].capacity").value(hasItem(DEFAULT_CAPACITY.toString())));
     }
 
     @Test
@@ -105,6 +148,7 @@ public class PlantmfglineResourceTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON))
             .andExpect(jsonPath("$.id").value(plantmfgline.getId().intValue()))
+            .andExpect(jsonPath("$.name").value(DEFAULT_NAME.toString()))
             .andExpect(jsonPath("$.capacity").value(DEFAULT_CAPACITY.toString()));
     }
 
@@ -112,7 +156,7 @@ public class PlantmfglineResourceTest {
     @Transactional
     public void getNonExistingPlantmfgline() throws Exception {
         // Get the plantmfgline
-        restPlantmfglineMockMvc.perform(get("/api/plantmfglines/{id}", 1L))
+        restPlantmfglineMockMvc.perform(get("/api/plantmfglines/{id}", Long.MAX_VALUE))
                 .andExpect(status().isNotFound());
     }
 
@@ -122,17 +166,21 @@ public class PlantmfglineResourceTest {
         // Initialize the database
         plantmfglineRepository.saveAndFlush(plantmfgline);
 
+		int databaseSizeBeforeUpdate = plantmfglineRepository.findAll().size();
+
         // Update the plantmfgline
+        plantmfgline.setName(UPDATED_NAME);
         plantmfgline.setCapacity(UPDATED_CAPACITY);
-        restPlantmfglineMockMvc.perform(post("/api/plantmfglines")
+        restPlantmfglineMockMvc.perform(put("/api/plantmfglines")
                 .contentType(TestUtil.APPLICATION_JSON_UTF8)
                 .content(TestUtil.convertObjectToJsonBytes(plantmfgline)))
                 .andExpect(status().isOk());
 
         // Validate the Plantmfgline in the database
         List<Plantmfgline> plantmfglines = plantmfglineRepository.findAll();
-        assertThat(plantmfglines).hasSize(1);
-        Plantmfgline testPlantmfgline = plantmfglines.iterator().next();
+        assertThat(plantmfglines).hasSize(databaseSizeBeforeUpdate);
+        Plantmfgline testPlantmfgline = plantmfglines.get(plantmfglines.size() - 1);
+        assertThat(testPlantmfgline.getName()).isEqualTo(UPDATED_NAME);
         assertThat(testPlantmfgline.getCapacity()).isEqualTo(UPDATED_CAPACITY);
     }
 
@@ -142,6 +190,8 @@ public class PlantmfglineResourceTest {
         // Initialize the database
         plantmfglineRepository.saveAndFlush(plantmfgline);
 
+		int databaseSizeBeforeDelete = plantmfglineRepository.findAll().size();
+
         // Get the plantmfgline
         restPlantmfglineMockMvc.perform(delete("/api/plantmfglines/{id}", plantmfgline.getId())
                 .accept(TestUtil.APPLICATION_JSON_UTF8))
@@ -149,6 +199,6 @@ public class PlantmfglineResourceTest {
 
         // Validate the database is empty
         List<Plantmfgline> plantmfglines = plantmfglineRepository.findAll();
-        assertThat(plantmfglines).hasSize(0);
+        assertThat(plantmfglines).hasSize(databaseSizeBeforeDelete - 1);
     }
 }

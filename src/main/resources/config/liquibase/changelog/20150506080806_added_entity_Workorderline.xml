@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <property name="now" value="now()" dbms="mysql,h2"/>
+    <property name="now" value="current_timestamp" dbms="postgresql"/>
+
+    <!--
+        Added the entity Workorderline.
+    -->
+    <changeSet id="20150506080806" author="jhipster">
+        <createTable tableName="WORKORDERLINE">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="bom_child_item" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="attrition" type="varchar(255)"/>
+            <column name="requ_qty" type="integer"/>
+            <column name="issued_qty" type="integer"/>
+            <column name="is_cust_supplied" type="bit"/>
+            <column name="remark" type="varchar(255)"/>
+            <column name="itemctn_id" type="bigint"/>
+        </createTable>
+        
+        <addForeignKeyConstraint baseColumnNames="itemctn_id"
+                                 baseTableName="WORKORDERLINE"
+                                 constraintName="fk_workorderline_itemctn_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="ITEMCTN"/>
+
+    </changeSet>
+</databaseChangeLog>

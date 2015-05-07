@@ -2,22 +2,21 @@
     "jtraceApp": {
         "itemmfrpart" : {
             "home": {
-                "title": "Item Mfr Parts",
-                "createLabel": "Create a new Item Mfr Part",
-                "createOrEditLabel": "Create or edit a Item Mfr Part"
+                "title": "Item MFR Parts",
+                "createLabel": "Create a new Item MFR Part",
+                "createOrEditLabel": "Create or edit a Item MFR Part"
             },
             "delete": {
-                "question": "Are you sure you want to delete Item Mfr Part {{ id }}?"
+                "question": "Are you sure you want to delete Item MFR Part {{ id }}?"
             },
             "detail": {
-                "title": "Item Mfr Part"
+                "title": "Item MFR Part"
             },
-            "mfrpart": "Mfr Part",
+            "mfrpart": "MFR Part",
             "status": "Status",
-            "suppart": "Support",
-            "remarks": "Remarks",
-            "manufacturer": "Manufacturer",
-            "itemmaster": "Item Master"
+            "supplier": "Supplier",
+            "remark": "Remark",
+            "itemmtr": "Item"
         }
     }
 }

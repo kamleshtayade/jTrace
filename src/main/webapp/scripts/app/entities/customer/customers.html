@@ -2,16 +2,21 @@
 
     <h2 translate="jtraceApp.customer.home.title">Customer</h2>
 
-    <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#saveCustomerModal" ng-click="clear()">
-        <span class="glyphicon glyphicon-flash"></span> <span translate="jtraceApp.customer.home.createLabel">Create a new Customer</span>
-    </button>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <button class="btn btn-primary" data-toggle="modal" data-target="#saveCustomerModal" ng-click="clear()">
+                    <span class="glyphicon glyphicon-flash"></span> <span translate="jtraceApp.customer.home.createLabel">Create a new Customer</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
     <div class="modal fade" id="saveCustomerModal" tabindex="-1" role="dialog" aria-labelledby="myCustomerLabel"
          aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
-                <form name="editForm" role="form" novalidate
-                      class="ng-scope ng-invalid ng-invalid-required ng-dirty ng-valid-minlength"
-                      ng-submit="create()">
+                <form name="editForm" role="form" novalidate ng-submit="create()">
 
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
@@ -29,38 +34,44 @@
                             <label translate="jtraceApp.customer.code">Code</label>
                             <input type="text" class="form-control" name="code"
                                    ng-model="customer.code">
+
                         </div>
                         <div class="form-group">
                             <label translate="jtraceApp.customer.name">Name</label>
                             <input type="text" class="form-control" name="name"
                                    ng-model="customer.name">
+
                         </div>
                         <div class="form-group">
                             <label translate="jtraceApp.customer.billToAddress">BillToAddress</label>
                             <input type="text" class="form-control" name="billToAddress"
                                    ng-model="customer.billToAddress">
+
                         </div>
                         <div class="form-group">
                             <label translate="jtraceApp.customer.shipToAddress">ShipToAddress</label>
                             <input type="text" class="form-control" name="shipToAddress"
                                    ng-model="customer.shipToAddress">
+
                         </div>
                         <div class="form-group">
                             <label translate="jtraceApp.customer.contactName">ContactName</label>
                             <input type="text" class="form-control" name="contactName"
                                    ng-model="customer.contactName">
+
                         </div>
                         <div class="form-group">
                             <label translate="jtraceApp.customer.email">Email</label>
                             <input type="text" class="form-control" name="email"
                                    ng-model="customer.email">
+
                         </div>
                         <div class="form-group">
                             <label translate="jtraceApp.customer.phone">Phone</label>
                             <input type="text" class="form-control" name="phone"
                                    ng-model="customer.phone">
-                        </div>
 
+                        </div>
 
                     </div>
                     <div class="modal-footer">
@@ -129,17 +140,17 @@
                     <td>
                         <button type="submit"
                                 ui-sref="customerDetail({id:customer.id})"
-                                class="btn btn-info">
+                                class="btn btn-info btn-sm">
                             <span class="glyphicon glyphicon-eye-open"></span>&nbsp;<span translate="entity.action.view"> View</span>
                         </button>
                         <button type="submit"
                                 ng-click="update(customer.id)"
-                                class="btn btn-primary">
+                                class="btn btn-primary btn-sm">
                             <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span translate="entity.action.edit"> Edit</span>
                         </button>
                         <button type="submit"
                                 ng-click="delete(customer.id)"
-                                class="btn btn-danger">
+                                class="btn btn-danger btn-sm">
                             <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span translate="entity.action.delete"> Delete</span>
                         </button>
                     </td>

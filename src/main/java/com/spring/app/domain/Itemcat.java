@@ -8,12 +8,13 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.Objects;
 
 /**
  * A Itemcat.
  */
 @Entity
-@Table(name = "T_ITEMCAT")
+@Table(name = "ITEMCAT")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 public class Itemcat implements Serializable {
 
@@ -29,12 +30,6 @@ public class Itemcat implements Serializable {
 
     @Column(name = "enabled")
     private Boolean enabled;
-
-    @OneToMany(mappedBy = "itemcat")
-    @JsonIgnore
-    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-    private Set<Itemsubcat> itemsubcats = new HashSet<>();
-
 
     public Long getId() {
         return id;
@@ -68,15 +63,6 @@ public class Itemcat implements Serializable {
         this.enabled = enabled;
     }
 
-    public Set<Itemsubcat> getItemsubcats() {
-        return itemsubcats;
-    }
-
-    public void setItemsubcats(Set<Itemsubcat> itemsubcats) {
-        this.itemsubcats = itemsubcats;
-    }
-
-
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -88,14 +74,14 @@ public class Itemcat implements Serializable {
 
         Itemcat itemcat = (Itemcat) o;
 
-        if (id != null ? !id.equals(itemcat.id) : itemcat.id != null) return false;
+        if ( ! Objects.equals(id, itemcat.id)) return false;
 
         return true;
     }
 
     @Override
     public int hashCode() {
-        return (int) (id ^ (id >>> 32));
+        return Objects.hashCode(id);
     }
 
     @Override
