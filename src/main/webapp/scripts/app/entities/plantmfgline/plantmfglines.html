@@ -25,12 +25,6 @@
                     </div>
                     <div class="modal-body">
                         <div class="form-group">
-                            <label>ID</label>
-                            <input type="text" class="form-control" name="id"
-                                   ng-model="plantmfgline.id" readonly>
-                        </div>
-
-                        <div class="form-group">
                             <label translate="jtraceApp.plantmfgline.name">Name</label>
                             <input type="text" class="form-control" name="name"
                                    ng-model="plantmfgline.name" required>
@@ -38,6 +32,28 @@
                             <div ng-show="editForm.name.$invalid">
                                 <p class="help-block"
                                    ng-show="editForm.name.$error.required" translate="entity.validation.required">
+                                    This field is required.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label translate="jtraceApp.plantmfgline.plant">plant</label>
+                            <select class="form-control" name="plant" ng-model="plantmfgline.plantsec.plant.id" ng-options="plant.id as plant.code for plant in plants" required>
+                            </select>
+                            <div ng-show="editForm.plantmfgline.plantsec.plant.id.$invalid">
+                                <p class="help-block"
+                                   ng-show="editForm.plantmfgline.plantsec.plant.id.$error.required" translate="entity.validation.required">
+                                    This field is required.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label translate="jtraceApp.plantmfgline.plantsec">plantsec</label>
+                            <select class="form-control" name="plantsec" ng-model="plantmfgline.plantsec.id" ng-disabled="!plantmfgline.plantsec.plant.id" ng-options="plantsec.id as plantsec.name for plantsec in plantsecs | filter:plantmfgline.plantsec.plant.id" required>
+                            </select>
+                            <div ng-show="editForm.plantmfgline.plantsec.id.$invalid">
+                                <p class="help-block"
+                                   ng-show="editForm.plantmfgline.plantsec.id.$error.required" translate="entity.validation.required">
                                     This field is required.
                                 </p>
                             </div>
@@ -53,14 +69,9 @@
                                     This field is required.
                                 </p>
                             </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label translate="jtraceApp.plantmfgline.plantsec">plantsec</label>
-                            <select class="form-control" name="plantsec" ng-model="plantmfgline.plantsec.id" ng-options="plantsec.id as plantsec.id for plantsec in plantsecs">
-                            </select>
-                        </div>
+                        </div>                           
                     </div>
+                 
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
                             <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
@@ -103,19 +114,19 @@
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <th>ID</th>
                     <th translate="jtraceApp.plantmfgline.name">Name</th>
                     <th translate="jtraceApp.plantmfgline.capacity">Capacity</th>
                     <th translate="jtraceApp.plantmfgline.plantsec">plantsec</th>
+                    <th translate="jtraceApp.plantmfgline.plant">plantsec</th>
                     <th></th>
                 </tr>
             </thead>
             <tbody>
                 <tr ng-repeat="plantmfgline in plantmfglines">
-                    <td><a ui-sref="plantmfglineDetail({id:plantmfgline.id})">{{plantmfgline.id}}</a></td>
-                    <td>{{plantmfgline.name}}</td>
+                    <td><a ui-sref="plantmfglineDetail({id:plantmfgline.id})">{{plantmfgline.name}}</a></td>
                     <td>{{plantmfgline.capacity}}</td>
-                    <td>{{plantmfgline.plantsec.id}}</td>
+                    <td>{{plantmfgline.plantsec.name}}&nbsp;({{plantmfgline.plantsec.plant.code}})</td>
+                    <td>{{plantmfgline.plantsec.plant.code}}</td>
                     <td>
                         <button type="submit"
                                 ui-sref="plantmfglineDetail({id:plantmfgline.id})"

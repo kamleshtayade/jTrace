@@ -14,7 +14,8 @@
             },
             "name": "Name",
             "capacity": "Capacity",
-            "plantsec": "Plant Section"
+            "plantsec": "Plant Section",
+            "plant": "Plant"
         }
     }
 }

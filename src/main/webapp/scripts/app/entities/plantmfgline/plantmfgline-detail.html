@@ -31,9 +31,18 @@
                         <span translate="jtraceApp.plantmfgline.plantsec">plantsec</span>
                     </td>
                     <td>
-                        <input type="text" class="input-sm form-control" value="{{plantmfgline.plantsec.id}}" readonly>
+                        <input type="text" class="input-sm form-control" value="{{plantmfgline.plantsec.name}}&nbsp;({{plantmfgline.plantsec.plant.code}})" readonly>
                     </td>
                 </tr>
+                <tr>
+                    <td>
+                        <span translate="jtraceApp.plantmfgline.plant">plantsec</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{plantmfgline.plantsec.plant.code}}" readonly>
+                    </td>
+                </tr>
+
             </tbody>
         </table>
     </div>

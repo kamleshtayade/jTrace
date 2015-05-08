@@ -25,12 +25,6 @@
                     </div>
                     <div class="modal-body">
                         <div class="form-group">
-                            <label>ID</label>
-                            <input type="text" class="form-control" name="id"
-                                   ng-model="plantsec.id" readonly>
-                        </div>
-
-                        <div class="form-group">
                             <label translate="jtraceApp.plantsec.name">Name</label>
                             <input type="text" class="form-control" name="name"
                                    ng-model="plantsec.name" required ng-minlength="3">
@@ -77,7 +71,7 @@
 
                         <div class="form-group">
                             <label translate="jtraceApp.plantsec.plant">plant</label>
-                            <select class="form-control" name="plant" ng-model="plantsec.plant.id" ng-options="plant.id as plant.id for plant in plants">
+                            <select class="form-control" name="plant" ng-model="plantsec.plant.id" ng-options="plant.id as plant.code for plant in plants">
                             </select>
                         </div>
                     </div>
@@ -123,7 +117,6 @@
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <th>ID</th>
                     <th translate="jtraceApp.plantsec.name">Name</th>
                     <th translate="jtraceApp.plantsec.description">Description</th>
                     <th translate="jtraceApp.plantsec.isenabled">Isenabled</th>
@@ -134,12 +127,11 @@
             </thead>
             <tbody>
                 <tr ng-repeat="plantsec in plantsecs">
-                    <td><a ui-sref="plantsecDetail({id:plantsec.id})">{{plantsec.id}}</a></td>
-                    <td>{{plantsec.name}}</td>
+                    <td><a ui-sref="plantsecDetail({id:plantsec.id})">{{plantsec.name}}</a></td>
                     <td>{{plantsec.description}}</td>
                     <td>{{plantsec.isenabled}}</td>
                     <td>{{plantsec.capacity}}</td>
-                    <td>{{plantsec.plant.id}}</td>
+                    <td>{{plantsec.plant.code}}</td>
                     <td>
                         <button type="submit"
                                 ui-sref="plantsecDetail({id:plantsec.id})"

@@ -25,12 +25,6 @@
                     </div>
                     <div class="modal-body">
                         <div class="form-group">
-                            <label>ID</label>
-                            <input type="text" class="form-control" name="id"
-                                   ng-model="plant.id" readonly>
-                        </div>
-
-                        <div class="form-group">
                             <label translate="jtraceApp.plant.code">Code</label>
                             <input type="text" class="form-control" name="code"
                                    ng-model="plant.code" required>
@@ -156,7 +150,6 @@
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <th>ID</th>
                     <th translate="jtraceApp.plant.code">Code</th>
                     <th translate="jtraceApp.plant.address">Address</th>
                     <th translate="jtraceApp.plant.isenabled">Isenabled</th>
@@ -166,8 +159,7 @@
             </thead>
             <tbody>
                 <tr ng-repeat="plant in plants">
-                    <td><a ui-sref="plantDetail({id:plant.id})">{{plant.id}}</a></td>
-                    <td>{{plant.code}}</td>
+                    <td><a ui-sref="plantDetail({id:plant.id})">{{plant.code}}</a></td>
                     <td>{{plant.address}}</td>
                     <td>{{plant.isenabled}}</td>
                     <td>{{plant.capacity}}</td>

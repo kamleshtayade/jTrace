@@ -1,9 +1,10 @@
 'use strict';
 
 angular.module('jtraceApp')
-    .controller('PlantmfglineController', function ($scope, Plantmfgline, Plantsec, ParseLinks) {
+    .controller('PlantmfglineController', function ($scope, Plantmfgline, Plant, Plantsec, ParseLinks) {
         $scope.plantmfglines = [];
         $scope.plantsecs = Plantsec.query();
+        $scope.plants = Plant.query();
         $scope.page = 1;
         $scope.loadAll = function() {
             Plantmfgline.query({page: $scope.page, per_page: 20}, function(result, headers) {
