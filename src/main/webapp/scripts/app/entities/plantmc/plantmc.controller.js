@@ -1,8 +1,10 @@
 'use strict';
 
 angular.module('jtraceApp')
-    .controller('PlantmcController', function ($scope, Plantmc, Plantmfgline, ParseLinks) {
+    .controller('PlantmcController', function ($scope, Plantmc,Plant, Plantsec, Plantmfgline, ParseLinks) {
         $scope.plantmcs = [];
+        $scope.plants = Plant.query();
+        $scope.plantsecs = Plantsec.query();
         $scope.plantmfglines = Plantmfgline.query();
         $scope.page = 1;
         $scope.loadAll = function() {

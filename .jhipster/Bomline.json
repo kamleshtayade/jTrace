@@ -1,0 +1,78 @@
+{
+    "relationships": [
+        {
+            "relationshipId": 1,
+            "relationshipName": "itemmtr",
+            "relationshipNameCapitalized": "Itemmtr",
+            "relationshipFieldName": "itemmtr",
+            "otherEntityName": "itemmtr",
+            "relationshipType": "many-to-one",
+            "otherEntityNameCapitalized": "Itemmtr",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipId": 2,
+            "relationshipName": "itemctn",
+            "relationshipNameCapitalized": "Itemctn",
+            "relationshipFieldName": "itemctn",
+            "otherEntityName": "itemctn",
+            "relationshipType": "many-to-one",
+            "otherEntityNameCapitalized": "Itemctn",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldId": 1,
+            "fieldName": "lineid",
+            "fieldType": "Integer",
+            "fieldNameCapitalized": "Lineid",
+            "fieldNameUnderscored": "lineid",
+            "fieldInJavaBeanMethod": "Lineid",
+            "fieldValidate": true,
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldId": 2,
+            "fieldName": "quantity",
+            "fieldType": "Integer",
+            "fieldNameCapitalized": "Quantity",
+            "fieldNameUnderscored": "quantity",
+            "fieldInJavaBeanMethod": "Quantity",
+            "fieldValidate": true,
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldId": 3,
+            "fieldName": "refdesignator",
+            "fieldType": "String",
+            "fieldNameCapitalized": "Refdesignator",
+            "fieldNameUnderscored": "refdesignator",
+            "fieldInJavaBeanMethod": "Refdesignator",
+            "fieldValidate": false
+        },
+        {
+            "fieldId": 4,
+            "fieldName": "physical",
+            "fieldType": "Integer",
+            "fieldNameCapitalized": "Physical",
+            "fieldNameUnderscored": "physical",
+            "fieldInJavaBeanMethod": "Physical",
+            "fieldValidate": false
+        }
+    ],
+    "fieldsContainOwnerManyToMany": false,
+    "fieldsContainOneToMany": false,
+    "fieldsContainLocalDate": false,
+    "fieldsContainCustomTime": false,
+    "fieldsContainBigDecimal": false,
+    "fieldsContainDateTime": false,
+    "fieldsContainDate": false,
+    "changelogDate": "20150518111106",
+    "pagination": "infinite-scroll",
+    "validation": true
+}

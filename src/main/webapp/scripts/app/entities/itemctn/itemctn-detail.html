@@ -20,6 +20,54 @@
                 </tr>
                 <tr>
                     <td>
+                        <span translate="jtraceApp.itemctn.itemmtr">ItemMtr</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{itemctn.itemmfrpart.itemmtr.code}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="jtraceApp.itemctn.itemmfrpart">mfrpart</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{itemctn.itemmfrpart.mfrpart}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="jtraceApp.itemctn.manufacturer">manufacturer</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{itemctn.itemmfrpart.sup.manufacturer.code}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="jtraceApp.itemctn.supplierPartNo">supplierpartno</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{itemctn.itemmfrpart.supplier}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="jtraceApp.itemctn.supplier">Supplier</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{itemctn.itemmfrpart.sup.code}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="jtraceApp.itemctn.poQty">poQty</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{itemctn.poQty}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
                         <span translate="jtraceApp.itemctn.reqdQty">ReqdQty</span>
                     </td>
                     <td>
@@ -32,14 +80,6 @@
                     </td>
                     <td>
                         <input type="text" class="input-sm form-control" value="{{itemctn.recdDt}}" readonly>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <span translate="jtraceApp.itemctn.item">Item</span>
-                    </td>
-                    <td>
-                        <input type="text" class="input-sm form-control" value="{{itemctn.item}}" readonly>
                     </td>
                 </tr>
                 <tr>
@@ -60,10 +100,18 @@
                 </tr>
                 <tr>
                     <td>
-                        <span translate="jtraceApp.itemctn.poQty">PoQty</span>
+                        <span translate="jtraceApp.itemctn.lotCode">LotCode</span>
                     </td>
                     <td>
-                        <input type="text" class="input-sm form-control" value="{{itemctn.poQty}}" readonly>
+                        <input type="text" class="input-sm form-control" value="{{itemctn.lotCode}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="jtraceApp.itemctn.dateCode">DateCode</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{itemctn.dateCode}}" readonly>
                     </td>
                 </tr>
                 <tr>
@@ -76,10 +124,10 @@
                 </tr>
                 <tr>
                     <td>
-                        <span translate="jtraceApp.itemctn.itemmtr">itemmtr</span>
+                        <span translate="jtraceApp.itemctn.customer">customer</span>
                     </td>
                     <td>
-                        <input type="text" class="input-sm form-control" value="{{itemctn.itemmtr.code}}" readonly>
+                        <input type="text" class="input-sm form-control" value="{{itemctn.customer.code}}" readonly>
                     </td>
                 </tr>
             </tbody>

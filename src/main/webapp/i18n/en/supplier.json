@@ -15,7 +15,8 @@
             "code": "Code",
             "isenabled": "Is Enabled",
             "address": "Address",
-            "remark": "Remark"
+            "remark": "Remark",
+            "manufacturer": "Manufacturer"
         }
     }
 }

@@ -21,6 +21,7 @@
                 "workorderheader": "Work Order Header",
                 "workorderline": "Work Order Line",
                 "customer": "Customer",
+                "bomline": "Bomline",
                 "additionalEntity": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

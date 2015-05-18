@@ -15,7 +15,9 @@
             "name": "Name",
             "description": "Description",
             "specification": "Specification",
-            "plantmfgline": "Plant MFG Line"
+            "plantmfgline": "MFG Line",
+            "plantsec":"Section",
+            "plant":"Plant"
         }
     }
 }

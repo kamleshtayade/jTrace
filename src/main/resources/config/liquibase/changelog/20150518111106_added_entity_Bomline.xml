@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <property name="now" value="now()" dbms="mysql,h2"/>
+    <property name="now" value="current_timestamp" dbms="postgresql"/>
+
+    <!--
+        Added the entity Bomline.
+    -->
+    <changeSet id="20150518111106" author="jhipster">
+        <createTable tableName="BOMLINE">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="lineid" type="integer">
+                <constraints nullable="false" />
+            </column>
+            <column name="quantity" type="integer">
+                <constraints nullable="false" />
+            </column>
+            <column name="refdesignator" type="varchar(255)"/>
+            <column name="physical" type="integer"/>
+            <column name="itemmtr_id" type="bigint"/>
+            <column name="itemctn_id" type="bigint"/>
+        </createTable>
+        
+        <addForeignKeyConstraint baseColumnNames="itemmtr_id"
+                                 baseTableName="BOMLINE"
+                                 constraintName="fk_bomline_itemmtr_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="ITEMMTR"/>
+
+        <addForeignKeyConstraint baseColumnNames="itemctn_id"
+                                 baseTableName="BOMLINE"
+                                 constraintName="fk_bomline_itemctn_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="ITEMCTN"/>
+
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
+   <changeSet author="ktayade (generated)" id="1431932799937-1">
+      <addColumn tableName="ITEMCTN">
+         <column name="date_code" type="varchar(255)"/>
+      </addColumn>
+   </changeSet>
+   <changeSet author="ktayade (generated)" id="1431932799937-2">
+      <addColumn tableName="ITEMCTN">
+         <column name="itemmfrpart_id" type="int8"/>
+      </addColumn>
+   </changeSet>
+   <changeSet author="ktayade (generated)" id="1431932799937-3">
+      <addColumn tableName="ITEMCTN">
+         <column name="lot_code" type="varchar(255)"/>
+      </addColumn>
+   </changeSet>
+   <changeSet author="ktayade (generated)" id="1431932799937-4">
+      <addColumn tableName="ITEMCTN">
+         <column name="sr_no_from" type="varchar(255)"/>
+      </addColumn>
+   </changeSet>
+   <changeSet author="ktayade (generated)" id="1431932799937-5">
+      <addForeignKeyConstraint baseColumnNames="itemmfrpart_id"
+                               baseTableName="ITEMCTN"
+                               constraintName="FK_teo433u5n9omxwdr6467uoiw8"
+                               deferrable="false"
+                               initiallyDeferred="false"
+                               referencedColumnNames="id"
+                               referencedTableName="ITEMMFRPART"/>
+   </changeSet>
+   <changeSet author="ktayade (generated)" id="1431932799937-6">
+      <dropForeignKeyConstraint baseTableName="itemctn" constraintName="FK_f5188fvxx45nawctrhx73fekr"/>
+   </changeSet>
+   <changeSet author="ktayade (generated)" id="1431932799937-7">
+      <dropForeignKeyConstraint baseTableName="itemctn" constraintName="fk_itemctn_itemmtr_id"/>
+   </changeSet>
+   <changeSet author="ktayade (generated)" id="1431932799937-8">
+      <dropColumn columnName="itemmtr_id" tableName="itemctn"/>
+   </changeSet>
+   <changeSet author="ktayade (generated)" id="1431932799937-9">
+      <dropColumn columnName="supplier_id" tableName="itemctn"/>
+   </changeSet>
+</databaseChangeLog>

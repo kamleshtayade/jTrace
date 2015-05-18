@@ -1,5 +1,5 @@
 'use strict';
-jQuery(document).ready(function($) {
+$(document).ready(function($) {
     Morris.Area({
         element: 'morris-area-chart',
         data: [{

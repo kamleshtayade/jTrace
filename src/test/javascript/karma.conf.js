@@ -35,11 +35,22 @@ module.exports = function (config) {
             'main/webapp/bower_components/raphael/raphael.js',
             'main/webapp/bower_components/mocha/mocha.js',
             'main/webapp/bower_components/morris.js/morris.js',
+            'main/webapp/bower_components/datatables/media/js/jquery.dataTables.js',
+            'main/webapp/bower_components/angular-datatables/dist/angular-datatables.js',
+            'main/webapp/bower_components/angular-datatables/dist/plugins/bootstrap/angular-datatables.bootstrap.js',
+            'main/webapp/bower_components/angular-datatables/dist/plugins/colreorder/angular-datatables.colreorder.js',
+            'main/webapp/bower_components/angular-datatables/dist/plugins/columnfilter/angular-datatables.columnfilter.js',
+            'main/webapp/bower_components/angular-datatables/dist/plugins/colvis/angular-datatables.colvis.js',
+            'main/webapp/bower_components/angular-datatables/dist/plugins/fixedcolumns/angular-datatables.fixedcolumns.js',
+            'main/webapp/bower_components/angular-datatables/dist/plugins/fixedheader/angular-datatables.fixedheader.js',
+            'main/webapp/bower_components/angular-datatables/dist/plugins/scroller/angular-datatables.scroller.js',
+            'main/webapp/bower_components/angular-datatables/dist/plugins/tabletools/angular-datatables.tabletools.js',
             'main/webapp/bower_components/angular-mocks/angular-mocks.js',
             // endbower
             'main/webapp/scripts/app/app.js',
             'main/webapp/scripts/app/**/*.js',
             'main/webapp/scripts/components/**/*.{js,html}',
+            'main/webapp/assets/js/*.js',
             'test/javascript/**/!(karma.conf).js'
         ],
 

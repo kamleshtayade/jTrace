@@ -16,7 +16,9 @@
             "status": "Status",
             "supplier": "Supplier",
             "remark": "Remark",
-            "itemmtr": "Item"
+            "itemmtr": "Item",
+            "manufacturer":"Manufacturer",
+            "supppart" : "Supplier Part"
         }
     }
 }

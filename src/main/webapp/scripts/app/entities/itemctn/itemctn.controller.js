@@ -1,9 +1,13 @@
 'use strict';
 
 angular.module('jtraceApp')
-    .controller('ItemctnController', function ($scope, Itemctn, Itemmtr, ParseLinks) {
+    .controller('ItemctnController', function ($scope, Itemctn, Itemmtr,Supplier,Manufacturer,Customer,Itemmfrpart, ParseLinks) {
         $scope.itemctns = [];
         $scope.itemmtrs = Itemmtr.query();
+        $scope.suppliers = Supplier.query();
+        $scope.manufacturers = Manufacturer.query();
+        $scope.customers = Customer.query();
+        $scope.itemmfrparts = Itemmfrpart.query();
         $scope.page = 1;
         $scope.loadAll = function() {
             Itemctn.query({page: $scope.page, per_page: 20}, function(result, headers) {

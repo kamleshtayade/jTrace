@@ -1,0 +1,23 @@
+{
+    "jtraceApp": {
+        "bomline" : {
+            "home": {
+                "title": "Bomlines",
+                "createLabel": "Create a new Bomline",
+                "createOrEditLabel": "Create or edit a Bomline"
+            },
+            "delete": {
+                "question": "Are you sure you want to delete Bomline {{ id }}?"
+            },
+            "detail": {
+                "title": "Bomline"
+            },
+            "lineid": "Lineid",
+            "quantity": "Quantity",
+            "refdesignator": "Refdesignator",
+            "physical": "Physical",
+            "itemmtr": "itemmtr",
+            "itemctn": "itemctn"
+        }
+    }
+}

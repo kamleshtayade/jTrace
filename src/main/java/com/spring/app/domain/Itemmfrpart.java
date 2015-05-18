@@ -31,7 +31,7 @@ public class Itemmfrpart implements Serializable {
     private Boolean status;
 
     @Column(name = "supplier")
-    private String supplier;
+    private String supplier;//supplier part number
 
     @NotNull
     @Size(min = 10)
@@ -40,8 +40,19 @@ public class Itemmfrpart implements Serializable {
 
     @ManyToOne
     private Itemmtr itemmtr;
+    
+    @ManyToOne
+    private Supplier sup; //supplier details
 
-    public Long getId() {
+    public Supplier getSup() {
+		return sup;
+	}
+
+	public void setSup(Supplier sup) {
+		this.sup = sup;
+	}
+
+	public Long getId() {
         return id;
     }
 

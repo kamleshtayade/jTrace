@@ -1,0 +1,62 @@
+
+<div>
+    <h2><span translate="jtraceApp.bomline.detail.title">Bomline</span> {{bomline.id}}</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th translate="entity.detail.field">Field</th>
+                    <th translate="entity.detail.value">Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <span translate="jtraceApp.bomline.lineid">Lineid</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{bomline.lineid}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="jtraceApp.bomline.quantity">Quantity</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{bomline.quantity}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="jtraceApp.bomline.refdesignator">Refdesignator</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{bomline.refdesignator}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="jtraceApp.bomline.physical">Physical</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{bomline.physical}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="jtraceApp.bomline.itemmtr">itemmtr</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{bomline.itemmtr.code}}" readonly>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button type="submit"
+            ui-sref="bomline"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
+    </button>
+</div>

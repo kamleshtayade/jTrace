@@ -1,8 +1,9 @@
 'use strict';
 
 angular.module('jtraceApp')
-    .controller('SupplierController', function ($scope, Supplier, ParseLinks) {
+    .controller('SupplierController', function ($scope, Supplier,Manufacturer, ParseLinks) {
         $scope.suppliers = [];
+        $scope.manufacturers = Manufacturer.query();
         $scope.page = 1;
         $scope.loadAll = function() {
             Supplier.query({page: $scope.page, per_page: 20}, function(result, headers) {

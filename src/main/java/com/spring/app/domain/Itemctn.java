@@ -47,6 +47,9 @@ public class Itemctn implements Serializable {
 
     @Column(name = "sr_no_to")
     private String srNoTo;
+    
+    @Column(name = "sr_no_from")
+    private String srNoFrom;
 
     @Column(name = "self_life")
     private String selfLife;
@@ -56,11 +59,61 @@ public class Itemctn implements Serializable {
 
     @Column(name = "invoice")
     private String invoice;
+    
+    @Column(name = "date_code")
+    private String dateCode;
 
+    @Column(name = "lot_code")
+    private String lotCode;
+
+    
     @ManyToOne
-    private Itemmtr itemmtr;
+    private Itemmfrpart itemmfrpart;
+    
+    @ManyToOne
+    private Customer customer;
+    
+    public String getSrNoFrom() {
+		return srNoFrom;
+	}
 
-    public Long getId() {
+	public void setSrNoFrom(String srNoFrom) {
+		this.srNoFrom = srNoFrom;
+	}
+
+	public String getDateCode() {
+		return dateCode;
+	}
+
+	public void setDateCode(String dateCode) {
+		this.dateCode = dateCode;
+	}
+
+	public String getLotCode() {
+		return lotCode;
+	}
+
+	public void setLotCode(String lotCode) {
+		this.lotCode = lotCode;
+	}
+
+	public Itemmfrpart getItemmfrpart() {
+		return itemmfrpart;
+	}
+
+	public void setItemmfrpart(Itemmfrpart itemmfrpart) {
+		this.itemmfrpart = itemmfrpart;
+	}
+
+	public Customer getCustomer() {
+		return customer;
+	}
+
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
+	}
+
+	public Long getId() {
         return id;
     }
 
@@ -124,13 +177,6 @@ public class Itemctn implements Serializable {
         this.invoice = invoice;
     }
 
-    public Itemmtr getItemmtr() {
-        return itemmtr;
-    }
-
-    public void setItemmtr(Itemmtr itemmtr) {
-        this.itemmtr = itemmtr;
-    }
 
     @Override
     public boolean equals(Object o) {

@@ -5,6 +5,7 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
+
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -36,8 +37,19 @@ public class Supplier implements Serializable {
     @Size(min = 5)
     @Column(name = "remark", nullable = false)
     private String remark;
+    
+    @ManyToOne
+    private Manufacturer manufacturer;
 
-    public Long getId() {
+    public Manufacturer getManufacturer() {
+		return manufacturer;
+	}
+
+	public void setManufacturer(Manufacturer manufacturer) {
+		this.manufacturer = manufacturer;
+	}
+
+	public Long getId() {
         return id;
     }
 

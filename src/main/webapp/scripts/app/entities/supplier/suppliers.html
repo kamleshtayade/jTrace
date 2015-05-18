@@ -24,11 +24,6 @@
                         <h4 class="modal-title" id="mySupplierLabel" translate="jtraceApp.supplier.home.createOrEditLabel">Create or edit a Supplier</h4>
                     </div>
                     <div class="modal-body">
-                        <div class="form-group">
-                            <label>ID</label>
-                            <input type="text" class="form-control" name="id"
-                                   ng-model="supplier.id" readonly>
-                        </div>
 
                         <div class="form-group">
                             <label translate="jtraceApp.supplier.code">Code</label>
@@ -52,6 +47,13 @@
                                    ng-model="supplier.isenabled">
 
                         </div>
+
+                        <div class="form-group">
+                            <label translate="jtraceApp.supplier.manufacturer">itemcat</label>
+                            <select class="form-control" name="itemcat" ng-model="supplier.manufacturer.id" ng-options="manufacturer.id as manufacturer.code for manufacturer in manufacturers">
+                            </select>
+                        </div>
+
                         <div class="form-group">
                             <label translate="jtraceApp.supplier.address">Address</label>
                             <input type="text" class="form-control" name="address"
@@ -124,9 +126,9 @@
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <th>ID</th>
                     <th translate="jtraceApp.supplier.code">Code</th>
                     <th translate="jtraceApp.supplier.isenabled">Isenabled</th>
+                    <th translate="jtraceApp.supplier.manufacturer">manufacturer</th>
                     <th translate="jtraceApp.supplier.address">Address</th>
                     <th translate="jtraceApp.supplier.remark">Remark</th>
                     <th></th>
@@ -134,9 +136,9 @@
             </thead>
             <tbody>
                 <tr ng-repeat="supplier in suppliers">
-                    <td><a ui-sref="supplierDetail({id:supplier.id})">{{supplier.id}}</a></td>
-                    <td>{{supplier.code}}</td>
+                    <td><a ui-sref="supplierDetail({id:supplier.id})">{{supplier.code}}</a></td>
                     <td>{{supplier.isenabled}}</td>
+                    <td>{{supplier.manufacturer.code}}</td>
                     <td>{{supplier.address}}</td>
                     <td>{{supplier.remark}}</td>
                     <td>

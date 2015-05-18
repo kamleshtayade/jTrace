@@ -116,8 +116,8 @@
                 <tr>
                     <th translate="jtraceApp.plantmfgline.name">Name</th>
                     <th translate="jtraceApp.plantmfgline.capacity">Capacity</th>
-                    <th translate="jtraceApp.plantmfgline.plantsec">plantsec</th>
                     <th translate="jtraceApp.plantmfgline.plant">plantsec</th>
+                    <th translate="jtraceApp.plantmfgline.plantsec">plantsec</th>
                     <th></th>
                 </tr>
             </thead>
@@ -125,8 +125,8 @@
                 <tr ng-repeat="plantmfgline in plantmfglines">
                     <td><a ui-sref="plantmfglineDetail({id:plantmfgline.id})">{{plantmfgline.name}}</a></td>
                     <td>{{plantmfgline.capacity}}</td>
-                    <td>{{plantmfgline.plantsec.name}}&nbsp;({{plantmfgline.plantsec.plant.code}})</td>
                     <td>{{plantmfgline.plantsec.plant.code}}</td>
+                    <td>{{plantmfgline.plantsec.name}}</td>
                     <td>
                         <button type="submit"
                                 ui-sref="plantmfglineDetail({id:plantmfgline.id})"

@@ -37,17 +37,35 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label translate="jtraceApp.itemmfrpart.status">Status</label>
-                            <input type="checkbox" class="form-control" name="status"
-                                   ng-model="itemmfrpart.status">
+                            <label translate="jtraceApp.itemmfrpart.supppart">SupplierPart Number</label>
+                            <input type="text" class="form-control" name="supplier"
+                                   ng-model="itemmfrpart.supplier" required>
+                            <div ng-show="editForm.mfrpart.$invalid">
+                                <p class="help-block"
+                                   ng-show="editForm.mfrpart.$error.required" translate="entity.validation.required">
+                                    This field is required.
+                                </p>
+                            </div>       
 
+                        </div>
+
+                        <div class="form-group">
+                            <label translate="jtraceApp.itemmfrpart.itemmtr">itemmtr</label>
+                            <select class="form-control" name="itemmtr" ng-model="itemmfrpart.itemmtr.id" ng-options="itemmtr.id as itemmtr.code for itemmtr in itemmtrs">
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label translate="jtraceApp.itemmfrpart.manufacturer">manufacturer</label>
+                            <select class="form-control" name="itemcat" ng-model="itemmfrpart.sup.manufacturer.id" ng-options="manufacturer.id as manufacturer.code for manufacturer in manufacturers">
+                            </select>
                         </div>
                         <div class="form-group">
                             <label translate="jtraceApp.itemmfrpart.supplier">Supplier</label>
-                            <input type="text" class="form-control" name="supplier"
-                                   ng-model="itemmfrpart.supplier">
-
+                            <select class="form-control" name="itemcat" ng-model="itemmfrpart.sup.id" ng-disabled="!itemmfrpart.sup.manufacturer.id" ng-options="sup.id as sup.code for sup in suppliers| filter:itemmfrpart.sup.manufacturer.id">
+                            </select>
                         </div>
+
                         <div class="form-group">
                             <label translate="jtraceApp.itemmfrpart.remark">Remark</label>
                             <input type="text" class="form-control" name="remark"
@@ -64,12 +82,13 @@
                                 </p>
                             </div>
                         </div>
-
                         <div class="form-group">
-                            <label translate="jtraceApp.itemmfrpart.itemmtr">itemmtr</label>
-                            <select class="form-control" name="itemmtr" ng-model="itemmfrpart.itemmtr.id" ng-options="itemmtr.id as itemmtr.code for itemmtr in itemmtrs">
-                            </select>
-                        </div>
+                            <label translate="jtraceApp.itemmfrpart.status">Status</label>
+                            <input type="checkbox" class="form-control" name="status"
+                                   ng-model="itemmfrpart.status">
+
+                        </div>                        
+
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
@@ -114,20 +133,24 @@
             <thead>
                 <tr>
                     <th translate="jtraceApp.itemmfrpart.mfrpart">Mfrpart</th>
-                    <th translate="jtraceApp.itemmfrpart.status">Status</th>
+                    <th translate="jtraceApp.itemmfrpart.supppart">Supplierpart</th>
+                    <th translate="jtraceApp.itemmfrpart.itemmtr">itemmtr</th>
+                    <th translate="jtraceApp.itemmfrpart.manufacturer">Manufacturer</th>
                     <th translate="jtraceApp.itemmfrpart.supplier">Supplier</th>
                     <th translate="jtraceApp.itemmfrpart.remark">Remark</th>
-                    <th translate="jtraceApp.itemmfrpart.itemmtr">itemmtr</th>
+                    <th translate="jtraceApp.itemmfrpart.status">Status</th>
                     <th></th>
                 </tr>
             </thead>
             <tbody>
                 <tr ng-repeat="itemmfrpart in itemmfrparts">
                     <td><a ui-sref="itemmfrpartDetail({id:itemmfrpart.id})">{{itemmfrpart.mfrpart}}</a></td>
-                    <td>{{itemmfrpart.status}}</td>
                     <td>{{itemmfrpart.supplier}}</td>
-                    <td>{{itemmfrpart.remark}}</td>
                     <td>{{itemmfrpart.itemmtr.code}}</td>
+                    <td>{{itemmfrpart.sup.manufacturer.code}}</td>
+                    <td>{{itemmfrpart.sup.code}}</td>
+                    <td>{{itemmfrpart.remark}}</td>
+                    <td>{{itemmfrpart.status}}</td>
                     <td>
                         <button type="submit"
                                 ui-sref="itemmfrpartDetail({id:itemmfrpart.id})"

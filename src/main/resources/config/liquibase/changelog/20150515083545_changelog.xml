@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
+   <changeSet author="ktayade (generated)" id="1431678951111-1">
+      <addColumn tableName="ITEMCTN">
+         <column name="customer_id" type="int8"/>
+      </addColumn>
+   </changeSet>
+   <changeSet author="ktayade (generated)" id="1431678951111-2">
+      <addColumn tableName="ITEMCTN">
+         <column name="supplier_id" type="int8"/>
+      </addColumn>
+   </changeSet>
+   <changeSet author="ktayade (generated)" id="1431678951111-3">
+      <addForeignKeyConstraint baseColumnNames="customer_id"
+                               baseTableName="ITEMCTN"
+                               constraintName="FK_dpaiwlqm8jnnttyvhat0foac"
+                               deferrable="false"
+                               initiallyDeferred="false"
+                               referencedColumnNames="id"
+                               referencedTableName="CUSTOMER"/>
+   </changeSet>
+   <changeSet author="ktayade (generated)" id="1431678951111-4">
+      <addForeignKeyConstraint baseColumnNames="supplier_id"
+                               baseTableName="ITEMCTN"
+                               constraintName="FK_f5188fvxx45nawctrhx73fekr"
+                               deferrable="false"
+                               initiallyDeferred="false"
+                               referencedColumnNames="id"
+                               referencedTableName="SUPPLIER"/>
+   </changeSet>
+</databaseChangeLog>
