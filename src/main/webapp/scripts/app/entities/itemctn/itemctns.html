@@ -54,7 +54,7 @@
                         <div class="col-md-6 form-group">
                             <label translate="jtraceApp.itemctn.manufacturer">Manufacturer</label>
                             <select class="form-control" name="manufacturer"
-                                   ng-model="itemctn.itemmfrpart.sup.manufacturer.id" ng-disabled="!itemctn.itemmfrpart.id" ng-options="manufacturer.id as manufacturer.code for manufacturer in manufacturers" required>
+                                   ng-model="itemctn.itemmfrpart.sup.manufacturer.id" ng-disabled="!itemctn.itemmfrpart.id" ng-options="manufacturer.id as manufacturer.code for manufacturer in manufacturers | filter:itemctn.itemmfrpart.sup.manufacturer.id" required>
                             </select>
                             <div ng-show="editForm.manufacturer.$invalid">
                                 <p class="help-block"

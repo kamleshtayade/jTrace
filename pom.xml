@@ -11,7 +11,7 @@
 
     <groupId>com.spring.app</groupId>
     <artifactId>jtrace</artifactId>
-    <version>0.2.3-SNAPSHOT</version>
+    <version>0.2.4-SNAPSHOT</version>
     <packaging>war</packaging>
 
     <name>jtrace</name>
@@ -21,7 +21,7 @@
     </prerequisites>
 
     <properties>
-        <HikariCP.version>2.2.5</HikariCP.version>
+        <HikariCP.version>2.3.7</HikariCP.version>
         <assertj-core.version>1.6.1</assertj-core.version>
         <awaitility.version>1.4.0</awaitility.version>
         <commons-io.version>2.4</commons-io.version>
@@ -323,6 +323,12 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-tomcat</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>

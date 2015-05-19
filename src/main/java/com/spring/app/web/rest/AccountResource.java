@@ -74,6 +74,7 @@ public class AccountResource {
             return new ResponseEntity<>(HttpStatus.CREATED);
         }
     }
+
     /**
      * GET  /activate -> activate the registered user.
      */
@@ -141,7 +142,8 @@ public class AccountResource {
         if (userHavingThisLogin != null && !userHavingThisLogin.getLogin().equals(SecurityUtils.getCurrentLogin())) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
-        userService.updateUserInformation(userDTO.getFirstName(), userDTO.getLastName(), userDTO.getEmail());
+        userService.updateUserInformation(userDTO.getFirstName(), userDTO.getLastName(), userDTO.getEmail(),
+            userDTO.getLangKey());
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
@@ -201,6 +203,41 @@ public class AccountResource {
             if (StringUtils.equals(persistentToken.getSeries(), decodedSeries)) {
                 persistentTokenRepository.delete(decodedSeries);
             }
+        }
+    }
+
+    @RequestMapping(value = "/account/reset_password/init",
+        method = RequestMethod.POST,
+        produces = MediaType.TEXT_PLAIN_VALUE)
+    @Timed
+    public ResponseEntity<?> requestPasswordReset(@RequestBody String mail, HttpServletRequest request) {
+        
+        User user = userService.requestPasswordReset(mail);
+
+        if (user != null) {
+          String baseUrl = request.getScheme() +
+              "://" +
+              request.getServerName() +
+              ":" +
+              request.getServerPort();
+          mailService.sendPasswordResetMail(user, baseUrl);
+          return new ResponseEntity<>("e-mail was sent", HttpStatus.OK);
+        } else {
+          return new ResponseEntity<>("e-mail address not registered", HttpStatus.BAD_REQUEST);
+        }
+        
+    }
+
+    @RequestMapping(value = "/account/reset_password/finish",
+        method = RequestMethod.POST,
+        produces = MediaType.APPLICATION_JSON_VALUE)
+    @Timed
+    public ResponseEntity<String> finishPasswordReset(@RequestParam(value = "key") String key, @RequestParam(value = "newPassword") String newPassword) {
+        User user = userService.completePasswordReset(newPassword, key);
+        if (user != null) {
+          return new ResponseEntity<String>(HttpStatus.OK);
+        } else {
+          return new ResponseEntity<String>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 }

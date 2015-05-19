@@ -6,22 +6,6 @@
             "home": "Accueil",
             "entities": {
                 "main": "Entités",
-                "itemcat": "Itemcat",
-                "itemsubcat": "Itemsubcat",
-                "itemmtr": "Itemmtr",
-                "itemctn": "Itemctn",
-                "itemmfrpart": "Itemmfrpart",
-                "itemtype": "Itemtype",
-                "manufacturer": "Manufacturer",
-                "plant": "Plant",
-                "plantsec": "Plantsec",
-                "plantmfgline": "Plantmfgline",
-                "plantmc": "Plantmc",
-                "supplier": "Supplier",
-                "workorderheader": "Workorderheader",
-                "workorderline": "Workorderline",
-                "customer": "Customer",
-                "bomline": "Bomline",
                 "additionalEntity": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {
