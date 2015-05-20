@@ -1,0 +1,24 @@
+{
+    "jtraceApp": {
+        "organization" : {
+            "home": {
+                "title": "Organizations",
+                "createLabel": "Créer un nouveau Organization",
+                "createOrEditLabel": "Créer ou éditer un Organization"
+            },
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Organization {{ id }} ?"
+            },
+            "detail": {
+                "title": "Organization"
+            },
+            "name": "Name",
+            "address_1": "Address_1",
+            "address_2": "Address_2",
+            "country": "Country",
+            "city": "City",
+            "pincode": "Pincode"
+        }
+    }
+}
+
