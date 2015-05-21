@@ -16,7 +16,7 @@
             "description": "Description",
             "enabled": "Enabled",
             "itemcat": "itemcat",
-            "itemmaster": "itemmaster"
+            "itemmaster": "Item Master"
         }
     }
 }
