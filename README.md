@@ -30,4 +30,5 @@ java -jar jhipster-0.0.1-SNAPSHOT.war --spring.profiles.active=prod
 2. Compile your application (this works on the compiled Java code, so don't forget to compile!)
 3. Run mvn liquibase:diff (or mvn compile liquibase:diff to compile before)
 4. A new "change log" is created in your src/main/resources/config/liquibase/changelog directory
-5. Review this change log and add it to your src/main/resources/config/liquibase/master.xml file, so it is applied the next time you run your application
+5. Review this change log and add it to your src/main/resources/config/liquibase/master.xml file, so it is applied the next time you run your application.
+6. test
