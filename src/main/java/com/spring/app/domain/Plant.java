@@ -5,6 +5,7 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
+
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -34,8 +35,19 @@ public class Plant implements Serializable {
     @NotNull
     @Column(name = "capacity", nullable = false)
     private Integer capacity;
+    
+    @ManyToOne
+    private Organization org;
 
-    public Long getId() {
+    public Organization getOrg() {
+		return org;
+	}
+
+	public void setOrg(Organization org) {
+		this.org = org;
+	}
+
+	public Long getId() {
         return id;
     }
 

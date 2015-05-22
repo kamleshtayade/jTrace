@@ -31,3 +31,17 @@ java -jar jhipster-0.0.1-SNAPSHOT.war --spring.profiles.active=prod
 3. Run mvn liquibase:diff (or mvn compile liquibase:diff to compile before)
 4. A new "change log" is created in your src/main/resources/config/liquibase/changelog directory
 5. Review this change log and add it to your src/main/resources/config/liquibase/master.xml file, so it is applied the next time you run your application
+
+# Heroku 
+Your app should now be live. To view it run
+        heroku open
+And you can view the logs with this command
+        heroku logs --tail
+After application modification, repackage it with
+        mvn package -Pprod -DskipTests
+And then re-deploy it with
+        heroku deploy:jar --jar target/*.war
+
+# remote App      
+git remote rm heroku
+git remote add heroku git@heroku.com:your-app.git

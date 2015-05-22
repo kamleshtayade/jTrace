@@ -15,7 +15,8 @@
             "code": "Code",
             "address": "Address",
             "isenabled": "Is Enabled",
-            "capacity": "Capacity"
+            "capacity": "Capacity",
+            "org":"Organization"
         }
     }
 }
