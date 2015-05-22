@@ -1,3 +1,4 @@
+'use strict';
 /**
  * main.js
  * http://www.codrops.com
@@ -49,15 +50,10 @@
 
 })();*/
 /*jshint browser: true, strict: true, undef: true */
-
-
-
-(function(){
-	'use strict';
+$(document).ready(function($) {
 	
 	var bodyEl = document.body,
 		openbtn = document.getElementById('open-button'),
-
 		isOpen = false;
 
 	function init() {
@@ -76,4 +72,4 @@
 		isOpen = !isOpen;
 	}
 	init();
-})();
+});
