@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('jtraceApp')
-    .controller('ItemcatController', function ($scope, Itemcat, Itemsubcat) {
+    .controller('ItemcatController', function ($scope, Itemcat, Itemsubcat,DTOptionsBuilder,DTColumnBuilder,DTColumnDefBuilder) {
         $scope.itemcats = [];
         $scope.itemsubcats = Itemsubcat.query();
         $scope.loadAll = function() {

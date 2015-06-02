@@ -23,6 +23,7 @@
                 "customer": "Customer",
                 "bomline": "Bomline",
                 "organization": "Organization",
+                "bomheader": "Bomheader",
                 "additionalEntity": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

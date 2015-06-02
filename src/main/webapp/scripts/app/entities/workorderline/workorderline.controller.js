@@ -1,9 +1,10 @@
 'use strict';
 
 angular.module('jtraceApp')
-    .controller('WorkorderlineController', function ($scope, Workorderline, Itemctn, ParseLinks) {
+    .controller('WorkorderlineController', function ($scope, Workorderline, Workorderheader, Itemctn, ParseLinks) {
         $scope.workorderlines = [];
         $scope.itemctns = Itemctn.query();
+        $scope.workorderheaders = Workorderheader.query();
         $scope.page = 1;
         $scope.loadAll = function() {
             Workorderline.query({page: $scope.page, per_page: 20}, function(result, headers) {
@@ -21,7 +22,7 @@ angular.module('jtraceApp')
             Workorderline.update($scope.workorderline,
                 function () {
                     $scope.loadAll();
-                    $('#saveWorkorderlineModal').modal('hide');
+                    $('#saveWorkorderlineModal').collapse('hide');
                     $scope.clear();
                 });
         };
@@ -29,7 +30,7 @@ angular.module('jtraceApp')
         $scope.update = function (id) {
             Workorderline.get({id: id}, function(result) {
                 $scope.workorderline = result;
-                $('#saveWorkorderlineModal').modal('show');
+                $('#saveWorkorderlineModal').collapse('show');
             });
         };
 
@@ -53,5 +54,6 @@ angular.module('jtraceApp')
             $scope.workorderline = {bomChildItem: null, attrition: null, requQty: null, issuedQty: null, isCustSupplied: null, remark: null, id: null};
             $scope.editForm.$setPristine();
             $scope.editForm.$setUntouched();
+            $('#saveWorkorderlineModal').collapse('hide');
         };
     });

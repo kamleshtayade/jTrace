@@ -25,12 +25,6 @@
                     </div>
                     <div class="modal-body">
                         <div class="form-group">
-                            <label>ID</label>
-                            <input type="text" class="form-control" name="id"
-                                   ng-model="workorderline.id" readonly>
-                        </div>
-
-                        <div class="form-group">
                             <label translate="jtraceApp.workorderline.bomChildItem">BomChildItem</label>
                             <input type="text" class="form-control" name="bomChildItem"
                                    ng-model="workorderline.bomChildItem" required>
@@ -81,7 +75,13 @@
 
                         <div class="form-group">
                             <label translate="jtraceApp.workorderline.itemctn">itemctn</label>
-                            <select class="form-control" name="itemctn" ng-model="workorderline.itemctn.id" ng-options="itemctn.id as itemctn.id for itemctn in itemctns">
+                            <select class="form-control" name="itemctn" ng-model="workorderline.itemctn.id" ng-options="itemctn.id as itemctn.ctn for itemctn in itemctns"> 
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label translate="jtraceApp.workorderline.workorderheader">workorderheader</label>
+                            <select class="form-control" name="workorderheader" ng-model="workorderline.workorderheader.id" ng-options="workorderheader.id as workorderheader.woNumber for workorderheader in workorderheaders">
                             </select>
                         </div>
                     </div>
@@ -127,7 +127,6 @@
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <th>ID</th>
                     <th translate="jtraceApp.workorderline.bomChildItem">BomChildItem</th>
                     <th translate="jtraceApp.workorderline.attrition">Attrition</th>
                     <th translate="jtraceApp.workorderline.requQty">RequQty</th>
@@ -135,19 +134,20 @@
                     <th translate="jtraceApp.workorderline.isCustSupplied">IsCustSupplied</th>
                     <th translate="jtraceApp.workorderline.remark">Remark</th>
                     <th translate="jtraceApp.workorderline.itemctn">itemctn</th>
+                    <th translate="jtraceApp.workorderline.workorderheader">workorderheader</th>
                     <th></th>
                 </tr>
             </thead>
             <tbody>
                 <tr ng-repeat="workorderline in workorderlines">
-                    <td><a ui-sref="workorderlineDetail({id:workorderline.id})">{{workorderline.id}}</a></td>
-                    <td>{{workorderline.bomChildItem}}</td>
+                    <td><a ui-sref="workorderlineDetail({id:workorderline.id})">{{workorderline.bomChildItem}}</td>
                     <td>{{workorderline.attrition}}</td>
                     <td>{{workorderline.requQty}}</td>
                     <td>{{workorderline.issuedQty}}</td>
                     <td>{{workorderline.isCustSupplied}}</td>
                     <td>{{workorderline.remark}}</td>
-                    <td>{{workorderline.itemctn.id}}</td>
+                    <td>{{workorderline.itemctn.ctn}}</td>
+                    <td>{{workorderline.workorderheader.woNumber}}</td>
                     <td>
                         <button type="submit"
                                 ui-sref="workorderlineDetail({id:workorderline.id})"

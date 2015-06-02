@@ -7,7 +7,9 @@ import javax.persistence.*;
 import javax.validation.constraints.*;
 
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 /**
  * A Supplier.
@@ -38,15 +40,20 @@ public class Supplier implements Serializable {
     @Column(name = "remark", nullable = false)
     private String remark;
     
-    @ManyToOne
-    private Manufacturer manufacturer;
+    @ManyToMany
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    @JoinTable(name = "SUPPLIER_MANUFACTURER",
+               joinColumns = @JoinColumn(name="suppliers_id", referencedColumnName="ID"),
+               inverseJoinColumns = @JoinColumn(name="manufacturers_id", referencedColumnName="ID"))
+    private Set<Manufacturer> manufacturers = new HashSet<>();
 
-    public Manufacturer getManufacturer() {
-		return manufacturer;
+
+	public Set<Manufacturer> getManufacturers() {
+		return manufacturers;
 	}
 
-	public void setManufacturer(Manufacturer manufacturer) {
-		this.manufacturer = manufacturer;
+	public void setManufacturers(Set<Manufacturer> manufacturers) {
+		this.manufacturers = manufacturers;
 	}
 
 	public Long getId() {

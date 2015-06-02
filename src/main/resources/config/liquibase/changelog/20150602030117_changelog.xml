@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
+   <changeSet author="ktayade (generated)" id="1433214087059-1">
+      <addColumn tableName="BOMLINE">
+         <column name="itemctn_id" type="int8"/>
+      </addColumn>
+   </changeSet>
+   <changeSet author="ktayade (generated)" id="1433214087059-2">
+      <addForeignKeyConstraint baseColumnNames="itemctn_id"
+                               baseTableName="BOMLINE"
+                               constraintName="FK_9hgsshm0xu2ku1yu6hsribl44"
+                               deferrable="false"
+                               initiallyDeferred="false"
+                               referencedColumnNames="id"
+                               referencedTableName="ITEMCTN"/>
+   </changeSet>
+</databaseChangeLog>

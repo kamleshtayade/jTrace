@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('jtraceApp')
-    .controller('BomlineDetailController', function ($scope, $stateParams, Bomline, Itemmtr) {
+    .controller('BomlineDetailController', function ($scope, $stateParams, Bomline, Itemmtr, Itemctn) {
         $scope.bomline = {};
         $scope.load = function (id) {
             Bomline.get({id: id}, function(result) {

@@ -1,31 +1,29 @@
-'use strict';
-
-angular.module('jtraceApp')
-    .controller('ManufacturerController', function ($scope, Manufacturer, ParseLinks) {
-        $scope.manufacturers = [];
-        $scope.page = 1;
-        $scope.loadAll = function() {
-            Manufacturer.query({page: $scope.page, per_page: 20}, function(result, headers) {
-                $scope.links = ParseLinks.parse(headers('link'));
-                $scope.manufacturers = result;
-            });
-        };
-        $scope.loadPage = function(page) {
-            $scope.page = page;
-            $scope.loadAll();
-        };
-        $scope.loadAll();
-
-        $scope.create = function () {
-            Manufacturer.update($scope.manufacturer,
-                function () {
-                    $scope.loadAll();
+ 'use strict';
+ angular.module('jtraceApp').controller('ManufacturerController',ManufacturerController);
+ function ManufacturerController($scope,$resource,Manufacturer,ParseLinks,DTOptionsBuilder,DTColumnBuilder,DTColumnDefBuilder) {
+      $scope.manufacturers=[];
+      $scope.dtOptions = DTOptionsBuilder.newOptions().withPaginationType('full_numbers').withDisplayLength(10);
+      $scope.dtColumns = [
+        DTColumnDefBuilder.newColumnDef(0),
+        DTColumnDefBuilder.newColumnDef(1),
+        DTColumnDefBuilder.newColumnDef(2),
+        DTColumnDefBuilder.newColumnDef(3),
+        DTColumnDefBuilder.newColumnDef(4),
+        DTColumnDefBuilder.newColumnDef(5).withTitle('Actions').notSortable()
+       
+    ];
+    $scope.loadAll = function() {
+           $scope.manufacturers= Manufacturer.query(); 
+    };
+    $scope.loadAll();
+    $scope.create = function () {
+            Manufacturer.update($scope.manufacturer,function () {
+                    $scope.manufacturers= Manufacturer.query(); 
                     $('#saveManufacturerModal').modal('hide');
-                    $scope.clear();
+                     $scope.clear(); 
                 });
         };
-
-        $scope.update = function (id) {
+    $scope.update = function (id) {
             Manufacturer.get({id: id}, function(result) {
                 $scope.manufacturer = result;
                 $('#saveManufacturerModal').modal('show');
@@ -47,10 +45,11 @@ angular.module('jtraceApp')
                     $scope.clear();
                 });
         };
-
-        $scope.clear = function () {
+        
+    $scope.clear = function () {
             $scope.manufacturer = {code: null, name: null, isenabled: null, mfrcat: null, address: null, id: null};
             $scope.editForm.$setPristine();
             $scope.editForm.$setUntouched();
         };
-    });
+   
+}

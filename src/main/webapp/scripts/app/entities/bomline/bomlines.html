@@ -16,7 +16,7 @@
          aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
-                <form name="editForm" role="form" novalidate ng-submit="create()" show-validation>
+                <form name="editForm" role="form" novalidate ng-submit="save()" show-validation>
 
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
@@ -25,92 +25,59 @@
                     </div>
                     <div class="modal-body">
                         <div class="form-group">
-                            <label>ID</label>
-                            <input type="text" class="form-control" name="id"
-                                   ng-model="bomline.id" readonly>
+                            <label translate="jtraceApp.bomline.lineid">Lineid</label>
+                            <input type="number" class="form-control" name="lineid"
+                                   ng-model="bomline.lineid" required>
+
+                            <div ng-show="editForm.lineid.$invalid">
+                                <p class="help-block"
+                                   ng-show="editForm.lineid.$error.required" translate="entity.validation.required">
+                                    This field is required.
+                                </p>
+                                <p class="help-block"
+                                   ng-show="editForm.lineid.$error.number" translate="entity.validation.number">
+                                    This field should be a number.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label translate="jtraceApp.bomline.quantity">Quantity</label>
+                            <input type="number" class="form-control" name="quantity"
+                                   ng-model="bomline.quantity" required>
+
+                            <div ng-show="editForm.quantity.$invalid">
+                                <p class="help-block"
+                                   ng-show="editForm.quantity.$error.required" translate="entity.validation.required">
+                                    This field is required.
+                                </p>
+                                <p class="help-block"
+                                   ng-show="editForm.quantity.$error.number" translate="entity.validation.number">
+                                    This field should be a number.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label translate="jtraceApp.bomline.refdesignator">Refdesignator</label>
+                            <input type="text" class="form-control" name="refdesignator"
+                                   ng-model="bomline.refdesignator">
+
+                        </div>
+                        <div class="form-group">
+                            <label translate="jtraceApp.bomline.physical">Physical</label>
+                            <input type="number" class="form-control" name="physical"
+                                   ng-model="bomline.physical">
+
                         </div>
 
                         <div class="form-group">
                             <label translate="jtraceApp.bomline.itemmtr">itemmtr</label>
-                            <select class="form-control" name="itemmtr" ng-model="bomline.itemmtr.id" ng-change="pullBOM()" ng-options="itemmtr.id as itemmtr.code for itemmtr in itemmtrs">
+                            <select class="form-control" name="itemmtr" ng-model="bomline.itemmtr.id" ng-options="itemmtr.id as itemmtr.code for itemmtr in itemmtrs">
                             </select>
                         </div>
-                        <div ng-show="bomline.itemmtr.id" >
-                        
-                        <table datatable="ng" dt-options="bomline.dtOptions" dt-column-defs="bomline.dtColumnDefs" class="row-border hover">
-                        <thead> 
-                        <tr>
-                                <th>
-                                    <div class="form-group">
-                            <!--<label translate="jtraceApp.bomline.lineid">Lineid</label>                         -->  
-                                    <select class="form-control" name="itemline" ng-model="bomline.itemline.id" ng-options="itemmtr.id as itemmtr.code for itemmtr in itemmtrs | filter: {id :'!'+bomline.itemmtr.id}">
-                                    </select>
-
-                                      <!--  <div ng-show="editForm.lineid.$invalid">
-                                            <p class="help-block"
-                                               ng-show="editForm.lineid.$error.number" translate="entity.validation.number">
-                                                This field should be a number.
-                                            </p>
-                                        </div> -->
-                                    </div>
-                                </th>                                
-                                <th>
-                                    <div class="form-group">
-                                   <!-- <label translate="jtraceApp.bomline.quantity">Quantity</label> -->
-                                    <input type="number" class="form-control" name="quantity"
-                                           ng-model="bomline.quantity">
-
-                                      <!--  <div ng-show="editForm.quantity.$invalid">
-                                            <p class="help-block"
-                                               ng-show="editForm.quantity.$error.number" translate="entity.validation.number">
-                                                This field should be a number.
-                                            </p>
-                                        </div> -->
-                                    </div>
-                                </th>
-                                <th>
-                                    <div class="form-group">
-                                      <!--  <label translate="jtraceApp.bomline.refdesignator">Refdesignator</label> -->
-                                        <input type="text" class="form-control" name="refdesignator"
-                                               ng-model="bomline.refdesignator">
-
-                                    </div>
-                                </th>
-                                <th>
-                                    <div class="form-group">
-                                      <!--  <label translate="jtraceApp.bomline.physical">Physical</label> -->
-                                        <input type="checkbox" class="form-control" name="enabled"
-                                               ng-model="bomline.physical">
-                                    </div>
-                                </th>
-                                <th>
-                                    <div class="form-group">
-                                        <button type="button" ng-click="addPerson($index)" class="btn btn-success"><i class="fa fa-plus"></i></button>
-                                    </div>
-                                </th>
-                            </tr>                                                       
-                            <tr>
-                                <!--<th>Sr. No.</th> -->
-                                <th><label translate="jtraceApp.bomline.lineid">Lineid</label></th>
-                                <th><label translate="jtraceApp.bomline.quantity">Quantity</label></th>
-                                <th><label translate="jtraceApp.bomline.refdesignator">Refdesignator</label></th>
-                                <th><label translate="jtraceApp.bomline.physical">Physical</label></th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr ng-repeat="person in bomline | filter: {itemmtr:{id:bomline.itemmtr.id}}">
-                               <!-- <td>{{counter++}}</td> -->
-                                <td>{{ person.itemline.code }}</td>
-                                <td>{{ person.quantity }}</td>
-                                <td>{{ person.refdesignator }}</td>
-                                <td>{{ person.physical }}</td>
-                               <!-- <td>
-                                    <button type="button" ng-click="modifyPerson($index)" class="btn btn-warning"><i class="fa fa-edit"></i></button>
-                                    <button type="button" ng-click="removePerson($index)" class="btn btn-danger"><i class="fa fa-trash-o"></i></button>
-                                </td> -->
-                            </tr>
-                            </tbody>
-                        </table>
+                        <div class="form-group">
+                            <label translate="jtraceApp.bomline.itemctn">itemctn</label>
+                            <select class="form-control" name="itemctn" ng-model="bomline.itemctn.id" ng-options="itemctn.id as itemctn.ctn for itemctn in itemctns">
+                            </select>
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -152,26 +119,26 @@
     </div>
 
     <div class="table-responsive">
-        <table class="table table-striped">
+        <table datatable="ng" dt-options="dtOptions" dt-columns="dtColumns" class="row-border hover">
             <thead>
                 <tr>
-                    <th>ID</th>
                     <th translate="jtraceApp.bomline.lineid">Lineid</th>
                     <th translate="jtraceApp.bomline.quantity">Quantity</th>
                     <th translate="jtraceApp.bomline.refdesignator">Refdesignator</th>
                     <th translate="jtraceApp.bomline.physical">Physical</th>
                     <th translate="jtraceApp.bomline.itemmtr">itemmtr</th>
+                    <th translate="jtraceApp.bomline.itemctn">itemctn</th>
                     <th></th>
                 </tr>
             </thead>
             <tbody infinite-scroll="loadPage(page + 1)" infinite-scroll-disabled="links['last'] == page">
-                <tr ng-repeat="bomline in bomline">
-                    <td><a ui-sref="bomlineDetail({id:bomline.id})">{{bomline.id}}</a></td>
-                    <td>{{bomline.lineid}}</td>
+                <tr ng-repeat="bomline in bomlines">
+                    <td><a ui-sref="bomlineDetail({id:bomline.id})">{{bomline.lineid}}</td>
                     <td>{{bomline.quantity}}</td>
                     <td>{{bomline.refdesignator}}</td>
                     <td>{{bomline.physical}}</td>
                     <td>{{bomline.itemmtr.code}}</td>
+                    <td>{{bomline.itemctn.ctn}}</td>
                     <td>
                         <button type="submit"
                                 ui-sref="bomlineDetail({id:bomline.id})"
@@ -179,7 +146,7 @@
                             <span class="glyphicon glyphicon-eye-open"></span>&nbsp;<span translate="entity.action.view"> View</span>
                         </button>
                         <button type="submit"
-                                ng-click="update(bomline.id)"
+                                ng-click="showUpdate(bomline.id)"
                                 class="btn btn-primary btn-sm">
                             <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span translate="entity.action.edit"> Edit</span>
                         </button>

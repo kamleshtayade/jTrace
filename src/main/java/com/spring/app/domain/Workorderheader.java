@@ -1,14 +1,24 @@
 package com.spring.app.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Objects;
+import java.util.Set;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
-import javax.persistence.*;
-import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 /**
  * A Workorderheader.
@@ -18,7 +28,7 @@ import java.util.Objects;
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 public class Workorderheader implements Serializable {
 
-    @Id
+	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
@@ -39,6 +49,11 @@ public class Workorderheader implements Serializable {
 
     @ManyToOne
     private Plantmfgline plantmfgline;
+    
+    @OneToMany(mappedBy = "workorderheader")
+    @JsonIgnore
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    private Set<Workorderline> worderlines = new HashSet<>();
 
     public Long getId() {
         return id;
@@ -96,6 +111,14 @@ public class Workorderheader implements Serializable {
         this.plantmfgline = plantmfgline;
     }
 
+    public Set<Workorderline> getWorderlines() {
+		return worderlines;
+	}
+
+	public void setWorderlines(Set<Workorderline> worderlines) {
+		this.worderlines = worderlines;
+	}
+	
     @Override
     public boolean equals(Object o) {
         if (this == o) {

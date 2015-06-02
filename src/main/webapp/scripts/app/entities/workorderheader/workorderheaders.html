@@ -5,68 +5,124 @@
     <div class="container">
         <div class="row">
             <div class="col-md-4">
-                <button class="btn btn-primary" data-toggle="modal" data-target="#saveWorkorderheaderModal" ng-click="clear()">
+                <button class="btn btn-primary" data-toggle="collapse" data-target="#saveWorkorderheaderModal" ng-click="clear()">
                     <span class="glyphicon glyphicon-flash"></span> <span translate="jtraceApp.workorderheader.home.createLabel">Create a new Workorderheader</span>
                 </button>
             </div>
         </div>
     </div>
 
-    <div class="modal fade" id="saveWorkorderheaderModal" tabindex="-1" role="dialog" aria-labelledby="myWorkorderheaderLabel"
+    <div class="panel panel-info collapse" id="saveWorkorderheaderModal" aria-labelledby="myWorkorderheaderLabel"
          aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
+        <div class="panel-heading">
+            <h4 class="panel-title" id="myWorkorderheaderLabel" translate="jtraceApp.workorderheader.home.createOrEditLabel">Create or edit a Workorderheader</h4>
+        </div>
                 <form name="editForm" role="form" novalidate ng-submit="create()">
 
-                    <div class="modal-header">
+                    <!--<div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
                                 ng-click="clear()">&times;</button>
                         <h4 class="modal-title" id="myWorkorderheaderLabel" translate="jtraceApp.workorderheader.home.createOrEditLabel">Create or edit a Workorderheader</h4>
-                    </div>
-                    <div class="modal-body">
-                        <div class="form-group">
-                            <label>ID</label>
-                            <input type="text" class="form-control" name="id"
-                                   ng-model="workorderheader.id" readonly>
-                        </div>
-
-                        <div class="form-group">
+                    </div>-->
+                    <div class="panel-body">
+                        <div class="form-group col-md-6">
                             <label translate="jtraceApp.workorderheader.woNumber">WoNumber</label>
                             <input type="text" class="form-control" name="woNumber"
                                    ng-model="workorderheader.woNumber">
 
                         </div>
-                        <div class="form-group">
+                        <div class="form-group col-md-6">
                             <label translate="jtraceApp.workorderheader.kitNumber">KitNumber</label>
                             <input type="text" class="form-control" name="kitNumber"
                                    ng-model="workorderheader.kitNumber">
 
                         </div>
-                        <div class="form-group">
+                        <div class="form-group col-md-6">
                             <label translate="jtraceApp.workorderheader.status">Status</label>
                             <input type="text" class="form-control" name="status"
                                    ng-model="workorderheader.status">
 
                         </div>
-                        <div class="form-group">
+                        <div class="form-group col-md-6">
                             <label translate="jtraceApp.workorderheader.qty">Qty</label>
                             <input type="number" class="form-control" name="qty"
                                    ng-model="workorderheader.qty">
 
                         </div>
 
-                        <div class="form-group">
+                        <div class="form-group col-md-6">
                             <label translate="jtraceApp.workorderheader.itemmtr">itemmtr</label>
-                            <select class="form-control" name="itemmtr" ng-model="workorderheader.itemmtr.id" ng-options="itemmtr.id as itemmtr.id for itemmtr in itemmtrs">
+                            <select class="form-control" name="itemmtr" ng-model="workorderheader.itemmtr.id" ng-options="itemmtr.id as itemmtr.code for itemmtr in itemmtrs">
                             </select>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group col-md-6">
                             <label translate="jtraceApp.workorderheader.plantmfgline">plantmfgline</label>
-                            <select class="form-control" name="plantmfgline" ng-model="workorderheader.plantmfgline.id" ng-options="plantmfgline.id as plantmfgline.id for plantmfgline in plantmfglines">
+                            <select class="form-control" name="plantmfgline" ng-model="workorderheader.plantmfgline.id" ng-options="plantmfgline.id as plantmfgline.name for plantmfgline in plantmfglines">
                             </select>
                         </div>
+
+                        <div class="form-group">
+                            <label translate="jtraceApp.workorderheader.workorderline.home.title">workorderline</label>
+                            <select multiple readonly class="form-control" name="workorderlinebase" ng-model="workorderheader.workorderline.id" ng-options="woline.id as woline.bomChildItem for woline in wolineCrl.workorderlines | filter:workorderheader.id">
+                            </select>
+                        </div>
+
+                        <!--Start Workorderlines datatable-->
+                        <div class="form-group">
+                            <label translate="jtraceApp.workorderheader.workorderline.home.title">workorderline</label>
+                            
+                            <div class="form-group" style="float:right;">
+                                 <button class="btn btn-primary" data-toggle="collapse" data-target="#saveWorkorderlineModal" ng-click="wolineCrl.clear()">
+                                    <span class="fa fa-plus"></span> 
+                                    <span translate="jtraceApp.workorderheader.workorderline.home.createLabel">Add</span>
+                                 </button>
+                            </div>
+                                <table datatable="ng" dt-options="workorderlineOptions" dt-columns="workorderlineColumns" class="row-border hover">
+                                    <thead>
+                                        <tr>
+                                            <th translate="jtraceApp.workorderheader.workorderline.bomChildItem">BomChildItem</th>
+                                            <th translate="jtraceApp.workorderheader.workorderline.attrition">Attrition</th>
+                                            <th translate="jtraceApp.workorderheader.workorderline.requQty">RequQty</th>
+                                            <th translate="jtraceApp.workorderheader.workorderline.issuedQty">IssuedQty</th>
+                                            <th translate="jtraceApp.workorderheader.workorderline.remark">Remark</th>
+                                            <th translate="jtraceApp.workorderheader.workorderline.itemctn">itemctn</th>
+                                            <th translate="jtraceApp.workorderheader.workorderline.workorderheader">workorderheader</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat="workorderline in wolineCrl.workorderlines | filter:workorderheader.id">
+                                            <td><a ui-sref="workorderlineDetail({id:workorderline.id})">{{workorderline.bomChildItem}}</td>
+                                            <td>{{workorderline.attrition}}</td>
+                                            <td>{{workorderline.requQty}}</td>
+                                            <td>{{workorderline.issuedQty}}</td>
+                                            <td>{{workorderline.remark}}</td>
+                                            <td>{{workorderline.itemctn.ctn}}</td>
+                                            <td>{{workorderline.workorderheader.woNumber}}</td>
+                                            <td>
+                                                <!--<button type="submit"
+                                                        ui-sref="workorderlineDetail({id:workorderline.id})"
+                                                        class="btn btn-info btn-sm">
+                                                    <span class="glyphicon glyphicon-eye-open"></span>
+                                                </button>-->
+                                                <button type="submit"
+                                                        ng-click="update(workorderline.id)"
+                                                        class="btn btn-primary btn-sm">
+                                                    <span class="glyphicon glyphicon-pencil"></span>
+                                                </button>
+                                                <button type="submit"
+                                                        ng-click="delete(workorderline.id)"
+                                                        class="btn btn-danger btn-sm">
+                                                    <span class="glyphicon glyphicon-remove-circle"></span>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>                            
+                        </div>
+                        <!--End Workorderlin datatable-->
                     </div>
-                    <div class="modal-footer">
+                    <div class="panel-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
                             <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
                         </button>
@@ -75,10 +131,92 @@
                         </button>
                     </div>
                 </form>
-            </div>
+            
         </div>
     </div>
+    <!-- Start : workorderline form -->
+        <div class="panel panel-info collapse" id="saveWorkorderlineModal" aria-labelledby="myWorkorderlineLabel"
+         aria-hidden="true">        
+        <div class="panel-heading">
+            <h4 class="panel-title" id="myWorkorderlineLabel" translate="jtraceApp.workorderheader.workorderline.home.createOrEditLabel">Create or edit a Workorderline</h4>
+        </div>
+                <form name="editForm" role="form" novalidate ng-submit="wolineCrl.create()" show-validation>
 
+                    <div class="panel-body">
+                        <div class="form-group  col-md-6">
+                            <label translate="jtraceApp.workorderheader.workorderline.bomChildItem">BomChildItem</label>
+                            <input type="text" class="form-control" name="bomChildItem"
+                                   ng-model="workorderline.bomChildItem" required>
+
+                            <div ng-show="editForm.bomChildItem.$invalid">
+                                <p class="help-block"
+                                   ng-show="editForm.bomChildItem.$error.required" translate="entity.validation.required">
+                                    This field is required.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label translate="jtraceApp.workorderheader.workorderline.attrition">Attrition</label>
+                            <input type="text" class="form-control" name="attrition"
+                                   ng-model="workorderline.attrition">
+
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label translate="jtraceApp.workorderheader.workorderline.requQty">RequQty</label>
+                            <input type="number" class="form-control" name="requQty"
+                                   ng-model="workorderline.requQty">
+
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label translate="jtraceApp.workorderheader.workorderline.issuedQty">IssuedQty</label>
+                            <input type="number" class="form-control" name="issuedQty"
+                                   ng-model="workorderline.issuedQty">
+
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label translate="jtraceApp.workorderheader.workorderline.isCustSupplied">IsCustSupplied</label>
+                            <input type="checkbox" class="form-control" name="isCustSupplied"
+                                   ng-model="workorderline.isCustSupplied">
+
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label translate="jtraceApp.workorderheader.workorderline.remark">Remark</label>
+                            <input type="text" class="form-control" name="remark"
+                                   ng-model="workorderline.remark" ng-minlength="5">
+
+                            <div ng-show="editForm.remark.$invalid">
+                                <p class="help-block"
+                                   ng-show="editForm.remark.$error.minlength" translate="entity.validation.minlength" translate-value-min="5">
+                                    This field is required to be at least 5 characters.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <label translate="jtraceApp.workorderheader.workorderline.itemctn">itemctn</label>
+                            <select class="form-control" name="itemctn" ng-model="workorderline.itemctn.id" ng-options="itemctn.id as itemctn.ctn for itemctn in wolineCrl.itemctns"> 
+                            </select>
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <label translate="jtraceApp.workorderheader.workorderline.workorderheader">workorderheader</label>
+                            <select class="form-control" name="workorderheader" ng-model="workorderline.workorderheader.id" ng-options="workorderheader.id as workorderheader.woNumber for workorderheader in wolineCrl.workorderheaders |filter:workorderheader.id">
+                            </select>
+                        </div>
+                    </div>
+                    <div class="panel-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="wolineCrl.clear()">
+                            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
+                        </button>
+                        <button type="submit" ng-disabled="editForm.$invalid" class="btn btn-primary">
+                            <span class="glyphicon glyphicon-save"></span>&nbsp;<span translate="entity.action.save">Save</span>
+                        </button>
+                    </div>
+                </form>
+            
+        </div>
+    </div>
+    <!-- End : workorderline form-->
     <div class="modal fade" id="deleteWorkorderheaderConfirmation">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -105,10 +243,10 @@
     </div>
 
     <div class="table-responsive">
-        <table class="table table-striped">
+        
+        <table datatable="ng" dt-options="workorderheadersOptions" dt-columns="workorderheadersColumns" class="row-border hover">        
             <thead>
                 <tr>
-                    <th>ID</th>
                     <th translate="jtraceApp.workorderheader.woNumber">WoNumber</th>
                     <th translate="jtraceApp.workorderheader.kitNumber">KitNumber</th>
                     <th translate="jtraceApp.workorderheader.status">Status</th>
@@ -120,13 +258,12 @@
             </thead>
             <tbody>
                 <tr ng-repeat="workorderheader in workorderheaders">
-                    <td><a ui-sref="workorderheaderDetail({id:workorderheader.id})">{{workorderheader.id}}</a></td>
-                    <td>{{workorderheader.woNumber}}</td>
+                    <td><a ui-sref="workorderheaderDetail({id:workorderheader.id})">{{workorderheader.woNumber}}</td>
                     <td>{{workorderheader.kitNumber}}</td>
                     <td>{{workorderheader.status}}</td>
                     <td>{{workorderheader.qty}}</td>
-                    <td>{{workorderheader.itemmtr.id}}</td>
-                    <td>{{workorderheader.plantmfgline.id}}</td>
+                    <td>{{workorderheader.itemmtr.code}}</td>
+                    <td>{{workorderheader.plantmfgline.name}}</td>
                     <td>
                         <button type="submit"
                                 ui-sref="workorderheaderDetail({id:workorderheader.id})"
@@ -147,18 +284,5 @@
                 </tr>
             </tbody>
         </table>
-        <nav>
-            <ul class="pagination">
-                <li ng-show="links['first']" ng-click="loadPage(links['first'])"><a>&lt;&lt;</a></li>
-                <li ng-show="links['prev']" ng-click="loadPage(links['prev'])"><a>&lt;</a></li>
-                <li ng-show="page > 2" ng-click="loadPage(page - 2)"><a>{{page - 2}}</a></li>
-                <li ng-show="page > 1" ng-click="loadPage(page - 1)"><a>{{page - 1}}</a></li>
-                <li class="active"><a>{{page}}</a></li>
-                <li ng-show="page < links['last']" ng-click="loadPage(page + 1)"><a>{{page + 1}}</a></li>
-                <li ng-show="page < links['last'] - 1" ng-click="loadPage(page + 2)"><a>{{page + 2}}</a></li>
-                <li ng-show="links['next']" ng-click="loadPage(links['next'])"><a>&gt;</a></li>
-                <li ng-show="links['last']" ng-click="loadPage(links['last'])"><a>&gt;&gt;</a></li>
-            </ul>
-        </nav>
     </div>
 </div>

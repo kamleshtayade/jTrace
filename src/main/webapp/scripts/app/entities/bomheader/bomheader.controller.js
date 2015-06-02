@@ -1,22 +1,26 @@
 'use strict';
 
 angular.module('jtraceApp')
-    .controller('BomlineController', function ($scope, Bomline, Itemmtr, Itemctn, ParseLinks,DTOptionsBuilder,DTColumnBuilder,DTColumnDefBuilder) {
-        $scope.bomlines = [];
-        $scope.itemmtrs = Itemmtr.query();
-        $scope.itemctns = Itemctn.query();
+    .controller('BomheaderController', function ($scope,$controller, Bomheader, ParseLinks,DTOptionsBuilder,DTColumnBuilder,DTColumnDefBuilder) {
+        $scope.bomheaders = [];
+        $scope.bomlineCrl=$scope.$new();
         $scope.page = 1;
+        $scope.dtOptions = DTOptionsBuilder.newOptions().withPaginationType('full_numbers').withDisplayLength(10);
+
+        $controller('BomlineController',{$scope:$scope.bomlineCrl});
+         console.info($scope.manfactCrl);
+
         $scope.loadAll = function() {
-            Bomline.query({page: $scope.page, per_page: 20}, function(result, headers) {
+            Bomheader.query({page: $scope.page, per_page: 20}, function(result, headers) {
                 $scope.links = ParseLinks.parse(headers('link'));
                 for (var i = 0; i < result.length; i++) {
-                    $scope.bomlines.push(result[i]);
+                    $scope.bomheaders.push(result[i]);
                 }
             });
         };
         $scope.reset = function() {
             $scope.page = 1;
-            $scope.bomlines = [];
+            $scope.bomheaders = [];
             $scope.loadAll();
         };
         $scope.loadPage = function(page) {
@@ -26,20 +30,20 @@ angular.module('jtraceApp')
         $scope.loadAll();
 
         $scope.showUpdate = function (id) {
-            Bomline.get({id: id}, function(result) {
-                $scope.bomline = result;
-                $('#saveBomlineModal').modal('show');
+            Bomheader.get({id: id}, function(result) {
+                $scope.bomheader = result;
+                $('#saveBomheaderModal').modal('show');
             });
         };
 
         $scope.save = function () {
-            if ($scope.bomline.id != null) {
-                Bomline.update($scope.bomline,
+            if ($scope.bomheader.id != null) {
+                Bomheader.update($scope.bomheader,
                     function () {
                         $scope.refresh();
                     });
             } else {
-                Bomline.save($scope.bomline,
+                Bomheader.save($scope.bomheader,
                     function () {
                         $scope.refresh();
                     });
@@ -47,29 +51,29 @@ angular.module('jtraceApp')
         };
 
         $scope.delete = function (id) {
-            Bomline.get({id: id}, function(result) {
-                $scope.bomline = result;
-                $('#deleteBomlineConfirmation').modal('show');
+            Bomheader.get({id: id}, function(result) {
+                $scope.bomheader = result;
+                $('#deleteBomheaderConfirmation').modal('show');
             });
         };
 
         $scope.confirmDelete = function (id) {
-            Bomline.delete({id: id},
+            Bomheader.delete({id: id},
                 function () {
                     $scope.reset();
-                    $('#deleteBomlineConfirmation').modal('hide');
+                    $('#deleteBomheaderConfirmation').modal('hide');
                     $scope.clear();
                 });
         };
 
         $scope.refresh = function () {
             $scope.reset();
-            $('#saveBomlineModal').modal('hide');
+            $('#saveBomheaderModal').modal('hide');
             $scope.clear();
         };
 
         $scope.clear = function () {
-            $scope.bomline = {lineid: null, quantity: null, refdesignator: null, physical: null, id: null};
+            $scope.bomheader = {code: null, id: null};
             $scope.editForm.$setPristine();
             $scope.editForm.$setUntouched();
         };

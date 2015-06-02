@@ -7,6 +7,8 @@
             "entities": {
                 "main": "Entités",
                 "organization": "Organization",
+                "bomline": "Bomline",
+                "bomheader": "Bomheader",
                 "additionalEntity": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

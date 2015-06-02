@@ -1,0 +1,243 @@
+<div>
+
+    <h2 translate="jtraceApp.bomheader.home.title">Bomheader</h2>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <button class="btn btn-primary" data-toggle="modal" data-target="#saveBomheaderModal" ng-click="clear()">
+                    <span class="glyphicon glyphicon-flash"></span> <span translate="jtraceApp.bomheader.home.createLabel">Create a new Bomheader</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="saveBomheaderModal" tabindex="-1" role="dialog" aria-labelledby="myBomheaderLabel"
+         aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form name="editForm" role="form" novalidate ng-submit="save()" show-validation>
+
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                                ng-click="clear()">&times;</button>
+                        <h4 class="modal-title" id="myBomheaderLabel" translate="jtraceApp.bomheader.home.createOrEditLabel">Create or edit a Bomheader</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label translate="jtraceApp.bomheader.code">Code</label>
+                            <input type="text" class="form-control" name="code"
+                                   ng-model="bomheader.code" required>
+
+                            <div ng-show="editForm.code.$invalid">
+                                <p class="help-block"
+                                   ng-show="editForm.code.$error.required" translate="entity.validation.required">
+                                    This field is required.
+                                </p>
+                            </div>
+                        </div>
+                        <!-- Start: Bomline table -->
+                        <div class="form-group" >
+                            <button class="btn btn-primary" data-toggle="modal" data-target="#saveBomlineModal" ng-click="clear()">
+                                <span class="fa fa-plus"></span> 
+                                <span translate="jtraceApp.bomheader.bomline.home.createLabel">Add</span>
+                            </button>
+                        </div>
+                        <div class="table-responsive">
+                            <table datatable="ng" dt-options="dtOptions" dt-columns="dtColumns" class="row-border hover">
+                                <thead>
+                                    <tr>
+                                        <th translate="jtraceApp.bomheader.bomline.lineid">Lineid</th>
+                                        <th translate="jtraceApp.bomheader.bomline.quantity">Quantity</th>
+                                        <th translate="jtraceApp.bomheader.bomline.refdesignator">Refdesignator</th>
+                                        <th translate="jtraceApp.bomheader.bomline.physical">Physical</th>
+                                        <th translate="jtraceApp.bomheader.bomline.itemmtr">itemmtr</th>
+                                        <th translate="jtraceApp.bomheader.bomline.itemctn">itemctn</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody infinite-scroll="loadPage(page + 1)" infinite-scroll-disabled="links['last'] == page">
+                                    <tr ng-repeat="bomline in bomlineCrl.bomlines">
+                                        <td><a ui-sref="bomlineDetail({id:bomline.id})">{{bomline.lineid}}</td>
+                                        <td>{{bomline.quantity}}</td>
+                                        <td>{{bomline.refdesignator}}</td>
+                                        <td>{{bomline.physical}}</td>
+                                        <td>{{bomline.itemmtr.code}}</td>
+                                        <td>{{bomline.itemctn.ctn}}</td>
+                                        <td>
+                                            <button type="submit"
+                                                    ui-sref="bomlineDetail({id:bomline.id})"
+                                                    class="btn btn-info btn-sm">
+                                                <span class="glyphicon glyphicon-eye-open">
+                                            </button>
+                                            <button type="submit"
+                                                    ng-click="showUpdate(bomline.id)"
+                                                    class="btn btn-primary btn-sm">
+                                                <span class="glyphicon glyphicon-pencil">
+                                            </button>
+                                            <button type="submit"
+                                                    ng-click="delete(bomline.id)"
+                                                    class="btn btn-danger btn-sm">
+                                                <span class="glyphicon glyphicon-remove-circle">
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- end: Bomline table-->
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+                            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
+                        </button>
+                        <button type="submit" ng-disabled="editForm.$invalid" class="btn btn-primary">
+                            <span class="glyphicon glyphicon-save"></span>&nbsp;<span translate="entity.action.save">Save</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- Start : Bomline form -->
+    <div class="modal fade" id="saveBomlineModal" tabindex="-1" role="dialog" aria-labelledby="myBomlineLabel"
+         aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form name="editForm" role="form" novalidate ng-submit="bomlineCrl.save()" show-validation>
+
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                                ng-click="bomlineCrl.clear()">&times;</button>
+                        <h4 class="modal-title" id="myBomlineLabel" translate="jtraceApp.bomheader.bomline.home.createOrEditLabel">Create or edit a Bomline</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label translate="jtraceApp.bomheader.bomline.lineid">Lineid</label>
+                            <input type="number" class="form-control" name="lineid"
+                                   ng-model="bomline.lineid" required>
+
+                            <div ng-show="editForm.lineid.$invalid">
+                                <p class="help-block"
+                                   ng-show="editForm.lineid.$error.required" translate="entity.validation.required">
+                                    This field is required.
+                                </p>
+                                <p class="help-block"
+                                   ng-show="editForm.lineid.$error.number" translate="entity.validation.number">
+                                    This field should be a number.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label translate="jtraceApp.bomheader.bomline.quantity">Quantity</label>
+                            <input type="number" class="form-control" name="quantity"
+                                   ng-model="bomline.quantity" required>
+
+                            <div ng-show="editForm.quantity.$invalid">
+                                <p class="help-block"
+                                   ng-show="editForm.quantity.$error.required" translate="entity.validation.required">
+                                    This field is required.
+                                </p>
+                                <p class="help-block"
+                                   ng-show="editForm.quantity.$error.number" translate="entity.validation.number">
+                                    This field should be a number.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label translate="jtraceApp.bomheader.bomline.refdesignator">Refdesignator</label>
+                            <input type="text" class="form-control" name="refdesignator"
+                                   ng-model="bomline.refdesignator">
+
+                        </div>
+                        <div class="form-group">
+                            <label translate="jtraceApp.bomheader.bomline.physical">Physical</label>
+                            <input type="number" class="form-control" name="physical"
+                                   ng-model="bomline.physical">
+
+                        </div>
+
+                        <div class="form-group">
+                            <label translate="jtraceApp.bomheader.bomline.itemmtr">itemmtr</label>
+                            <select class="form-control" name="itemmtr" ng-model="bomline.itemmtr.id" ng-options="itemmtr.id as itemmtr.code for itemmtr in bomlineCrl.itemmtrs">
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label translate="jtraceApp.bomheader.bomline.itemctn">itemctn</label>
+                            <select class="form-control" name="itemctn" ng-model="bomline.itemctn.id" ng-options="itemctn.id as itemctn.ctn for itemctn in bomlineCrl.itemctns">
+                            </select>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="bomlineCrl.clear()">
+                            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
+                        </button>
+                        <button type="submit" ng-disabled="editForm.$invalid" class="btn btn-primary">
+                            <span class="glyphicon glyphicon-save"></span>&nbsp;<span translate="entity.action.save">Save</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- End : Bomline form -->
+    <div class="modal fade" id="deleteBomheaderConfirmation">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form name="deleteForm" ng-submit="confirmDelete(bomheader.id)">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                                ng-click="clear()">&times;</button>
+                        <h4 class="modal-title" translate="entity.delete.title">Confirm delete operation</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p translate="jtraceApp.bomheader.delete.question" translate-values="{id: '{{bomheader.id}}'}">Are you sure you want to delete this Bomheader?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+                            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
+                        </button>
+                        <button type="submit" ng-disabled="deleteForm.$invalid" class="btn btn-danger">
+                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span translate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="table-responsive">
+        <table datatable="ng" dt-options="dtOptions" dt-columns="dtColumns" class="row-border hover">
+            <thead>
+                <tr>
+                    <th translate="jtraceApp.bomheader.code">Code</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody infinite-scroll="loadPage(page + 1)" infinite-scroll-disabled="links['last'] == page">
+                <tr ng-repeat="bomheader in bomheaders">                    
+                    <td><a ui-sref="bomheaderDetail({id:bomheader.id})">{{bomheader.code}}</td>
+                    <td>
+                        <button type="submit"
+                                ui-sref="bomheaderDetail({id:bomheader.id})"
+                                class="btn btn-info btn-sm">
+                            <span class="glyphicon glyphicon-eye-open"></span>&nbsp;<span translate="entity.action.view"> View</span>
+                        </button>
+                        <button type="submit"
+                                ng-click="showUpdate(bomheader.id)"
+                                class="btn btn-primary btn-sm">
+                            <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span translate="entity.action.edit"> Edit</span>
+                        </button>
+                        <button type="submit"
+                                ng-click="delete(bomheader.id)"
+                                class="btn btn-danger btn-sm">
+                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span translate="entity.action.delete"> Delete</span>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('jtraceApp')
-    .controller('CustomerController', function ($scope, Customer) {
-        $scope.customers = [];
+    .controller('CustomerController', function ($scope, Customer,DTOptionsBuilder,DTColumnBuilder,DTColumnDefBuilder) {
+        $scope.customers =[];
         $scope.loadAll = function() {
             Customer.query(function(result) {
                $scope.customers = result;

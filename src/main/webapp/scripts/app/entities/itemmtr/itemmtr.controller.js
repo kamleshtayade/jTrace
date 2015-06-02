@@ -1,21 +1,17 @@
 'use strict';
 
 angular.module('jtraceApp')
-    .controller('ItemmtrController', function ($scope, Itemmtr, Itemsubcat,Itemcat, ParseLinks) {
+    .controller('ItemmtrController', function ($scope, Itemmtr, Itemsubcat,Itemcat,DTOptionsBuilder,DTColumnBuilder,DTColumnDefBuilder) {
         $scope.itemmtrs = [];
         $scope.itemsubcats = Itemsubcat.query();
         $scope.itemcats = Itemcat.query();
-        $scope.page = 1;
+
         $scope.loadAll = function() {
-            Itemmtr.query({page: $scope.page, per_page: 20}, function(result, headers) {
-                $scope.links = ParseLinks.parse(headers('link'));
+            Itemmtr.query(function(result, headers) {
                 $scope.itemmtrs = result;
             });
         };
-        $scope.loadPage = function(page) {
-            $scope.page = page;
-            $scope.loadAll();
-        };
+        
         $scope.loadAll();
 
         $scope.create = function () {

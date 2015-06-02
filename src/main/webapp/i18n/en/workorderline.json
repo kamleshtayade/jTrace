@@ -18,7 +18,8 @@
             "issuedQty": "Issued Qty",
             "isCustSupplied": "Is Customer Supplied",
             "remark": "Remark",
-            "itemctn": "Item CTN"
+            "itemctn": "Item CTN",
+            "workorderheader" : "Work Order Number"
         }
     }
 }

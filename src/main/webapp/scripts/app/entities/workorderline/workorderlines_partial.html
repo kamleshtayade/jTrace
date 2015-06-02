@@ -1,0 +1,82 @@
+    <!-- Start : workorderline form -->
+        <div class="panel panel-info collapse" id="saveWorkorderlineModal" aria-labelledby="myWorkorderlineLabel"
+         aria-hidden="true"><h4 class="panel-title" id="myWorkorderlineLabel" translate="jtraceApp.workorderheader.workorderline.home.createOrEditLabel">Create or edit a Workorderline</h4>
+        <div class="panel-heading">
+            
+                <form name="editForm" role="form" novalidate ng-submit="create()" show-validation>
+
+                    <div class="panel-body">
+                        <div class="form-group">
+                            <label translate="jtraceApp.workorderheader.workorderline.bomChildItem">BomChildItem</label>
+                            <input type="text" class="form-control" name="bomChildItem"
+                                   ng-model="workorderline.bomChildItem" required>
+
+                            <div ng-show="editForm.bomChildItem.$invalid">
+                                <p class="help-block"
+                                   ng-show="editForm.bomChildItem.$error.required" translate="entity.validation.required">
+                                    This field is required.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label translate="jtraceApp.workorderheader.workorderline.attrition">Attrition</label>
+                            <input type="text" class="form-control" name="attrition"
+                                   ng-model="workorderline.attrition">
+
+                        </div>
+                        <div class="form-group">
+                            <label translate="jtraceApp.workorderheader.workorderline.requQty">RequQty</label>
+                            <input type="number" class="form-control" name="requQty"
+                                   ng-model="workorderline.requQty">
+
+                        </div>
+                        <div class="form-group">
+                            <label translate="jtraceApp.workorderheader.workorderline.issuedQty">IssuedQty</label>
+                            <input type="number" class="form-control" name="issuedQty"
+                                   ng-model="workorderline.issuedQty">
+
+                        </div>
+                        <div class="form-group">
+                            <label translate="jtraceApp.workorderheader.workorderline.isCustSupplied">IsCustSupplied</label>
+                            <input type="checkbox" class="form-control" name="isCustSupplied"
+                                   ng-model="workorderline.isCustSupplied">
+
+                        </div>
+                        <div class="form-group">
+                            <label translate="jtraceApp.workorderheader.workorderline.remark">Remark</label>
+                            <input type="text" class="form-control" name="remark"
+                                   ng-model="workorderline.remark" ng-minlength="5">
+
+                            <div ng-show="editForm.remark.$invalid">
+                                <p class="help-block"
+                                   ng-show="editForm.remark.$error.minlength" translate="entity.validation.minlength" translate-value-min="5">
+                                    This field is required to be at least 5 characters.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label translate="jtraceApp.workorderheader.workorderline.itemctn">itemctn</label>
+                            <select class="form-control" name="itemctn" ng-model="workorderline.itemctn.id" ng-options="itemctn.id as itemctn.ctn for itemctn in itemctns"> 
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label translate="jtraceApp.workorderheader.workorderline.workorderheader">workorderheader</label>
+                            <select class="form-control" name="workorderheader" ng-model="workorderline.workorderheader.id" ng-options="workorderheader.id as workorderheader.woNumber for workorderheader in workorderheaders |filter:workorderheader.id">
+                            </select>
+                        </div>
+                    </div>
+                    <div class="panel-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+                            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
+                        </button>
+                        <button type="submit" ng-disabled="editForm.$invalid" class="btn btn-primary">
+                            <span class="glyphicon glyphicon-save"></span>&nbsp;<span translate="entity.action.save">Save</span>
+                        </button>
+                    </div>
+                </form>
+            
+        </div>
+    </div>
+    <!-- End : workorderline form-->

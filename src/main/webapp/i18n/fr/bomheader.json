@@ -1,0 +1,19 @@
+{
+    "jtraceApp": {
+        "bomheader" : {
+            "home": {
+                "title": "Bomheaders",
+                "createLabel": "Créer un nouveau Bomheader",
+                "createOrEditLabel": "Créer ou éditer un Bomheader"
+            },
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Bomheader {{ id }} ?"
+            },
+            "detail": {
+                "title": "Bomheader"
+            },
+            "code": "Code"
+        }
+    }
+}
+

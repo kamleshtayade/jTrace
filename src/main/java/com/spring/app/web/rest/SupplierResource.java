@@ -88,7 +88,7 @@ public class SupplierResource {
     @Timed
     public ResponseEntity<Supplier> get(@PathVariable Long id, HttpServletResponse response) {
         log.debug("REST request to get Supplier : {}", id);
-        Supplier supplier = supplierRepository.findOne(id);
+        Supplier supplier = supplierRepository.findOneWithEagerRelationships(id);
         if (supplier == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }

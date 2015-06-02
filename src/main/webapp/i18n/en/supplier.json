@@ -12,11 +12,18 @@
             "detail": {
                 "title": "Supplier"
             },
+            "module":{
+                "manufacturer":{
+                    "createOrEditLabel":"Create or edit a Manufacturer"
+                }
+            },
             "code": "Code",
+            "name": "Name",
             "isenabled": "Is Enabled",
             "address": "Address",
             "remark": "Remark",
-            "manufacturer": "Manufacturer"
+            "manufacturer": "Manufacturer",
+            "add":"Add"
         }
     }
 }

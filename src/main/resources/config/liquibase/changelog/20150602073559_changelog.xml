@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
+   <changeSet author="ktayade (generated)" id="1433230565386-1">
+      <createTable tableName="SUPPLIER_MANUFACTURER">
+         <column name="suppliers_id" type="BIGINT">
+            <constraints nullable="false"/>
+         </column>
+         <column name="manufacturers_id" type="BIGINT">
+            <constraints nullable="false"/>
+         </column>
+      </createTable>
+   </changeSet>
+   <changeSet author="ktayade (generated)" id="1433230565386-2">
+      <addPrimaryKey columnNames="suppliers_id, manufacturers_id"
+                     tableName="SUPPLIER_MANUFACTURER"/>
+   </changeSet>
+   <changeSet author="ktayade (generated)" id="1433230565386-3">
+      <addForeignKeyConstraint baseColumnNames="suppliers_id"
+                               baseTableName="SUPPLIER_MANUFACTURER"
+                               constraintName="FK_4pgdsl41rs2im8p4fougjllju"
+                               deferrable="false"
+                               initiallyDeferred="false"
+                               referencedColumnNames="id"
+                               referencedTableName="SUPPLIER"/>
+   </changeSet>
+   <changeSet author="ktayade (generated)" id="1433230565386-4">
+      <addForeignKeyConstraint baseColumnNames="manufacturers_id"
+                               baseTableName="SUPPLIER_MANUFACTURER"
+                               constraintName="FK_ovktvtv4q4y5490w0nmflgb4k"
+                               deferrable="false"
+                               initiallyDeferred="false"
+                               referencedColumnNames="id"
+                               referencedTableName="MANUFACTURER"/>
+   </changeSet>
+   <changeSet author="ktayade (generated)" id="1433230565386-5">
+      <dropForeignKeyConstraint baseTableName="supplier" constraintName="FK_10nkuyovc3pvbjgxrnivemrh4"/>
+   </changeSet>
+   <changeSet author="ktayade (generated)" id="1433230565386-6">
+      <dropColumn columnName="manufacturer_id" tableName="supplier"/>
+   </changeSet>
+</databaseChangeLog>

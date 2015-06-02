@@ -40,6 +40,9 @@ public class Bomline implements Serializable {
     @ManyToOne
     private Itemmtr itemmtr;
 
+    @ManyToOne
+    private Itemctn itemctn;
+
     public Long getId() {
         return id;
     }
@@ -86,6 +89,14 @@ public class Bomline implements Serializable {
 
     public void setItemmtr(Itemmtr itemmtr) {
         this.itemmtr = itemmtr;
+    }
+
+    public Itemctn getItemctn() {
+        return itemctn;
+    }
+
+    public void setItemctn(Itemctn itemctn) {
+        this.itemctn = itemctn;
     }
 
     @Override

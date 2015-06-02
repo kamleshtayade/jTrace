@@ -110,8 +110,8 @@
         </div>
     </div>
 
-    <div class="table-responsive">
-        <table class="table table-striped">
+    <div>
+          <table datatable="ng" dt-options="dtOptions" dt-columns="dtColumns" class="row-border hover">
             <thead>
                 <tr>
                     <th translate="jtraceApp.manufacturer.code">Code</th>
@@ -132,12 +132,16 @@
                     <td>
                         <button type="submit"
                                 ui-sref="manufacturerDetail({id:manufacturer.id})"
-                                class="btn btn-info btn-sm">
-                            <span class="glyphicon glyphicon-eye-open"></span>&nbsp;<span translate="entity.action.view"> View</span>
+                                class="btn btn-info btn-sm"
+                                tooltip="View"
+                                tooltip-placement="top"
+                                tooltip-trigger="mouseenter">
+                            <span class="glyphicon glyphicon-eye-open"></span>  &nbsp;<span translate="entity.action.view"> View</span>
                         </button>
                         <button type="submit"
                                 ng-click="update(manufacturer.id)"
-                                class="btn btn-primary btn-sm">
+                                class="btn btn-primary btn-sm"
+                                tooltip-template="'myTooltipTemplate.html'">
                             <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span translate="entity.action.edit"> Edit</span>
                         </button>
                         <button type="submit"
@@ -149,18 +153,8 @@
                 </tr>
             </tbody>
         </table>
-        <nav>
-            <ul class="pagination">
-                <li ng-show="links['first']" ng-click="loadPage(links['first'])"><a>&lt;&lt;</a></li>
-                <li ng-show="links['prev']" ng-click="loadPage(links['prev'])"><a>&lt;</a></li>
-                <li ng-show="page > 2" ng-click="loadPage(page - 2)"><a>{{page - 2}}</a></li>
-                <li ng-show="page > 1" ng-click="loadPage(page - 1)"><a>{{page - 1}}</a></li>
-                <li class="active"><a>{{page}}</a></li>
-                <li ng-show="page < links['last']" ng-click="loadPage(page + 1)"><a>{{page + 1}}</a></li>
-                <li ng-show="page < links['last'] - 1" ng-click="loadPage(page + 2)"><a>{{page + 2}}</a></li>
-                <li ng-show="links['next']" ng-click="loadPage(links['next'])"><a>&gt;</a></li>
-                <li ng-show="links['last']" ng-click="loadPage(links['last'])"><a>&gt;&gt;</a></li>
-            </ul>
-        </nav>
-    </div>
+      </div>
 </div>
+<script type="text/ng-template" id="myTooltipTemplate.html">
+    <span>Special Tooltip with <strong>markup</strong> and {{ dynamicTooltipText }}</span>
+</script>

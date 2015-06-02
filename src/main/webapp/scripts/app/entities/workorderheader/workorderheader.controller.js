@@ -1,11 +1,18 @@
 'use strict';
 
 angular.module('jtraceApp')
-    .controller('WorkorderheaderController', function ($scope, Workorderheader, Itemmtr, Plantmfgline, ParseLinks) {
+    .controller('WorkorderheaderController', function ($scope, $controller,Workorderline, Workorderheader, Itemmtr, Plantmfgline, ParseLinks,DTOptionsBuilder,DTColumnBuilder,DTColumnDefBuilder) {
         $scope.workorderheaders = [];
         $scope.itemmtrs = Itemmtr.query();
         $scope.plantmfglines = Plantmfgline.query();
+        $scope.wolineCrl=$scope.$new();
+        //$scope.workorderlines= Workorderline.query();
         $scope.page = 1;
+        $scope.dtOptions = DTOptionsBuilder.newOptions().withPaginationType('full_numbers').withDisplayLength(10);
+
+        $controller('WorkorderlineController',{$scope:$scope.wolineCrl});
+        $scope.workorderlineOptions= DTOptionsBuilder.newOptions().withOption('responsive', true);
+
         $scope.loadAll = function() {
             Workorderheader.query({page: $scope.page, per_page: 20}, function(result, headers) {
                 $scope.links = ParseLinks.parse(headers('link'));
@@ -22,7 +29,7 @@ angular.module('jtraceApp')
             Workorderheader.update($scope.workorderheader,
                 function () {
                     $scope.loadAll();
-                    $('#saveWorkorderheaderModal').modal('hide');
+                    $('#saveWorkorderheaderModal').collapse('hide');
                     $scope.clear();
                 });
         };
@@ -30,7 +37,7 @@ angular.module('jtraceApp')
         $scope.update = function (id) {
             Workorderheader.get({id: id}, function(result) {
                 $scope.workorderheader = result;
-                $('#saveWorkorderheaderModal').modal('show');
+                $('#saveWorkorderheaderModal').collapse('show');
             });
         };
 
@@ -54,5 +61,6 @@ angular.module('jtraceApp')
             $scope.workorderheader = {woNumber: null, kitNumber: null, status: null, qty: null, id: null};
             $scope.editForm.$setPristine();
             $scope.editForm.$setUntouched();
+            $('#saveWorkorderheaderModal').collapse('hide');
         };
     });

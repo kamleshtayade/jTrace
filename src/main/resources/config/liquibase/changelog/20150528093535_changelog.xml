@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
+   <changeSet author="ktayade (generated)" id="1432805748617-1">
+      <addColumn tableName="WORKORDERLINE">
+         <column name="workorderheader_id" type="int8"/>
+      </addColumn>
+   </changeSet>
+   <changeSet author="ktayade (generated)" id="1432805748617-2">
+      <addForeignKeyConstraint baseColumnNames="workorderheader_id"
+                               baseTableName="WORKORDERLINE"
+                               constraintName="FK_c45y2989p0wwg4nqpuemtqh4y"
+                               deferrable="false"
+                               initiallyDeferred="false"
+                               referencedColumnNames="id"
+                               referencedTableName="WORKORDERHEADER"/>
+   </changeSet>
+</databaseChangeLog>
