@@ -55,22 +55,20 @@
                                 <thead>
                                     <tr>
                                         <th translate="jtraceApp.bomheader.bomline.lineid">Lineid</th>
-                                        <th translate="jtraceApp.bomheader.bomline.quantity">Quantity</th>
+                                        <th translate="jtraceApp.bomheader.bomline.itemmtr">itemmtr</th>
                                         <th translate="jtraceApp.bomheader.bomline.refdesignator">Refdesignator</th>
                                         <th translate="jtraceApp.bomheader.bomline.physical">Physical</th>
-                                        <th translate="jtraceApp.bomheader.bomline.itemmtr">itemmtr</th>
-                                        <th translate="jtraceApp.bomheader.bomline.itemctn">itemctn</th>
+                                        <th translate="jtraceApp.bomheader.bomline.quantity">Quantity</th>
                                         <th></th>
                                     </tr>
                                 </thead>
                                 <tbody infinite-scroll="loadPage(page + 1)" infinite-scroll-disabled="links['last'] == page">
                                     <tr ng-repeat="bomline in bomlineCrl.bomlines">
                                         <td><a ui-sref="bomlineDetail({id:bomline.id})">{{bomline.lineid}}</td>
-                                        <td>{{bomline.quantity}}</td>
+                                        <td>{{bomline.itemmtr.code}}</td>
                                         <td>{{bomline.refdesignator}}</td>
                                         <td>{{bomline.physical}}</td>
-                                        <td>{{bomline.itemmtr.code}}</td>
-                                        <td>{{bomline.itemctn.ctn}}</td>
+                                        <td>{{bomline.quantity}}</td>
                                         <td>
                                             <button type="submit"
                                                     ui-sref="bomlineDetail({id:bomline.id})"
@@ -170,11 +168,11 @@
                             <select class="form-control" name="itemmtr" ng-model="bomline.itemmtr.id" ng-options="itemmtr.id as itemmtr.code for itemmtr in bomlineCrl.itemmtrs">
                             </select>
                         </div>
-                        <div class="form-group">
+                        <!--<div class="form-group">
                             <label translate="jtraceApp.bomheader.bomline.itemctn">itemctn</label>
                             <select class="form-control" name="itemctn" ng-model="bomline.itemctn.id" ng-options="itemctn.id as itemctn.ctn for itemctn in bomlineCrl.itemctns">
                             </select>
-                        </div>
+                        </div>-->
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="bomlineCrl.clear()">
