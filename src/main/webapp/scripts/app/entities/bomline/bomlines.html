@@ -123,22 +123,20 @@
             <thead>
                 <tr>
                     <th translate="jtraceApp.bomline.lineid">Lineid</th>
+                    <th translate="jtraceApp.bomline.itemmtr">itemmtr</th>
                     <th translate="jtraceApp.bomline.quantity">Quantity</th>
                     <th translate="jtraceApp.bomline.refdesignator">Refdesignator</th>
                     <th translate="jtraceApp.bomline.physical">Physical</th>
-                    <th translate="jtraceApp.bomline.itemmtr">itemmtr</th>
-                    <th translate="jtraceApp.bomline.itemctn">itemctn</th>
                     <th></th>
                 </tr>
             </thead>
             <tbody infinite-scroll="loadPage(page + 1)" infinite-scroll-disabled="links['last'] == page">
                 <tr ng-repeat="bomline in bomlines">
                     <td><a ui-sref="bomlineDetail({id:bomline.id})">{{bomline.lineid}}</td>
+                    <td>{{bomline.itemmtr.code}}</td>
                     <td>{{bomline.quantity}}</td>
                     <td>{{bomline.refdesignator}}</td>
                     <td>{{bomline.physical}}</td>
-                    <td>{{bomline.itemmtr.code}}</td>
-                    <td>{{bomline.itemctn.ctn}}</td>
                     <td>
                         <button type="submit"
                                 ui-sref="bomlineDetail({id:bomline.id})"

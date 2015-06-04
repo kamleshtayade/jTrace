@@ -12,12 +12,12 @@
             "detail": {
                 "title": "Bomline"
             },
-            "lineid": "Lineid",
+            "lineid": "Level",
             "quantity": "Quantity",
-            "refdesignator": "Refdesignator",
+            "refdesignator": "Referance Dsignator",
             "physical": "Physical",
-            "itemmtr": "itemmtr",
-            "itemctn": "itemctn"
+            "itemmtr": "Child Item",
+            "itemctn": "CTN"
         }
     }
 }
