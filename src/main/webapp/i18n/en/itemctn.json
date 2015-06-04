@@ -29,7 +29,9 @@
             "itemmfrpart":"Manufacturer Part Number",
             "supplierPartNo": "Supplier Part Number",
             "manufacturer": "Manufacturer",
-            "supplier": "Supplier"
+            "supplier": "Supplier",
+            "barCode":"Barcode",
+            "print":"Print"
         }
     }
 }

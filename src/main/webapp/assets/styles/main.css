@@ -438,3 +438,25 @@ ul#strength {
   96.666667% { -webkit-transform: matrix3d(1.00056, 0, 0, 0, 0, 1.00056, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.00056, 0, 0, 0, 0, 1.00056, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
   100% { -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);} 
 }
+
+/* Start: BarCode */
+#barcodeTarget,  #barTarget {
+  margin-top: 30px;
+}
+
+#config {
+  overflow: auto;
+  margin-bottom: 10px;
+}
+.config {
+  float: left;
+  width: 200px;
+  height: 250px;
+  border: 1px solid #000;
+  margin-left: 10px;
+}
+.config .title {
+  font-weight: bold;
+  text-align: center;
+}
+/* End: BarCode*/

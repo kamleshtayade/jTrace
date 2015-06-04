@@ -1,17 +1,115 @@
 <div>
 
-    <h2 translate="jtraceApp.itemctn.home.title">Itemctn</h2>
+	<h2 translate="jtraceApp.itemctn.home.title">Itemctn</h2>
 
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4">
-                <button class="btn btn-primary" data-toggle="modal" data-target="#saveItemctnModal" ng-click="clear()">
-                    <span class="glyphicon glyphicon-flash"></span> <span translate="jtraceApp.itemctn.home.createLabel">Create a new Itemctn</span>
-                </button>
-            </div>
-        </div>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-4">
+				<button class="btn btn-primary" data-toggle="modal"
+					data-target="#saveItemctnModal" ng-click="clear()">
+					<span class="glyphicon glyphicon-flash"></span> <span
+						translate="jtraceApp.itemctn.home.createLabel">Create a new
+						Itemctn</span>
+				</button>
+			</div>
+		</div>
+	</div>
+    <!-- Start : Bar Code Modal-->
+	<div class="modal fade" id="saveItemctnModal2" tabindex="-1"
+		role="dialog" aria-labelledby="myItemctnLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<form name="editForm" id="form_edit" role="form" show-validation>
+
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"
+							aria-hidden="true" ng-click="ItemctnController.clear()">&times;</button>
+						<h4 class="modal-title" id="myItemctnLabel"
+							translate="jtraceApp.itemctn.barCode">Generated Bar code for
+							{{itemctn.id}}</h4>
+					</div>
+					<div class="row">
+						<div class="modal-body" id="ashu">
+							<div class="col-md-12"></div>
+							<div class="row" id="codeExa">
+								<div class="col-md-12">
+									<div class="form-group">
+										<div id="generator"></div>
+									</div>
+									<div id="submit1" class="col-md-5">
+										<div id="barcodeTarget" class="barcodeTarget"
+											style="padding-bottom: 80px"></div>
+									</div>
+									<div id="submit1" class="col-md-3">
+										<div id="barTarget1" class="barTarget1"
+											style="padding-top: 40px"></div>
+									</div>
+									<div id="submit1" class="col-md-4">
+										<div id="barTarget" class="barTarget"
+											style="padding-top: 10px"></div>
+									</div>
+								</div>
+							</div>
+							<input type="radio" name="btype" id="code11" value="code11"
+								checked="checked" hidden> <input type="radio"
+								name="btype" id="datamatrix" value="datamatrix"
+								checked="checked" hidden> <input type="text"
+								id="bgColor" value="#FFFFFF" size="7" hidden> <input
+								type="text" id="color" value="#000000" size="7" hidden>
+							<input type="text" id="barWidth" value="2" size="3" hidden>
+							<input type="text" id="barHeight" value="70" size="3" hidden>
+							<input type="text" id="moduleSize" value="9" size="3" hidden>
+							<input type="text" id="quietZoneSize" value="1" size="3" hidden>
+							<input type="text" id="bgColor" value="#FFFFFF" size="7" hidden>
+							<br /> <input type="text" id="color" value="#000000" size="7"
+								hidden> <br /> <input type="text" id="barWidth"
+								value="2" size="3" hidden> <br /> <input type="text"
+								id="barHeight" value="70" size="3" hidden> <br /> <input
+								type="text" id="moduleSize" value="8" size="3" hidden> <br />
+							<input type="text" id="quietZoneSize" value="1" size="3" hidden>
+							<br /> <input type="checkbox" name="rectangular"
+								id="rectangular" checked="checked" hidden> <br /> <input
+								type="text" id="posX" value="10" size="3" hidden> <br />
+							<input type="text" id="posY" value="20" size="3" hidden>
+							<br /> <input type="radio" id="css" name="renderer" value="css"
+								checked="checked" hidden>
+							<div class="modal-footer">
+								<script type="text/javascript">
+									function printDiv(divName1) {
+
+										var printContents = document
+												.getElementById(divName1).innerHTML;
+										var originalContents = document.body.innerHTML;
+										document.body.innerHTML = printContents;
+										window.print();
+										document.body.innerHTML = originalContents;
+										$(document)
+												.ready(
+														function() {
+															$('#form_edit')
+																	.on(
+																			'submit',
+																			function() {
+																				$(
+																						'#saveItemctnModal2')
+																						.hide();
+																			});
+														});
+									}
+								</script>
+								<button type="submit" class="btn btn-primary" class="close"
+									onclick="printDiv('barTarget')" data-dismiss="modal">
+									<span class="glyphicon glyphicon-print"></span>&nbsp;<span
+										translate="jtraceApp.itemctn.print">Print</span>
+								</button>
+							</div>
+				</form>
+			</div>
+		</div>
+	</div>
     </div>
-
+    </div>
+    <!-- End : Bar Code Modal-->
     <div class="modal fade" id="saveItemctnModal" tabindex="-1" role="dialog" aria-labelledby="myItemctnLabel"
          aria-hidden="true">
         <div class="modal-dialog">
@@ -31,7 +129,7 @@
                         </div>
                         <div class="col-md-6 form-group">
                             <label translate="jtraceApp.itemctn.itemmtr">itemmtr</label>
-                            <select class="form-control" name="itemmtr" ng-model="itemctn.itemmfrpart.itemmtr.id" ng-options="itemmtr.id as itemmtr.code for itemmtr in itemmtrs">
+                            <select class="form-control" name="itemmtr" ng-change="stateSelected()" ng-model="itemctn.itemmfrpart.itemmtr.id" ng-options="itemmtr.id as itemmtr.code for itemmtr in itemmtrs">
                             </select>
                             <!--{{itemctn.itemmfrpart.itemmtr.code}}{{itemctn.itemmfrpart.sup.manufacturer.code}}
                             <input type="text" class="form-control" name="itemmtr"
@@ -65,7 +163,7 @@
                         </div>                        
                         <div class="col-md-6 form-group">
                             <label translate="jtraceApp.itemctn.supplierPartNo">Supplier Part No</label>
-                            <input type="text" class="form-control" name="supplierPartNo"
+                            <input type="text" class="form-control" name="supplierPartNo" ng-change="stateSelected()"
                                    ng-model="itemctn.itemmfrpart.supplier" required>
 
                             <div ng-show="editForm.supplierPartNo.$invalid">
@@ -153,7 +251,7 @@
                         </div>
                         <div class="col-md-6 form-group">
                             <label translate="jtraceApp.itemctn.dateCode">Date Code</label>
-                            <input type="text" class="form-control" name="datecode"
+                            <input type="text" class="form-control" name="datecode" ng-change="stateSelected()"
                                    ng-model="itemctn.dateCode" required>
 
                             <div ng-show="editForm.datecode.$invalid">
@@ -165,7 +263,7 @@
                         </div>
                         <div class="col-md-6 form-group">
                             <label translate="jtraceApp.itemctn.lotCode">Lot Code</label>
-                            <input type="text" class="form-control" name="lotcode"
+                            <input type="text" class="form-control" name="lotcode" ng-change="stateSelected()"
                                    ng-model="itemctn.lotCode" required>
 
                             <div ng-show="editForm.lotcode.$invalid">
@@ -263,6 +361,11 @@
                                 ng-click="delete(itemctn.id)"
                                 class="btn btn-danger btn-sm">
                             <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span translate="entity.action.delete"> Delete</span>
+                        </button>
+                        <button type="submit"
+                                ng-click="createCode(itemctn.id)"
+                                class="btn btn-primary btn-sm">
+                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span translate="jtraceApp.itemctn.barCode">Bar code</span>
                         </button>
                     </td>
                 </tr>

@@ -3,6 +3,9 @@
 angular.module('jtraceApp')
     .controller('ItemctnController', function ($scope, Itemctn, Itemmtr,Supplier,Manufacturer,Customer,Itemmfrpart, ParseLinks) {
         $scope.itemctns = [];
+    		$scope.itemctn = {};
+    		$scope.id1 = {};
+    		$scope.ctnId = "";
         $scope.itemmtrs = Itemmtr.query();
         $scope.suppliers = Supplier.query();
         $scope.manufacturers = Manufacturer.query();
@@ -44,6 +47,130 @@ angular.module('jtraceApp')
             });
         };
 
+      /*start bar code */
+        $scope.createCode = function(id) {
+          Itemctn.get({
+            id: id
+          }, function(result) {
+            $scope.itemctn = result;
+            $('#saveItemctnModal2').modal('show');
+
+            function generateBarcode() {
+              var o = $scope.itemctn.id
+              var value = o.toString();
+              var btype = $("input[name=btype]:checked").val();
+              var renderer = $("input[name=renderer]:checked").val();
+              var btype1 = "code11";
+              var quietZone = false;
+              if ($("#quietzone").is(':checked') || $("#quietzone").attr('checked')) {
+                quietZone = true;
+              }
+              var settings = {
+                output: renderer,
+                bgColor: $("#bgColor").val(),
+                color: $("#color").val(),
+                barWidth: $("#barWidth").val(),
+                barHeight: $("#barHeight").val(),
+                moduleSize: $("#moduleSize").val(),
+                posX: $("#posX").val(),
+                posY: $("#posY").val(),
+                addQuietZone: $("#quietZoneSize").val()
+              };
+              if ($("#rectangular").is(':checked') || $("#rectangular").attr('checked')) {
+                value = {
+                  code: value,
+                  rect: true
+                };
+                var checkFlag = false;
+              }
+              if (renderer == 'canvas') {
+                clearCanvas();
+                $("#barcodeTarget").hide();
+                $("#canvasTarget").show().barcode(value, btype, settings);
+              } else {
+                $("#canvasTarget").hide();
+                $("#barcodeTarget").html("").show().barcode(value, btype, settings);
+              }
+              if (renderer == 'canvas') {
+                clearCanvas();
+                $("#barTarget").hide();
+                $("#canvasTarget").show().barcode(value, btype1, settings);
+              } else {
+                $("#canvasTarget").hide();
+                $("#barTarget").html("").show().barcode(value, btype1, settings);
+              }
+              if (!checkFlag) {
+                var value = o.toString();
+                var btype1 = $("input[name=btype]:checked").val();
+                var renderer = $("input[name=renderer]:checked").val();
+                // var btype1 = "code11";
+                var settings = {
+                  output: renderer,
+                  bgColor: $("#bgColor").val(),
+                  color: $("#color").val(),
+                  barWidth: $("#barWidth").val(),
+                  barHeight: $("#barHeight").val(),
+                  moduleSize: $("#moduleSize").val(),
+                  posX: $("#posX").val(),
+                  posY: $("#posY").val(),
+                  addQuietZone: $("#quietZoneSize").val()
+                };
+              }
+              if (renderer == 'canvas') {
+                clearCanvas();
+                $("#barTarget1").hide();
+                $("#canvasTarget").show().barcode(value, btype1, settings);
+              } else {
+                $("#canvasTarget").hide();
+                $("#barTarget1").html("").show().barcode(value, btype1, settings);
+              }
+            }
+
+            function showConfig1D() {
+              $('.config .barcode1D').show();
+              $('.config .barcode2D').hide();
+            }
+
+            function showConfig2D() {
+              $('.config .barcode1D').hide();
+              $('.config .barcode2D').show();
+            }
+
+            function clearCanvas() {
+              var canvas = $('#canvasTarget').get(0);
+              var ctx = canvas.getContext('2d');
+              ctx.lineWidth = 1;
+              ctx.lineCap = 'butt';
+              ctx.fillStyle = '#FFFFFF';
+              ctx.strokeStyle = '#000000';
+              ctx.clearRect(0, 0, canvas.width, canvas.height);
+              ctx.strokeRect(0, 0, canvas.width, canvas.height);
+            }
+            $(function() {
+              $('input[name=renderer]').click(function() {
+                if ($(this).attr('id') == 'canvas') $('#miscCanvas').show();
+                else $('#miscCanvas').hide();
+              });
+              generateBarcode();
+            });
+
+            var _gaq = _gaq || [];
+            _gaq.push(['_setAccount', 'UA-36251023-1']);
+            _gaq.push(['_setDomainName', 'jqueryscript.net']);
+            _gaq.push(['_trackPageview']);
+
+            (function() {
+              var ga = document.createElement('script');
+              ga.type = 'text/javascript';
+              ga.async = true;
+              ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+              var s = document.getElementsByTagName('script')[0];
+              s.parentNode.insertBefore(ga, s);
+            })();
+
+          });
+        }; 
+        /* End BarCode */
         $scope.confirmDelete = function (id) {
             Itemctn.delete({id: id},
                 function () {
@@ -57,5 +184,53 @@ angular.module('jtraceApp')
             $scope.itemctn = {ctn: null, reqdQty: null, recdDt: null, item: null, srNoTo: null, selfLife: null, poQty: null, invoice: null, id: null};
             $scope.editForm.$setPristine();
             $scope.editForm.$setUntouched();
+        };
+
+        /*CTN Tokanize*/
+        $scope.stateSelected = function() {
+          $scope.totalStr = "";
+          $scope.codeSelected = "";
+
+          var itemCId = $scope.itemctn.id;
+          var itemC = $scope.itemctn.invoice;
+          var itemS = $scope.itemctn.lotCode;
+          var itemS2 = $scope.itemctn.dateCode;
+          var itemS3 = $scope.itemctn.supplierPartNo;
+          var itemId = $scope.itemctn.itemmfrpart.itemmtr.id;
+
+          if (itemS != null) {
+
+            var itemS1 = $scope.itemctn.lotCode.substring(1, 5);
+            $scope.totalStr = $scope.totalStr + itemS1 + '-';
+            $scope.itemctn.ctn = $scope.totalStr
+          }
+          if (itemS2 != null) {
+            var itemS21 = $scope.itemctn.dateCode.substring(1, 5);
+            $scope.totalStr = $scope.totalStr + itemS21 + '-';
+            $scope.itemctn.ctn = $scope.totalStr
+          }
+          if (itemS3 != null) {
+            var itemS31 = $scope.itemctn.supplierPartNo.substring(1, 4);
+            $scope.totalStr = $scope.totalStr + itemS31 + '-';
+            $scope.itemctn.ctn = $scope.totalStr
+          };
+          
+          for (var i = 0; i < $scope.itemmtrs.length; i++) {
+            if ($scope.itemmtrs[i].id == itemId) {
+
+              $scope.codeSelected = $scope.itemmtrs[i].code
+
+            }
+
+          }
+          if (itemId != null) {
+            var itemC11 = $scope.codeSelected.substring(1, 4);
+            $scope.totalStr = $scope.totalStr + itemC11 + '-'
+            $scope.itemctn.ctn = $scope.totalStr
+          }
+          if (itemCId != null) {
+            $scope.totalStr = $scope.totalStr + itemCId + '-'
+            $scope.itemctn.ctn = $scope.totalStr
+          }
         };
     });

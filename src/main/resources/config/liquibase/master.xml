@@ -27,4 +27,5 @@
     <include file="classpath:config/liquibase/changelog/20150528093535_changelog.xml"/> 
     <include file="classpath:config/liquibase/changelog/20150602030117_changelog.xml"/>
     <include file="classpath:config/liquibase/changelog/20150602073559_changelog.xml"/>
+    <include file="classpath:config/liquibase/changelog/20150603110131_changelog.xml"/>
 </databaseChangeLog>

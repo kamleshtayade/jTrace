@@ -2,35 +2,36 @@
     "jtraceApp": {
         "bomheader" : {
             "home": {
-                "title": "Bomheaders",
-                "createLabel": "Create a new Bomheader",
-                "createOrEditLabel": "Create or edit a Bomheader"
+                "title": "Bill of Materials",
+                "createLabel": "Create a new BOM",
+                "createOrEditLabel": "Create or edit a BOM"
             },
             "delete": {
-                "question": "Are you sure you want to delete Bomheader {{ id }}?"
+                "question": "Are you sure you want to delete BOM {{ id }}?"
             },
             "detail": {
-                "title": "Bomheader"
+                "title": "Bill of Material"
             },
             "code": "Code",
+            "itemmtr":"Top Item",
             "bomline" : {
                 "home": {
-                    "title": "Bomlines",
-                    "createLabel": "Create a new Bomline",
-                    "createOrEditLabel": "Create or edit a Bomline"
+                    "title": "BOM lines",
+                    "createLabel": "Create a new BOMline",
+                    "createOrEditLabel": "Create or edit a BOMline"
                 },
                 "delete": {
                     "question": "Are you sure you want to delete Bomline {{ id }}?"
                 },
                 "detail": {
-                    "title": "Bomline"
+                    "title": "BOM line"
                 },
-                "lineid": "Lineid",
+                "lineid": "Line id",
                 "quantity": "Quantity",
-                "refdesignator": "Refdesignator",
+                "refdesignator": "Referance Designator",
                 "physical": "Physical",
-                "itemmtr": "itemmtr",
-                "itemctn": "itemctn"
+                "itemmtr": "Child Item",
+                "itemctn": "CTN"
             }
         }
     }

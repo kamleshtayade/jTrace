@@ -5,7 +5,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-4">
-                <button class="btn btn-primary" data-toggle="modal" data-target="#saveBomlineModal" ng-click="clear()">
+                <button class="btn btn-primary" data-toggle="modal" data-target="#saveBomlineModal" ng-click="clear()" disabled="disabled">
                     <span class="glyphicon glyphicon-flash"></span> <span translate="jtraceApp.bomline.home.createLabel">Create a new Bomline</span>
                 </button>
             </div>
@@ -147,12 +147,12 @@
                         </button>
                         <button type="submit"
                                 ng-click="showUpdate(bomline.id)"
-                                class="btn btn-primary btn-sm">
+                                class="btn btn-primary btn-sm" disabled="disabled">
                             <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span translate="entity.action.edit"> Edit</span>
                         </button>
                         <button type="submit"
                                 ng-click="delete(bomline.id)"
-                                class="btn btn-danger btn-sm">
+                                class="btn btn-danger btn-sm" disabled="disabled">
                             <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span translate="entity.action.delete"> Delete</span>
                         </button>
                     </td>

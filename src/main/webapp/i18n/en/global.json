@@ -18,12 +18,12 @@
                 "plantmfgline": "Plant MFG Line",
                 "plantmc": "Plant Machine",
                 "supplier": "Supplier",
-                "workorderheader": "Work Order Header",
-                "workorderline": "Work Order Line",
+                "workorderheader": "Kitting",
+                "workorderline": "Kitting Line",
                 "customer": "Customer",
-                "bomline": "Bomline",
+                "bomline": "BOM line",
                 "organization": "Organization",
-                "bomheader": "Bomheader",
+                "bomheader": "Bill of Material",
                 "additionalEntity": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

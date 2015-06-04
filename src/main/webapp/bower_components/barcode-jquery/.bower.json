@@ -1,0 +1,36 @@
+{
+  "name": "barcode-jquery",
+  "description": "jquery barcode generator",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/artdomg/barcode-jquery"
+  },
+  "main": [
+    "jquery-barcode.js",
+    "jquery-barcode.min.js"
+  ],
+  "moduleType": [
+    "globals"
+  ],
+  "keywords": [
+    "jquery",
+    "barcode",
+    "generator"
+  ],
+  "authors": [
+    "DEMONTE Jean-Baptiste",
+    "HOUREZ Jonathan"
+  ],
+  "license": "GPL",
+  "homepage": "http://barcode-coder.com/en/barcode-jquery-plugin-201.html",
+  "_release": "23fc5ddb73",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "23fc5ddb73cffacd43d03092140d65eecbaad82a"
+  },
+  "_source": "git://github.com/artdomg/barcode-jquery.git",
+  "_target": "*",
+  "_originalSource": "barcode-jquery",
+  "_direct": true
+}

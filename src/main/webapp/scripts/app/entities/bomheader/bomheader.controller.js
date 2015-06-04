@@ -1,8 +1,9 @@
 'use strict';
 
 angular.module('jtraceApp')
-    .controller('BomheaderController', function ($scope,$controller, Bomheader, ParseLinks,DTOptionsBuilder,DTColumnBuilder,DTColumnDefBuilder) {
+    .controller('BomheaderController', function ($scope,$controller, Bomheader, Itemmtr, ParseLinks,DTOptionsBuilder,DTColumnBuilder,DTColumnDefBuilder) {
         $scope.bomheaders = [];
+        $scope.itemmtrs = Itemmtr.query();
         $scope.bomlineCrl=$scope.$new();
         $scope.page = 1;
         $scope.dtOptions = DTOptionsBuilder.newOptions().withPaginationType('full_numbers').withDisplayLength(10);
@@ -73,7 +74,7 @@ angular.module('jtraceApp')
         };
 
         $scope.clear = function () {
-            $scope.bomheader = {code: null, id: null};
+            $scope.bomheader = {code: null, id: null,itemmtr: null};
             $scope.editForm.$setPristine();
             $scope.editForm.$setUntouched();
         };

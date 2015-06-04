@@ -2,15 +2,15 @@
     "jtraceApp": {
         "workorderheader" : {
             "home": {
-                "title": "Work Order Headers",
-                "createLabel": "Create a new Work Order Header",
-                "createOrEditLabel": "Create or edit a Work Order Header"
+                "title": "Kittings",
+                "createLabel": "Create a new Kitting",
+                "createOrEditLabel": "Create or edit a Kitting"
             },
             "delete": {
-                "question": "Are you sure you want to delete Work Order Header {{ id }}?"
+                "question": "Are you sure you want to delete Kitting {{ id }}?"
             },
             "detail": {
-                "title": "Workorderheader"
+                "title": "Kitting"
             },
             "woNumber": "WO Number",
             "kitNumber": "Kit Number",

@@ -36,6 +36,13 @@
                                 </p>
                             </div>
                         </div>
+
+                        <div class="form-group">
+                            <label translate="jtraceApp.bomheader.itemmtr">itemmtr</label>
+                            <select class="form-control" name="itemmtr" ng-model="bomheader.itemmtr.id" ng-options="itemmtr.id as itemmtr.code for itemmtr in itemmtrs">
+                            </select>
+                        </div>
+
                         <!-- Start: Bomline table -->
                         <div class="form-group" >
                             <button class="btn btn-primary" data-toggle="modal" data-target="#saveBomlineModal" ng-click="clear()">
@@ -213,12 +220,14 @@
             <thead>
                 <tr>
                     <th translate="jtraceApp.bomheader.code">Code</th>
+                    <th translate="jtraceApp.bomheader.itemmtr">Item</th>
                     <th></th>
                 </tr>
             </thead>
             <tbody infinite-scroll="loadPage(page + 1)" infinite-scroll-disabled="links['last'] == page">
                 <tr ng-repeat="bomheader in bomheaders">                    
                     <td><a ui-sref="bomheaderDetail({id:bomheader.id})">{{bomheader.code}}</td>
+                    <td>{{bomheader.itemmtr.code}}</td>
                     <td>
                         <button type="submit"
                                 ui-sref="bomheaderDetail({id:bomheader.id})"

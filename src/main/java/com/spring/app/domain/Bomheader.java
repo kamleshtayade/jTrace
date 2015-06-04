@@ -5,6 +5,7 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
+
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -23,8 +24,19 @@ public class Bomheader implements Serializable {
     @NotNull
     @Column(name = "code", nullable = false)
     private String code;
+    
+    @ManyToOne
+    private Itemmtr itemmtr;
 
-    public Long getId() {
+    public Itemmtr getItemmtr() {
+		return itemmtr;
+	}
+
+	public void setItemmtr(Itemmtr itemmtr) {
+		this.itemmtr = itemmtr;
+	}
+
+	public Long getId() {
         return id;
     }
 

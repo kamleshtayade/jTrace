@@ -45,6 +45,8 @@ module.exports = function (config) {
             'main/webapp/bower_components/angular-datatables/dist/plugins/fixedheader/angular-datatables.fixedheader.js',
             'main/webapp/bower_components/angular-datatables/dist/plugins/scroller/angular-datatables.scroller.js',
             'main/webapp/bower_components/angular-datatables/dist/plugins/tabletools/angular-datatables.tabletools.js',
+            'main/webapp/bower_components/barcode-jquery/jquery-barcode.js',
+            'main/webapp/bower_components/barcode-jquery/jquery-barcode.min.js',
             'main/webapp/bower_components/angular-mocks/angular-mocks.js',
             // endbower
             'main/webapp/scripts/app/app.js',

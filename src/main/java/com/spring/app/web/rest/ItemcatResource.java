@@ -41,6 +41,7 @@ public class ItemcatResource {
             return ResponseEntity.badRequest().header("Failure", "A new itemcat cannot already have an ID").build();
         }
         itemcatRepository.save(itemcat);
+        log.debug("ItemCat Id to newly persisted Itemcats:"+itemcat.getId()+":");
         return ResponseEntity.created(new URI("/api/itemcats/" + itemcat.getId())).build();
     }
 
