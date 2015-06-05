@@ -50,7 +50,7 @@ public class ItemmtrResource {
             return ResponseEntity.badRequest().header("Failure", "A new itemmtr cannot already have an ID").build();
         }
         itemmtrRepository.save(itemmtr);        
-        itemmtr.setCode(CodeUtil.generateCode(itemmtr.getCode(), itemmtr.getId(), "01"));        
+        itemmtr.setCode(CodeUtil.generateCode(itemmtr.getCode().substring(0,3), itemmtr.getId(), "01"));        
         itemmtrRepository.save(itemmtr);
         return ResponseEntity.created(new URI("/api/itemmtrs/" + itemmtr.getId())).build();
     }

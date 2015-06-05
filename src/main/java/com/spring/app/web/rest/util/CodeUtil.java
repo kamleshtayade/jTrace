@@ -23,7 +23,7 @@ public class CodeUtil {
 	 */
 	public static String generateCode(String prefix, Long uniqueNumber, String suffix ){
 		
-		String code = prefix.substring(0,3)+"-"+uniqueNumber+"-"+suffix;
+		String code = prefix+"-"+uniqueNumber+"-"+suffix;
 		
 		return code;
 	}
