@@ -7,7 +7,9 @@ import com.spring.app.repository.ItemsubcatRepository;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+
 import static org.hamcrest.Matchers.hasItem;
+
 import org.mockito.MockitoAnnotations;
 import org.springframework.boot.test.IntegrationTest;
 import org.springframework.boot.test.SpringApplicationConfiguration;
@@ -21,6 +23,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
+
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -45,6 +48,9 @@ public class ItemsubcatResourceTest {
 
     private static final Boolean DEFAULT_ENABLED = false;
     private static final Boolean UPDATED_ENABLED = true;
+    
+    private static final Integer DEFAULT_CLASSCODE = 0;
+    private static final Integer UPDATED_CLASSCODE = 1;
 
     @Inject
     private ItemsubcatRepository itemsubcatRepository;
@@ -67,6 +73,7 @@ public class ItemsubcatResourceTest {
         itemsubcat.setName(DEFAULT_NAME);
         itemsubcat.setDescription(DEFAULT_DESCRIPTION);
         itemsubcat.setEnabled(DEFAULT_ENABLED);
+        itemsubcat.setClasscode(DEFAULT_CLASSCODE);
     }
 
     @Test
@@ -87,6 +94,7 @@ public class ItemsubcatResourceTest {
         assertThat(testItemsubcat.getName()).isEqualTo(DEFAULT_NAME);
         assertThat(testItemsubcat.getDescription()).isEqualTo(DEFAULT_DESCRIPTION);
         assertThat(testItemsubcat.getEnabled()).isEqualTo(DEFAULT_ENABLED);
+        assertThat(testItemsubcat.getClasscode()).isEqualTo(DEFAULT_CLASSCODE);
     }
 
     @Test
@@ -102,7 +110,8 @@ public class ItemsubcatResourceTest {
                 .andExpect(jsonPath("$.[*].id").value(hasItem(itemsubcat.getId().intValue())))
                 .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME.toString())))
                 .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION.toString())))
-                .andExpect(jsonPath("$.[*].enabled").value(hasItem(DEFAULT_ENABLED.booleanValue())));
+                .andExpect(jsonPath("$.[*].enabled").value(hasItem(DEFAULT_ENABLED.booleanValue())))
+                .andExpect(jsonPath("$.[*].classcode").value(hasItem(DEFAULT_CLASSCODE)));
     }
 
     @Test
@@ -118,7 +127,8 @@ public class ItemsubcatResourceTest {
             .andExpect(jsonPath("$.id").value(itemsubcat.getId().intValue()))
             .andExpect(jsonPath("$.name").value(DEFAULT_NAME.toString()))
             .andExpect(jsonPath("$.description").value(DEFAULT_DESCRIPTION.toString()))
-            .andExpect(jsonPath("$.enabled").value(DEFAULT_ENABLED.booleanValue()));
+            .andExpect(jsonPath("$.enabled").value(DEFAULT_ENABLED.booleanValue()))
+            .andExpect(jsonPath("$.[*].classcode").value(hasItem(DEFAULT_CLASSCODE)));
     }
 
     @Test
@@ -141,6 +151,7 @@ public class ItemsubcatResourceTest {
         itemsubcat.setName(UPDATED_NAME);
         itemsubcat.setDescription(UPDATED_DESCRIPTION);
         itemsubcat.setEnabled(UPDATED_ENABLED);
+        itemsubcat.setClasscode(UPDATED_CLASSCODE);
         restItemsubcatMockMvc.perform(put("/api/itemsubcats")
                 .contentType(TestUtil.APPLICATION_JSON_UTF8)
                 .content(TestUtil.convertObjectToJsonBytes(itemsubcat)))
@@ -153,6 +164,7 @@ public class ItemsubcatResourceTest {
         assertThat(testItemsubcat.getName()).isEqualTo(UPDATED_NAME);
         assertThat(testItemsubcat.getDescription()).isEqualTo(UPDATED_DESCRIPTION);
         assertThat(testItemsubcat.getEnabled()).isEqualTo(UPDATED_ENABLED);
+        assertThat(testItemsubcat.getClasscode()).isEqualTo(UPDATED_CLASSCODE);
     }
 
     @Test

@@ -1,10 +1,11 @@
 'use strict';
 
 angular.module('jtraceApp')
-    .controller('WorkorderheaderController', function ($scope, $controller,Workorderline, Workorderheader, Itemmtr, Plantmfgline, ParseLinks,DTOptionsBuilder,DTColumnBuilder,DTColumnDefBuilder) {
+    .controller('WorkorderheaderController', function ($scope, $controller,Workorderline, Workorderheader, Itemmtr, Plantmfgline, Bomline, ParseLinks,DTOptionsBuilder,DTColumnBuilder,DTColumnDefBuilder) {
         $scope.workorderheaders = [];
         $scope.itemmtrs = Itemmtr.query();
         $scope.plantmfglines = Plantmfgline.query();
+        $scope.bomlines = Bomline.query();
         $scope.wolineCrl=$scope.$new();
         //$scope.workorderlines= Workorderline.query();
         $scope.page = 1;

@@ -1,11 +1,13 @@
 package com.spring.app.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
+
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
@@ -42,8 +44,19 @@ public class Bomline implements Serializable {
 
     @ManyToOne
     private Itemctn itemctn;
+    
+    @ManyToOne
+    private Bomheader bomheader;    
+    
+    public Bomheader getBomheader() {
+		return bomheader;
+	}
 
-    public Long getId() {
+	public void setBomheader(Bomheader bomheader) {
+		this.bomheader = bomheader;
+	}
+
+	public Long getId() {
         return id;
     }
 

@@ -151,7 +151,7 @@
                         </div>
                         <div class="col-md-6 form-group">
                             <label translate="jtraceApp.itemctn.manufacturer">Manufacturer</label>
-                            <select class="form-control" name="manufacturer"
+                            <select class="form-control" name="manufacturer" 
                                    ng-model="itemctn.itemmfrpart.sup.manufacturer.id" ng-disabled="!itemctn.itemmfrpart.id" ng-options="manufacturer.id as manufacturer.code for manufacturer in manufacturers | filter:itemctn.itemmfrpart.sup.manufacturer.id" required>
                             </select>
                             <div ng-show="editForm.manufacturer.$invalid">
@@ -163,7 +163,7 @@
                         </div>                        
                         <div class="col-md-6 form-group">
                             <label translate="jtraceApp.itemctn.supplierPartNo">Supplier Part No</label>
-                            <input type="text" class="form-control" name="supplierPartNo" ng-change="stateSelected()"
+                            <input type="text" class="form-control" name="supplierPartNo" 
                                    ng-model="itemctn.itemmfrpart.supplier" required>
 
                             <div ng-show="editForm.supplierPartNo.$invalid">
@@ -177,7 +177,7 @@
                         <div class="col-md-6 form-group">
                             <label translate="jtraceApp.itemctn.supplier">Supplier</label>
                             <select class="form-control" name="supplier"
-                                   ng-model="itemctn.itemmfrpart.sup.id" ng-disabled="!itemctn.itemmfrpart.sup.manufacturer.id" ng-options="supplier.id as supplier.code for supplier in suppliers | filter:itemctn.itemmfrpart.sup.manufacturer.id" required>
+                                   ng-model="itemctn.itemmfrpart.sup.id" ng-change="stateSelected()" ng-disabled="!itemctn.itemmfrpart.sup.manufacturer.id" ng-options="supplier.id as supplier.code for supplier in suppliers | filter:itemctn.itemmfrpart.sup.manufacturer.id" required>
                             </select>
                             <div ng-show="editForm.supplier.$invalid">
                                 <p class="help-block"

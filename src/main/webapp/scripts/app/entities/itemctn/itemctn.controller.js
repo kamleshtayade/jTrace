@@ -3,7 +3,7 @@
 angular.module('jtraceApp')
     .controller('ItemctnController', function ($scope, Itemctn, Itemmtr,Supplier,Manufacturer,Customer,Itemmfrpart, ParseLinks) {
         $scope.itemctns = [];
-    		$scope.itemctn = {};
+    		//$scope.itemctn = {};
     		$scope.id1 = {};
     		$scope.ctnId = "";
         $scope.itemmtrs = Itemmtr.query();
@@ -34,8 +34,10 @@ angular.module('jtraceApp')
         };
 
         $scope.update = function (id) {
+			debugger;
             Itemctn.get({id: id}, function(result) {
                 $scope.itemctn = result;
+                $scope.itemctn.ctn = $scope.itemctn.ctn + $scope.itemctn.id;
                 $('#saveItemctnModal').modal('show');
             });
         };
@@ -182,6 +184,12 @@ angular.module('jtraceApp')
 
         $scope.clear = function () {
             $scope.itemctn = {ctn: null, reqdQty: null, recdDt: null, item: null, srNoTo: null, selfLife: null, poQty: null, invoice: null, id: null};
+			$scope.itemctn.itemmfrpart = {}
+             $scope.itemctn.itemmfrpart.sup = {} 			
+            $scope.itemctn.itemmfrpart.sup.id =  null
+			 $scope.itemctn.itemmfrpart.itemmtr = {};
+			 
+            //$scope.itemctn.itemmfrpart.itemmtr = {id: null};
             $scope.editForm.$setPristine();
             $scope.editForm.$setUntouched();
         };
@@ -189,48 +197,46 @@ angular.module('jtraceApp')
         /*CTN Tokanize*/
         $scope.stateSelected = function() {
           $scope.totalStr = "";
+          $scope.manuCode = $scope.itemctn.itemmfrpart.sup.id;
           $scope.codeSelected = "";
+          $scope.itemCode = "";
+          $scope.itemCode = $scope.itemctn.itemmfrpart.itemmtr.id;
 
-          var itemCId = $scope.itemctn.id;
-          var itemC = $scope.itemctn.invoice;
           var itemS = $scope.itemctn.lotCode;
           var itemS2 = $scope.itemctn.dateCode;
-          var itemS3 = $scope.itemctn.supplierPartNo;
-          var itemId = $scope.itemctn.itemmfrpart.itemmtr.id;
 
-          if (itemS != null) {
-
-            var itemS1 = $scope.itemctn.lotCode.substring(1, 5);
-            $scope.totalStr = $scope.totalStr + itemS1 + '-';
+          for (var i = 0; i < $scope.suppliers.length; i++) {
+            if ($scope.suppliers[i].id == $scope.manuCode) {
+              $scope.codeSelected1 = $scope.suppliers[i].code
+            }
+          }
+          if ($scope.manuCode != null) {
+            var itemC12 = $scope.codeSelected1.substring(1, 3);
+            $scope.totalStr = $scope.totalStr + itemC12
             $scope.itemctn.ctn = $scope.totalStr
+          }
+          for (var i = 0; i < $scope.itemmtrs.length; i++) {
+            if ($scope.itemmtrs[i].id == $scope.itemCode) {
+              $scope.codeSelected = $scope.itemmtrs[i].code
+            }
+          }
+          if ($scope.itemCode != null) {
+            var itemC11 = $scope.codeSelected.substring(0, 3);
+            $scope.totalStr = itemC11 + $scope.totalStr
+            $scope.itemctn.ctn = $scope.totalStr
+          }
+          if (itemS != null) {
+            var itemS1 = $scope.itemctn.lotCode.slice($scope.itemctn.lotCode.length - 4, $scope.itemctn.lotCode.length);
+            $scope.totalStr = $scope.totalStr + itemS1;
+            $scope.itemctn.ctn = $scope.totalStr4
           }
           if (itemS2 != null) {
-            var itemS21 = $scope.itemctn.dateCode.substring(1, 5);
-            $scope.totalStr = $scope.totalStr + itemS21 + '-';
+            var itemS21 = $scope.itemctn.dateCode.slice($scope.itemctn.dateCode.length - 4, $scope.itemctn.dateCode.length);
+            $scope.totalStr = $scope.totalStr + itemS21;
+            $scope.totalStr3 = itemS1
             $scope.itemctn.ctn = $scope.totalStr
           }
-          if (itemS3 != null) {
-            var itemS31 = $scope.itemctn.supplierPartNo.substring(1, 4);
-            $scope.totalStr = $scope.totalStr + itemS31 + '-';
-            $scope.itemctn.ctn = $scope.totalStr
-          };
-          
-          for (var i = 0; i < $scope.itemmtrs.length; i++) {
-            if ($scope.itemmtrs[i].id == itemId) {
 
-              $scope.codeSelected = $scope.itemmtrs[i].code
-
-            }
-
-          }
-          if (itemId != null) {
-            var itemC11 = $scope.codeSelected.substring(1, 4);
-            $scope.totalStr = $scope.totalStr + itemC11 + '-'
-            $scope.itemctn.ctn = $scope.totalStr
-          }
-          if (itemCId != null) {
-            $scope.totalStr = $scope.totalStr + itemCId + '-'
-            $scope.itemctn.ctn = $scope.totalStr
-          }
         };
+
     });

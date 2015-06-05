@@ -37,6 +37,22 @@
 
                         </div>
                         <div class="form-group">
+                            <label translate="jtraceApp.itemsubcat.classcode">Classcode</label>
+                            <input type="number" class="form-control" name="classcode"
+                                   ng-model="itemsubcat.classcode" required>
+
+                            <div ng-show="editForm.classcode.$invalid">
+                                <p class="help-block"
+                                   ng-show="editForm.classcode.$error.required" translate="entity.validation.required">
+                                    This field is required.
+                                </p>
+                                <p class="help-block"
+                                   ng-show="editForm.classcode.$error.number" translate="entity.validation.number">
+                                    This field should be a number.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="form-group">
                             <label translate="jtraceApp.itemsubcat.enabled">Enabled</label>
                             <input type="checkbox" class="form-control" name="enabled"
                                    ng-model="itemsubcat.enabled">
@@ -93,6 +109,7 @@
                 <tr>
                     <th translate="jtraceApp.itemsubcat.name">Name</th>
                     <th translate="jtraceApp.itemsubcat.description">Description</th>
+                    <th translate="jtraceApp.itemsubcat.classcode">Classcode</th>
                     <th translate="jtraceApp.itemsubcat.enabled">Enabled</th>
                     <th translate="jtraceApp.itemsubcat.itemcat">itemcat</th>
                     <th></th>
@@ -102,6 +119,7 @@
                 <tr ng-repeat="itemsubcat in itemsubcats">
                     <td><a ui-sref="itemsubcatDetail({id:itemsubcat.id})">{{itemsubcat.name}}</a></td>
                     <td>{{itemsubcat.description}}</td>
+                    <td>{{itemsubcat.classcode}}</td>
                     <td>{{itemsubcat.enabled}}</td>
                     <td>{{itemsubcat.itemcat.name}}</td>
                     <td>

@@ -25,15 +25,9 @@
                     </div>
                     <div class="modal-body">
                         <div class="form-group">
-                            <label>ID</label>
-                            <input type="text" class="form-control" name="id"
-                                   ng-model="itemmtr.id" readonly>
-                        </div>
-
-                        <div class="form-group">
                             <label translate="jtraceApp.itemmtr.code">Code</label>
                             <input type="text" class="form-control" name="code"
-                                   ng-model="itemmtr.code" required ng-minlength="5">
+                                   ng-model="itemmtr.code" ng-minlength="5" readonly>
 
                             <div ng-show="editForm.code.$invalid">
                                 <p class="help-block"
@@ -71,7 +65,7 @@
                         </div>
                         <div class="form-group">
                             <label translate="jtraceApp.itemmtr.itemsubcat">itemsubcat</label>
-                            <select class="form-control" name="itemsubcat" ng-model="itemmtr.itemsubcat.id" ng-disabled="!itemmtr.itemsubcat.itemcat.id" ng-options="itemsubcat.id as itemsubcat.name for itemsubcat in itemsubcats | filter:itemmtr.itemsubcat.itemcat.id" required>
+                            <select class="form-control" name="itemsubcat" ng-change="setCode()"  ng-model="itemmtr.itemsubcat.id" ng-disabled="!itemmtr.itemsubcat.itemcat.id" ng-options="itemsubcat.id as itemsubcat.name for itemsubcat in itemsubcats | filter:itemmtr.itemsubcat.itemcat.id" required>
                             </select>
                             <div ng-show="editForm.temmtr.itemsubcat.id.$invalid">
                                 <p class="help-block"

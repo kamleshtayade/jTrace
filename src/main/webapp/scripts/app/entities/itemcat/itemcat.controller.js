@@ -14,7 +14,7 @@ angular.module('jtraceApp')
         $scope.create = function () {
             Itemcat.update($scope.itemcat,
                 function () {
-                    $scope.loadAll();
+                    $scope.loadAll();                    
                     $('#saveItemcatModal').modal('hide');
                     $scope.clear();
                 });

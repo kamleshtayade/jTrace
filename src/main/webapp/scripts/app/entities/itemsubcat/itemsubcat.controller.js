@@ -44,7 +44,7 @@ angular.module('jtraceApp')
         };
 
         $scope.clear = function () {
-            $scope.itemsubcat = {name: null, description: null, enabled: null, id: null};
+            $scope.itemsubcat = {name: null, description: null, enabled: null, classcode: null, id: null};
             $scope.editForm.$setPristine();
             $scope.editForm.$setUntouched();
         };

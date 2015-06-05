@@ -52,6 +52,31 @@ angular.module('jtraceApp')
             $scope.editForm.$setUntouched();
         };
 
+        /** Start: SetCode
+            Item Master Code is required 
+            its composit number created with combination of 
+            Class code , Unique Number and revision 
+
+            present : class code - from subcatorgy
+                    : Unique Number - Item master entity record id
+                    : revision - 01 
+        **/
+
+        $scope.setCode = function(){
+            var itemid = $scope.itemmtr.id;
+            if($scope.itemmtr.id == null){
+                itemid = 'XXXX';
+            }
+            if($scope.itemmtr.itemsubcat.id != null){
+                for (var i = 0; i < $scope.itemsubcats.length; i++) {
+                    if ($scope.itemsubcats[i].id == $scope.itemmtr.itemsubcat.id) {
+                      $scope.itemmtr.code = $scope.itemsubcats[i].classcode+'-'+itemid+'-01';
+                    }
+                }
+            }           
+        };
+        /* End : SetCode */
+
         /* Specification */
         $scope.choices = [];
         $scope.colors =  [

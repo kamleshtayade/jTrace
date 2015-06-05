@@ -63,7 +63,7 @@
 
                         <div class="form-group">
                             <label translate="jtraceApp.workorderheader.workorderline.home.title">workorderline</label>
-                            <select multiple readonly class="form-control" name="workorderlinebase" ng-model="workorderheader.workorderline.id" ng-options="woline.id as woline.bomChildItem for woline in wolineCrl.workorderlines | filter:workorderheader.id">
+                            <select multiple readonly class="form-control" name="workorderlinebase" ng-model="workorderheader.workorderline.id" ng-options="bomline.id as bomline.itemmtr.code for bomline in bomlines | filter:workorderheader.itemmtr.id track by bomline.bomheader.itemmtr.id">
                             </select>
                         </div>
 

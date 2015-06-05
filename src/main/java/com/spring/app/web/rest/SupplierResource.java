@@ -4,6 +4,7 @@ import com.codahale.metrics.annotation.Timed;
 import com.spring.app.domain.Supplier;
 import com.spring.app.repository.SupplierRepository;
 import com.spring.app.web.rest.util.PaginationUtil;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
@@ -15,9 +16,12 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.inject.Inject;
 import javax.validation.Valid;
+
 import java.net.URI;
 import java.net.URISyntaxException;
+
 import javax.servlet.http.HttpServletResponse;
+
 import java.util.List;
 
 /**
@@ -76,8 +80,10 @@ public class SupplierResource {
         throws URISyntaxException {
         Page<Supplier> page = supplierRepository.findAll(PaginationUtil.generatePageRequest(offset, limit));
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/suppliers", offset, limit);
-        return new ResponseEntity<List<Supplier>>(page.getContent(), headers, HttpStatus.OK);
+       // return new ResponseEntity<List<Supplier>>(page.getContent(), headers, HttpStatus.OK);
+        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }
+
 
     /**
      * GET  /suppliers/:id -> get the "id" supplier.

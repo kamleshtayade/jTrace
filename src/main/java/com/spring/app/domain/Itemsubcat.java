@@ -1,10 +1,13 @@
 package com.spring.app.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
@@ -26,15 +29,26 @@ public class Itemsubcat implements Serializable {
     private String name;
 
     @Column(name = "description")
-    private String description;
+    private String description;   
+    
+    @Column(name = "classcode")
+    private Integer classcode;
 
     @Column(name = "enabled")
     private Boolean enabled;
 
     @ManyToOne
     private Itemcat itemcat;
+    
+    public Integer getClasscode() {
+		return classcode;
+	}
 
-    public Long getId() {
+	public void setClasscode(Integer classcode) {
+		this.classcode = classcode;
+	}
+
+	public Long getId() {
         return id;
     }
 
@@ -101,6 +115,7 @@ public class Itemsubcat implements Serializable {
                 "id=" + id +
                 ", name='" + name + "'" +
                 ", description='" + description + "'" +
+                ", classcode='"+ classcode +"'"+
                 ", enabled='" + enabled + "'" +
                 '}';
     }

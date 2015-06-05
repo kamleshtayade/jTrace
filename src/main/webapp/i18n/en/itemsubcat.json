@@ -15,8 +15,9 @@
             "name": "Name",
             "description": "Description",
             "enabled": "Enabled",
-            "itemcat": "itemcat",
-            "itemmaster": "Item Master"
+            "itemcat": "Category",
+            "itemmaster": "Item Master",
+            "classcode":"Class Code"
         }
     }
 }

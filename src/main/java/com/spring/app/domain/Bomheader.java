@@ -3,11 +3,15 @@ package com.spring.app.domain;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import javax.validation.constraints.*;
 
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 /**
  * A Bomheader.
@@ -27,8 +31,21 @@ public class Bomheader implements Serializable {
     
     @ManyToOne
     private Itemmtr itemmtr;
+    
+    @OneToMany(mappedBy = "bomheader")
+    @JsonIgnore
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    private Set<Bomline> bomlines = new HashSet<>();  
+    
+    public Set<Bomline> getBomlines() {
+		return bomlines;
+	}
 
-    public Itemmtr getItemmtr() {
+	public void setBomlines(Set<Bomline> bomlines) {
+		this.bomlines = bomlines;
+	}
+
+	public Itemmtr getItemmtr() {
 		return itemmtr;
 	}
 
