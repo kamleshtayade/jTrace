@@ -1,15 +1,16 @@
 'use strict';
 
 angular.module('jtraceApp')
-    .controller('BomheaderController', function ($scope,$controller, Bomheader, Itemmtr, ParseLinks,DTOptionsBuilder,DTColumnBuilder,DTColumnDefBuilder) {
+    .controller('BomheaderController', function ($scope,$controller, Bomheader, Bomline, Itemmtr, ParseLinks,DTOptionsBuilder,DTColumnBuilder,DTColumnDefBuilder) {
         $scope.bomheaders = [];
         $scope.itemmtrs = Itemmtr.query();
+        $scope.bomlineEns = Bomline.query();
         $scope.bomlineCrl=$scope.$new();
         $scope.page = 1;
         $scope.dtOptions = DTOptionsBuilder.newOptions().withPaginationType('full_numbers').withDisplayLength(10);
 
         $controller('BomlineController',{$scope:$scope.bomlineCrl});
-         console.info($scope.manfactCrl);
+        // console.info($scope.manfactCrl);
 
         $scope.loadAll = function() {
             Bomheader.query({page: $scope.page, per_page: 20}, function(result, headers) {
@@ -74,7 +75,7 @@ angular.module('jtraceApp')
         };
 
         $scope.clear = function () {
-            $scope.bomheader = {code: null, id: null,itemmtr: null};
+            $scope.bomheader = {code: null, id: null};
             $scope.editForm.$setPristine();
             $scope.editForm.$setUntouched();
         };

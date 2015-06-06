@@ -42,6 +42,11 @@
                             <select class="form-control" name="itemmtr" ng-model="bomheader.itemmtr.id" ng-options="itemmtr.id as itemmtr.code for itemmtr in itemmtrs">
                             </select>
                         </div>
+                        <div class="form-group">
+                            <label translate="jtraceApp.bomheader.bomline.home.title">bomline</label>
+                            <select class="form-control" multiple name="bomline" ng-model="bomheader.bomlines" ng-options="bomline as bomline.itemmtr.code for bomline in bomlineEns track by bomheader.id">
+                            </select>
+                        </div>
 
                         <!-- Start: Bomline table -->
                         <div class="form-group" >
@@ -221,7 +226,7 @@
     </div>
 
     <div class="table-responsive">
-        <table datatable="ng" dt-options="dtOptions" dt-columns="dtColumns" class="row-border hover">
+        <table datatable="ng" dt-options="dtOptions" dt-columns="dtColumns" class="table table-condensed hover">
             <thead>
                 <tr>
                     <th translate="jtraceApp.bomheader.code">Code</th>

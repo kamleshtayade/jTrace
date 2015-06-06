@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
+   
+   <changeSet id="1433491077175-1" author="ktayade (generated)" dbms="postgresql">
+        <createSequence sequenceName="jtrace_sequence" startValue="100" incrementBy="1"/>
+   </changeSet>
+   
+   <changeSet author="ktayade (generated)" id="1433491077175-2">
+      <addColumn tableName="PLANT">
+         <column name="serialid" type="int4"/>
+      </addColumn>
+   </changeSet>
+</databaseChangeLog>
