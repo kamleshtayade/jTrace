@@ -25,6 +25,18 @@
                     </div>
                     <div class="modal-body">
                         <div class="form-group">
+                            <label translate="jtraceApp.bomline.bomheader">bomheader</label>
+                            <select class="form-control" name="bomheader" ng-model="bomline.bomheader.id" ng-options="bom.id as bom.itemmtr.code for bom in bomheaders">
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label translate="jtraceApp.bomline.itemmtr">itemmtr</label>
+                            <select class="form-control" name="itemmtr" ng-model="bomline.itemmtr.id" ng-options="itemmtr.id as itemmtr.code for itemmtr in itemmtrs">
+                            </select>
+                        </div>
+
+                        <div class="form-group">
                             <label translate="jtraceApp.bomline.lineid">Lineid</label>
                             <input type="number" class="form-control" name="lineid"
                                    ng-model="bomline.lineid" required>
@@ -40,6 +52,7 @@
                                 </p>
                             </div>
                         </div>
+
                         <div class="form-group">
                             <label translate="jtraceApp.bomline.quantity">Quantity</label>
                             <input type="number" class="form-control" name="quantity"
@@ -56,23 +69,19 @@
                                 </p>
                             </div>
                         </div>
+
                         <div class="form-group">
                             <label translate="jtraceApp.bomline.refdesignator">Refdesignator</label>
                             <input type="text" class="form-control" name="refdesignator"
                                    ng-model="bomline.refdesignator">
 
                         </div>
+
                         <div class="form-group">
                             <label translate="jtraceApp.bomline.physical">Physical</label>
                             <input type="number" class="form-control" name="physical"
                                    ng-model="bomline.physical">
 
-                        </div>
-
-                        <div class="form-group">
-                            <label translate="jtraceApp.bomline.itemmtr">itemmtr</label>
-                            <select class="form-control" name="itemmtr" ng-model="bomline.itemmtr.id" ng-options="itemmtr.id as itemmtr.code for itemmtr in itemmtrs">
-                            </select>
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -117,21 +126,23 @@
         <table datatable="ng" dt-options="dtOptions" dt-columns="dtColumns" class="table table-condensed hover">
             <thead>
                 <tr>
+                    <th translate="jtraceApp.bomline.bomheader">bomheader</th>
+                    <th translate="jtraceApp.bomline.itemmtr">itemmtr</th>
                     <th translate="jtraceApp.bomline.lineid">Lineid</th>
                     <th translate="jtraceApp.bomline.quantity">Quantity</th>
                     <th translate="jtraceApp.bomline.refdesignator">Refdesignator</th>
                     <th translate="jtraceApp.bomline.physical">Physical</th>
-                    <th translate="jtraceApp.bomline.itemmtr">itemmtr</th>
                     <th></th>
                 </tr>
             </thead>
             <tbody infinite-scroll="loadPage(page + 1)" infinite-scroll-disabled="links['last'] == page">
                 <tr ng-repeat="bomline in bomlines">
-                    <td><a ui-sref="bomlineDetail({id:bomline.id})">{{bomline.lineid}}</a></td>
+                    <td><a ui-sref="bomlineDetail({id:bomline.id})">{{bomline.bomheader.itemmtr.code}}</a></td>                    
+                    <td>{{bomline.itemmtr.code}}</td>
+                    <td>{{bomline.lineid}}</td>
                     <td>{{bomline.quantity}}</td>
                     <td>{{bomline.refdesignator}}</td>
                     <td>{{bomline.physical}}</td>
-                    <td>{{bomline.itemmtr.code}}</td>
                     <td>
                         <button type="submit"
                                 ui-sref="bomlineDetail({id:bomline.id})"

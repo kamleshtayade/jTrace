@@ -1,10 +1,11 @@
 package com.spring.app.web.rest;
 
-import com.codahale.metrics.annotation.Timed;
-import com.spring.app.domain.Workorderheader;
-import com.spring.app.repository.WorkorderheaderRepository;
-import com.spring.app.web.rest.util.CodeUtil;
-import com.spring.app.web.rest.util.PaginationUtil;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.util.List;
+
+import javax.inject.Inject;
+import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,16 +14,23 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
-import javax.inject.Inject;
-
-import java.net.URI;
-import java.net.URISyntaxException;
-
-import javax.servlet.http.HttpServletResponse;
-
-import java.util.List;
+import com.codahale.metrics.annotation.Timed;
+import com.spring.app.domain.Bomline;
+import com.spring.app.domain.Workorderheader;
+import com.spring.app.domain.Workorderline;
+import com.spring.app.repository.BomheaderRepository;
+import com.spring.app.repository.BomlineRepository;
+import com.spring.app.repository.WorkorderheaderRepository;
+import com.spring.app.repository.WorkorderlineRepository;
+import com.spring.app.web.rest.util.CodeUtil;
+import com.spring.app.web.rest.util.PaginationUtil;
 
 /**
  * REST controller for managing Workorderheader.
@@ -35,6 +43,12 @@ public class WorkorderheaderResource {
 
     @Inject
     private WorkorderheaderRepository workorderheaderRepository;
+    @Inject
+    private WorkorderlineRepository workorderlineRepository;
+    @Inject
+    private BomheaderRepository bomheaderRepository;
+    @Inject
+    private BomlineRepository bomlineRepository;
 
     /**
      * POST  /workorderheaders -> Create a new workorderheader.
@@ -49,6 +63,29 @@ public class WorkorderheaderResource {
             return ResponseEntity.badRequest().header("Failure", "A new workorderheader cannot already have an ID").build();
         }
         workorderheaderRepository.save(workorderheader);
+        
+        /**
+         * Start - Add WOline entries         * 
+         * POST /workorderlines --> Create new workorderlines base on BOM structure .
+         */        
+        Bomline bomline = null;
+        Workorderline woline = new Workorderline ();
+        List<Bomline> bomlines = bomlineRepository.findByBomheader(bomheaderRepository.findByItemmtr(workorderheader.getItemmtr()));
+        
+        if(!bomlines.isEmpty()){
+        	for(Object childBom : bomlines){
+        		bomline = (Bomline) childBom;
+        		woline.setItemmtr(bomline.getItemmtr());
+        		woline.setBomQty(bomline.getQuantity());
+        		woline.setRequQty(bomline.getQuantity() * workorderheader.getQty());
+        		woline.setWorkorderheader(workorderheader);
+        		workorderlineRepository.save(woline);
+        		woline = null;
+        	}
+        }
+        /**
+         *  End - Add Woline entries
+         */
         log.debug("WOSerial"+CodeUtil.generateCode("WOSerial", workorderheader.getId(), 10));
         return ResponseEntity.created(new URI("/api/workorderheaders/" + workorderheader.getId())).build();
     }

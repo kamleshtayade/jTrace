@@ -55,7 +55,7 @@ public class Itemctn implements Serializable {
     private String selfLife;
 
     @Column(name = "po_qty")
-    private String poQty;
+    private Integer poQty;
 
     @Column(name = "invoice")
     private String invoice;
@@ -161,14 +161,6 @@ public class Itemctn implements Serializable {
         this.selfLife = selfLife;
     }
 
-    public String getPoQty() {
-        return poQty;
-    }
-
-    public void setPoQty(String poQty) {
-        this.poQty = poQty;
-    }
-
     public String getInvoice() {
         return invoice;
     }
@@ -177,8 +169,15 @@ public class Itemctn implements Serializable {
         this.invoice = invoice;
     }
 
+    public Integer getPoQty() {
+		return poQty;
+	}
 
-    @Override
+	public void setPoQty(Integer poQty) {
+		this.poQty = poQty;
+	}
+
+	@Override
     public boolean equals(Object o) {
         if (this == o) {
             return true;
@@ -204,11 +203,11 @@ public class Itemctn implements Serializable {
         return "Itemctn{" +
                 "id=" + id +
                 ", ctn='" + ctn + "'" +
+                ", poQty='"+poQty+"'"+
                 ", reqdQty='" + reqdQty + "'" +
                 ", recdDt='" + recdDt + "'" +
                 ", srNoTo='" + srNoTo + "'" +
                 ", selfLife='" + selfLife + "'" +
-                ", poQty='" + poQty + "'" +
                 ", invoice='" + invoice + "'" +
                 '}';
     }

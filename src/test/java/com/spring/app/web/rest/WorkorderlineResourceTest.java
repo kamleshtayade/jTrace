@@ -38,8 +38,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @IntegrationTest
 public class WorkorderlineResourceTest {
 
-    private static final String DEFAULT_BOM_CHILD_ITEM = "SAMPLE_TEXT";
-    private static final String UPDATED_BOM_CHILD_ITEM = "UPDATED_TEXT";
     private static final String DEFAULT_ATTRITION = "SAMPLE_TEXT";
     private static final String UPDATED_ATTRITION = "UPDATED_TEXT";
 
@@ -48,6 +46,9 @@ public class WorkorderlineResourceTest {
 
     private static final Integer DEFAULT_ISSUED_QTY = 0;
     private static final Integer UPDATED_ISSUED_QTY = 1;
+    
+    private static final Integer DEFAULT_BOM_QTY = 0;
+    private static final Integer UPDATED_BOM_QTY = 1;
 
     private static final Boolean DEFAULT_IS_CUST_SUPPLIED = false;
     private static final Boolean UPDATED_IS_CUST_SUPPLIED = true;
@@ -72,8 +73,8 @@ public class WorkorderlineResourceTest {
     @Before
     public void initTest() {
         workorderline = new Workorderline();
-        workorderline.setBomChildItem(DEFAULT_BOM_CHILD_ITEM);
         workorderline.setAttrition(DEFAULT_ATTRITION);
+        workorderline.setBomQty(DEFAULT_BOM_QTY);
         workorderline.setRequQty(DEFAULT_REQU_QTY);
         workorderline.setIssuedQty(DEFAULT_ISSUED_QTY);
         workorderline.setIsCustSupplied(DEFAULT_IS_CUST_SUPPLIED);
@@ -95,7 +96,7 @@ public class WorkorderlineResourceTest {
         List<Workorderline> workorderlines = workorderlineRepository.findAll();
         assertThat(workorderlines).hasSize(databaseSizeBeforeCreate + 1);
         Workorderline testWorkorderline = workorderlines.get(workorderlines.size() - 1);
-        assertThat(testWorkorderline.getBomChildItem()).isEqualTo(DEFAULT_BOM_CHILD_ITEM);
+        assertThat(testWorkorderline.getBomQty()).isEqualTo(DEFAULT_BOM_QTY);
         assertThat(testWorkorderline.getAttrition()).isEqualTo(DEFAULT_ATTRITION);
         assertThat(testWorkorderline.getRequQty()).isEqualTo(DEFAULT_REQU_QTY);
         assertThat(testWorkorderline.getIssuedQty()).isEqualTo(DEFAULT_ISSUED_QTY);
@@ -103,7 +104,7 @@ public class WorkorderlineResourceTest {
         assertThat(testWorkorderline.getRemark()).isEqualTo(DEFAULT_REMARK);
     }
 
-    @Test
+/*    @Test
     @Transactional
     public void checkBomChildItemIsRequired() throws Exception {
         // Validate the database is empty
@@ -120,7 +121,7 @@ public class WorkorderlineResourceTest {
         // Validate the database is still empty
         List<Workorderline> workorderlines = workorderlineRepository.findAll();
         assertThat(workorderlines).hasSize(0);
-    }
+    }*/
 
     @Test
     @Transactional
@@ -133,7 +134,7 @@ public class WorkorderlineResourceTest {
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$.[*].id").value(hasItem(workorderline.getId().intValue())))
-                .andExpect(jsonPath("$.[*].bomChildItem").value(hasItem(DEFAULT_BOM_CHILD_ITEM.toString())))
+                .andExpect(jsonPath("$.[*].bomQty").value(hasItem(DEFAULT_BOM_QTY)))
                 .andExpect(jsonPath("$.[*].attrition").value(hasItem(DEFAULT_ATTRITION.toString())))
                 .andExpect(jsonPath("$.[*].requQty").value(hasItem(DEFAULT_REQU_QTY)))
                 .andExpect(jsonPath("$.[*].issuedQty").value(hasItem(DEFAULT_ISSUED_QTY)))
@@ -152,7 +153,7 @@ public class WorkorderlineResourceTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON))
             .andExpect(jsonPath("$.id").value(workorderline.getId().intValue()))
-            .andExpect(jsonPath("$.bomChildItem").value(DEFAULT_BOM_CHILD_ITEM.toString()))
+            .andExpect(jsonPath("$.bomQty").value(DEFAULT_BOM_QTY))
             .andExpect(jsonPath("$.attrition").value(DEFAULT_ATTRITION.toString()))
             .andExpect(jsonPath("$.requQty").value(DEFAULT_REQU_QTY))
             .andExpect(jsonPath("$.issuedQty").value(DEFAULT_ISSUED_QTY))
@@ -177,7 +178,7 @@ public class WorkorderlineResourceTest {
 		int databaseSizeBeforeUpdate = workorderlineRepository.findAll().size();
 
         // Update the workorderline
-        workorderline.setBomChildItem(UPDATED_BOM_CHILD_ITEM);
+        workorderline.setBomQty(UPDATED_BOM_QTY);
         workorderline.setAttrition(UPDATED_ATTRITION);
         workorderline.setRequQty(UPDATED_REQU_QTY);
         workorderline.setIssuedQty(UPDATED_ISSUED_QTY);
@@ -192,7 +193,7 @@ public class WorkorderlineResourceTest {
         List<Workorderline> workorderlines = workorderlineRepository.findAll();
         assertThat(workorderlines).hasSize(databaseSizeBeforeUpdate);
         Workorderline testWorkorderline = workorderlines.get(workorderlines.size() - 1);
-        assertThat(testWorkorderline.getBomChildItem()).isEqualTo(UPDATED_BOM_CHILD_ITEM);
+        assertThat(testWorkorderline.getBomQty()).isEqualTo(UPDATED_BOM_QTY);
         assertThat(testWorkorderline.getAttrition()).isEqualTo(UPDATED_ATTRITION);
         assertThat(testWorkorderline.getRequQty()).isEqualTo(UPDATED_REQU_QTY);
         assertThat(testWorkorderline.getIssuedQty()).isEqualTo(UPDATED_ISSUED_QTY);

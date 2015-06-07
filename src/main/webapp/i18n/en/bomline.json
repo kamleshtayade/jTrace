@@ -17,7 +17,8 @@
             "refdesignator": "Referance Dsignator",
             "physical": "Physical",
             "itemmtr": "Child Item",
-            "itemctn": "CTN"
+            "itemctn": "CTN",
+            "bomheader":"Parent Item"
         }
     }
 }

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
+   <changeSet author="ktayade (generated)" id="1433703101528-1">
+      <addColumn tableName="WORKORDERLINE">
+         <column name="bom_qty" type="int4"/>
+      </addColumn>
+   </changeSet>
+   <changeSet author="ktayade (generated)" id="1433703101528-2">
+      <addColumn tableName="WORKORDERLINE">
+         <column name="itemmtr_id" type="int8"/>
+      </addColumn>
+   </changeSet>
+   <changeSet author="ktayade (generated)" id="1433703101528-3">
+      <addForeignKeyConstraint baseColumnNames="itemmtr_id"
+                               baseTableName="WORKORDERLINE"
+                               constraintName="FK_hmedjov352pxvfubhksnamad8"
+                               deferrable="false"
+                               initiallyDeferred="false"
+                               referencedColumnNames="id"
+                               referencedTableName="ITEMMTR"/>
+   </changeSet>
+   <changeSet author="ktayade (generated)" id="1433703101528-4">
+      <dropColumn columnName="bom_child_item" tableName="workorderline"/>
+   </changeSet>
+   <changeSet author="ktayade (generated)" id="1433703101528-5">
+      <dropColumn columnName="po_qty" tableName="itemctn"/>
+   </changeSet>
+</databaseChangeLog>

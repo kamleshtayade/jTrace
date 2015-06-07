@@ -45,14 +45,15 @@ public class ItemctnResourceTest {
     private static final Integer DEFAULT_REQD_QTY = 0;
     private static final Integer UPDATED_REQD_QTY = 1;
 
+    private static final Integer DEFAULT_PO_QTY = 0;
+    private static final Integer UPDATED_PO_QTY = 1;
+    
     private static final LocalDate DEFAULT_RECD_DT = new LocalDate(0L);
     private static final LocalDate UPDATED_RECD_DT = new LocalDate();
     private static final String DEFAULT_SR_NO_TO = "SAMPLE_TEXT";
     private static final String UPDATED_SR_NO_TO = "UPDATED_TEXT";
     private static final String DEFAULT_SELF_LIFE = "SAMPLE_TEXT";
     private static final String UPDATED_SELF_LIFE = "UPDATED_TEXT";
-    private static final String DEFAULT_PO_QTY = "SAMPLE_TEXT";
-    private static final String UPDATED_PO_QTY = "UPDATED_TEXT";
     private static final String DEFAULT_INVOICE = "SAMPLE_TEXT";
     private static final String UPDATED_INVOICE = "UPDATED_TEXT";
 
@@ -180,7 +181,7 @@ public class ItemctnResourceTest {
                 .andExpect(jsonPath("$.[*].recdDt").value(hasItem(DEFAULT_RECD_DT.toString())))
                 .andExpect(jsonPath("$.[*].srNoTo").value(hasItem(DEFAULT_SR_NO_TO.toString())))
                 .andExpect(jsonPath("$.[*].selfLife").value(hasItem(DEFAULT_SELF_LIFE.toString())))
-                .andExpect(jsonPath("$.[*].poQty").value(hasItem(DEFAULT_PO_QTY.toString())))
+                .andExpect(jsonPath("$.[*].poQty").value(hasItem(DEFAULT_PO_QTY)))
                 .andExpect(jsonPath("$.[*].invoice").value(hasItem(DEFAULT_INVOICE.toString())));
     }
 
@@ -200,7 +201,7 @@ public class ItemctnResourceTest {
             .andExpect(jsonPath("$.recdDt").value(DEFAULT_RECD_DT.toString()))
             .andExpect(jsonPath("$.srNoTo").value(DEFAULT_SR_NO_TO.toString()))
             .andExpect(jsonPath("$.selfLife").value(DEFAULT_SELF_LIFE.toString()))
-            .andExpect(jsonPath("$.poQty").value(DEFAULT_PO_QTY.toString()))
+            .andExpect(jsonPath("$.poQty").value(DEFAULT_PO_QTY))
             .andExpect(jsonPath("$.invoice").value(DEFAULT_INVOICE.toString()));
     }
 

@@ -1,10 +1,11 @@
 'use strict';
 
 angular.module('jtraceApp')
-    .controller('BomlineController', function ($scope, Bomline, Itemmtr, Itemctn, ParseLinks) {
+    .controller('BomlineController', function ($scope, Bomline,Bomheader, Itemmtr, Itemctn, ParseLinks) {
         $scope.bomlines = [];
         $scope.itemmtrs = Itemmtr.query();
         $scope.itemctns = Itemctn.query();
+        $scope.bomheaders = Bomheader.query();
         $scope.page = 1;
         $scope.loadAll = function() {
             Bomline.query({page: $scope.page, per_page: 20}, function(result, headers) {

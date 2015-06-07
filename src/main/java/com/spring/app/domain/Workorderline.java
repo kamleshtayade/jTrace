@@ -25,12 +25,11 @@ public class Workorderline implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @NotNull
-    @Column(name = "bom_child_item", nullable = false)
-    private String bomChildItem;
-
     @Column(name = "attrition")
     private String attrition;
+
+    @Column(name = "bom_qty")
+    private Integer bomQty;
 
     @Column(name = "requ_qty")
     private Integer requQty;
@@ -50,6 +49,9 @@ public class Workorderline implements Serializable {
     
     @ManyToOne
     private Workorderheader workorderheader;
+    
+    @ManyToOne
+    private Itemmtr itemmtr;
 
     public Workorderheader getWorkorderheader() {
 		return workorderheader;
@@ -65,14 +67,6 @@ public class Workorderline implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getBomChildItem() {
-        return bomChildItem;
-    }
-
-    public void setBomChildItem(String bomChildItem) {
-        this.bomChildItem = bomChildItem;
     }
 
     public String getAttrition() {
@@ -123,7 +117,23 @@ public class Workorderline implements Serializable {
         this.itemctn = itemctn;
     }
 
-    @Override
+    public Integer getBomQty() {
+		return bomQty;
+	}
+
+	public void setBomQty(Integer bomQty) {
+		this.bomQty = bomQty;
+	}
+
+	public Itemmtr getItemmtr() {
+		return itemmtr;
+	}
+
+	public void setItemmtr(Itemmtr itemmtr) {
+		this.itemmtr = itemmtr;
+	}
+
+	@Override
     public boolean equals(Object o) {
         if (this == o) {
             return true;
@@ -148,8 +158,8 @@ public class Workorderline implements Serializable {
     public String toString() {
         return "Workorderline{" +
                 "id=" + id +
-                ", bomChildItem='" + bomChildItem + "'" +
                 ", attrition='" + attrition + "'" +
+                ", bomQty='"+bomQty+"'"+
                 ", requQty='" + requQty + "'" +
                 ", issuedQty='" + issuedQty + "'" +
                 ", isCustSupplied='" + isCustSupplied + "'" +
