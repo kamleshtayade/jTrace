@@ -36,6 +36,20 @@ public class CodeUtil {
 		return code;
 	}
 	
+	/**
+	 * generateCode
+	 * 
+	 * used by 
+	 * WorkOrderHeader
+	 * 
+	 * 0.2.6 - its append unique hasids
+	 * 0.2.7 - its append current year and week of year with unique hasids
+	 * 
+	 * @param prefix - prefix string
+	 * @param uniqueNumber - Unique Long as generated entity Id
+	 * @param increment - String is created as unique counter
+	 * @return
+	 */
 	public static String generateCode(String prefix, Long uniqueNumber,
 			int increment) {
 
