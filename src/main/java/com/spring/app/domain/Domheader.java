@@ -66,9 +66,9 @@ public class Domheader implements Serializable {
     @ManyToOne
     private Plantmc machine;
 
-    /*its unique key refer to JMSQueue*/
-    @Column(name = "machinepk")
-    private Integer machinepk;
+    /*its unique key refer to JMXQueue*/
+    @Column(name = "jmxid")
+    private String jmxid;
     
     public Long getId() {
         return id;
@@ -158,13 +158,6 @@ public class Domheader implements Serializable {
         this.solder = solder;
     }
 
-    public Integer getMachinepk() {
-        return machinepk;
-    }
-
-    public void setMachinepk(Integer machinepk) {
-        this.machinepk = machinepk;
-    }
     
     public Plantmc getMachine() {
 		return machine;
@@ -172,6 +165,14 @@ public class Domheader implements Serializable {
 
 	public void setMachine(Plantmc machine) {
 		this.machine = machine;
+	}
+
+	public String getJmxid() {
+		return jmxid;
+	}
+
+	public void setJmxid(String jmxid) {
+		this.jmxid = jmxid;
 	}
 
 	@Override
@@ -209,7 +210,7 @@ public class Domheader implements Serializable {
                 ", shiftstart='" + shiftstart + "'" +
                 ", shiftend='" + shiftend + "'" +
                 ", solder='" + solder + "'" +
-                ", machinepk='" + machinepk + "'" +
+                ", jmxid='"+jmxid+"'"+
                 '}';
     }
 }

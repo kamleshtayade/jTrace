@@ -5,12 +5,14 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.spring.app.domain.util.CustomDateTimeDeserializer;
 import com.spring.app.domain.util.CustomDateTimeSerializer;
+
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.annotations.Type;
 import org.joda.time.DateTime;
 
 import javax.persistence.*;
+
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
@@ -36,6 +38,10 @@ public class Domline implements Serializable {
     @JsonDeserialize(using = CustomDateTimeDeserializer.class)
     @Column(name = "scantime")
     private DateTime scantime;
+    
+    /*its unique key refer to JMXQueue*/
+    @Column(name = "jmxid")
+    private String jmxid;
 
     @ManyToOne
     private Domheader domheader;
@@ -72,7 +78,15 @@ public class Domline implements Serializable {
         this.domheader = domheader;
     }
 
-    @Override
+    public String getJmxid() {
+		return jmxid;
+	}
+
+	public void setJmxid(String jmxid) {
+		this.jmxid = jmxid;
+	}
+
+	@Override
     public boolean equals(Object o) {
         if (this == o) {
             return true;
@@ -99,6 +113,7 @@ public class Domline implements Serializable {
                 "id=" + id +
                 ", serialno='" + serialno + "'" +
                 ", scantime='" + scantime + "'" +
+                " jmxid='"+jmxid+"'"+
                 '}';
     }
 }

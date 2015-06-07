@@ -72,9 +72,9 @@ public class DomheaderResourceTest {
     private static final String DEFAULT_SHIFTEND_STR = dateTimeFormatter.print(DEFAULT_SHIFTEND);
     private static final String DEFAULT_SOLDER = "SAMPLE_TEXT";
     private static final String UPDATED_SOLDER = "UPDATED_TEXT";
+    private static final String DEFAULT_JMXID = "SAMPLE_TEXT";
+    private static final String UPDATED_JMXID = "UPDATED_TEXT";
 
-    private static final Integer DEFAULT_MACHINEPK = 0;
-    private static final Integer UPDATED_MACHINEPK = 1;
 
     @Inject
     private DomheaderRepository domheaderRepository;
@@ -104,7 +104,7 @@ public class DomheaderResourceTest {
         domheader.setShiftstart(DEFAULT_SHIFTSTART);
         domheader.setShiftend(DEFAULT_SHIFTEND);
         domheader.setSolder(DEFAULT_SOLDER);
-        domheader.setMachinepk(DEFAULT_MACHINEPK);
+        domheader.setJmxid(DEFAULT_JMXID);
     }
 
     @Test
@@ -132,7 +132,7 @@ public class DomheaderResourceTest {
         assertThat(testDomheader.getShiftstart().toDateTime(DateTimeZone.UTC)).isEqualTo(DEFAULT_SHIFTSTART);
         assertThat(testDomheader.getShiftend().toDateTime(DateTimeZone.UTC)).isEqualTo(DEFAULT_SHIFTEND);
         assertThat(testDomheader.getSolder()).isEqualTo(DEFAULT_SOLDER);
-        assertThat(testDomheader.getMachinepk()).isEqualTo(DEFAULT_MACHINEPK);
+        assertThat(testDomheader.getJmxid()).isEqualTo(DEFAULT_JMXID);
     }
 
     @Test
@@ -156,7 +156,7 @@ public class DomheaderResourceTest {
                 .andExpect(jsonPath("$.[*].shiftstart").value(hasItem(DEFAULT_SHIFTSTART_STR)))
                 .andExpect(jsonPath("$.[*].shiftend").value(hasItem(DEFAULT_SHIFTEND_STR)))
                 .andExpect(jsonPath("$.[*].solder").value(hasItem(DEFAULT_SOLDER.toString())))
-                .andExpect(jsonPath("$.[*].machinepk").value(hasItem(DEFAULT_MACHINEPK)));
+                .andExpect(jsonPath("$.[*].jmxid").value(hasItem(DEFAULT_JMXID.toString())));
     }
 
     @Test
@@ -180,7 +180,7 @@ public class DomheaderResourceTest {
             .andExpect(jsonPath("$.shiftstart").value(DEFAULT_SHIFTSTART_STR))
             .andExpect(jsonPath("$.shiftend").value(DEFAULT_SHIFTEND_STR))
             .andExpect(jsonPath("$.solder").value(DEFAULT_SOLDER.toString()))
-            .andExpect(jsonPath("$.machinepk").value(DEFAULT_MACHINEPK));
+            .andExpect(jsonPath("$.jmxid").value(DEFAULT_JMXID.toString()));
     }
 
     @Test
@@ -210,7 +210,7 @@ public class DomheaderResourceTest {
         domheader.setShiftstart(UPDATED_SHIFTSTART);
         domheader.setShiftend(UPDATED_SHIFTEND);
         domheader.setSolder(UPDATED_SOLDER);
-        domheader.setMachinepk(UPDATED_MACHINEPK);
+        domheader.setJmxid(UPDATED_JMXID);
         restDomheaderMockMvc.perform(put("/api/domheaders")
                 .contentType(TestUtil.APPLICATION_JSON_UTF8)
                 .content(TestUtil.convertObjectToJsonBytes(domheader)))
@@ -230,7 +230,7 @@ public class DomheaderResourceTest {
         assertThat(testDomheader.getShiftstart().toDateTime(DateTimeZone.UTC)).isEqualTo(UPDATED_SHIFTSTART);
         assertThat(testDomheader.getShiftend().toDateTime(DateTimeZone.UTC)).isEqualTo(UPDATED_SHIFTEND);
         assertThat(testDomheader.getSolder()).isEqualTo(UPDATED_SOLDER);
-        assertThat(testDomheader.getMachinepk()).isEqualTo(UPDATED_MACHINEPK);
+        assertThat(testDomheader.getJmxid()).isEqualTo(UPDATED_JMXID);
     }
 
     @Test

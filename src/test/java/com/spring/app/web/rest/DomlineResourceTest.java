@@ -7,7 +7,9 @@ import com.spring.app.repository.DomlineRepository;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+
 import static org.hamcrest.Matchers.hasItem;
+
 import org.mockito.MockitoAnnotations;
 import org.springframework.boot.test.IntegrationTest;
 import org.springframework.boot.test.SpringApplicationConfiguration;
@@ -21,10 +23,12 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
+
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
+
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -50,6 +54,8 @@ public class DomlineResourceTest {
     private static final DateTime DEFAULT_SCANTIME = new DateTime(0L, DateTimeZone.UTC);
     private static final DateTime UPDATED_SCANTIME = new DateTime(DateTimeZone.UTC).withMillisOfSecond(0);
     private static final String DEFAULT_SCANTIME_STR = dateTimeFormatter.print(DEFAULT_SCANTIME);
+    private static final String DEFAULT_JMXID = "SAMPLE_TEXT";
+    private static final String UPDATED_JMXID = "UPDATED_TEXT";
 
     @Inject
     private DomlineRepository domlineRepository;
@@ -71,6 +77,7 @@ public class DomlineResourceTest {
         domline = new Domline();
         domline.setSerialno(DEFAULT_SERIALNO);
         domline.setScantime(DEFAULT_SCANTIME);
+        domline.setJmxid(DEFAULT_JMXID);
     }
 
     @Test
@@ -90,6 +97,7 @@ public class DomlineResourceTest {
         Domline testDomline = domlines.get(domlines.size() - 1);
         assertThat(testDomline.getSerialno()).isEqualTo(DEFAULT_SERIALNO);
         assertThat(testDomline.getScantime().toDateTime(DateTimeZone.UTC)).isEqualTo(DEFAULT_SCANTIME);
+        assertThat(testDomline.getJmxid()).isEqualTo(DEFAULT_JMXID);
     }
 
     @Test
@@ -104,7 +112,8 @@ public class DomlineResourceTest {
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$.[*].id").value(hasItem(domline.getId().intValue())))
                 .andExpect(jsonPath("$.[*].serialno").value(hasItem(DEFAULT_SERIALNO.toString())))
-                .andExpect(jsonPath("$.[*].scantime").value(hasItem(DEFAULT_SCANTIME_STR)));
+                .andExpect(jsonPath("$.[*].scantime").value(hasItem(DEFAULT_SCANTIME_STR)))
+                .andExpect(jsonPath("$.[*].jmxid").value(hasItem(DEFAULT_JMXID.toString())));
     }
 
     @Test
@@ -119,7 +128,8 @@ public class DomlineResourceTest {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON))
             .andExpect(jsonPath("$.id").value(domline.getId().intValue()))
             .andExpect(jsonPath("$.serialno").value(DEFAULT_SERIALNO.toString()))
-            .andExpect(jsonPath("$.scantime").value(DEFAULT_SCANTIME_STR));
+            .andExpect(jsonPath("$.scantime").value(DEFAULT_SCANTIME_STR))
+            .andExpect(jsonPath("$.jmxid").value(DEFAULT_JMXID.toString()));
     }
 
     @Test
@@ -141,6 +151,7 @@ public class DomlineResourceTest {
         // Update the domline
         domline.setSerialno(UPDATED_SERIALNO);
         domline.setScantime(UPDATED_SCANTIME);
+        domline.setJmxid(UPDATED_JMXID);
         restDomlineMockMvc.perform(put("/api/domlines")
                 .contentType(TestUtil.APPLICATION_JSON_UTF8)
                 .content(TestUtil.convertObjectToJsonBytes(domline)))
@@ -152,6 +163,7 @@ public class DomlineResourceTest {
         Domline testDomline = domlines.get(domlines.size() - 1);
         assertThat(testDomline.getSerialno()).isEqualTo(UPDATED_SERIALNO);
         assertThat(testDomline.getScantime().toDateTime(DateTimeZone.UTC)).isEqualTo(UPDATED_SCANTIME);
+        assertThat(testDomline.getJmxid()).isEqualTo(UPDATED_JMXID);
     }
 
     @Test

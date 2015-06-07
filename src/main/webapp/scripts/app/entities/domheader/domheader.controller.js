@@ -1,8 +1,9 @@
 'use strict';
 
 angular.module('jtraceApp')
-    .controller('DomheaderController', function ($scope, Domheader, ParseLinks) {
+    .controller('DomheaderController', function ($scope, Domheader, Plantmc,ParseLinks) {
         $scope.domheaders = [];
+        $scope.plantmcs = Plantmc.query();
         $scope.page = 1;
         $scope.loadAll = function() {
             Domheader.query({page: $scope.page, per_page: 20}, function(result, headers) {
@@ -67,7 +68,7 @@ angular.module('jtraceApp')
         };
 
         $scope.clear = function () {
-            $scope.domheader = {isAuto: null, cycleTime: null, isMulti: null, panelQty: null, opr: null, shiftsup: null, shift: null, shiftstart: null, shiftend: null, solder: null, machinepk: null, id: null};
+            $scope.domheader = {isAuto: null, cycleTime: null, isMulti: null, panelQty: null, opr: null, shiftsup: null, shift: null, shiftstart: null, shiftend: null, solder: null, jmxid: null, id: null};
             $scope.editForm.$setPristine();
             $scope.editForm.$setUntouched();
         };

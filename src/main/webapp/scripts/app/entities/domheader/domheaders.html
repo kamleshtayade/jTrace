@@ -49,6 +49,11 @@
 
                         </div>
                         <div class="form-group">
+                            <label translate="jtraceApp.domheader.machine">plant</label>
+                            <select class="form-control" name="machine" ng-model="domheader.machine.id" ng-options="plantmc.id as plantmc.name for plantmc in plantmcs">
+                            </select>
+                        </div>
+                        <div class="form-group">
                             <label translate="jtraceApp.domheader.opr">Opr</label>
                             <input type="text" class="form-control" name="opr"
                                    ng-model="domheader.opr">
@@ -85,12 +90,10 @@
 
                         </div>
                         <div class="form-group">
-                            <label translate="jtraceApp.domheader.machinepk">Machinepk</label>
-                            <input type="number" class="form-control" name="machinepk"
-                                   ng-model="domheader.machinepk">
-
+                            <label translate="jtraceApp.domheader.jmxid">jmxid</label>
+                            <input type="number" class="form-control" name="jmxid"
+                                   ng-model="domheader.jmxid" readonly>
                         </div>
-
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
@@ -138,13 +141,14 @@
                     <th translate="jtraceApp.domheader.cycleTime">CycleTime</th>
                     <th translate="jtraceApp.domheader.isMulti">IsMulti</th>
                     <th translate="jtraceApp.domheader.panelQty">PanelQty</th>
+                    <th translate="jtraceApp.domheader.machine">machine</th>                    
                     <th translate="jtraceApp.domheader.opr">Opr</th>
                     <th translate="jtraceApp.domheader.shiftsup">Shiftsup</th>
                     <th translate="jtraceApp.domheader.shift">Shift</th>
                     <th translate="jtraceApp.domheader.shiftstart">Shiftstart</th>
                     <th translate="jtraceApp.domheader.shiftend">Shiftend</th>
                     <th translate="jtraceApp.domheader.solder">Solder</th>
-                    <th translate="jtraceApp.domheader.machinepk">Machinepk</th>
+                    <th translate="jtraceApp.domheader.jmxid">jmxid</th>
                     <th></th>
                 </tr>
             </thead>
@@ -154,13 +158,14 @@
                     <td>{{domheader.cycleTime}}</td>
                     <td>{{domheader.isMulti}}</td>
                     <td>{{domheader.panelQty}}</td>
+                    <td>{{domheader.machine.name}}</td>
                     <td>{{domheader.opr}}</td>
                     <td>{{domheader.shiftsup}}</td>
                     <td>{{domheader.shift}}</td>
                     <td>{{domheader.shiftstart}}</td>
                     <td>{{domheader.shiftend}}</td>
                     <td>{{domheader.solder}}</td>
-                    <td>{{domheader.machinepk}}</td>
+                    <td>{{domheader.jmxid}}</td>
                     <td>
                         <button type="submit"
                                 ui-sref="domheaderDetail({id:domheader.id})"

@@ -22,7 +22,8 @@
             "shiftstart": "Shift Start",
             "shiftend": "Shift End",
             "solder": "Solder Paste",
-            "machinepk": "Machine"
+            "jmxid": "JMXQ",
+            "machine": "Machine"
         }
     }
 }
