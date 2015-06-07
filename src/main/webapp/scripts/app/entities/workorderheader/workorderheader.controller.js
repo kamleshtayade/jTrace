@@ -59,7 +59,7 @@ angular.module('jtraceApp')
         };
 
         $scope.clear = function () {
-            $scope.workorderheader = {woNumber: null, kitNumber: null, status: null, qty: null, id: null};
+            $scope.workorderheader = {woNumber: null, kitNumber: null, status: null, qty: null, itemserial:null, id: null};
             $scope.editForm.$setPristine();
             $scope.editForm.$setUntouched();
             $('#saveWorkorderheaderModal').collapse('hide');

@@ -9,6 +9,8 @@
                 "organization": "Organization",
                 "bomline": "Bomline",
                 "bomheader": "Bomheader",
+                "domheader": "Domheader",
+                "domline": "Domline",
                 "additionalEntity": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

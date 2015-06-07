@@ -125,6 +125,14 @@
                         <h4 class="modal-title" id="myBomlineLabel" translate="jtraceApp.bomheader.bomline.home.createOrEditLabel">Create or edit a Bomline</h4>
                     </div>
                     <div class="modal-body">
+                        <!-- Start Modified for Quanity and Ref Designator -->
+                        <span ng-if="mismatch" class="animate-if">
+                            <div flash-alert="success" active-class="in" class="alert fade">
+                                <strong class="alert-heading">Warning!</strong>
+                                <span class="alert-message">{{flash.message}}</span>
+                            </div>
+                        </span>
+                        <!-- End Modified for Quanity and Ref Designator -->
                         <div class="form-group">
                             <label translate="jtraceApp.bomheader.bomline.lineid">Lineid</label>
                             <input type="number" class="form-control" name="lineid"
@@ -149,7 +157,7 @@
                         <div class="form-group">
                             <label translate="jtraceApp.bomheader.bomline.quantity">Quantity</label>
                             <input type="number" class="form-control" name="quantity"
-                                   ng-model="bomline.quantity" required>
+                                   ng-model="bomline.quantity" ng-blur="validate()" required>
 
                             <div ng-show="editForm.quantity.$invalid">
                                 <p class="help-block"
@@ -165,7 +173,7 @@
                         <div class="form-group">
                             <label translate="jtraceApp.bomheader.bomline.refdesignator">Refdesignator</label>
                             <input type="text" class="form-control" name="refdesignator"
-                                   ng-model="bomline.refdesignator">
+                                   ng-model="bomline.refdesignator" ng-blur="validate()">
 
                         </div>
                         <div class="form-group">

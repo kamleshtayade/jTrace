@@ -1,13 +1,20 @@
 'use strict';
 
 angular.module('jtraceApp')
-    .controller('BomheaderController', function ($scope,$controller, Bomheader, Bomline, Itemmtr, ParseLinks,DTOptionsBuilder,DTColumnBuilder,DTColumnDefBuilder) {
+    .controller('BomheaderController', function ($scope,$controller, Bomheader, Bomline, Itemmtr, ParseLinks,DTOptionsBuilder,DTColumnBuilder,DTColumnDefBuilder,flash) {
         $scope.bomheaders = [];
         $scope.itemmtrs = Itemmtr.query();
         $scope.bomlineEns = Bomline.query();
         $scope.bomlineCrl=$scope.$new();
         $scope.page = 1;
-        $scope.dtOptions = DTOptionsBuilder.newOptions().withPaginationType('full_numbers').withDisplayLength(10);
+        $scope.dtOptions = DTOptionsBuilder.newOptions().withPaginationType('full_numbers')
+                .withBootstrap()            
+                .withDisplayLength(10);
+        $scope.dtColumns = [
+            DTColumnDefBuilder.newColumnDef(0),
+            DTColumnDefBuilder.newColumnDef(1),
+            DTColumnDefBuilder.newColumnDef(2).withTitle('Actions').notSortable()          
+        ];
 
         $controller('BomlineController',{$scope:$scope.bomlineCrl});
         // console.info($scope.manfactCrl);
@@ -79,4 +86,18 @@ angular.module('jtraceApp')
             $scope.editForm.$setPristine();
             $scope.editForm.$setUntouched();
         };
+
+        /* Start Modified for Quanity and Ref Designator */
+        $scope.validate =function() {
+            $scope.mismatch = false;
+            var qty = $scope.bomline.quantity;
+            var rdesig = $scope.bomline.refdesignator.split(",");
+            if (qty != rdesig.length) {               
+                $scope.mismatch = true;                
+                var msg="Reference Designtor and Quantity mismatch, Please review if needed";
+                flash.success=msg;
+            }
+        };         
+        /* End Modified for Quanity and Ref Designator */
+
     });

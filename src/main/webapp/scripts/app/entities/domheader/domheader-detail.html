@@ -1,0 +1,110 @@
+
+<div>
+    <h2><span translate="jtraceApp.domheader.detail.title">Domheader</span> {{domheader.id}}</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th translate="entity.detail.field">Field</th>
+                    <th translate="entity.detail.value">Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <span translate="jtraceApp.domheader.isAuto">IsAuto</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{domheader.isAuto}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="jtraceApp.domheader.cycleTime">CycleTime</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{domheader.cycleTime}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="jtraceApp.domheader.isMulti">IsMulti</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{domheader.isMulti}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="jtraceApp.domheader.panelQty">PanelQty</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{domheader.panelQty}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="jtraceApp.domheader.opr">Opr</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{domheader.opr}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="jtraceApp.domheader.shiftsup">Shiftsup</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{domheader.shiftsup}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="jtraceApp.domheader.shift">Shift</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{domheader.shift}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="jtraceApp.domheader.shiftstart">Shiftstart</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{domheader.shiftstart}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="jtraceApp.domheader.shiftend">Shiftend</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{domheader.shiftend}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="jtraceApp.domheader.solder">Solder</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{domheader.solder}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="jtraceApp.domheader.machinepk">Machinepk</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{domheader.machinepk}}" readonly>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button type="submit"
+            ui-sref="domheader"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
+    </button>
+</div>

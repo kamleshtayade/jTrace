@@ -43,7 +43,10 @@ public class Workorderheader implements Serializable {
 
     @Column(name = "qty")
     private Integer qty;
-
+    
+    @Column(name = "itemserial")
+    private String itemserial;
+    
     @ManyToOne
     private Itemmtr itemmtr;
 
@@ -119,7 +122,15 @@ public class Workorderheader implements Serializable {
 		this.worderlines = worderlines;
 	}
 	
-    @Override
+    public String getItemserial() {
+		return itemserial;
+	}
+
+	public void setItemserial(String itemserial) {
+		this.itemserial = itemserial;
+	}
+
+	@Override
     public boolean equals(Object o) {
         if (this == o) {
             return true;
@@ -148,6 +159,7 @@ public class Workorderheader implements Serializable {
                 ", kitNumber='" + kitNumber + "'" +
                 ", status='" + status + "'" +
                 ", qty='" + qty + "'" +
+                ", itemserial='"+itemserial+"'"+
                 '}';
     }
 }

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
+   <changeSet author="ktayade (generated)" id="1433586051728-1">
+      <createTable tableName="DOMHEADER">
+         <column autoIncrement="true" name="id" type="BIGINT">
+            <constraints primaryKey="true" primaryKeyName="DOMHEADERPK"/>
+         </column>
+         <column name="cycle_time" type="INT4"/>
+         <column name="is_auto" type="BOOLEAN"/>
+         <column name="is_multi" type="BOOLEAN"/>
+         <column name="machinepk" type="INT4"/>
+         <column name="opr" type="VARCHAR(255)"/>
+         <column name="panel_qty" type="INT4"/>
+         <column name="shift" type="VARCHAR(255)"/>
+         <column name="shiftend" type="timestamp"/>
+         <column name="shiftstart" type="timestamp"/>
+         <column name="shiftsup" type="VARCHAR(255)"/>
+         <column name="solder" type="VARCHAR(255)"/>
+      </createTable>
+   </changeSet>
+   <changeSet author="ktayade (generated)" id="1433586051728-2">
+      <createTable tableName="DOMLINE">
+         <column autoIncrement="true" name="id" type="BIGINT">
+            <constraints primaryKey="true" primaryKeyName="DOMLINEPK"/>
+         </column>
+         <column name="scantime" type="timestamp"/>
+         <column name="serialno" type="VARCHAR(255)"/>
+         <column name="domheader_id" type="BIGINT"/>
+      </createTable>
+   </changeSet>
+   <changeSet author="ktayade (generated)" id="1433586051728-3">
+      <addForeignKeyConstraint baseColumnNames="domheader_id"
+                               baseTableName="DOMLINE"
+                               constraintName="FK_4fqg2bb19o0iq1fnarnn1c20d"
+                               deferrable="false"
+                               initiallyDeferred="false"
+                               referencedColumnNames="id"
+                               referencedTableName="DOMHEADER"/>
+   </changeSet>
+</databaseChangeLog>

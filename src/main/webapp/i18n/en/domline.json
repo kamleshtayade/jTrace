@@ -1,0 +1,20 @@
+{
+    "jtraceApp": {
+        "domline" : {
+            "home": {
+                "title": "DOM Lines",
+                "createLabel": "Create a new DOM line",
+                "createOrEditLabel": "Create or edit a DOM line"
+            },
+            "delete": {
+                "question": "Are you sure you want to delete DOM line {{ id }}?"
+            },
+            "detail": {
+                "title": "DOM line"
+            },
+            "serialno": "Serial No",
+            "scantime": "Scan Time",
+            "domheader": "DOM"
+        }
+    }
+}

@@ -1,0 +1,29 @@
+{
+    "jtraceApp": {
+        "domheader" : {
+            "home": {
+                "title": "Domheaders",
+                "createLabel": "Créer un nouveau Domheader",
+                "createOrEditLabel": "Créer ou éditer un Domheader"
+            },
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Domheader {{ id }} ?"
+            },
+            "detail": {
+                "title": "Domheader"
+            },
+            "isAuto": "IsAuto",
+            "cycleTime": "CycleTime",
+            "isMulti": "IsMulti",
+            "panelQty": "PanelQty",
+            "opr": "Opr",
+            "shiftsup": "Shiftsup",
+            "shift": "Shift",
+            "shiftstart": "Shiftstart",
+            "shiftend": "Shiftend",
+            "solder": "Solder",
+            "machinepk": "Machinepk"
+        }
+    }
+}
+

@@ -23,12 +23,9 @@
     <include file="classpath:config/liquibase/changelog/20150518111106_added_entity_Bomline.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20150520082405_added_entity_Organization.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20150602030924_added_entity_Bomheader.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20150606091341_added_entity_Domheader.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20150606092216_added_entity_Domline.xml" relativeToChangelogFile="false"/>
     <!-- JHipster will add liquibase changelogs here -->
-    <include file="classpath:config/liquibase/changelog/20150528093535_changelog.xml"/> 
-    <include file="classpath:config/liquibase/changelog/20150602030117_changelog.xml"/>
-    <include file="classpath:config/liquibase/changelog/20150602073559_changelog.xml"/>
-    <include file="classpath:config/liquibase/changelog/20150603110131_changelog.xml"/>
-    <include file="classpath:config/liquibase/changelog/20150604065710_changelog.xml"/>
-    <include file="classpath:config/liquibase/changelog/20150605003117_changelog.xml"/>
-    <include file="classpath:config/liquibase/changelog/20150605155800_changelog.xml"/>
+    <include file="classpath:config/liquibase/changelog/20150606114052_changelog.xml"/>
+    <include file="classpath:config/liquibase/changelog/20150607031546_changelog.xml"/>
 </databaseChangeLog>

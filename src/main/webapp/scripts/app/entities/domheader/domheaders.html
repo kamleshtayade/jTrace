@@ -1,0 +1,185 @@
+<div>
+
+    <h2 translate="jtraceApp.domheader.home.title">Domheader</h2>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <button class="btn btn-primary" data-toggle="modal" data-target="#saveDomheaderModal" ng-click="clear()">
+                    <span class="glyphicon glyphicon-flash"></span> <span translate="jtraceApp.domheader.home.createLabel">Create a new Domheader</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="saveDomheaderModal" tabindex="-1" role="dialog" aria-labelledby="myDomheaderLabel"
+         aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form name="editForm" role="form" novalidate ng-submit="save()">
+
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                                ng-click="clear()">&times;</button>
+                        <h4 class="modal-title" id="myDomheaderLabel" translate="jtraceApp.domheader.home.createOrEditLabel">Create or edit a Domheader</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label translate="jtraceApp.domheader.isAuto">IsAuto</label>
+                            <input type="checkbox" class="form-control" name="isAuto"
+                                   ng-model="domheader.isAuto">
+
+                        </div>
+                        <div class="form-group">
+                            <label translate="jtraceApp.domheader.cycleTime">CycleTime</label>
+                            <input type="number" class="form-control" name="cycleTime"
+                                   ng-model="domheader.cycleTime">
+
+                        </div>
+                        <div class="form-group">
+                            <label translate="jtraceApp.domheader.isMulti">IsMulti</label>
+                            <input type="checkbox" class="form-control" name="isMulti"
+                                   ng-model="domheader.isMulti">
+
+                        </div>
+                        <div class="form-group">
+                            <label translate="jtraceApp.domheader.panelQty">PanelQty</label>
+                            <input type="number" class="form-control" name="panelQty"
+                                   ng-model="domheader.panelQty">
+
+                        </div>
+                        <div class="form-group">
+                            <label translate="jtraceApp.domheader.opr">Opr</label>
+                            <input type="text" class="form-control" name="opr"
+                                   ng-model="domheader.opr">
+
+                        </div>
+                        <div class="form-group">
+                            <label translate="jtraceApp.domheader.shiftsup">Shiftsup</label>
+                            <input type="text" class="form-control" name="shiftsup"
+                                   ng-model="domheader.shiftsup">
+
+                        </div>
+                        <div class="form-group">
+                            <label translate="jtraceApp.domheader.shift">Shift</label>
+                            <input type="text" class="form-control" name="shift"
+                                   ng-model="domheader.shift">
+
+                        </div>
+                        <div class="form-group">
+                            <label translate="jtraceApp.domheader.shiftstart">Shiftstart</label>
+                            <input type="datetime-local" class="form-control" name="shiftstart"
+                                   ng-model="domheader.shiftstart" ng-model-options="{timezone: 'UTC'}">
+
+                        </div>
+                        <div class="form-group">
+                            <label translate="jtraceApp.domheader.shiftend">Shiftend</label>
+                            <input type="datetime-local" class="form-control" name="shiftend"
+                                   ng-model="domheader.shiftend" ng-model-options="{timezone: 'UTC'}">
+
+                        </div>
+                        <div class="form-group">
+                            <label translate="jtraceApp.domheader.solder">Solder</label>
+                            <input type="text" class="form-control" name="solder"
+                                   ng-model="domheader.solder">
+
+                        </div>
+                        <div class="form-group">
+                            <label translate="jtraceApp.domheader.machinepk">Machinepk</label>
+                            <input type="number" class="form-control" name="machinepk"
+                                   ng-model="domheader.machinepk">
+
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+                            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
+                        </button>
+                        <button type="submit" ng-disabled="editForm.$invalid" class="btn btn-primary">
+                            <span class="glyphicon glyphicon-save"></span>&nbsp;<span translate="entity.action.save">Save</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="deleteDomheaderConfirmation">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form name="deleteForm" ng-submit="confirmDelete(domheader.id)">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                                ng-click="clear()">&times;</button>
+                        <h4 class="modal-title" translate="entity.delete.title">Confirm delete operation</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p translate="jtraceApp.domheader.delete.question" translate-values="{id: '{{domheader.id}}'}">Are you sure you want to delete this Domheader?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+                            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
+                        </button>
+                        <button type="submit" ng-disabled="deleteForm.$invalid" class="btn btn-danger">
+                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span translate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="table-responsive">
+        <table datatable="ng" dt-options="dtOptions" dt-columns="dtColumns" class="table table-condensed hover">
+            <thead>
+                <tr>
+                    <th translate="jtraceApp.domheader.isAuto">IsAuto</th>
+                    <th translate="jtraceApp.domheader.cycleTime">CycleTime</th>
+                    <th translate="jtraceApp.domheader.isMulti">IsMulti</th>
+                    <th translate="jtraceApp.domheader.panelQty">PanelQty</th>
+                    <th translate="jtraceApp.domheader.opr">Opr</th>
+                    <th translate="jtraceApp.domheader.shiftsup">Shiftsup</th>
+                    <th translate="jtraceApp.domheader.shift">Shift</th>
+                    <th translate="jtraceApp.domheader.shiftstart">Shiftstart</th>
+                    <th translate="jtraceApp.domheader.shiftend">Shiftend</th>
+                    <th translate="jtraceApp.domheader.solder">Solder</th>
+                    <th translate="jtraceApp.domheader.machinepk">Machinepk</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody infinite-scroll="loadPage(page + 1)" infinite-scroll-disabled="links['last'] == page">
+                <tr ng-repeat="domheader in domheaders">
+                    <td><a ui-sref="domheaderDetail({id:domheader.id})">{{domheader.isAuto}}</a></td>
+                    <td>{{domheader.cycleTime}}</td>
+                    <td>{{domheader.isMulti}}</td>
+                    <td>{{domheader.panelQty}}</td>
+                    <td>{{domheader.opr}}</td>
+                    <td>{{domheader.shiftsup}}</td>
+                    <td>{{domheader.shift}}</td>
+                    <td>{{domheader.shiftstart}}</td>
+                    <td>{{domheader.shiftend}}</td>
+                    <td>{{domheader.solder}}</td>
+                    <td>{{domheader.machinepk}}</td>
+                    <td>
+                        <button type="submit"
+                                ui-sref="domheaderDetail({id:domheader.id})"
+                                class="btn btn-info btn-sm">
+                            <span class="glyphicon glyphicon-eye-open"></span>&nbsp;<span translate="entity.action.view"> View</span>
+                        </button>
+                        <button type="submit"
+                                ng-click="showUpdate(domheader.id)"
+                                class="btn btn-primary btn-sm">
+                            <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span translate="entity.action.edit"> Edit</span>
+                        </button>
+                        <button type="submit"
+                                ng-click="delete(domheader.id)"
+                                class="btn btn-danger btn-sm">
+                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span translate="entity.action.delete"> Delete</span>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

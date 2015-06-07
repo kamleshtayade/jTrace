@@ -1,0 +1,21 @@
+{
+    "jtraceApp": {
+        "domline" : {
+            "home": {
+                "title": "Domlines",
+                "createLabel": "Créer un nouveau Domline",
+                "createOrEditLabel": "Créer ou éditer un Domline"
+            },
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Domline {{ id }} ?"
+            },
+            "detail": {
+                "title": "Domline"
+            },
+            "serialno": "Serialno",
+            "scantime": "Scantime",
+            "domheader": "domheader"
+        }
+    }
+}
+

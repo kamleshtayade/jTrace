@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <property name="now" value="now()" dbms="mysql,h2"/>
+    <property name="now" value="current_timestamp" dbms="postgresql"/>
+
+    <!--
+        Added the entity Domheader.
+    -->
+    <changeSet id="20150606091341" author="jhipster">
+        <createTable tableName="DOMHEADER">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="is_auto" type="bit"/>
+            <column name="cycle_time" type="integer"/>
+            <column name="is_multi" type="bit"/>
+            <column name="panel_qty" type="integer"/>
+            <column name="opr" type="varchar(255)"/>
+            <column name="shiftsup" type="varchar(255)"/>
+            <column name="shift" type="varchar(255)"/>
+            <column name="shiftstart" type="timestamp"/>
+            <column name="shiftend" type="timestamp"/>
+            <column name="solder" type="varchar(255)"/>
+            <column name="machinepk" type="integer"/>
+        </createTable>
+        <dropDefaultValue tableName="DOMHEADER" columnName="shiftstart" columnDataType="datetime"/>
+
+        <dropDefaultValue tableName="DOMHEADER" columnName="shiftend" columnDataType="datetime"/>
+
+        
+    </changeSet>
+</databaseChangeLog>

@@ -29,14 +29,19 @@
         <div ng-show="{{ENV === 'dev'}}" class="development" ng-cloak=""></div>
         <div ui-view="navbar" ng-cloak=""></div>
         <div class="container">
-            <div class="row">
+            <!-- animate:container transition -->
+            <div class="row"> 
                 <div class = "view-animate-container">
                     <div ui-view="content" class="view-animate"></div>
                     <div ui-view="footer"></div>
                 </div>
-                    <!--<div ui-view="content"></div>
-                    <div ui-view="footer"></div>-->
             </div>
+            <!-- endanimate:container transition -->
+
+            <!-- withoutanimate:container transition -->
+            <!--<div ui-view="content"></div>
+            <div ui-view="footer"></div>-->
+            <!-- endwithoutanimate:container transition -->
         </div>
 
         <!-- Google Analytics: uncomment and change UA-XXXXX-X to be your site's ID.
@@ -86,6 +91,7 @@
         <script src="bower_components/angular-datatables/dist/plugins/tabletools/angular-datatables.tabletools.js"></script>
         <script src="bower_components/barcode-jquery/jquery-barcode.js"></script>
         <script src="bower_components/barcode-jquery/jquery-barcode.min.js"></script>
+        <script src="bower_components/angular-flash/dist/angular-flash.js"></script>
         <!-- endbower -->
         <!-- endbuild -->
 
@@ -228,6 +234,14 @@
         <script src="scripts/app/entities/bomheader/bomheader.controller.js"></script>
         <script src="scripts/app/entities/bomheader/bomheader-detail.controller.js"></script>
         <script src="scripts/components/entities/bomheader/bomheader.service.js"></script>
+        <script src="scripts/app/entities/domheader/domheader.js"></script>
+        <script src="scripts/app/entities/domheader/domheader.controller.js"></script>
+        <script src="scripts/app/entities/domheader/domheader-detail.controller.js"></script>
+        <script src="scripts/components/entities/domheader/domheader.service.js"></script>
+        <script src="scripts/app/entities/domline/domline.js"></script>
+        <script src="scripts/app/entities/domline/domline.controller.js"></script>
+        <script src="scripts/app/entities/domline/domline-detail.controller.js"></script>
+        <script src="scripts/components/entities/domline/domline.service.js"></script>
         <!-- endbuild -->
 </body>
 </html>

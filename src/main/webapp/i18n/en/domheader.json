@@ -1,0 +1,28 @@
+{
+    "jtraceApp": {
+        "domheader" : {
+            "home": {
+                "title": "Date of Manufacturing",
+                "createLabel": "Create a new DOM",
+                "createOrEditLabel": "Create or edit a DOM"
+            },
+            "delete": {
+                "question": "Are you sure you want to delete DOM {{ id }}?"
+            },
+            "detail": {
+                "title": "Date of Manufacturing"
+            },
+            "isAuto": "Is Auto Scan",
+            "cycleTime": "Cycle Time(sec)",
+            "isMulti": "Is Multi Panel",
+            "panelQty": "Panel Qty",
+            "opr": "Operator",
+            "shiftsup": "Shift Supervisor",
+            "shift": "Shift A/B/C",
+            "shiftstart": "Shift Start",
+            "shiftend": "Shift End",
+            "solder": "Solder Paste",
+            "machinepk": "Machine"
+        }
+    }
+}

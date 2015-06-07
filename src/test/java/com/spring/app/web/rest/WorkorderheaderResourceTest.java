@@ -44,6 +44,8 @@ public class WorkorderheaderResourceTest {
     private static final String UPDATED_KIT_NUMBER = "UPDATED_TEXT";
     private static final String DEFAULT_STATUS = "SAMPLE_TEXT";
     private static final String UPDATED_STATUS = "UPDATED_TEXT";
+    private static final String DEFAULT_ITEMSERIAL = "SAMPLE_TEXT";
+    private static final String UPDATE_ITEMSERIAL = "UPDATED_TEXT";
 
     private static final Integer DEFAULT_QTY = 0;
     private static final Integer UPDATED_QTY = 1;
@@ -70,6 +72,7 @@ public class WorkorderheaderResourceTest {
         workorderheader.setKitNumber(DEFAULT_KIT_NUMBER);
         workorderheader.setStatus(DEFAULT_STATUS);
         workorderheader.setQty(DEFAULT_QTY);
+        workorderheader.setItemserial(DEFAULT_ITEMSERIAL);
     }
 
     @Test
@@ -91,6 +94,7 @@ public class WorkorderheaderResourceTest {
         assertThat(testWorkorderheader.getKitNumber()).isEqualTo(DEFAULT_KIT_NUMBER);
         assertThat(testWorkorderheader.getStatus()).isEqualTo(DEFAULT_STATUS);
         assertThat(testWorkorderheader.getQty()).isEqualTo(DEFAULT_QTY);
+        assertThat(testWorkorderheader.getItemserial()).isEqualTo(DEFAULT_ITEMSERIAL);
     }
 
     @Test
@@ -107,7 +111,8 @@ public class WorkorderheaderResourceTest {
                 .andExpect(jsonPath("$.[*].woNumber").value(hasItem(DEFAULT_WO_NUMBER.toString())))
                 .andExpect(jsonPath("$.[*].kitNumber").value(hasItem(DEFAULT_KIT_NUMBER.toString())))
                 .andExpect(jsonPath("$.[*].status").value(hasItem(DEFAULT_STATUS.toString())))
-                .andExpect(jsonPath("$.[*].qty").value(hasItem(DEFAULT_QTY)));
+                .andExpect(jsonPath("$.[*].qty").value(hasItem(DEFAULT_QTY)))
+                .andExpect(jsonPath("$.[*].itemserial").value(hasItem(DEFAULT_ITEMSERIAL.toString())));
     }
 
     @Test
@@ -124,7 +129,8 @@ public class WorkorderheaderResourceTest {
             .andExpect(jsonPath("$.woNumber").value(DEFAULT_WO_NUMBER.toString()))
             .andExpect(jsonPath("$.kitNumber").value(DEFAULT_KIT_NUMBER.toString()))
             .andExpect(jsonPath("$.status").value(DEFAULT_STATUS.toString()))
-            .andExpect(jsonPath("$.qty").value(DEFAULT_QTY));
+            .andExpect(jsonPath("$.qty").value(DEFAULT_QTY))
+            .andExpect(jsonPath("$.itemserial").value(DEFAULT_ITEMSERIAL));
     }
 
     @Test
@@ -148,6 +154,7 @@ public class WorkorderheaderResourceTest {
         workorderheader.setKitNumber(UPDATED_KIT_NUMBER);
         workorderheader.setStatus(UPDATED_STATUS);
         workorderheader.setQty(UPDATED_QTY);
+        workorderheader.setItemserial(UPDATE_ITEMSERIAL);
         restWorkorderheaderMockMvc.perform(put("/api/workorderheaders")
                 .contentType(TestUtil.APPLICATION_JSON_UTF8)
                 .content(TestUtil.convertObjectToJsonBytes(workorderheader)))
@@ -161,6 +168,7 @@ public class WorkorderheaderResourceTest {
         assertThat(testWorkorderheader.getKitNumber()).isEqualTo(UPDATED_KIT_NUMBER);
         assertThat(testWorkorderheader.getStatus()).isEqualTo(UPDATED_STATUS);
         assertThat(testWorkorderheader.getQty()).isEqualTo(UPDATED_QTY);
+        assertThat(testWorkorderheader.getItemserial()).isEqualTo(UPDATE_ITEMSERIAL);
     }
 
     @Test

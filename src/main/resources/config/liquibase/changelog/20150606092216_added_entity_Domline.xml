@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <property name="now" value="now()" dbms="mysql,h2"/>
+    <property name="now" value="current_timestamp" dbms="postgresql"/>
+
+    <!--
+        Added the entity Domline.
+    -->
+    <changeSet id="20150606092216" author="jhipster">
+        <createTable tableName="DOMLINE">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="serialno" type="varchar(255)"/>
+            <column name="scantime" type="timestamp"/>
+            <column name="domheader_id" type="bigint"/>
+        </createTable>
+        <dropDefaultValue tableName="DOMLINE" columnName="scantime" columnDataType="datetime"/>
+
+        
+        <addForeignKeyConstraint baseColumnNames="domheader_id"
+                                 baseTableName="DOMLINE"
+                                 constraintName="fk_domline_domheader_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="DOMHEADER"/>
+
+    </changeSet>
+</databaseChangeLog>

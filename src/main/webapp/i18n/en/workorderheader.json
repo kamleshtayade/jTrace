@@ -17,7 +17,8 @@
             "status": "Status",
             "qty": "Qty",
             "itemmtr": "Item",
-            "plantmfgline": "Plant MFG Line",            
+            "plantmfgline": "Plant MFG Line", 
+            "itemserial": "Item Serial numbers",           
             "workorderline" : {
                 "home": {
                     "title": "Work Order Lines",

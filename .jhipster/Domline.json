@@ -1,0 +1,45 @@
+{
+    "relationships": [
+        {
+            "relationshipId": 1,
+            "relationshipName": "domheader",
+            "relationshipNameCapitalized": "Domheader",
+            "relationshipFieldName": "domheader",
+            "otherEntityName": "domheader",
+            "relationshipType": "many-to-one",
+            "otherEntityNameCapitalized": "Domheader",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldId": 1,
+            "fieldName": "serialno",
+            "fieldType": "String",
+            "fieldNameCapitalized": "Serialno",
+            "fieldNameUnderscored": "serialno",
+            "fieldInJavaBeanMethod": "Serialno",
+            "fieldValidate": false
+        },
+        {
+            "fieldId": 2,
+            "fieldName": "scantime",
+            "fieldType": "DateTime",
+            "fieldNameCapitalized": "Scantime",
+            "fieldNameUnderscored": "scantime",
+            "fieldInJavaBeanMethod": "Scantime",
+            "fieldValidate": false
+        }
+    ],
+    "fieldsContainOwnerManyToMany": false,
+    "fieldsContainOwnerOneToOne": false,
+    "fieldsContainOneToMany": false,
+    "fieldsContainLocalDate": false,
+    "fieldsContainCustomTime": true,
+    "fieldsContainBigDecimal": false,
+    "fieldsContainDateTime": true,
+    "fieldsContainDate": false,
+    "changelogDate": "20150606092216",
+    "pagination": "infinite-scroll",
+    "validation": false
+}

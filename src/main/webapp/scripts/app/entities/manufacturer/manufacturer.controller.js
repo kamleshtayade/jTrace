@@ -2,7 +2,9 @@
  angular.module('jtraceApp').controller('ManufacturerController',ManufacturerController);
  function ManufacturerController($scope,$resource,Manufacturer,ParseLinks,DTOptionsBuilder,DTColumnBuilder,DTColumnDefBuilder) {
       $scope.manufacturers=[];
-      $scope.dtOptions = DTOptionsBuilder.newOptions().withPaginationType('full_numbers').withDisplayLength(10);
+      $scope.dtOptions = DTOptionsBuilder.newOptions().withPaginationType('full_numbers')
+            .withBootstrap()            
+            .withDisplayLength(10);
       $scope.dtColumns = [
         DTColumnDefBuilder.newColumnDef(0),
         DTColumnDefBuilder.newColumnDef(1),

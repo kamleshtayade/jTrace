@@ -461,3 +461,99 @@ ul#strength {
   text-align: center;
 }
 /* End: BarCode*/
+
+/* Start: Navbar menu button
+
+#menubutton {
+  color: #F64747;
+  position: fixed;
+  left: 5px;
+  top: 12px;
+  z-index: 1001;
+  padding-left: 5px;
+}
+
+#accordion {
+  width: 150px;
+  position: fixed;
+  left: 0;
+  top: 12px;
+  background-color: #707070;
+  border-radius: 5px;
+  z-index: 1001;
+}
+
+#accordion, .homepanel, .entitymenu, .itemmenu, .plantmenu,
+  .organizationmenu, .languagemenu, .administrationmenu {
+  border-style: none;
+}
+
+.sidebarlist {
+  list-style-type: none;
+  padding: 0;
+}
+
+.fa-search {
+  color: #FFFFFF;
+}
+
+.panel-group {
+  margin-bottom: -5px;;
+}
+
+#entitybody {
+  padding: 5px 0 5px 10px;
+  background-color: #707070;
+}
+
+#itempanel, #plantpanel, #organizationpanel {
+  padding: 0;
+}
+
+h5 {
+  font-size: 15px;
+}
+
+.home, .entity, .item, .plant, .organization, .language, .administration,
+  .list {
+  color: #000000;
+}
+
+.list {
+  font-size: 13px;
+}
+
+h4 {
+  font-size: 14px;
+}
+
+#collapse4, #collapse5 {
+  background-color: #FFFFFF;
+}
+
+#collapse4 {
+  color: #FFFFFF;
+}
+
+#home-a, #entity-a, #item-a, #plant-a, #organization-a, #language-a,
+  #administration-a {
+  text-decoration: none;
+}
+
+#itemmtr-a, #itemcat-a, #itemsubcat-a, #itemctn-a, #plantentity-a,
+  #plantmfgline-a, #plantsection-a, #plantmc-a, #organizationentity-a,
+  #manufacturer-a, #supplier-a, #metrics-a, #health-a, #configuration-a,
+  #audits-a, #logs-a, #docs-a {
+  text-decoration-color: #000000;
+}
+
+.homeheading, .entityheading, .itemheading, #itembody, .plantheading,
+  #plantbody, .organizationheading, #organizationbody, .languageheading,
+  #languagebody, .administrationheading, #administrationbody {
+  padding: 1px 0 1px 10px;
+}
+
+#langlist {
+  margin-left: -50px;
+}
+End: Navbar menu button*/

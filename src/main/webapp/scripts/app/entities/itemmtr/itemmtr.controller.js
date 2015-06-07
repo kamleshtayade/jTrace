@@ -57,7 +57,7 @@ angular.module('jtraceApp')
             its composit number created with combination of 
             Class code , Unique Number and revision 
 
-            present : class code - from subcatorgy
+            0.2.6   : class code - from subcatorgy
                     : Unique Number - Item master entity record id
                     : revision - 01 
         **/

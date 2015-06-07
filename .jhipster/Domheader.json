@@ -1,0 +1,115 @@
+{
+    "relationships": [],
+    "fields": [
+        {
+            "fieldId": 1,
+            "fieldName": "isAuto",
+            "fieldType": "Boolean",
+            "fieldNameCapitalized": "IsAuto",
+            "fieldNameUnderscored": "is_auto",
+            "fieldInJavaBeanMethod": "IsAuto",
+            "fieldValidate": false
+        },
+        {
+            "fieldId": 2,
+            "fieldName": "cycleTime",
+            "fieldType": "Integer",
+            "fieldNameCapitalized": "CycleTime",
+            "fieldNameUnderscored": "cycle_time",
+            "fieldInJavaBeanMethod": "CycleTime",
+            "fieldValidate": false
+        },
+        {
+            "fieldId": 3,
+            "fieldName": "isMulti",
+            "fieldType": "Boolean",
+            "fieldNameCapitalized": "IsMulti",
+            "fieldNameUnderscored": "is_multi",
+            "fieldInJavaBeanMethod": "IsMulti",
+            "fieldValidate": false
+        },
+        {
+            "fieldId": 4,
+            "fieldName": "panelQty",
+            "fieldType": "Integer",
+            "fieldNameCapitalized": "PanelQty",
+            "fieldNameUnderscored": "panel_qty",
+            "fieldInJavaBeanMethod": "PanelQty",
+            "fieldValidate": false
+        },
+        {
+            "fieldId": 5,
+            "fieldName": "opr",
+            "fieldType": "String",
+            "fieldNameCapitalized": "Opr",
+            "fieldNameUnderscored": "opr",
+            "fieldInJavaBeanMethod": "Opr",
+            "fieldValidate": false
+        },
+        {
+            "fieldId": 6,
+            "fieldName": "shiftsup",
+            "fieldType": "String",
+            "fieldNameCapitalized": "Shiftsup",
+            "fieldNameUnderscored": "shiftsup",
+            "fieldInJavaBeanMethod": "Shiftsup",
+            "fieldValidate": false
+        },
+        {
+            "fieldId": 7,
+            "fieldName": "shift",
+            "fieldType": "String",
+            "fieldNameCapitalized": "Shift",
+            "fieldNameUnderscored": "shift",
+            "fieldInJavaBeanMethod": "Shift",
+            "fieldValidate": false
+        },
+        {
+            "fieldId": 8,
+            "fieldName": "shiftstart",
+            "fieldType": "DateTime",
+            "fieldNameCapitalized": "Shiftstart",
+            "fieldNameUnderscored": "shiftstart",
+            "fieldInJavaBeanMethod": "Shiftstart",
+            "fieldValidate": false
+        },
+        {
+            "fieldId": 9,
+            "fieldName": "shiftend",
+            "fieldType": "DateTime",
+            "fieldNameCapitalized": "Shiftend",
+            "fieldNameUnderscored": "shiftend",
+            "fieldInJavaBeanMethod": "Shiftend",
+            "fieldValidate": false
+        },
+        {
+            "fieldId": 10,
+            "fieldName": "solder",
+            "fieldType": "String",
+            "fieldNameCapitalized": "Solder",
+            "fieldNameUnderscored": "solder",
+            "fieldInJavaBeanMethod": "Solder",
+            "fieldValidate": false
+        },
+        {
+            "fieldId": 11,
+            "fieldName": "machinepk",
+            "fieldType": "Integer",
+            "fieldNameCapitalized": "Machinepk",
+            "fieldNameUnderscored": "machinepk",
+            "fieldInJavaBeanMethod": "Machinepk",
+            "fieldValidate": false
+        }
+    ],
+    "fieldsContainOwnerManyToMany": false,
+    "fieldsContainOwnerOneToOne": false,
+    "fieldsContainOneToMany": false,
+    "fieldsContainLocalDate": false,
+    "fieldsContainCustomTime": true,
+    "fieldsContainBigDecimal": false,
+    "fieldsContainDateTime": true,
+    "fieldsContainDate": false,
+    "changelogDate": "20150606091341",
+    "pagination": "infinite-scroll",
+    "validation": false
+}
