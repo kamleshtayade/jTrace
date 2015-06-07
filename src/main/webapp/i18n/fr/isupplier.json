@@ -1,0 +1,23 @@
+{
+    "jtraceApp": {
+        "isupplier" : {
+            "home": {
+                "title": "Isuppliers",
+                "createLabel": "Créer un nouveau Isupplier",
+                "createOrEditLabel": "Créer ou éditer un Isupplier"
+            },
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Isupplier {{ id }} ?"
+            },
+            "detail": {
+                "title": "Isupplier"
+            },
+            "code": "Code",
+            "isenabled": "Isenabled",
+            "remark": "Remark",
+            "address": "Address",
+            "imanufacturer": "imanufacturer"
+        }
+    }
+}
+

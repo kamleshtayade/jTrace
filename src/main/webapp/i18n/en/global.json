@@ -27,6 +27,8 @@
                 "bomheader": "Bill of Material",
                 "domheader": "Date of Manufacturing",
                 "domline": "DOM line",
+                "imanufacturer": "Imanufacturer",
+                "isupplier": "Isupplier",
                 "additionalEntity": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

@@ -1,21 +1,21 @@
 'use strict';
 
 angular.module('jtraceApp')
-    .controller('BomheaderController', function ($scope, Bomheader,Itemmtr, ParseLinks) {
-        $scope.bomheaders = [];
-        $scope.itemmtrs = Itemmtr.query();
+    .controller('ImanufacturerController', function ($scope, Imanufacturer, Isupplier, ParseLinks) {
+        $scope.imanufacturers = [];
+        $scope.isuppliers = Isupplier.query();
         $scope.page = 1;
         $scope.loadAll = function() {
-            Bomheader.query({page: $scope.page, per_page: 20}, function(result, headers) {
+            Imanufacturer.query({page: $scope.page, per_page: 20}, function(result, headers) {
                 $scope.links = ParseLinks.parse(headers('link'));
                 for (var i = 0; i < result.length; i++) {
-                    $scope.bomheaders.push(result[i]);
+                    $scope.imanufacturers.push(result[i]);
                 }
             });
         };
         $scope.reset = function() {
             $scope.page = 1;
-            $scope.bomheaders = [];
+            $scope.imanufacturers = [];
             $scope.loadAll();
         };
         $scope.loadPage = function(page) {
@@ -25,20 +25,20 @@ angular.module('jtraceApp')
         $scope.loadAll();
 
         $scope.showUpdate = function (id) {
-            Bomheader.get({id: id}, function(result) {
-                $scope.bomheader = result;
-                $('#saveBomheaderModal').modal('show');
+            Imanufacturer.get({id: id}, function(result) {
+                $scope.imanufacturer = result;
+                $('#saveImanufacturerModal').modal('show');
             });
         };
 
         $scope.save = function () {
-            if ($scope.bomheader.id != null) {
-                Bomheader.update($scope.bomheader,
+            if ($scope.imanufacturer.id != null) {
+                Imanufacturer.update($scope.imanufacturer,
                     function () {
                         $scope.refresh();
                     });
             } else {
-                Bomheader.save($scope.bomheader,
+                Imanufacturer.save($scope.imanufacturer,
                     function () {
                         $scope.refresh();
                     });
@@ -46,29 +46,29 @@ angular.module('jtraceApp')
         };
 
         $scope.delete = function (id) {
-            Bomheader.get({id: id}, function(result) {
-                $scope.bomheader = result;
-                $('#deleteBomheaderConfirmation').modal('show');
+            Imanufacturer.get({id: id}, function(result) {
+                $scope.imanufacturer = result;
+                $('#deleteImanufacturerConfirmation').modal('show');
             });
         };
 
         $scope.confirmDelete = function (id) {
-            Bomheader.delete({id: id},
+            Imanufacturer.delete({id: id},
                 function () {
                     $scope.reset();
-                    $('#deleteBomheaderConfirmation').modal('hide');
+                    $('#deleteImanufacturerConfirmation').modal('hide');
                     $scope.clear();
                 });
         };
 
         $scope.refresh = function () {
             $scope.reset();
-            $('#saveBomheaderModal').modal('hide');
+            $('#saveImanufacturerModal').modal('hide');
             $scope.clear();
         };
 
         $scope.clear = function () {
-            $scope.bomheader = {code: null, id: null};
+            $scope.imanufacturer = {name: null, isenabled: null, code: null, mfrcat: null, address: null, id: null};
             $scope.editForm.$setPristine();
             $scope.editForm.$setUntouched();
         };

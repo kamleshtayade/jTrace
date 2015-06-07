@@ -1,0 +1,23 @@
+{
+    "jtraceApp": {
+        "imanufacturer" : {
+            "home": {
+                "title": "Manufacturers",
+                "createLabel": "Create a new Manufacturer",
+                "createOrEditLabel": "Create or edit a Manufacturer"
+            },
+            "delete": {
+                "question": "Are you sure you want to delete Manufacturer {{ id }}?"
+            },
+            "detail": {
+                "title": "Manufacturer"
+            },
+            "name": "Name",
+            "isenabled": "IsActive",
+            "code": "Code",
+            "mfrcat": "Mfr Category",
+            "address": "Address",
+            "isupplier": "Supplier"
+        }
+    }
+}

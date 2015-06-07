@@ -1,0 +1,83 @@
+{
+    "relationships": [
+        {
+            "relationshipId": 1,
+            "relationshipName": "isupplier",
+            "relationshipNameCapitalized": "Isupplier",
+            "relationshipFieldName": "isupplier",
+            "otherEntityName": "isupplier",
+            "relationshipType": "many-to-many",
+            "otherEntityNameCapitalized": "Isupplier",
+            "ownerSide": false,
+            "otherEntityRelationshipName": "imanufacturer"
+        }
+    ],
+    "fields": [
+        {
+            "fieldId": 1,
+            "fieldName": "name",
+            "fieldType": "String",
+            "fieldNameCapitalized": "Name",
+            "fieldNameUnderscored": "name",
+            "fieldInJavaBeanMethod": "Name",
+            "fieldValidate": true,
+            "fieldValidateRules": [
+                "required",
+                "minlength"
+            ],
+            "fieldValidateRulesMinlength": "3"
+        },
+        {
+            "fieldId": 2,
+            "fieldName": "isenabled",
+            "fieldType": "Boolean",
+            "fieldNameCapitalized": "Isenabled",
+            "fieldNameUnderscored": "isenabled",
+            "fieldInJavaBeanMethod": "Isenabled",
+            "fieldValidate": false
+        },
+        {
+            "fieldId": 3,
+            "fieldName": "code",
+            "fieldType": "String",
+            "fieldNameCapitalized": "Code",
+            "fieldNameUnderscored": "code",
+            "fieldInJavaBeanMethod": "Code",
+            "fieldValidate": true,
+            "fieldValidateRules": [
+                "required",
+                "minlength"
+            ],
+            "fieldValidateRulesMinlength": "3"
+        },
+        {
+            "fieldId": 4,
+            "fieldName": "mfrcat",
+            "fieldType": "String",
+            "fieldNameCapitalized": "Mfrcat",
+            "fieldNameUnderscored": "mfrcat",
+            "fieldInJavaBeanMethod": "Mfrcat",
+            "fieldValidate": false
+        },
+        {
+            "fieldId": 5,
+            "fieldName": "address",
+            "fieldType": "String",
+            "fieldNameCapitalized": "Address",
+            "fieldNameUnderscored": "address",
+            "fieldInJavaBeanMethod": "Address",
+            "fieldValidate": false
+        }
+    ],
+    "fieldsContainOwnerManyToMany": false,
+    "fieldsContainOwnerOneToOne": false,
+    "fieldsContainOneToMany": false,
+    "fieldsContainLocalDate": false,
+    "fieldsContainCustomTime": false,
+    "fieldsContainBigDecimal": false,
+    "fieldsContainDateTime": false,
+    "fieldsContainDate": false,
+    "changelogDate": "20150607083225",
+    "pagination": "infinite-scroll",
+    "validation": true
+}

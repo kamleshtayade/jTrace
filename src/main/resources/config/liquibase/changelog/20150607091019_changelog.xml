@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
+   <changeSet author="ktayade (generated)" id="1433668230771-1">
+      <addColumn tableName="ITEMMFRPART">
+         <column name="supp_id" type="int8"/>
+      </addColumn>
+   </changeSet>
+   <changeSet author="ktayade (generated)" id="1433668230771-2">
+      <addForeignKeyConstraint baseColumnNames="supp_id"
+                               baseTableName="ITEMMFRPART"
+                               constraintName="FK_2ls2eul2jn2vg0q15u48i5sdt"
+                               deferrable="false"
+                               initiallyDeferred="false"
+                               referencedColumnNames="id"
+                               referencedTableName="ISUPPLIER"/>
+   </changeSet>
+   <changeSet author="ktayade (generated)" id="1433668230771-3">
+      <dropForeignKeyConstraint baseTableName="itemmfrpart"
+                                constraintName="FK_l2tt0kig3n9m56ulm87c7a0di"/>
+   </changeSet>
+   <changeSet author="ktayade (generated)" id="1433668230771-4">
+      <dropColumn columnName="sup_id" tableName="itemmfrpart"/>
+   </changeSet>
+</databaseChangeLog>

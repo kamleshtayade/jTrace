@@ -1,0 +1,77 @@
+{
+    "relationships": [
+        {
+            "relationshipId": 1,
+            "relationshipName": "imanufacturer",
+            "relationshipNameCapitalized": "Imanufacturer",
+            "relationshipFieldName": "imanufacturer",
+            "otherEntityName": "imanufacturer",
+            "relationshipType": "many-to-many",
+            "otherEntityNameCapitalized": "Imanufacturer",
+            "otherEntityField": "code",
+            "ownerSide": true
+        }
+    ],
+    "fields": [
+        {
+            "fieldId": 1,
+            "fieldName": "code",
+            "fieldType": "String",
+            "fieldNameCapitalized": "Code",
+            "fieldNameUnderscored": "code",
+            "fieldInJavaBeanMethod": "Code",
+            "fieldValidate": true,
+            "fieldValidateRules": [
+                "required",
+                "minlength"
+            ],
+            "fieldValidateRulesMinlength": "3"
+        },
+        {
+            "fieldId": 2,
+            "fieldName": "isenabled",
+            "fieldType": "Boolean",
+            "fieldNameCapitalized": "Isenabled",
+            "fieldNameUnderscored": "isenabled",
+            "fieldInJavaBeanMethod": "Isenabled",
+            "fieldValidate": false
+        },
+        {
+            "fieldId": 3,
+            "fieldName": "remark",
+            "fieldType": "String",
+            "fieldNameCapitalized": "Remark",
+            "fieldNameUnderscored": "remark",
+            "fieldInJavaBeanMethod": "Remark",
+            "fieldValidate": true,
+            "fieldValidateRules": [
+                "required",
+                "minlength"
+            ],
+            "fieldValidateRulesMinlength": "5"
+        },
+        {
+            "fieldId": 4,
+            "fieldName": "address",
+            "fieldType": "String",
+            "fieldNameCapitalized": "Address",
+            "fieldNameUnderscored": "address",
+            "fieldInJavaBeanMethod": "Address",
+            "fieldValidate": true,
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "fieldsContainOwnerManyToMany": true,
+    "fieldsContainOwnerOneToOne": false,
+    "fieldsContainOneToMany": false,
+    "fieldsContainLocalDate": false,
+    "fieldsContainCustomTime": false,
+    "fieldsContainBigDecimal": false,
+    "fieldsContainDateTime": false,
+    "fieldsContainDate": false,
+    "changelogDate": "20150607083657",
+    "pagination": "infinite-scroll",
+    "validation": true
+}

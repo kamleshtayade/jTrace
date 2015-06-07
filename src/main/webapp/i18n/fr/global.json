@@ -11,6 +11,8 @@
                 "bomheader": "Bomheader",
                 "domheader": "Domheader",
                 "domline": "Domline",
+                "imanufacturer": "Imanufacturer",
+                "isupplier": "Isupplier",
                 "additionalEntity": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

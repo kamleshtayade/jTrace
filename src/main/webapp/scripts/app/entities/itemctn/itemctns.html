@@ -131,9 +131,6 @@
                             <label translate="jtraceApp.itemctn.itemmtr">itemmtr</label>
                             <select class="form-control" name="itemmtr" ng-change="stateSelected()" ng-model="itemctn.itemmfrpart.itemmtr.id" ng-options="itemmtr.id as itemmtr.code for itemmtr in itemmtrs">
                             </select>
-                            <!--{{itemctn.itemmfrpart.itemmtr.code}}{{itemctn.itemmfrpart.sup.manufacturer.code}}
-                            <input type="text" class="form-control" name="itemmtr"
-                                   ng-model="itemctn.itemmfrpart.itemmtr.code" readonly>-->
                         </div>
                         <div class="col-md-6 form-group">
                             <label translate="jtraceApp.itemctn.itemmfrpart">itemmtrpart</label>
@@ -149,10 +146,11 @@
 
                             <!--<input type="text" ng-model="itemctn.itemmtr.id" typeahead="itemmtr.id as itemmtr.code for itemmtr in itemmtrs | filter:$viewValue | limitTo:8" class="form-control">-->
                         </div>
+
                         <div class="col-md-6 form-group">
                             <label translate="jtraceApp.itemctn.manufacturer">Manufacturer</label>
                             <select class="form-control" name="manufacturer" 
-                                   ng-model="itemctn.itemmfrpart.sup.manufacturer.id" ng-disabled="!itemctn.itemmfrpart.id" ng-options="manufacturer.id as manufacturer.code for manufacturer in manufacturers | filter:itemctn.itemmfrpart.sup.manufacturer.id" required>
+                                   ng-model="itemctn.itemmfrpart.manufacturer.id" ng-disabled="!itemctn.itemmfrpart.id" ng-options="itemmfrpart.manufacturer.id as itemmfrpart.manufacturer.code for itemmfrpart in itemmfrparts | filter:itemctn.itemmfrpart.id" required>
                             </select>
                             <div ng-show="editForm.manufacturer.$invalid">
                                 <p class="help-block"
@@ -163,8 +161,9 @@
                         </div>                        
                         <div class="col-md-6 form-group">
                             <label translate="jtraceApp.itemctn.supplierPartNo">Supplier Part No</label>
-                            <input type="text" class="form-control" name="supplierPartNo" 
-                                   ng-model="itemctn.itemmfrpart.supplier" required>
+                            <select class="form-control" name="supplierPartNo" 
+                                   ng-model="itemctn.itemmfrpart.supplier" ng-disabled="!itemctn.itemmfrpart.id" ng-options="itemmfrpart.supplier as itemmfrpart.supplier for itemmfrpart in itemmfrparts | filter:itemctn.itemmfrpart.id">
+                            </select>       
 
                             <div ng-show="editForm.supplierPartNo.$invalid">
                                 <p class="help-block"
@@ -177,7 +176,7 @@
                         <div class="col-md-6 form-group">
                             <label translate="jtraceApp.itemctn.supplier">Supplier</label>
                             <select class="form-control" name="supplier"
-                                   ng-model="itemctn.itemmfrpart.sup.id" ng-change="stateSelected()" ng-disabled="!itemctn.itemmfrpart.sup.manufacturer.id" ng-options="supplier.id as supplier.code for supplier in suppliers | filter:itemctn.itemmfrpart.sup.manufacturer.id" required>
+                                   ng-model="itemctn.itemmfrpart.isupplier.id" ng-change="stateSelected()" ng-disabled="!itemctn.itemmfrpart.id" ng-options="itemmfrpart.isupplier.id as itemmfrpart.isupplier.code for itemmfrpart in itemmfrparts | filter:itemctn.itemmfrpart.id">
                             </select>
                             <div ng-show="editForm.supplier.$invalid">
                                 <p class="help-block"
@@ -190,7 +189,7 @@
                             <label translate="jtraceApp.itemctn.poQty">PoQty</label>
                             <input type="number" class="form-control" name="poQty"
                                    ng-model="itemctn.poQty" required>
-
+  
                             <div ng-show="editForm.poQty.$invalid">
                                 <p class="help-block"
                                    ng-show="editForm.poQty.$error.required" translate="entity.validation.required">

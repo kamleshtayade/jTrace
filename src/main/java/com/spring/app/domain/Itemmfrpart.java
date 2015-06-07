@@ -42,14 +42,25 @@ public class Itemmfrpart implements Serializable {
     private Itemmtr itemmtr;
     
     @ManyToOne
-    private Supplier sup; //supplier details
+    private Imanufacturer manufacturer; 
 
-    public Supplier getSup() {
-		return sup;
+    @ManyToOne
+    private Isupplier isupplier; 
+    
+	public Isupplier getIsupplier() {
+		return isupplier;
 	}
 
-	public void setSup(Supplier sup) {
-		this.sup = sup;
+	public void setIsupplier(Isupplier isupplier) {
+		this.isupplier = isupplier;
+	}
+
+	public Imanufacturer getManufacturer() {
+		return manufacturer;
+	}
+
+	public void setManufacturer(Imanufacturer manufacturer) {
+		this.manufacturer = manufacturer;
 	}
 
 	public Long getId() {

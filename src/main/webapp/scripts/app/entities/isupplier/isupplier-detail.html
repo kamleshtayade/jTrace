@@ -1,0 +1,54 @@
+
+<div>
+    <h2><span translate="jtraceApp.isupplier.detail.title">Isupplier</span> {{isupplier.id}}</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th translate="entity.detail.field">Field</th>
+                    <th translate="entity.detail.value">Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <span translate="jtraceApp.isupplier.code">Code</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{isupplier.code}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="jtraceApp.isupplier.isenabled">Isenabled</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{isupplier.isenabled}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="jtraceApp.isupplier.remark">Remark</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{isupplier.remark}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="jtraceApp.isupplier.address">Address</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{isupplier.address}}" readonly>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button type="submit"
+            ui-sref="isupplier"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
+    </button>
+</div>

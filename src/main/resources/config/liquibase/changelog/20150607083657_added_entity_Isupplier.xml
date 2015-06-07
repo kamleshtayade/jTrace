@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <property name="now" value="now()" dbms="mysql,h2"/>
+    <property name="now" value="current_timestamp" dbms="postgresql"/>
+
+    <!--
+        Added the entity Isupplier.
+    -->
+    <changeSet id="20150607083657" author="jhipster">
+        <createTable tableName="ISUPPLIER">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="code" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="isenabled" type="bit"/>
+            <column name="remark" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="address" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+        
+        <createTable tableName="ISUPPLIER_IMANUFACTURER">
+            <column name="imanufacturers_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="isuppliers_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addPrimaryKey columnNames="isuppliers_id, imanufacturers_id" tableName="ISUPPLIER_IMANUFACTURER"/>
+
+        <addForeignKeyConstraint baseColumnNames="isuppliers_id"
+                                 baseTableName="ISUPPLIER_IMANUFACTURER"
+                                 constraintName="fk_isupplier_imanufacturer_imanufacturer_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="ISUPPLIER"/>
+
+        <addForeignKeyConstraint baseColumnNames="imanufacturers_id"
+                                 baseTableName="ISUPPLIER_IMANUFACTURER"
+                                 constraintName="fk_imanufacturer_imanufacturer_isupplier_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="IMANUFACTURER"/>
+        
+    </changeSet>
+</databaseChangeLog>

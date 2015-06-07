@@ -1,14 +1,14 @@
 'use strict';
 
 angular.module('jtraceApp')
-    .controller('ItemctnController', function ($scope, Itemctn, Itemmtr,Supplier,Manufacturer,Customer,Itemmfrpart, ParseLinks,DTOptionsBuilder,DTColumnBuilder,DTColumnDefBuilder) {
+    .controller('ItemctnController', function ($scope, Itemctn, Itemmtr,Isupplier,Imanufacturer,Customer,Itemmfrpart, ParseLinks,DTOptionsBuilder,DTColumnBuilder,DTColumnDefBuilder) {
         $scope.itemctns = [];
     		//$scope.itemctn = {};
     		$scope.id1 = {};
     		$scope.ctnId = "";
         $scope.itemmtrs = Itemmtr.query();
-        $scope.suppliers = Supplier.query();
-        $scope.manufacturers = Manufacturer.query();
+        $scope.suppliers = Isupplier.query();
+        $scope.manufacturers = Imanufacturer.query();
         $scope.customers = Customer.query();
         $scope.itemmfrparts = Itemmfrpart.query();
         $scope.page = 1;
@@ -34,10 +34,9 @@ angular.module('jtraceApp')
         };
 
         $scope.update = function (id) {
-			debugger;
+			  debugger;
             Itemctn.get({id: id}, function(result) {
                 $scope.itemctn = result;
-                $scope.itemctn.ctn = $scope.itemctn.ctn + $scope.itemctn.id;
                 $('#saveItemctnModal').modal('show');
             });
         };
@@ -197,17 +196,21 @@ angular.module('jtraceApp')
         /*CTN Tokanize*/
         $scope.stateSelected = function() {
           $scope.totalStr = "";
-          $scope.manuCode = $scope.itemctn.itemmfrpart.sup.id;
+          $scope.manuCode = $scope.itemctn.itemmfrpart.manufacturer.id;
           $scope.codeSelected = "";
           $scope.itemCode = "";
           $scope.itemCode = $scope.itemctn.itemmfrpart.itemmtr.id;
 
           var itemS = $scope.itemctn.lotCode;
           var itemS2 = $scope.itemctn.dateCode;
+          var itemctn = $scope.itemctn.id;
+          if($scope.itemmtr.id == null){
+                itemctn = 'XXXX';
+          }
 
-          for (var i = 0; i < $scope.suppliers.length; i++) {
-            if ($scope.suppliers[i].id == $scope.manuCode) {
-              $scope.codeSelected1 = $scope.suppliers[i].code
+          for (var i = 0; i < $scope.manufacturers.length; i++) {
+            if ($scope.manufacturers[i].id == $scope.manuCode) {
+              $scope.codeSelected1 = $scope.manufacturers[i].code
             }
           }
           if ($scope.manuCode != null) {

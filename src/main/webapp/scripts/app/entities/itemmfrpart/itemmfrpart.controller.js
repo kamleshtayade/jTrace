@@ -1,11 +1,11 @@
 'use strict';
 
 angular.module('jtraceApp')
-    .controller('ItemmfrpartController', function ($scope, Itemmfrpart, Itemmtr,Supplier,Manufacturer, ParseLinks,DTOptionsBuilder,DTColumnBuilder,DTColumnDefBuilder) {
+    .controller('ItemmfrpartController', function ($scope, Itemmfrpart, Itemmtr,Isupplier,Imanufacturer, ParseLinks,DTOptionsBuilder,DTColumnBuilder,DTColumnDefBuilder) {
         $scope.itemmfrparts = [];
         $scope.itemmtrs = Itemmtr.query();
-        $scope.suppliers = Supplier.query();
-        $scope.manufacturers = Manufacturer.query();
+        $scope.suppliers = Isupplier.query();
+        $scope.manufacturers = Imanufacturer.query();
         $scope.page = 1;
         $scope.loadAll = function() {
             Itemmfrpart.query({page: $scope.page, per_page: 20}, function(result, headers) {

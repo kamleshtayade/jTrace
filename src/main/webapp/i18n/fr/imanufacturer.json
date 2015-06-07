@@ -1,0 +1,24 @@
+{
+    "jtraceApp": {
+        "imanufacturer" : {
+            "home": {
+                "title": "Imanufacturers",
+                "createLabel": "Créer un nouveau Imanufacturer",
+                "createOrEditLabel": "Créer ou éditer un Imanufacturer"
+            },
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Imanufacturer {{ id }} ?"
+            },
+            "detail": {
+                "title": "Imanufacturer"
+            },
+            "name": "Name",
+            "isenabled": "Isenabled",
+            "code": "Code",
+            "mfrcat": "Mfrcat",
+            "address": "Address",
+            "isupplier": "isupplier"
+        }
+    }
+}
+
