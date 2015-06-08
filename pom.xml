@@ -11,7 +11,7 @@
 
     <groupId>com.spring.app</groupId>
     <artifactId>jtrace</artifactId>
-    <version>0.2.7</version>
+    <version>0.2.8</version>
     <packaging>war</packaging>
 
     <name>jtrace</name>
@@ -357,6 +357,15 @@
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-messaging</artifactId>
             <version>${spring-security.version}</version>
+        </dependency>
+        <!-- jms -->
+        <dependency>
+        	<groupId>org.springframework</groupId>
+        	<artifactId>spring-jms</artifactId>
+        </dependency>
+        <dependency>
+        	<groupId>org.apache.activemq</groupId>
+        	<artifactId>activemq-broker</artifactId>
         </dependency>
         <!-- reporting -->
     </dependencies>

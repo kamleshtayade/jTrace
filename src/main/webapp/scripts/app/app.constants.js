@@ -4,6 +4,6 @@ angular.module('jtraceApp')
 
 .constant('ENV', 'dev')
 
-.constant('VERSION', '0.2.7')
+.constant('VERSION', '0.2.8')
 
 ;
