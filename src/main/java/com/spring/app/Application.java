@@ -111,6 +111,6 @@ public class Application {
     /**
      * Apache JMS consumer/receiver call - raw way
      */
-	Thread t = new Thread(new ConsumerClient());
+	/*Thread t = new Thread(new ConsumerClient());*/
 	
 }
