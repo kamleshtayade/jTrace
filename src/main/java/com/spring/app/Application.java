@@ -22,6 +22,7 @@ import org.springframework.jms.annotation.EnableJms;
 
 import com.google.common.base.Joiner;
 import com.spring.app.config.Constants;
+import com.spring.app.jms.ConsumerClient;
 
 @ComponentScan
 @EnableJms
@@ -106,4 +107,10 @@ public class Application {
             "liquibase.structure", "liquibase.structurecompare", "liquibase.lockservice",
             "liquibase.ext", "liquibase.changelog"));
     }
+    
+    /**
+     * Apache JMS consumer/receiver call - raw way
+     */
+/*	Thread t = new Thread(new ConsumerClient());
+	t.start();*/
 }
