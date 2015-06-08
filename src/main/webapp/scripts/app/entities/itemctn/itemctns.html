@@ -125,7 +125,7 @@
                         <div class="col-md-6 form-group">
                             <label translate="jtraceApp.itemctn.ctn">Ctn</label>
                             <input type="text" class="form-control" name="ctn"
-                                   ng-model="itemctn.ctn">
+                                   ng-model="itemctn.ctn" readonly>
                         </div>
                         <div class="col-md-6 form-group">
                             <label translate="jtraceApp.itemctn.itemmtr">itemmtr</label>
@@ -149,7 +149,7 @@
 
                         <div class="col-md-6 form-group">
                             <label translate="jtraceApp.itemctn.manufacturer">Manufacturer</label>
-                            <select class="form-control" name="manufacturer" 
+                            <select class="form-control" name="manufacturer" ng-change="stateSelected()" 
                                    ng-model="itemctn.itemmfrpart.manufacturer.id" ng-disabled="!itemctn.itemmfrpart.id" ng-options="itemmfrpart.manufacturer.id as itemmfrpart.manufacturer.code for itemmfrpart in itemmfrparts | filter:itemctn.itemmfrpart.id" required>
                             </select>
                             <div ng-show="editForm.manufacturer.$invalid">
@@ -176,7 +176,7 @@
                         <div class="col-md-6 form-group">
                             <label translate="jtraceApp.itemctn.supplier">Supplier</label>
                             <select class="form-control" name="supplier"
-                                   ng-model="itemctn.itemmfrpart.isupplier.id" ng-change="stateSelected()" ng-disabled="!itemctn.itemmfrpart.id" ng-options="itemmfrpart.isupplier.id as itemmfrpart.isupplier.code for itemmfrpart in itemmfrparts | filter:itemctn.itemmfrpart.id">
+                                   ng-model="itemctn.itemmfrpart.isupplier.id" ng-disabled="!itemctn.itemmfrpart.id" ng-options="itemmfrpart.isupplier.id as itemmfrpart.isupplier.code for itemmfrpart in itemmfrparts | filter:itemctn.itemmfrpart.id">
                             </select>
                             <div ng-show="editForm.supplier.$invalid">
                                 <p class="help-block"

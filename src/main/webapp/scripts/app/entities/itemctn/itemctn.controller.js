@@ -183,11 +183,10 @@ angular.module('jtraceApp')
 
         $scope.clear = function () {
             $scope.itemctn = {ctn: null, reqdQty: null, recdDt: null, item: null, srNoTo: null, selfLife: null, poQty: null, invoice: null, id: null};
-			$scope.itemctn.itemmfrpart = {}
-             $scope.itemctn.itemmfrpart.sup = {} 			
-            $scope.itemctn.itemmfrpart.sup.id =  null
-			 $scope.itemctn.itemmfrpart.itemmtr = {};
-			 
+			      $scope.itemctn.itemmfrpart = {}
+            $scope.itemctn.itemmfrpart.manufacturer = {} 			
+            $scope.itemctn.itemmfrpart.manufacturer.id =  null
+			      $scope.itemctn.itemmfrpart.itemmtr = {};
             //$scope.itemctn.itemmfrpart.itemmtr = {id: null};
             $scope.editForm.$setPristine();
             $scope.editForm.$setUntouched();
@@ -195,6 +194,7 @@ angular.module('jtraceApp')
 
         /*CTN Tokanize*/
         $scope.stateSelected = function() {
+          debugger;
           $scope.totalStr = "";
           $scope.manuCode = $scope.itemctn.itemmfrpart.manufacturer.id;
           $scope.codeSelected = "";
@@ -203,9 +203,9 @@ angular.module('jtraceApp')
 
           var itemS = $scope.itemctn.lotCode;
           var itemS2 = $scope.itemctn.dateCode;
-          var itemctn = $scope.itemctn.id;
-          if($scope.itemmtr.id == null){
-                itemctn = 'XXXX';
+          var ctnitem = $scope.itemctn.id;
+          if($scope.itemctn.id == null){
+                ctnitem = 'XXXX';
           }
 
           for (var i = 0; i < $scope.manufacturers.length; i++) {
@@ -214,7 +214,7 @@ angular.module('jtraceApp')
             }
           }
           if ($scope.manuCode != null) {
-            var itemC12 = $scope.codeSelected1.substring(1, 3);
+            var itemC12 = $scope.codeSelected1.substring(0, 3);
             $scope.totalStr = $scope.totalStr + itemC12
             $scope.itemctn.ctn = $scope.totalStr
           }
@@ -235,8 +235,7 @@ angular.module('jtraceApp')
           }
           if (itemS2 != null) {
             var itemS21 = $scope.itemctn.dateCode.slice($scope.itemctn.dateCode.length - 4, $scope.itemctn.dateCode.length);
-            $scope.totalStr = $scope.totalStr + itemS21;
-            $scope.totalStr3 = itemS1
+            $scope.totalStr = $scope.totalStr + itemS21+ctnitem;
             $scope.itemctn.ctn = $scope.totalStr
           }
 
