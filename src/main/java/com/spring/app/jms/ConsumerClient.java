@@ -21,7 +21,8 @@ import org.slf4j.LoggerFactory;
  * @author ktayade
  *
  */
-public abstract class ConsumerClient implements Runnable {
+
+public class ConsumerClient extends AbstractConsumerClient {
 	
 	private final Logger log = LoggerFactory.getLogger(ConsumerClient.class);
 	
