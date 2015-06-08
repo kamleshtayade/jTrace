@@ -3,7 +3,9 @@ package com.spring.app.web.rest;
 import com.codahale.metrics.annotation.Timed;
 import com.spring.app.domain.Itemctn;
 import com.spring.app.repository.ItemctnRepository;
+import com.spring.app.web.rest.util.CodeUtil;
 import com.spring.app.web.rest.util.PaginationUtil;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
@@ -15,9 +17,12 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.inject.Inject;
 import javax.validation.Valid;
+
 import java.net.URI;
 import java.net.URISyntaxException;
+
 import javax.servlet.http.HttpServletResponse;
+
 import java.util.List;
 
 /**
@@ -45,6 +50,9 @@ public class ItemctnResource {
             return ResponseEntity.badRequest().header("Failure", "A new itemctn cannot already have an ID").build();
         }
         itemctnRepository.save(itemctn);
+        itemctn.setCtn(CodeUtil.generateCode(itemctn.getCtn(), itemctn.getId()));
+        itemctnRepository.save(itemctn);
+        
         return ResponseEntity.created(new URI("/api/itemctns/" + itemctn.getId())).build();
     }
 

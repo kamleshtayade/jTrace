@@ -15,6 +15,10 @@ import org.slf4j.LoggerFactory;
  *
  * Utility class for code generation
  */
+/**
+ * @author ktayade
+ *
+ */
 public class CodeUtil {
 	
 	private final Logger log = LoggerFactory.getLogger(CodeUtil.class);
@@ -77,6 +81,23 @@ public class CodeUtil {
 		 */
 
 		return code.substring(1);
+	}
+	
+	/**
+	 * generateCode
+	 * 
+	 * used by ItemCTN 
+	 *
+	 * 0.2.8 - to replace XXXX with row id
+	 * 
+	 * @param string - string to replace
+	 * @param uniqueNumber - Unique Long as generated entity Id
+	 * @return
+	 */
+	public static String generateCode(String string, Long uniqueNumber){
+		String code = "";
+		code = string.replaceAll("XXXX", uniqueNumber.toString());
+		return code;
 	}
 
 }
