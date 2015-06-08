@@ -63,6 +63,8 @@ public class WorkorderheaderResource {
             return ResponseEntity.badRequest().header("Failure", "A new workorderheader cannot already have an ID").build();
         }
         workorderheaderRepository.save(workorderheader);
+        workorderheader.setItemserial(CodeUtil.generateCode("WOSerial", workorderheader.getId(), workorderheader.getQty()));
+        workorderheaderRepository.save(workorderheader);
         
         /**
          * Start - Add WOline entries         * 
@@ -85,8 +87,7 @@ public class WorkorderheaderResource {
         }
         /**
          *  End - Add Woline entries
-         */
-        log.debug("WOSerial"+CodeUtil.generateCode("WOSerial", workorderheader.getId(), 10));
+         */       
         return ResponseEntity.created(new URI("/api/workorderheaders/" + workorderheader.getId())).build();
     }
 
