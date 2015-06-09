@@ -16,7 +16,7 @@
          aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
-                <form name="editForm" role="form" novalidate show-validation>
+                <form name="editForm" role="form" novalidate ng-submit="create()" show-validation>
 
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
@@ -65,7 +65,7 @@
                         </div>
                         <div class="form-group">
                             <label translate="jtraceApp.itemmtr.itemsubcat">itemsubcat</label>
-                            <select class="form-control" name="itemsubcat" ng-change="loadSpec()" ng-model="itemmtr.itemsubcat.id" ng-disabled="!itemmtr.itemsubcat.itemcat.id" ng-options="itemsubcat.id as itemsubcat.name for itemsubcat in itemsubcats | filter:itemmtr.itemsubcat.itemcat.id" required>
+                            <select class="form-control" name="itemsubcat" ng-change="setCode()"  ng-model="itemmtr.itemsubcat.id" ng-disabled="!itemmtr.itemsubcat.itemcat.id" ng-options="itemsubcat.id as itemsubcat.name for itemsubcat in itemsubcats | filter:itemmtr.itemsubcat.itemcat.id" required>
                             </select>
                             <div ng-show="editForm.temmtr.itemsubcat.id.$invalid">
                                 <p class="help-block"
@@ -77,7 +77,7 @@
                         <div class="form-group">
                             <label translate="jtraceApp.itemmtr.specification">Specification</label>
                             <input type="text" class="form-control" name="specification"
-                                   ng-model="itemmtr.specification" readonly required ng-minlength="5">
+                                   ng-model="itemmtr.specification" required ng-minlength="5">
 
                             <div ng-show="editForm.specification.$invalid">
                                 <p class="help-block"
@@ -90,18 +90,17 @@
                                 </p>
                             </div>
                         </div>
+                        <!--{{ choices }}
                             <button class="btn btn-info" class="addfields" ng-click="addNewChoice()">Add More Specification</button>
-                            <button class="btn btn-info" ng-click="clearData()">Reset</button>
                             <fieldset data-ng-repeat="choice in choices" style="padding-top:10px">                
                                 <div class="form-group">
                                                 <div class="col-md-4">
-                                                    <select class="form-control" ng-model="choice.itemsubcat.name" ng-change="showSpecification()" ng-options="itemsubcat.name for itemsubcat in newSubCat1">
+                                                    <select class="form-control" ng-model="choice.choice1.name" ng-options="choice1.name for choice1 in colors">
                                                         
                                                     </select>
-
                                                 </div>
                                                 <div class="col-md-4">
-                                                    <input class="form-control" type="text" ng-model="choice.name" ng-change="showSpecification()" name="" placeholder="Enter Specification value">
+                                                    <input class="form-control" type="text" ng-model="choice.name" name="" placeholder="Enter Specification value">
                                                     
                                                 </div>
                                                 <div class="col-md-4">
@@ -109,13 +108,13 @@
                                                     <button class="btn btn-danger" class="form-control" class="remove" ng-show="$last" ng-click="removeChoice()">-</button>
                                                 </div>
                                 </div>                
-                            </fieldset> 
+                            </fieldset>-->  
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
                             <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
                         </button>
-                        <button type="submit" ng-disabled="editForm.$invalid" ng-click="create()" class="btn btn-primary">
+                        <button type="submit" ng-disabled="editForm.$invalid" class="btn btn-primary">
                             <span class="glyphicon glyphicon-save"></span>&nbsp;<span translate="entity.action.save">Save</span>
                         </button>
                     </div>
@@ -155,9 +154,9 @@
                 <tr>
                     <th translate="jtraceApp.itemmtr.code">Code</th>
                     <th translate="jtraceApp.itemmtr.description">Description</th>
+                    <th translate="jtraceApp.itemmtr.specification">Specification</th>
                     <th translate="jtraceApp.itemmtr.itemcat">itemcat</th>
                     <th translate="jtraceApp.itemmtr.itemsubcat">itemsubcat</th>
-                    <th translate="jtraceApp.itemmtr.specification">Specification</th>
                     <th></th>
                 </tr>
             </thead>
@@ -165,9 +164,9 @@
                 <tr ng-repeat="itemmtr in itemmtrs">
                     <td><a ui-sref="itemmtrDetail({id:itemmtr.id})">{{itemmtr.code}}</a></td>
                     <td>{{itemmtr.description}}</td>
+                    <td>{{itemmtr.specification}}</td>
                     <td>{{itemmtr.itemsubcat.itemcat.name}}</td>
                     <td>{{itemmtr.itemsubcat.name}}</td>
-                    <td>{{itemmtr.specification}}</td>
                     <td>
                         <button type="submit"
                                 ui-sref="itemmtrDetail({id:itemmtr.id})"

@@ -6,9 +6,9 @@ angular.module('jtraceApp')
         $scope.itemsubcats = Itemsubcat.query();
         $scope.itemcats = Itemcat.query();
 
-		$scope.newSubCat1 =[];
-		$scope.subCatValue = {};
-		/* Start : populate the dropdown values for add more specification*/ 
+/*      $scope.newSubCat1 =[];
+        $scope.subCatValue = {};
+       Start : populate the dropdown values for add more specification
         $scope.loadSpec = function() {
             Itemsubcat.query(function(result, headers) {
             var itemmtrs1 = [];
@@ -43,8 +43,8 @@ angular.module('jtraceApp')
             });
         };
 
-        /* End*/
-        /* Start : populate the data in specification textfield */ 
+--End--
+-- Start : populate the data in specification textfield 
         $scope.showSpecification = function() {
             $scope.dropValue2 = "";
             $scope.itemmtr.specification = ""; 
@@ -61,7 +61,7 @@ angular.module('jtraceApp')
                 }
             }
         };
-        /* End*/ 
+--End -- */      
 
         $scope.loadAll = function() {
             Itemmtr.query(function(result, headers) {
@@ -72,7 +72,7 @@ angular.module('jtraceApp')
         $scope.loadAll();
 
         $scope.create = function () {
-			$scope.removeChoice();
+//            $scope.removeChoice();
             Itemmtr.update($scope.itemmtr,
                 function () {
                     $scope.loadAll();
@@ -82,9 +82,9 @@ angular.module('jtraceApp')
         };
 
         $scope.update = function (id) {
-			$scope.removeChoice();
+//            $scope.removeChoice();
             Itemmtr.get({id: id}, function(result) {
-				Itemsubcat.query(function(result, headers) {
+/*          Itemsubcat.query(function(result, headers) {
             var itemmtrs1 = [];
             $scope.p = "";
             $scope.p = $scope.itemmtr.itemsubcat.id 
@@ -118,8 +118,7 @@ angular.module('jtraceApp')
                     $scope.newSubCat1 = itemmtrs1[i].spec1;
                     }
                 }
-            });
-
+            }); */                
                 $scope.itemmtr = result;
                 $('#saveItemmtrModal').modal('show');
             });
@@ -146,15 +145,15 @@ angular.module('jtraceApp')
             $scope.editForm.$setPristine();
             $scope.editForm.$setUntouched();
         };
-		$scope.clearData = function () {
-			$scope.itemmtr.specification = "";
-		};
 
+        $scope.clearData = function () {
+            $scope.itemmtr.specification = "";
+        };
+        
         /** Start: SetCode
             Item Master Code is required 
             its composit number created with combination of 
             Class code , Unique Number and revision 
-
             0.2.6   : class code - from subcatorgy
                     : Unique Number - Item master entity record id
                     : revision - 01 
