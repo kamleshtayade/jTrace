@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('jtraceApp')
-    .controller('BomlineController', function ($scope, Bomline,Bomheader, Itemmtr, Itemctn, ParseLinks) {
+    .controller('BomlineController', function ($scope, Bomline,Bomheader, Itemmtr, Itemctn, ParseLinks,flash) {
         $scope.bomlines = [];
         $scope.itemmtrs = Itemmtr.query();
         $scope.itemctns = Itemctn.query();
@@ -74,4 +74,16 @@ angular.module('jtraceApp')
             $scope.editForm.$setPristine();
             $scope.editForm.$setUntouched();
         };
+        /* Start Modified for Quanity and Ref Designator */
+        $scope.validate =function() {
+            $scope.mismatch = false;
+            var qty = $scope.bomline.quantity;
+            var rdesig = $scope.bomline.refdesignator.split(",");
+            if (qty != rdesig.length) {
+                $scope.mismatch = true;                
+                var msg="Reference Designtor and Quantity mismatch, Please review if needed";
+                flash.info=msg;
+            }
+        };            
+        /* End Modified for Quanity and Ref Designator */
     });
