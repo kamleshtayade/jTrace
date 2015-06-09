@@ -13,6 +13,8 @@
                 "domline": "Domline",
                 "imanufacturer": "Imanufacturer",
                 "isupplier": "Isupplier",
+                "workorderheader": "Workorderheader",
+                "workorderline": "Workorderline",
                 "additionalEntity": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

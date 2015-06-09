@@ -24,10 +24,17 @@
                         <h4 class="modal-title" id="myBomheaderLabel" translate="jtraceApp.bomheader.home.createOrEditLabel">Create or edit a Bomheader</h4>
                     </div>
                     <div class="modal-body">
+
                         <div class="form-group">
-                            <label>ID</label>
-                            <input type="text" class="form-control" name="id"
-                                   ng-model="bomheader.id" readonly>
+                            <label translate="jtraceApp.bomheader.itemmtr">itemmtr</label>
+                            <select class="form-control" name="itemmtr" ng-model="bomheader.itemmtr.id" ng-options="itemmtr.id as itemmtr.code for itemmtr in itemmtrs" required>
+                            </select>
+                            <div ng-show="editForm.itemmtr.$invalid">
+                                <p class="help-block"
+                                   ng-show="editForm.itemmtr.$error.required" translate="entity.validation.required">
+                                    This field is required.
+                                </p>
+                            </div>
                         </div>
 
                         <div class="form-group">
@@ -38,18 +45,6 @@
                             <div ng-show="editForm.code.$invalid">
                                 <p class="help-block"
                                    ng-show="editForm.code.$error.required" translate="entity.validation.required">
-                                    This field is required.
-                                </p>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label translate="jtraceApp.bomheader.itemmtr">itemmtr</label>
-                            <select class="form-control" name="itemmtr" ng-model="bomheader.itemmtr.id" ng-options="itemmtr.id as itemmtr.code for itemmtr in itemmtrs" required>
-                            </select>
-                            <div ng-show="editForm.itemmtr.$invalid">
-                                <p class="help-block"
-                                   ng-show="editForm.itemmtr.$error.required" translate="entity.validation.required">
                                     This field is required.
                                 </p>
                             </div>
@@ -98,15 +93,15 @@
         <table datatable="ng" dt-options="dtOptions" dt-columns="dtColumns" class="table table-condensed hover">
             <thead>
                 <tr>
-                    <th translate="jtraceApp.bomheader.code">Code</th>
                     <th translate="jtraceApp.bomheader.itemmtr">item</th>
+                    <th translate="jtraceApp.bomheader.code">Code</th>
                     <th></th>
                 </tr>
             </thead>
             <tbody infinite-scroll="loadPage(page + 1)" infinite-scroll-disabled="links['last'] == page">
                 <tr ng-repeat="bomheader in bomheaders">
-                    <td><a ui-sref="bomheaderDetail({id:bomheader.id})">{{bomheader.code}}</a></td>
-                    <td>{{bomheader.itemmtr.code}}</td>
+                    <td><a ui-sref="bomheaderDetail({id:bomheader.id})">{{bomheader.itemmtr.code}}</a></td>
+                    <td>{{bomheader.code}}</td>
                     <td>
                         <button type="submit"
                                 ui-sref="bomheaderDetail({id:bomheader.id})"

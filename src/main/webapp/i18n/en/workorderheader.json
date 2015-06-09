@@ -15,7 +15,7 @@
             "woNumber": "WO Number",
             "kitNumber": "Kit Number",
             "status": "Status",
-            "qty": "Qty",
+            "qty": "Quantity",
             "itemmtr": "Item",
             "plantmfgline": "Plant MFG Line", 
             "itemserial": "Item Serial numbers",           
