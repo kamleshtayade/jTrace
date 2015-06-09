@@ -71,12 +71,12 @@ public class WorkorderheaderResource {
          * POST /workorderlines --> Create new workorderlines base on BOM structure .
          */        
         Bomline bomline = null;
-        Workorderline woline = new Workorderline ();
         List<Bomline> bomlines = bomlineRepository.findByBomheader(bomheaderRepository.findByItemmtr(workorderheader.getItemmtr()));
         
         if(!bomlines.isEmpty()){
         	for(Object childBom : bomlines){
         		bomline = (Bomline) childBom;
+                Workorderline woline = new Workorderline ();
         		woline.setItemmtr(bomline.getItemmtr());
         		woline.setBomQty(bomline.getQuantity());
         		woline.setRequQty(bomline.getQuantity() * workorderheader.getQty());

@@ -13,6 +13,7 @@
                 "title": "Work Order Line"
             },
             "bomChildItem": "BOM Child Item",
+            "bomQty": "BOM Qty",
             "attrition": "Attrition",
             "requQty": "Required Qty",
             "issuedQty": "Issued Qty",
