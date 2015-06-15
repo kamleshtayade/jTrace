@@ -1,166 +1,189 @@
-<div>
+<div class="container">
 
-    <h2 translate="jtraceApp.plantmc.home.title">Plantmc</h2>
 
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4">
-                <button class="btn btn-primary" data-toggle="modal" data-target="#savePlantmcModal" ng-click="clear()">
-                    <span class="glyphicon glyphicon-flash"></span> <span translate="jtraceApp.plantmc.home.createLabel">Create a new Plantmc</span>
-                </button>
-            </div>
-        </div>
-    </div>
 
-    <div class="modal fade" id="savePlantmcModal" tabindex="-1" role="dialog" aria-labelledby="myPlantmcLabel"
-         aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <form name="editForm" role="form" novalidate ng-submit="create()" show-validation>
+	<div>
+		<h2 translate="jtraceApp.plantmc.home.title">Plantmc</h2>
+		<button class="btn btn-primary" data-toggle="modal"
+			data-target="#savePlantmcModal" ng-click="clear()">
+			<span class="glyphicon glyphicon-plus"></span> <span
+				translate="entity.action.create">Create a new
+				Plantmc</span>
+		</button>
+		<br>
+		<br>
+	</div>
 
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
-                                ng-click="clear()">&times;</button>
-                        <h4 class="modal-title" id="myPlantmcLabel" translate="jtraceApp.plantmc.home.createOrEditLabel">Create or edit a Plantmc</h4>
-                    </div>
-                    <div class="modal-body">
-                        <div class="form-group">
-                            <label translate="jtraceApp.plantmc.name">Name</label>
-                            <input type="text" class="form-control" name="name"
-                                   ng-model="plantmc.name" required>
+	<div class="modal fade" id="savePlantmcModal" tabindex="-1"
+		role="dialog" aria-labelledby="myPlantmcLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<form name="editForm" role="form" novalidate ng-submit="create()"
+					show-validation>
 
-                            <div ng-show="editForm.name.$invalid">
-                                <p class="help-block"
-                                   ng-show="editForm.name.$error.required" translate="entity.validation.required">
-                                    This field is required.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label translate="jtraceApp.plantmc.description">Description</label>
-                            <input type="text" class="form-control" name="description"
-                                   ng-model="plantmc.description">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"
+							aria-hidden="true" ng-click="clear()">&times;</button>
+						<h4 class="modal-title" id="myPlantmcLabel"
+							translate="jtraceApp.plantmc.home.createOrEditLabel">Create
+							or edit a Plantmc</h4>
+					</div>
+					<div class="modal-body">
+						<div class="form-group">
+							<label translate="jtraceApp.plantmc.name">Name</label> <input
+								type="text" class="form-control" name="name"
+								ng-model="plantmc.name" required>
 
-                        </div>
-                        <div class="form-group">
-                            <label translate="jtraceApp.plantmc.specification">Specification</label>
-                            <input type="text" class="form-control" name="specification"
-                                   ng-model="plantmc.specification">
+							<div ng-show="editForm.name.$invalid">
+								<p class="help-block" ng-show="editForm.name.$error.required"
+									translate="entity.validation.required">This field is
+									required.</p>
+							</div>
+						</div>
+						<div class="form-group">
+							<label translate="jtraceApp.plantmc.description">Description</label>
+							<input type="text" class="form-control" name="description"
+								ng-model="plantmc.description">
 
-                        </div>
-                        <div class="form-group">
-                            <label translate="jtraceApp.plantmc.plant">plant</label>
-                            <select class="form-control" name="plant" ng-model="plantmc.plantmfgline.plantsec.plant.id" ng-options="plant.id as plant.code for plant in plants" required>
-                            </select>
-                            <div ng-show="editForm.plantmc.plantmfgline.plantsec.plant.id.$invalid">
-                                <p class="help-block"
-                                   ng-show="editForm.plantmc.plantmfgline.plantsec.plant.id.$error.required" translate="entity.validation.required">
-                                    This field is required.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label translate="jtraceApp.plantmc.plantsec">plantsec</label>
-                            <select class="form-control" name="plantsec" ng-model="plantmc.plantmfgline.plantsec.id" ng-disabled="!plantmc.plantmfgline.plantsec.plant.id" ng-options="plantsec.id as plantsec.name for plantsec in plantsecs | filter:plantmc.plantmfgline.plantsec.plant.id" required>
-                            </select>
-                            <div ng-show="editForm.plantmc.plantmfgline.plantsec.id.$invalid">
-                                <p class="help-block"
-                                   ng-show="editForm.plantmc.plantmfgline.plantsec.id.$error.required" translate="entity.validation.required">
-                                    This field is required.
-                                </p>
-                            </div>
-                        </div>
+						</div>
+						<div class="form-group">
+							<label translate="jtraceApp.plantmc.specification">Specification</label>
+							<input type="text" class="form-control" name="specification"
+								ng-model="plantmc.specification">
 
-                        <div class="form-group">
-                            <label translate="jtraceApp.plantmc.plantmfgline">plantmfgline</label>
-                            <select class="form-control" name="plantmfgline" ng-model="plantmc.plantmfgline.id" ng-disabled="!plantmc.plantmfgline.plantsec.id" ng-options="plantmfgline.id as plantmfgline.name for plantmfgline in plantmfglines | filter:plantmc.plantmfgline.plantsec.id">
-                            </select>
-                            <div ng-show="editForm.plantmc.plantmfgline.id.$invalid">
-                                <p class="help-block"
-                                   ng-show="editForm.plantmc.plantmfgline.id.$error.required" translate="entity.validation.required">
-                                    This field is required.
-                                </p>
-                            </div>                            
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
-                            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
-                        </button>
-                        <button type="submit" ng-disabled="editForm.$invalid" class="btn btn-primary">
-                            <span class="glyphicon glyphicon-save"></span>&nbsp;<span translate="entity.action.save">Save</span>
-                        </button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
+						</div>
+						<div class="form-group">
+							<label translate="jtraceApp.plantmc.plant">plant</label> <select
+								class="form-control" name="plant"
+								ng-model="plantmc.plantmfgline.plantsec.plant.id"
+								ng-options="plant.id as plant.code for plant in plants" required>
+							</select>
+							<div
+								ng-show="editForm.plantmc.plantmfgline.plantsec.plant.id.$invalid">
+								<p class="help-block"
+									ng-show="editForm.plantmc.plantmfgline.plantsec.plant.id.$error.required"
+									translate="entity.validation.required">This field is
+									required.</p>
+							</div>
+						</div>
+						<div class="form-group">
+							<label translate="jtraceApp.plantmc.plantsec">plantsec</label> <select
+								class="form-control" name="plantsec"
+								ng-model="plantmc.plantmfgline.plantsec.id"
+								ng-disabled="!plantmc.plantmfgline.plantsec.plant.id"
+								ng-options="plantsec.id as plantsec.name for plantsec in plantsecs | filter:plantmc.plantmfgline.plantsec.plant.id"
+								required>
+							</select>
+							<div ng-show="editForm.plantmc.plantmfgline.plantsec.id.$invalid">
+								<p class="help-block"
+									ng-show="editForm.plantmc.plantmfgline.plantsec.id.$error.required"
+									translate="entity.validation.required">This field is
+									required.</p>
+							</div>
+						</div>
 
-    <div class="modal fade" id="deletePlantmcConfirmation">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <form name="deleteForm" ng-submit="confirmDelete(plantmc.id)">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
-                                ng-click="clear()">&times;</button>
-                        <h4 class="modal-title" translate="entity.delete.title">Confirm delete operation</h4>
-                    </div>
-                    <div class="modal-body">
-                        <p translate="jtraceApp.plantmc.delete.question" translate-values="{id: '{{plantmc.id}}'}">Are you sure you want to delete this Plantmc?</p>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
-                            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
-                        </button>
-                        <button type="submit" ng-disabled="deleteForm.$invalid" class="btn btn-danger">
-                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span translate="entity.action.delete">Delete</span>
-                        </button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
+						<div class="form-group">
+							<label translate="jtraceApp.plantmc.plantmfgline">plantmfgline</label>
+							<select class="form-control" name="plantmfgline"
+								ng-model="plantmc.plantmfgline.id"
+								ng-disabled="!plantmc.plantmfgline.plantsec.id"
+								ng-options="plantmfgline.id as plantmfgline.name for plantmfgline in plantmfglines | filter:plantmc.plantmfgline.plantsec.id">
+							</select>
+							<div ng-show="editForm.plantmc.plantmfgline.id.$invalid">
+								<p class="help-block"
+									ng-show="editForm.plantmc.plantmfgline.id.$error.required"
+									translate="entity.validation.required">This field is
+									required.</p>
+							</div>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal"
+							ng-click="clear()">
+							<span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span
+								translate="entity.action.cancel">Cancel</span>
+						</button>
+						<button type="submit" ng-disabled="editForm.$invalid"
+							class="btn btn-primary">
+							<span class="glyphicon glyphicon-save"></span>&nbsp;<span
+								translate="entity.action.save">Save</span>
+						</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
 
-    <div class="table-responsive">
-        <table datatable="ng" dt-options="dtOptions" dt-columns="dtColumns" class="table table-condensed hover">
-            <thead>
-                <tr>
-                    <th translate="jtraceApp.plantmc.name">Name</th>
-                    <th translate="jtraceApp.plantmc.description">Description</th>
-                    <th translate="jtraceApp.plantmc.specification">Specification</th>
-                    <th translate="jtraceApp.plantmc.plant">plant</th>
-                    <th translate="jtraceApp.plantmc.plantsec">plantsec</th>
-                    <th translate="jtraceApp.plantmc.plantmfgline">plantmfgline</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr ng-repeat="plantmc in plantmcs">
-                    <td><a ui-sref="plantmcDetail({id:plantmc.id})">{{plantmc.name}}</a></td>
-                    <td>{{plantmc.description}}</td>
-                    <td>{{plantmc.specification}}</td>
-                    <td>{{plantmc.plantmfgline.plantsec.plant.code}}</td>
-                    <td>{{plantmc.plantmfgline.plantsec.name}}</td>
-                    <td>{{plantmc.plantmfgline.name}}</td>
-                    <td>
-                        <button type="submit"
-                                ui-sref="plantmcDetail({id:plantmc.id})"
-                                class="btn btn-info btn-sm">
-                            <span class="glyphicon glyphicon-eye-open"></span>&nbsp;<span translate="entity.action.view"> View</span>
-                        </button>
-                        <button type="submit"
-                                ng-click="update(plantmc.id)"
-                                class="btn btn-primary btn-sm">
-                            <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span translate="entity.action.edit"> Edit</span>
-                        </button>
-                        <button type="submit"
-                                ng-click="delete(plantmc.id)"
-                                class="btn btn-danger btn-sm">
-                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span translate="entity.action.delete"> Delete</span>
-                        </button>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+	<div class="modal fade" id="deletePlantmcConfirmation">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<form name="deleteForm" ng-submit="confirmDelete(plantmc.id)">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"
+							aria-hidden="true" ng-click="clear()">&times;</button>
+						<h4 class="modal-title" translate="entity.delete.title">Confirm
+							delete operation</h4>
+					</div>
+					<div class="modal-body">
+						<p translate="jtraceApp.plantmc.delete.question"
+							translate-values="{id: '{{plantmc.id}}'}">Are you sure you
+							want to delete this Plantmc?</p>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal"
+							ng-click="clear()">
+							<span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span
+								translate="entity.action.cancel">Cancel</span>
+						</button>
+						<button type="submit" ng-disabled="deleteForm.$invalid"
+							class="btn btn-danger">
+							<span class="glyphicon glyphicon-trash"></span>&nbsp;<span
+								translate="entity.action.delete">Delete</span>
+						</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<div class="table-responsive">
+		<table datatable="ng" dt-options="dtOptions" dt-columns="dtColumns"
+			class="table table-condensed hover">
+			<thead>
+				<tr>
+					<th translate="jtraceApp.plantmc.name">Name</th>
+					<th translate="jtraceApp.plantmc.description">Description</th>
+					<th translate="jtraceApp.plantmc.specification">Specification</th>
+					<th translate="jtraceApp.plantmc.plant">plant</th>
+					<th translate="jtraceApp.plantmc.plantsec">plantsec</th>
+					<th translate="jtraceApp.plantmc.plantmfgline">plantmfgline</th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="plantmc in plantmcs">
+					<td><a ui-sref="plantmcDetail({id:plantmc.id})">{{plantmc.name}}</a></td>
+					<td>{{plantmc.description}}</td>
+					<td>{{plantmc.specification}}</td>
+					<td>{{plantmc.plantmfgline.plantsec.plant.code}}</td>
+					<td>{{plantmc.plantmfgline.plantsec.name}}</td>
+					<td>{{plantmc.plantmfgline.name}}</td>
+					<td>
+						<button type="submit" ui-sref="plantmcDetail({id:plantmc.id})"
+							class="btn btn-info btn-sm">
+							<span class="glyphicon glyphicon-eye-open" tooltip="View"></span>
+						</button>
+						<button type="submit" ng-click="update(plantmc.id)"
+							class="btn btn-primary btn-sm" tooltip="Edit">
+							<span class="glyphicon glyphicon-pencil"></span>
+						</button>
+						<button type="submit" ng-click="delete(plantmc.id)"
+							class="btn btn-danger btn-sm" tooltip="Delete">
+							<span class="glyphicon glyphicon-trash"></span>
+						</button>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
 </div>

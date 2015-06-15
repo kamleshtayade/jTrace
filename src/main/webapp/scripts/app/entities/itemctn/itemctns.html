@@ -1,18 +1,15 @@
-<div>
+<div class="container">
 
-	<h2 translate="jtraceApp.itemctn.home.title">Itemctn</h2>
+	
 
-	<div class="container">
-		<div class="row">
-			<div class="col-md-4">
+	<div>
+			<h2 translate="jtraceApp.itemctn.home.title">Itemctn</h2>
 				<button class="btn btn-primary" data-toggle="modal"
 					data-target="#saveItemctnModal" ng-click="clear()">
-					<span class="glyphicon glyphicon-flash"></span> <span
-						translate="jtraceApp.itemctn.home.createLabel">Create a new
+					<span class="glyphicon glyphicon-plus"></span> <span
+						translate="entity.action.create">Create a new
 						Itemctn</span>
-				</button>
-			</div>
-		</div>
+				</button><br><br>
 	</div>
     <!-- Start : Bar Code Modal-->
 	<div class="modal fade" id="saveItemctnModal2" tabindex="-1"
@@ -314,7 +311,7 @@
                             <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
                         </button>
                         <button type="submit" ng-disabled="deleteForm.$invalid" class="btn btn-danger">
-                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span translate="entity.action.delete">Delete</span>
+                            <span class="glyphicon glyphicon-trash"></span>&nbsp;<span translate="entity.action.delete">Delete</span>
                         </button>
                     </div>
                 </form>
@@ -348,23 +345,23 @@
                     <td>
                         <button type="submit"
                                 ui-sref="itemctnDetail({id:itemctn.id})"
-                                class="btn btn-info btn-sm">
-                            <span class="glyphicon glyphicon-eye-open"></span>&nbsp;<span translate="entity.action.view"> View</span>
+                                class="btn btn-info btn-sm" tooltip="View">
+                            <span class="glyphicon glyphicon-eye-open"></span>
                         </button>
                         <button type="submit"
                                 ng-click="update(itemctn.id)"
-                                class="btn btn-primary btn-sm">
-                            <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span translate="entity.action.edit"> Edit</span>
+                                class="btn btn-primary btn-sm" tooltip="Edit">
+                            <span class="glyphicon glyphicon-pencil"></span>
                         </button>
                         <button type="submit"
                                 ng-click="delete(itemctn.id)"
-                                class="btn btn-danger btn-sm" disabled>
-                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span translate="entity.action.delete"> Delete</span>
+                                class="btn btn-danger btn-sm"  tooltip="Delete" disabled>
+                            <span class="glyphicon glyphicon-trash"></span>
                         </button>
                         <button type="submit"
                                 ng-click="createCode(itemctn.id)"
-                                class="btn btn-primary btn-sm">
-                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span translate="jtraceApp.itemctn.barCode">Bar code</span>
+                                class="btn btn-primary btn-sm"  tooltip="Barcode">
+                            <span class="glyphicon glyphicon-barcode"></span>
                         </button>
                     </td>
                 </tr>

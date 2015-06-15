@@ -1,15 +1,12 @@
-<div>
+<div class="container">
 
-    <h2 translate="jtraceApp.bomheader.home.title">Bomheader</h2>
+    
 
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4">
+    <div>
+            <h2 translate="jtraceApp.bomheader.home.title">Bomheader</h2>
                 <button class="btn btn-primary" data-toggle="modal" data-target="#saveBomheaderModal" ng-click="clear()">
-                    <span class="glyphicon glyphicon-flash"></span> <span translate="jtraceApp.bomheader.home.createLabel">Create a new Bomheader</span>
-                </button>
-            </div>
-        </div>
+                    <span class="glyphicon glyphicon-plus"></span> <span translate="entity.action.create">Create a new Bomheader</span>
+                </button><br><br>
     </div>
 
     <div class="modal fade" id="saveBomheaderModal" tabindex="-1" role="dialog" aria-labelledby="myBomheaderLabel"
@@ -81,7 +78,7 @@
                             <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
                         </button>
                         <button type="submit" ng-disabled="deleteForm.$invalid" class="btn btn-danger">
-                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span translate="entity.action.delete">Delete</span>
+                            <span class="glyphicon glyphicon-trash"></span>&nbsp;<span translate="entity.action.delete">Delete</span>
                         </button>
                     </div>
                 </form>
@@ -105,18 +102,18 @@
                     <td>
                         <button type="submit"
                                 ui-sref="bomheaderDetail({id:bomheader.id})"
-                                class="btn btn-info btn-sm">
-                            <span class="glyphicon glyphicon-eye-open"></span>&nbsp;<span translate="entity.action.view"> View</span>
+                                class="btn btn-info btn-sm" tooltip="View">
+                            <span class="glyphicon glyphicon-eye-open"></span>
                         </button>
                         <button type="submit"
                                 ng-click="showUpdate(bomheader.id)"
-                                class="btn btn-primary btn-sm">
-                            <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span translate="entity.action.edit"> Edit</span>
+                                class="btn btn-primary btn-sm" tooltip="Edit">
+                            <span class="glyphicon glyphicon-pencil"></span>
                         </button>
                         <button type="submit"
                                 ng-click="delete(bomheader.id)"
-                                class="btn btn-danger btn-sm">
-                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span translate="entity.action.delete"> Delete</span>
+                                class="btn btn-danger btn-sm" tooltip="Delete">
+                            <span class="glyphicon glyphicon-trash"></span>
                         </button>
                     </td>
                 </tr>

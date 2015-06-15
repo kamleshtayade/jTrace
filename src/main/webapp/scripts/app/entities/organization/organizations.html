@@ -1,217 +1,229 @@
-<div>
+<div class="container">
 
-    <h2 translate="jtraceApp.organization.home.title">Organization</h2>
+	<div>
+		<h2 translate="jtraceApp.organization.home.title">Organization</h2>
+		<button class="btn btn-primary" data-toggle="modal"
+			data-target="#saveOrganizationModal" ng-click="clear()">
+			<span class="glyphicon glyphicon-plus"></span> <span
+				translate="entity.action.create">Create a new Organization</span>
+		</button>
+		<br>
+		<br>
+	</div>
 
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4">
-                <button class="btn btn-primary" data-toggle="modal" data-target="#saveOrganizationModal" ng-click="clear()">
-                    <span class="glyphicon glyphicon-flash"></span> <span translate="jtraceApp.organization.home.createLabel">Create a new Organization</span>
-                </button>
-            </div>
-        </div>
-    </div>
+	<div class="modal fade" id="saveOrganizationModal" tabindex="-1"
+		role="dialog" aria-labelledby="myOrganizationLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<form name="editForm" role="form" novalidate ng-submit="save()"
+					show-validation>
 
-    <div class="modal fade" id="saveOrganizationModal" tabindex="-1" role="dialog" aria-labelledby="myOrganizationLabel"
-         aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <form name="editForm" role="form" novalidate ng-submit="save()" show-validation>
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"
+							aria-hidden="true" ng-click="clear()">&times;</button>
+						<h4 class="modal-title" id="myOrganizationLabel"
+							translate="jtraceApp.organization.home.createOrEditLabel">Create
+							or edit a Organization</h4>
+					</div>
+					<div class="modal-body">
+						<div class="form-group">
+							<label translate="jtraceApp.organization.name">Name</label> <input
+								type="text" class="form-control" name="name"
+								ng-model="organization.name" required ng-minlength="6"
+								ng-maxlength="30">
 
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
-                                ng-click="clear()">&times;</button>
-                        <h4 class="modal-title" id="myOrganizationLabel" translate="jtraceApp.organization.home.createOrEditLabel">Create or edit a Organization</h4>
-                    </div>
-                    <div class="modal-body">
-                        <div class="form-group">
-                            <label translate="jtraceApp.organization.name">Name</label>
-                            <input type="text" class="form-control" name="name"
-                                   ng-model="organization.name" required ng-minlength="6" ng-maxlength="30">
+							<div ng-show="editForm.name.$invalid">
+								<p class="help-block" ng-show="editForm.name.$error.required"
+									translate="entity.validation.required">This field is
+									required.</p>
+								<p class="help-block" ng-show="editForm.name.$error.minlength"
+									translate="entity.validation.minlength" translate-value-min="6">
+									This field is required to be at least 6 characters.</p>
+								<p class="help-block" ng-show="editForm.name.$error.maxlength"
+									translate="entity.validation.maxlength"
+									translate-value-max="30">This field cannot be longer than
+									30 characters.</p>
+							</div>
+						</div>
+						<div class="form-group">
+							<label translate="jtraceApp.organization.address_1">Address_1</label>
+							<input type="text" class="form-control" name="address_1"
+								ng-model="organization.address_1" required ng-minlength="6"
+								ng-maxlength="60">
 
-                            <div ng-show="editForm.name.$invalid">
-                                <p class="help-block"
-                                   ng-show="editForm.name.$error.required" translate="entity.validation.required">
-                                    This field is required.
-                                </p>
-                                <p class="help-block"
-                                   ng-show="editForm.name.$error.minlength" translate="entity.validation.minlength" translate-value-min="6">
-                                    This field is required to be at least 6 characters.
-                                </p>
-                                <p class="help-block"
-                                   ng-show="editForm.name.$error.maxlength" translate="entity.validation.maxlength" translate-value-max="30">
-                                    This field cannot be longer than 30 characters.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label translate="jtraceApp.organization.address_1">Address_1</label>
-                            <input type="text" class="form-control" name="address_1"
-                                   ng-model="organization.address_1" required ng-minlength="6" ng-maxlength="60">
+							<div ng-show="editForm.address_1.$invalid">
+								<p class="help-block"
+									ng-show="editForm.address_1.$error.required"
+									translate="entity.validation.required">This field is
+									required.</p>
+								<p class="help-block"
+									ng-show="editForm.address_1.$error.minlength"
+									translate="entity.validation.minlength" translate-value-min="6">
+									This field is required to be at least 6 characters.</p>
+								<p class="help-block"
+									ng-show="editForm.address_1.$error.maxlength"
+									translate="entity.validation.maxlength"
+									translate-value-max="60">This field cannot be longer than
+									60 characters.</p>
+							</div>
+						</div>
+						<div class="form-group">
+							<label translate="jtraceApp.organization.address_2">Address_2</label>
+							<input type="text" class="form-control" name="address_2"
+								ng-model="organization.address_2" required ng-minlength="6"
+								ng-maxlength="60">
 
-                            <div ng-show="editForm.address_1.$invalid">
-                                <p class="help-block"
-                                   ng-show="editForm.address_1.$error.required" translate="entity.validation.required">
-                                    This field is required.
-                                </p>
-                                <p class="help-block"
-                                   ng-show="editForm.address_1.$error.minlength" translate="entity.validation.minlength" translate-value-min="6">
-                                    This field is required to be at least 6 characters.
-                                </p>
-                                <p class="help-block"
-                                   ng-show="editForm.address_1.$error.maxlength" translate="entity.validation.maxlength" translate-value-max="60">
-                                    This field cannot be longer than 60 characters.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label translate="jtraceApp.organization.address_2">Address_2</label>
-                            <input type="text" class="form-control" name="address_2"
-                                   ng-model="organization.address_2" required ng-minlength="6" ng-maxlength="60">
+							<div ng-show="editForm.address_2.$invalid">
+								<p class="help-block"
+									ng-show="editForm.address_2.$error.required"
+									translate="entity.validation.required">This field is
+									required.</p>
+								<p class="help-block"
+									ng-show="editForm.address_2.$error.minlength"
+									translate="entity.validation.minlength" translate-value-min="6">
+									This field is required to be at least 6 characters.</p>
+								<p class="help-block"
+									ng-show="editForm.address_2.$error.maxlength"
+									translate="entity.validation.maxlength"
+									translate-value-max="60">This field cannot be longer than
+									60 characters.</p>
+							</div>
+						</div>
+						<div class="form-group">
+							<label translate="jtraceApp.organization.country">Country</label>
+							<input type="text" class="form-control" name="country"
+								ng-model="organization.country" required ng-minlength="3">
 
-                            <div ng-show="editForm.address_2.$invalid">
-                                <p class="help-block"
-                                   ng-show="editForm.address_2.$error.required" translate="entity.validation.required">
-                                    This field is required.
-                                </p>
-                                <p class="help-block"
-                                   ng-show="editForm.address_2.$error.minlength" translate="entity.validation.minlength" translate-value-min="6">
-                                    This field is required to be at least 6 characters.
-                                </p>
-                                <p class="help-block"
-                                   ng-show="editForm.address_2.$error.maxlength" translate="entity.validation.maxlength" translate-value-max="60">
-                                    This field cannot be longer than 60 characters.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label translate="jtraceApp.organization.country">Country</label>
-                            <input type="text" class="form-control" name="country"
-                                   ng-model="organization.country" required ng-minlength="3">
+							<div ng-show="editForm.country.$invalid">
+								<p class="help-block" ng-show="editForm.country.$error.required"
+									translate="entity.validation.required">This field is
+									required.</p>
+								<p class="help-block"
+									ng-show="editForm.country.$error.minlength"
+									translate="entity.validation.minlength" translate-value-min="3">
+									This field is required to be at least 3 characters.</p>
+							</div>
+						</div>
+						<div class="form-group">
+							<label translate="jtraceApp.organization.city">City</label> <input
+								type="text" class="form-control" name="city"
+								ng-model="organization.city" required ng-minlength="3">
 
-                            <div ng-show="editForm.country.$invalid">
-                                <p class="help-block"
-                                   ng-show="editForm.country.$error.required" translate="entity.validation.required">
-                                    This field is required.
-                                </p>
-                                <p class="help-block"
-                                   ng-show="editForm.country.$error.minlength" translate="entity.validation.minlength" translate-value-min="3">
-                                    This field is required to be at least 3 characters.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label translate="jtraceApp.organization.city">City</label>
-                            <input type="text" class="form-control" name="city"
-                                   ng-model="organization.city" required ng-minlength="3">
+							<div ng-show="editForm.city.$invalid">
+								<p class="help-block" ng-show="editForm.city.$error.required"
+									translate="entity.validation.required">This field is
+									required.</p>
+								<p class="help-block" ng-show="editForm.city.$error.minlength"
+									translate="entity.validation.minlength" translate-value-min="3">
+									This field is required to be at least 3 characters.</p>
+							</div>
+						</div>
+						<div class="form-group">
+							<label translate="jtraceApp.organization.pincode">Pincode</label>
+							<input type="text" class="form-control" name="pincode"
+								ng-model="organization.pincode" required ng-minlength="6">
 
-                            <div ng-show="editForm.city.$invalid">
-                                <p class="help-block"
-                                   ng-show="editForm.city.$error.required" translate="entity.validation.required">
-                                    This field is required.
-                                </p>
-                                <p class="help-block"
-                                   ng-show="editForm.city.$error.minlength" translate="entity.validation.minlength" translate-value-min="3">
-                                    This field is required to be at least 3 characters.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label translate="jtraceApp.organization.pincode">Pincode</label>
-                            <input type="text" class="form-control" name="pincode"
-                                   ng-model="organization.pincode" required ng-minlength="6">
+							<div ng-show="editForm.pincode.$invalid">
+								<p class="help-block" ng-show="editForm.pincode.$error.required"
+									translate="entity.validation.required">This field is
+									required.</p>
+								<p class="help-block"
+									ng-show="editForm.pincode.$error.minlength"
+									translate="entity.validation.minlength" translate-value-min="6">
+									This field is required to be at least 6 characters.</p>
+							</div>
+						</div>
 
-                            <div ng-show="editForm.pincode.$invalid">
-                                <p class="help-block"
-                                   ng-show="editForm.pincode.$error.required" translate="entity.validation.required">
-                                    This field is required.
-                                </p>
-                                <p class="help-block"
-                                   ng-show="editForm.pincode.$error.minlength" translate="entity.validation.minlength" translate-value-min="6">
-                                    This field is required to be at least 6 characters.
-                                </p>
-                            </div>
-                        </div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal"
+							ng-click="clear()">
+							<span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span
+								translate="entity.action.cancel">Cancel</span>
+						</button>
+						<button type="submit" ng-disabled="editForm.$invalid"
+							class="btn btn-primary">
+							<span class="glyphicon glyphicon-save"></span>&nbsp;<span
+								translate="entity.action.save">Save</span>
+						</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
 
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
-                            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
-                        </button>
-                        <button type="submit" ng-disabled="editForm.$invalid" class="btn btn-primary">
-                            <span class="glyphicon glyphicon-save"></span>&nbsp;<span translate="entity.action.save">Save</span>
-                        </button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
+	<div class="modal fade" id="deleteOrganizationConfirmation">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<form name="deleteForm" ng-submit="confirmDelete(organization.id)">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"
+							aria-hidden="true" ng-click="clear()">&times;</button>
+						<h4 class="modal-title" translate="entity.delete.title">Confirm
+							delete operation</h4>
+					</div>
+					<div class="modal-body">
+						<p translate="jtraceApp.organization.delete.question"
+							translate-values="{id: '{{organization.id}}'}">Are you sure
+							you want to delete this Organization?</p>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal"
+							ng-click="clear()">
+							<span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span
+								translate="entity.action.cancel">Cancel</span>
+						</button>
+						<button type="submit" ng-disabled="deleteForm.$invalid"
+							class="btn btn-danger">
+							<span class="glyphicon glyphicon-trash"></span>&nbsp;<span
+								translate="entity.action.delete">Delete</span>
+						</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
 
-    <div class="modal fade" id="deleteOrganizationConfirmation">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <form name="deleteForm" ng-submit="confirmDelete(organization.id)">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
-                                ng-click="clear()">&times;</button>
-                        <h4 class="modal-title" translate="entity.delete.title">Confirm delete operation</h4>
-                    </div>
-                    <div class="modal-body">
-                        <p translate="jtraceApp.organization.delete.question" translate-values="{id: '{{organization.id}}'}">Are you sure you want to delete this Organization?</p>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
-                            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
-                        </button>
-                        <button type="submit" ng-disabled="deleteForm.$invalid" class="btn btn-danger">
-                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span translate="entity.action.delete">Delete</span>
-                        </button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-
-    <div class="table-responsive">
-        <table datatable="ng" dt-options="dtOptions" dt-columns="dtColumns" class="table table-condensed hover">
-            <thead>
-                <tr>
-                    <th translate="jtraceApp.organization.name">Name</th>
-                    <th translate="jtraceApp.organization.address_1">Address_1</th>
-                    <th translate="jtraceApp.organization.address_2">Address_2</th>
-                    <th translate="jtraceApp.organization.country">Country</th>
-                    <th translate="jtraceApp.organization.city">City</th>
-                    <th translate="jtraceApp.organization.pincode">Pincode</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody infinite-scroll="loadPage(page + 1)" infinite-scroll-disabled="links['last'] == page">
-                <tr ng-repeat="organization in organizations">
-                    <td><a ui-sref="organizationDetail({id:organization.id})">{{organization.name}}</a></td>
-                    <td>{{organization.address_1}}</td>
-                    <td>{{organization.address_2}}</td>
-                    <td>{{organization.country}}</td>
-                    <td>{{organization.city}}</td>
-                    <td>{{organization.pincode}}</td>
-                    <td>
-                        <button type="submit"
-                                ui-sref="organizationDetail({id:organization.id})"
-                                class="btn btn-info btn-sm">
-                            <span class="glyphicon glyphicon-eye-open"></span>&nbsp;<span translate="entity.action.view"> View</span>
-                        </button>
-                        <button type="submit"
-                                ng-click="showUpdate(organization.id)"
-                                class="btn btn-primary btn-sm">
-                            <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span translate="entity.action.edit"> Edit</span>
-                        </button>
-                        <button type="submit"
-                                ng-click="delete(organization.id)"
-                                class="btn btn-danger btn-sm">
-                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span translate="entity.action.delete"> Delete</span>
-                        </button>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+	<div class="table-responsive">
+		<table datatable="ng" dt-options="dtOptions" dt-columns="dtColumns"
+			class="table table-condensed hover">
+			<thead>
+				<tr>
+					<th translate="jtraceApp.organization.name">Name</th>
+					<th translate="jtraceApp.organization.address_1">Address_1</th>
+					<th translate="jtraceApp.organization.address_2">Address_2</th>
+					<th translate="jtraceApp.organization.country">Country</th>
+					<th translate="jtraceApp.organization.city">City</th>
+					<th translate="jtraceApp.organization.pincode">Pincode</th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody infinite-scroll="loadPage(page + 1)"
+				infinite-scroll-disabled="links['last'] == page">
+				<tr ng-repeat="organization in organizations">
+					<td><a ui-sref="organizationDetail({id:organization.id})">{{organization.name}}</a></td>
+					<td>{{organization.address_1}}</td>
+					<td>{{organization.address_2}}</td>
+					<td>{{organization.country}}</td>
+					<td>{{organization.city}}</td>
+					<td>{{organization.pincode}}</td>
+					<td>
+						<button type="submit"
+							ui-sref="organizationDetail({id:organization.id})"
+							class="btn btn-info btn-sm" tooltip="View">
+							<span class="glyphicon glyphicon-eye-open"></span>
+						</button>
+						<button type="submit" ng-click="showUpdate(organization.id)"
+							class="btn btn-primary btn-sm" tooltip="Edit">
+							<span class="glyphicon glyphicon-pencil"></span>
+						</button>
+						<button type="submit" ng-click="delete(organization.id)"
+							class="btn btn-danger btn-sm" tooltip="Delete">
+							<span class="glyphicon glyphicon-trash"></span>
+						</button>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
 </div>

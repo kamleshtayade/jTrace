@@ -49,5 +49,21 @@ $(document).ready(function () {
 		$('#account-menu').collapse('hide');
 		isClosed = false;
 	});
+	
+	$('#organization-menu').mouseleave(function() {
+		$('#organization-menu').collapse('hide');
+	});
+	
+	$('#plant-menu').mouseleave(function() {
+		$('#plant-menu').collapse('hide');
+	});
+	
+	$('#item-menu').mouseleave(function() {
+		$('#item-menu').collapse('hide');
+	});
+	
+	$('#workorder-menu').mouseleave(function() {
+		$('#workorder-menu').collapse('hide');
+	});
 
 });
