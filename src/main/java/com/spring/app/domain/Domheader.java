@@ -63,6 +63,12 @@ public class Domheader implements Serializable {
     @Column(name = "solder")
     private String solder;
     
+    @Column(name="tool_id")
+    private String toolId;
+    
+    @Column(name="consumable_id")
+    private String consumableId;
+    
     @ManyToOne
     private Plantmc machine;
 
@@ -174,6 +180,23 @@ public class Domheader implements Serializable {
 	public void setJmxid(String jmxid) {
 		this.jmxid = jmxid;
 	}
+	
+
+	public String getToolId() {
+		return toolId;
+	}
+
+	public void setToolId(String toolId) {
+		this.toolId = toolId;
+	}
+
+	public String getConsumableId() {
+		return consumableId;
+	}
+
+	public void setConsumableId(String consumableId) {
+		this.consumableId = consumableId;
+	}
 
 	@Override
     public boolean equals(Object o) {
@@ -211,6 +234,8 @@ public class Domheader implements Serializable {
                 ", shiftend='" + shiftend + "'" +
                 ", solder='" + solder + "'" +
                 ", jmxid='"+jmxid+"'"+
+                ", toolid='"+toolId+"'"+
+                ", consumableId='"+consumableId+"'"+
                 '}';
     }
 }

@@ -36,7 +36,7 @@
                                    ng-model="domline.scantime" ng-model-options="{timezone: 'UTC'}">
 
                         </div>
-                        <div class="form-group">
+                        <div class="form-group" hidden>
                             <label translate="jtraceApp.domline.jmxid">jmxid</label>
                             <input type="number" class="form-control" name="jmxid"
                                    ng-model="domline.jmxid" readonly>
@@ -93,7 +93,6 @@
                     <th translate="jtraceApp.domline.serialno">Serialno</th>
                     <th translate="jtraceApp.domline.scantime">Scantime</th>
                     <th translate="jtraceApp.domline.domheader">domheader</th>
-                    <th translate="jtraceApp.domline.jmxid">jmxid</th>
                     <th></th>
                 </tr>
             </thead>
@@ -102,7 +101,6 @@
                     <td><a ui-sref="domlineDetail({id:domline.id})">{{domline.serialno}}</a></td>
                     <td>{{domline.scantime}}</td>
                     <td>{{domline.domheader.id}}</td>
-                    <td>{{domline.jmxid}}</td>
                     <td>
                         <button type="submit"
                                 ui-sref="domlineDetail({id:domline.id})"

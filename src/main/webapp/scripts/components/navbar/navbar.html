@@ -1,185 +1,256 @@
-<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-    <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" ui-sref="home"><span translate="global.title">jtrace</span> <span class="navbar-version">v{{VERSION}}</span></a>
-        </div>
-        <div class="collapse navbar-collapse" id="navbar-collapse" ng-switch="isAuthenticated()">
-            <ul class="nav navbar-nav nav-pills navbar-right">
-                <li ui-sref-active="active">
-                    <a ui-sref="home">
-						<i class="fa fa-home fa-fw"></i>
-                        <span translate="global.menu.home">Home</span>
-                    </a>
-                </li>
-                <li ui-sref-active="active" ng-switch-when="true" class="dropdown pointer">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="">
-                                <span>
-                                    <i class="fa fa-th-list fa-fw"></i>
-                                    <span class="hidden-tablet" translate="global.menu.entities.main">
-                                        Entities
-                                    </span>
-                                    <b class="caret"></b>
-                                </span>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <!-- Item Type entity is hidden as its not required at present May2015 -->
-                        <!--<li ui-sref-active="active" ><a ui-sref="itemtype"><i class="fa fa-pencil fa-fw"></i>
-                        &#xA0;<span translate="global.menu.entities.itemtype">Item Type</span></a></li>-->
-                        <li ui-sref-active="active" ><a ui-sref="itemcat"><i class="fa fa-pencil fa-fw"></i>
-                        &#xA0;<span translate="global.menu.entities.itemcat">Item Category</span></a></li>
-                        <li ui-sref-active="active" ><a ui-sref="itemsubcat"><i class="fa fa-pencil fa-fw"></i>
-                        &#xA0;<span translate="global.menu.entities.itemsubcat">Item Subcategory</span></a></li>
-                        <li class="divider"></li>                        
-                        <li ui-sref-active="active" ><a ui-sref="organization"><i class="fa fa-pencil fa-fw"></i>
-                        &#xA0;<span translate="global.menu.entities.organization">organization</span></a></li> 
-                        <li ui-sref-active="active" ><a ui-sref="plant"><i class="fa fa-pencil fa-fw"></i>                        
-                        &#xA0;<span translate="global.menu.entities.plant">Plant</span></a></li>
-                        <li ui-sref-active="active" ><a ui-sref="plantsec"><i class="fa fa-pencil fa-fw"></i>
-                        &#xA0;<span translate="global.menu.entities.plantsec">Plant Mfg Line</span></a></li>
-                        <li ui-sref-active="active" ><a ui-sref="plantmfgline"><i class="fa fa-pencil fa-fw"></i>
-                        &#xA0;<span translate="global.menu.entities.plantmfgline">Plant Mfg Line</span></a></li>
-                        <li ui-sref-active="active" ><a ui-sref="plantmc"><i class="fa fa-pencil fa-fw"></i>
-                        &#xA0;<span translate="global.menu.entities.plantmc">Plant Mfg Line</span></a></li>
-                        <li class="divider"></li>                        
-                        <li ui-sref-active="active" ><a ui-sref="imanufacturer"><i class="fa fa-pencil fa-fw"></i>
-                        &#xA0;<span translate="global.menu.entities.manufacturer">Manufacturer</span></a></li>
-                        <li ui-sref-active="active" ><a ui-sref="isupplier"><i class="fa fa-pencil fa-fw"></i>
-                        &#xA0;<span translate="global.menu.entities.supplier">Supplier</span></a></li>
-                        <li ui-sref-active="active" ><a ui-sref="customer"><i class="fa fa-pencil fa-fw"></i>
-                        &#xA0;<span translate="global.menu.entities.customer">customer</span></a></li>
-                        <li class="divider"></li>
-                        <li ui-sref-active="active" ><a ui-sref="itemmtr"><i class="fa fa-pencil fa-fw"></i>
-                        &#xA0;<span translate="global.menu.entities.itemmtr">Item Master</span></a></li>
-                        <li ui-sref-active="active" ><a ui-sref="itemmfrpart"><i class="fa fa-pencil fa-fw"></i>
-                        &#xA0;<span translate="global.menu.entities.itemmfrpart">Item Mfr Part</span></a></li>
-                        <li ui-sref-active="active" ><a ui-sref="itemctn"><i class="fa fa-pencil fa-fw"></i>
-                        &#xA0;<span translate="global.menu.entities.itemctn">Item CTN</span></a></li>
-                        <li ui-sref-active="active" ><a ui-sref="domheader"><i class="fa fa-pencil fa-fw"></i>
-                        &#xA0;<span translate="global.menu.entities.domheader">domheader</span></a></li>
-                        <li ui-sref-active="active" ><a ui-sref="domline"><i class="fa fa-pencil fa-fw"></i>
-                        &#xA0;<span translate="global.menu.entities.domline">domline</span></a></li>                        
-                        <li class="divider"></li>&#xA0;<i class="fa fa-chain-broken"></i>&#xA0;under-construction
-                        <li ui-sref-active="active" ><a ui-sref="workorderheader"><i class="fa fa-pencil fa-fw"></i>
-                        &#xA0;<span translate="global.menu.entities.workorderheader">Work Order Header</span></a></li>
-                        <li ui-sref-active="active" ><a ui-sref="bomheader"><i class="fa fa-pencil fa-fw"></i>
-                        &#xA0;<span translate="global.menu.entities.bomheader">bomheader</span></a></li>                        
-                        <li class="divider"></li>&#xA0;<i class="fa fa-eye"></i>&#xA0;Reports                        
-                        <li ui-sref-active="active" ><a ui-sref="workorderline"><i class="fa fa-eye-slash fa-fw"></i>
-                        &#xA0;<span translate="global.menu.entities.workorderline">Work Order Line</span></a></li>
-                        <li ui-sref-active="active" ><a ui-sref="bomline"><i class="fa fa-eye-slash fa-fw"></i>
-                        &#xA0;<span translate="global.menu.entities.bomline">bomline</span></a></li>
-                        <!-- Need to Removed post manufacturer- supplier relation setteled
-                        <li ui-sref-active="active" ><a ui-sref="manufacturer"><span class="glyphicon glyphicon-asterisk"></span>
-                        &#xA0;<span translate="global.menu.entities.manufacturer">imanufacturer</span></a></li>
-                        <li ui-sref-active="active" ><a ui-sref="supplier"><span class="glyphicon glyphicon-asterisk"></span>
-                        &#xA0;<span translate="global.menu.entities.supplier">isupplier</span></a></li>-->
-                        <!-- JHipster will add entities to the menu here -->
-                    </ul>
-                </li>
-                <form class="navbar-form navbar-left" role="search">
-                    <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Search">
-                    </div>
-                    
-                </form>
-                <li ng-class="{active: $state.includes('account')}" class="dropdown pointer">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="">
-                                <span>
-                                    <i class="fa fa-user fa-fw"></i>
-                                    <span class="hidden-tablet" translate="global.menu.account.main">
-                                        Account
-                                    </span>
-                                    <b class="caret"></b>
-                                </span>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li ui-sref-active="active" ng-switch-when="true"><a ui-sref="settings"><i class="fa fa-wrench fa-fw"></i>
-                            &#xA0;<span translate="global.menu.account.settings">Settings</span></a></li>
-                        <li ui-sref-active="active" ng-switch-when="true"><a ui-sref="password"><i class="fa fa-lock fa-fw"></i>
-                            &#xA0;<span translate="global.menu.account.password">Password</span></a></li>
-                        <li ui-sref-active="active" ng-switch-when="true"><a ui-sref="sessions"><i class="fa fa-cloud fa-fw"></i>
-                            &#xA0;<span translate="global.menu.account.sessions">Sessions</span></a></li>
-                        <li ui-sref-active="active" ng-switch-when="true"><a href="" ng-click="logout()"><i class="fa fa-sign-out fa-fw"></i>
-                            &#xA0;<span translate="global.menu.account.logout">Log out</span></a></li>
-                        <li ui-sref-active="active" ng-switch-when="false"><a ui-sref="login"><i class="fa fa-sign-in fa-fw"></i>
-                            &#xA0;<span translate="global.menu.account.login">Authenticate</span></a></li>
+<header class="navbar navbar-fixed-top" id="header" role="navigation">
+	<div class="container">
+		<div>
+			<!-- <button type="button" class="navbar-toggle" data-toggle="collapse"
+				data-target="#navbar-collapse">
+				<span class="sr-only">Toggle navigation</span> <span
+					class="icon-bar"></span> <span class="icon-bar"></span> <span
+					class="icon-bar"></span>
+			</button> -->
+			<a class="navbar-brand" ui-sref="home"><span translate="global.title">zentrace</span>
+				<span class="navbar-version">v{{VERSION}}</span></a>                
+		</div>
+		<!-- <div class="collapse navbar-collapse" id="navbar-collapse"
+			ng-switch="isAuthenticated()">
+			<ul class="nav navbar-nav nav-pills navbar-right">
+				<form class="navbar-form navbar-left" role="search">
+					<div class="form-group">
+						<input type="text" class="form-control" placeholder="Search">&nbsp;
+						<a href="#"><i class="fa fa-search fa-fw"></i></a>
+					</div>
 
-                        <li ui-sref-active="active" ng-switch-when="false"><a ui-sref="register"><i class="fa fa-plus fa-fw"></i>
-                            &#xA0;<span translate="global.menu.account.register">Register</span></a></li>
-                    </ul>
-                </li>
-                <li ng-class="{active: $state.includes('admin')}"  ng-switch-when="true" has-role="ROLE_ADMIN" class="dropdown pointer">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="">
-                                <span>
-                                    <i class="fa fa-key fa-fw"></i>
-                                    <span class="hidden-tablet" translate="global.menu.admin.main">Admin</span>
-                                    <b class="caret"></b>
-                                </span>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li ui-sref-active="active"><a ui-sref="metrics"><i class="fa fa-dashboard fa-fw"></i>
-                            &#xA0;<span translate="global.menu.admin.metrics">Metrics</span></a></li>
-                        <li ui-sref-active="active"><a ui-sref="health"><i class="fa fa-heart fa-fw"></i>
-                            &#xA0;<span translate="global.menu.admin.health">Health</span></a></li>
-                        <li ui-sref-active="active"><a ui-sref="configuration"><i class="fa fa-cog fa-fw"></i>
-                            &#xA0;<span translate="global.menu.admin.configuration">Configuration</span></a></li>
-                        <li ui-sref-active="active"><a ui-sref="audits"><i class="fa fa-bell fa-fw"></i>
-                            &#xA0;<span translate="global.menu.admin.audits">Audits</span></a></li>
-                        <li ui-sref-active="active"><a ui-sref="logs"><i class="fa fa-tasks fa-fw"></i>
-                            &#xA0;<span translate="global.menu.admin.logs">Logs</span></a></li>
-                        <li ui-sref-active="active"><a ui-sref="docs"><i class="fa fa-book fa-fw"></i>
-                            &#xA0;<span translate="global.menu.admin.apidocs">API Docs</span></a></li>
-                    </ul>
-                </li>
-                <li ui-sref-active="active" class="dropdown pointer" ng-controller="LanguageController">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="">
-                                <span>
-                                    <i class="fa fa-language fa-fw"></i>
-                                    <span class="hidden-tablet" translate="global.menu.language">Language</span>
-                                    <b class="caret"></b>
-                                </span>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li active-menu="{{language}}" ng-repeat="language in languages">
-                            <a href="" ng-click="changeLanguage(language)">{{'language.' + language| translate}}</a>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
-<!-- /cornermorph-->
+				</form>
+				<li ng-class="{active: $state.includes('account')}"
+					class="dropdown pointer"><a class="dropdown-toggle"
+					data-toggle="dropdown" href=""> <span> <i
+							class="fa fa-user fa-fw"></i></span> <b class="caret"></b> </span>
+				</a>
+					<ul class="dropdown-menu">
+						<li ui-sref-active="active" ng-switch-when="true"><a
+							ui-sref="settings"><i class="fa fa-wrench fa-fw"></i> &#xA0;<span
+								translate="global.menu.account.settings">Settings</span></a></li>
+						<li ui-sref-active="active" ng-switch-when="true"><a
+							ui-sref="password"><i class="fa fa-lock fa-fw"></i> &#xA0;<span
+								translate="global.menu.account.password">Password</span></a></li>
+						<li ui-sref-active="active" ng-switch-when="true"><a
+							ui-sref="sessions"><i class="fa fa-cloud fa-fw"></i> &#xA0;<span
+								translate="global.menu.account.sessions">Sessions</span></a></li>
+						<li ui-sref-active="active" ng-switch-when="true"><a href=""
+							ng-click="logout()"><i class="fa fa-sign-out fa-fw"></i>
+								&#xA0;<span translate="global.menu.account.logout">Log
+									out</span></a></li>
+						<li ui-sref-active="active" ng-switch-when="false"><a
+							ui-sref="login"><i class="fa fa-sign-in fa-fw"></i> &#xA0;<span
+								translate="global.menu.account.login">Authenticate</span></a></li>
 
-            <div class="menu-wrap">
-                <nav class="menu">
-                    <div class="profile"><img src="assets/images/user1.png" alt="Kamlesh Tayade"/><span>&nbsp;&nbsp;&nbsp;Kamlesh Tayade</span></div>
-                    <div class="link-list">
-                        <a ui-sref="itemcat"><i class="fa fa-pencil fa-fw"></i><span translate="global.menu.entities.itemcat">Item</span></a>
-                        <a ui-sref="itemsubcat"><i class="fa fa-pencil fa-fw"></i><span translate="global.menu.entities.itemsubcat">Item</span></a>
-                        <a ui-sref="itemmtr"><i class="fa fa-pencil fa-fw"></i><span translate="global.menu.entities.itemmtr">Item</span></a>
-                        <a ui-sref="manufacturer"><i class="fa fa-pencil fa-fw"></i><span translate="global.menu.entities.manufacturer">Item</span></a>
-                    </div>
-                    <div class="icon-list">
-                        <a ui-sref="home"><i class="fa fa-fw fa-home"></i></a>
-                        <a href="#"><i class="fa fa-fw fa-question-circle"></i></a>
-                        <a href="#"><i class="fa fa-fw fa-power-off"></i></a>
-                    </div>
-                </nav>
-            </div>
-        <a class="menu-button" id="open-button"><i class="fa fa-plus-circle fa-2x fa-fw"></i><span>Open Menu</span></a>   
-<!-- /.cornermorph-->
-    </div>
-</nav>
+						<li ui-sref-active="active" ng-switch-when="false"><a
+							ui-sref="register"><i class="fa fa-plus fa-fw"></i> &#xA0;<span
+								translate="global.menu.account.register">Register</span></a></li>
+					</ul></li>
+		</div> -->
+		<!-- /cornermorph-->
 
+		<div class="menu-wrap">
+			<nav class="menu">
+				<div class="profile">
+					<img src="assets/images/user1.png" alt="Kamlesh Tayade" /><span>&nbsp;&nbsp;&nbsp;Kamlesh
+						Tayade</span>
+				</div>
+				<div class="link-list">
+					<a ui-sref="itemcat"><i class="fa fa-pencil fa-fw"></i><span
+						translate="global.menu.entities.itemcat">Item</span></a> <a
+						ui-sref="itemsubcat"><i class="fa fa-pencil fa-fw"></i><span
+						translate="global.menu.entities.itemsubcat">Item</span></a> <a
+						ui-sref="itemmtr"><i class="fa fa-pencil fa-fw"></i><span
+						translate="global.menu.entities.itemmtr">Item</span></a> <a
+						ui-sref="manufacturer"><i class="fa fa-pencil fa-fw"></i><span
+						translate="global.menu.entities.manufacturer">Item</span></a>
+				</div>
+				<div class="icon-list">
+					<a ui-sref="home"><i class="fa fa-fw fa-home"></i></a><a href="#"><i
+						class="fa fa-fw fa-question-circle"></i></a> <a href="#"><i
+						class="fa fa-fw fa-power-off"></i></a>
+				</div>
+			</nav>
+		</div>
+
+		<a class="menu-button" id="open-button"><i
+			class="fa fa-plus-circle fa-2x fa-fw"></i><span>Open Menu</span></a>
+		<!-- /.cornermorph-->
+
+		<!-- Start: Fancy Sidebar -->
+		<div id="wrapper">
+			<div class="overlay"></div>
+
+			<nav class="navbar navbar-inverse navbar-fixed-top"
+				id="sidebar-wrapper" role="navigation" ng-switch="isAuthenticated()">
+
+				<div id="sidebar-title">
+					<label translate="global.title"></label>
+				</div>
+				<ul class="nav sidebar-nav sidebar-list" id="sidebar-menu">
+
+					<li><a href="#/"><i class="fa fa-home"></i>&nbsp;<span
+							translate="global.menu.home">Home</span></a></li>
+
+					<li ng-switch-when="true" id="entity"><a
+						data-toggle="collapse" data-parent="#sidebar-menu"
+						href="#entity-menu"><i class="fa fa-th-large"></i>&nbsp;<span
+							class="hidden-tablet" translate="global.menu.entities.main">Entities</span>&nbsp;<i
+							class="fa fa-caret-down"></i></a></li>
+					<ul id="entity-menu" class="collapse">
+
+                        <li id="organization"><a data-toggle="collapse" href="#organization-menu"><i
+                                class="fa fa-bank"></i>&nbsp;<span
+                                translate="global.menu.entities.organization">Organization</span>&nbsp;<i
+                                class="fa fa-caret-down"></i></a></li>
+                            <ul id="organization-menu" class="collapse">
+                                <li><a ui-sref="organization"><span
+                                        translate="global.menu.entities.organization"></span></a></li>
+                                <li><a ui-sref="imanufacturer"><span
+                                        translate="global.menu.entities.manufacturer"></span> </a></li>
+                                <li><a ui-sref="isupplier"><span
+                                        translate="global.menu.entities.supplier"></span></a></li>
+                                <li><a ui-sref="customer"><span
+                                        translate="global.menu.entities.customer"></span></a></li>
+                            </ul>
+
+                        <li id="plant"><a data-toggle="collapse" href="#plant-menu"><i
+                                class="fa fa-gavel"></i>&nbsp;<span
+                                translate="global.menu.entities.plant">Plant</span>&nbsp;<i
+                                class="fa fa-caret-down"></i></a></li>
+                            <ul id="plant-menu" class="collapse">
+                                <li><a ui-sref="plant"><span
+                                        translate="global.menu.entities.plant"></span></a></li>
+                                <li><a ui-sref="plantsec"><span
+                                        translate="global.menu.entities.plantsec"></span></a></li>
+                                <li><a ui-sref="plantmfgline"><span
+                                        translate="global.menu.entities.plantmfgline"></span></a></li>
+                                <li><a ui-sref="plantmc"><span
+                                        translate="global.menu.entities.plantmc"></span></a></li>
+                            </ul>
+
+						<li id="item"><a data-toggle="collapse" href="#item-menu"><i
+								class="fa fa-cart-plus"></i>&nbsp;<span
+								translate="global.menu.entities.item">Item</span>&nbsp;<i
+								class="fa fa-caret-down"></i></a></li>
+
+    						<ul id="item-menu" class="collapse">
+    							<li><a ui-sref="itemcat"><span
+    									translate="global.menu.entities.itemcat"></span></a></li>
+    							<li><a ui-sref="itemsubcat"><span
+    									translate="global.menu.entities.itemsubcat"></span></a></li>
+    							<li><a ui-sref="itemmtr"><span
+    									translate="global.menu.entities.itemmtr"></span></a></li>
+                                <li><a ui-sref="itemmfrpart"><span
+                                        translate="global.menu.entities.itemmfrpart"></span></a></li>
+    							<li><a ui-sref="itemctn" id="itemctn-a"><span
+    									translate="global.menu.entities.itemctn"></span></a></li>
+    						</ul>
+                            
+						<li id="workorder"><a data-toggle="collapse" href="#workorder-menu"><i
+								class="fa fa-briefcase"></i>&nbsp;<span
+								translate="global.menu.entities.workorder&bom">Work Order
+									& BOM</span>&nbsp;<i class="fa fa-caret-down"></i></a></li>
+    						<ul id="workorder-menu" class="collapse">
+                                <li><a ui-sref="bomheader"><span
+                                        translate="global.menu.entities.bomheader"></span></a></li>
+                                <li><a ui-sref="bomline"><span
+                                        translate="global.menu.entities.bomline"></span></a></li>
+    							<li><a ui-sref="workorderheader"><span
+    									translate="global.menu.entities.workorderheader"></span></a></li>
+    							<li><a ui-sref="workorderline"><span
+    									translate="global.menu.entities.workorderline"></span> </a></li>
+    							<li><a ui-sref="domheader"><span
+    									translate="global.menu.entities.domheader"></span></a></li>
+    							<li><a ui-sref="domline"><span
+    									translate="global.menu.entities.domline"></span></a></li>
+    						</ul>
+
+					</ul>
+
+					<li ng-controller="LanguageController" id="language"><a
+						data-toggle="collapse" data-parent="#sidebar-menu"
+						href="#language-menu"> <i class="fa fa-flag"></i>&nbsp; <span
+							translate="global.menu.language">Language</span>&nbsp; <i
+							class="fa fa-caret-down"></i>
+					</a>
+						<ul id="language-menu" class="collapse">
+							<li active-menu="{{language}}" ng-repeat="language in languages">
+								<a href="" ng-click="changeLanguage(language)">{{'language.'
+									+ language| translate}}</a>
+							</li>
+						</ul></li>
+
+
+					<li ng-class="{active: $state.includes('admin')}"
+						ng-switch-when="true" has-role="ROLE_ADMIN" id="administration"><a
+						data-toggle="collapse" data-parent="#sidebar-menu"
+						href="#administration-menu"><i class="fa fa-key"></i>&nbsp;<span
+							class="hidden-tablet" translate="global.menu.admin.main">Administration</span>&nbsp;<i
+							class="fa fa-caret-down"></i></a></li>
+					<ul id="administration-menu" class="collapse">
+						<li><a ui-sref="metrics"><i class="fa fa-dashboard"></i>&nbsp;<span
+								translate="global.menu.admin.metrics">Metrics</span></a></li>
+						<li><a ui-sref="health"><i class="fa fa-stethoscope"></i>&nbsp;<span
+								translate="global.menu.admin.health">Health</span></a></li>
+						<li><a ui-sref="configuration"><i class="fa fa-cog"></i>&nbsp;<span
+								translate="global.menu.admin.configuration">Configuration</span></a></li>
+						<li><a ui-sref="audits"><i class="fa fa-bell"></i>&nbsp;<span
+								translate="global.menu.admin.audits">Audits</span></a></li>
+						<li><a ui-sref="logs"><i class="fa fa-tasks"></i>&nbsp;<span
+								translate="global.menu.admin.logs">Logs</span></a></li>
+						<li><a ui-sref="docs"><i class="fa fa-book"></i>&nbsp;<span
+								translate="global.menu.admin.apidocs">API Docs</span></a></li>
+					</ul>
+
+					<li ng-class="{active: $state.includes('account')}" id="account"><a
+						data-toggle="collapse" data-parent="#sidebar-menu"
+						href="#account-menu"><i class="fa fa-user"></i>&nbsp;<span
+							class="hidden-tablet" translate="global.menu.account.main">Account</span>&nbsp;<i
+							class="fa fa-caret-down"></i></a></li>
+					<ul id="account-menu" class="collapse">
+						<li ui-sref-active="active" ng-switch-when="true"><a
+							ui-sref="settings"><i class="fa fa-wrench fa-fw"></i> &#xA0;<span
+								translate="global.menu.account.settings">Settings</span></a></li>
+						<li ui-sref-active="active" ng-switch-when="true"><a
+							ui-sref="password"><i class="fa fa-lock fa-fw"></i> &#xA0;<span
+								translate="global.menu.account.password">Password</span></a></li>
+						<li ui-sref-active="active" ng-switch-when="true"><a
+							ui-sref="sessions"><i class="fa fa-cloud fa-fw"></i> &#xA0;<span
+								translate="global.menu.account.sessions">Sessions</span></a></li>
+						<li ui-sref-active="active" ng-switch-when="true"><a href=""
+							ng-click="logout()"><i class="fa fa-sign-out fa-fw"></i>
+								&#xA0;<span translate="global.menu.account.logout">Log
+									out</span></a></li>
+						<li ui-sref-active="active" ng-switch-when="false"><a
+							ui-sref="login"><i class="fa fa-sign-in fa-fw"></i> &#xA0;<span
+								translate="global.menu.account.login">Authenticate</span></a></li>
+
+						<li ui-sref-active="active" ng-switch-when="false"><a
+							ui-sref="register"><i class="fa fa-plus fa-fw"></i> &#xA0;<span
+								translate="global.menu.account.register">Register</span></a></li>
+					</ul>
+
+				</ul>
+			</nav>
+			<div id="page-content-wrapper">
+				<button type="button" class="hamburger is-closed"
+					data-toggle="offcanvas">
+					<span class="hamb-top"></span> <span class="hamb-middle"></span> <span
+						class="hamb-bottom"></span>
+				</button>
+			</div>
+
+		</div>
+		<!-- End: Fancy Sidebar -->
+
+	</div>
+</header>
 
 <!-- cornermorph JavaScript -->
 <script src="assets/js/classie.js"></script>
 <script src="assets/js/cornermorph.js"></script>
-<script type="text/ng-template" id="myTooltipTemplate.html">
-      <span>Special Tooltip with <strong>markup</strong></span>
-</script>
+<script src="assets/js/fancysidebar.js"></script>
+<script src="assets/js/jquery-barcode.js"></script>
+<script src="assets/js/jquery-barcode.min.js"></script>

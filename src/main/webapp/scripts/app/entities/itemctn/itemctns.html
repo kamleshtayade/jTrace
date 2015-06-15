@@ -26,7 +26,7 @@
 							aria-hidden="true" ng-click="ItemctnController.clear()">&times;</button>
 						<h4 class="modal-title" id="myItemctnLabel"
 							translate="jtraceApp.itemctn.barCode">Generated Bar code for
-							{{itemctn.id}}</h4>
+							{{itemctn.ctn}}</h4>
 					</div>
 					<div class="row">
 						<div class="modal-body" id="ashu">
@@ -40,10 +40,10 @@
 										<div id="barcodeTarget" class="barcodeTarget"
 											style="padding-bottom: 80px"></div>
 									</div>
-									<div id="submit1" class="col-md-3">
+									<!--<div id="submit1" class="col-md-3">
 										<div id="barTarget1" class="barTarget1"
 											style="padding-top: 40px"></div>
-									</div>
+									</div>-->
 									<div id="submit1" class="col-md-4">
 										<div id="barTarget" class="barTarget"
 											style="padding-top: 10px"></div>
@@ -358,7 +358,7 @@
                         </button>
                         <button type="submit"
                                 ng-click="delete(itemctn.id)"
-                                class="btn btn-danger btn-sm">
+                                class="btn btn-danger btn-sm" disabled>
                             <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span translate="entity.action.delete"> Delete</span>
                         </button>
                         <button type="submit"

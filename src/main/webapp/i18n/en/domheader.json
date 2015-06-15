@@ -23,7 +23,11 @@
             "shiftend": "Shift End",
             "solder": "Solder Paste",
             "jmxid": "JMXQ",
-            "machine": "Machine"
+            "machine": "Machine",
+            "toolId": "Tool Id",
+            "consumableId": "Consumable Id",
+            "plantmfgline":"Mfg Line",
+            "plant": "Plant"
         }
     }
 }

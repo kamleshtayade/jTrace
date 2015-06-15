@@ -7,26 +7,27 @@
             "entities": {
                 "main": "Entities",
                 "item": "Item",
-                "itemcat": "Item Category",
-                "itemsubcat": "Item SubCategory",
-                "itemmtr": "Item Master",
-                "itemctn": "Item CTN",
-                "itemmfrpart": "Item MFR Part",
+                "workorder&bom": "Kitting & BOM",
+                "itemcat": "Category",
+                "itemsubcat": "SubCategory",
+                "itemmtr": "Item",
+                "itemctn": "CTN",
+                "itemmfrpart": "AML",
                 "itemtype": "Item Type",
                 "manufacturer": "Manufacturer",
                 "plant": "Plant",
-                "plantsec": "Plant Section",
-                "plantmfgline": "Plant MFG Line",
-                "plantmc": "Plant Machine",
+                "plantsec": "Section",
+                "plantmfgline": "MFG Line",
+                "plantmc": "Machine",
                 "supplier": "Supplier",
                 "workorderheader": "Kitting",
-                "workorderline": "Kitting Line",
+                "workorderline": "Kitting Details",
                 "customer": "Customer",
-                "bomline": "BOM line",
+                "bomline": "BOM Details",
                 "organization": "Organization",
                 "bomheader": "Bill of Material",
                 "domheader": "Date of Manufacturing",
-                "domline": "DOM line",
+                "domline": "DOM Details",
                 "imanufacturer": "Imanufacturer",
                 "isupplier": "Isupplier",
                 "additionalEntity": "JHipster will add additional entities here (do not translate!)"
@@ -65,8 +66,8 @@
         },
         "messages": {
             "info": {
-                "authenticated": "If you want to <a href=\"#/login\">authenticate</a>, you can try the default accounts:<br/>- Administrator (login=\"admin\" and password=\"admin\") <br/>- User (login=\"user\" and password=\"user\").",
-                "register": "You don't have an account yet? <a href=\"#/register\">Register a new account</a>"
+                "loginorregister": "<a href='#/login'>Login</a> or if you don't have an account yet? <a href='#/register'>Register a new account</a>",
+                "register":"If you don't have an account yet? <a href='#/register'>Register a new account</a>"
             },
             "error": {
                 "dontmatch" : "The password and its confirmation do not match!"
@@ -94,6 +95,7 @@
     },
     "entity": {
         "action": {
+        	"create": "Create",
             "back": "Back",
             "cancel": "Cancel",
             "delete": "Delete",

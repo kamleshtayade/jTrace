@@ -48,7 +48,15 @@ public class QueueToPostGre {
 		} catch (JMSException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
-		}	
+		}
+
+		tokens[14] = tokens[14]=="N"?"FALSE":"TRUE";
+		tokens[16] = tokens[16]=="N"?"FALSE":"TRUE";
+		
+		for(int i=0;i<tokens.length;i++){
+			log.debug("tokens" +i+ " --> " +tokens[i]);
+			
+		}
 		
 		
 		log.debug(message.toString());
@@ -56,9 +64,9 @@ public class QueueToPostGre {
 		try {
 			stat = conn.createStatement();
 			String plSql = "INSERT INTO domheader(id, is_auto, cycle_time, is_multi, panel_qty,"
-					+ " opr, shiftsup, shift, shiftstart, shiftend, solder, machinepk) "
-					+ " VALUES (nextval('itemcat_id_seq'), TRUE, 0, FALSE, 0, '"+tokens[6]+"',"
-					+ " '"+tokens[7]+"', "+tokens[8]+", now(), now(), '"+tokens[11]+"', '"+tokens[1]+"')";
+					+ " opr, shiftsup, shift, shiftstart, shiftend, solder, machine_id, jmxid, consumable_id, tool_id) "
+					+ " VALUES (nextval('domheader_id_seq'), "+tokens[14]+", "+tokens[15]+", "+tokens[16]+", "+tokens[17]+", '"+tokens[6]+"',"
+					+ " '"+tokens[7]+"', "+tokens[8]+", now(), now(), '"+tokens[11]+"', '"+tokens[2]+"', "+tokens[1]+", '"+tokens[13]+"', '"+tokens[12]+"')";
 			
 			log.debug(plSql);
 			stat.execute(plSql);
@@ -101,7 +109,7 @@ public class QueueToPostGre {
 		
 		
 		try {
-			String query = "select ID from domheader where machinepk='"+headerId+"'";
+			String query = "select ID from domheader where jmxid='"+headerId+"'";
 			
 			log.debug("Query " +query);
 		    stat = conn.createStatement();

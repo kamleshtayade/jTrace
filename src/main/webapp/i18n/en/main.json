@@ -5,14 +5,14 @@
         "logged": {
             "message": "You are logged in as user \"{{username}}\"."
         },
-        "question": "If you have any question on Traceability App:",
+        "question": "If you have any question on ZenTrace: ",
         "link": {
             "homepage": "Zensar homepage",
             "stackoverflow": "Zensar on Stack Overflow",
             "bugtracker": "Zensar bug tracker",
             "contact": "contact @devTeam on Twitter"
         },
-        "like": "If you like Traceability, don't forget to give us a star on",
+        "like": "If you like ZenTrace, don't forget to give us a star on",
         "github": "Github",
         "action":"Actions"
     }

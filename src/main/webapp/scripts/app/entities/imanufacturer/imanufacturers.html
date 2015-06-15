@@ -6,7 +6,7 @@
         <div class="row">
             <div class="col-md-4">
                 <button class="btn btn-primary" data-toggle="modal" data-target="#saveImanufacturerModal" ng-click="clear()">
-                    <span class="glyphicon glyphicon-flash"></span> <span translate="jtraceApp.imanufacturer.home.createLabel">Create a new Imanufacturer</span>
+                    <span class="glyphicon glyphicon-plus"></span>&nbsp;<span translate="jtraceApp.imanufacturer.home.createLabel">Create a new Imanufacturer</span>
                 </button>
             </div>
         </div>
@@ -136,18 +136,21 @@
                     <td>
                         <button type="submit"
                                 ui-sref="imanufacturerDetail({id:imanufacturer.id})"
-                                class="btn btn-info btn-sm">
-                            <span class="glyphicon glyphicon-eye-open"></span>&nbsp;<span translate="entity.action.view"> View</span>
+                                class="btn btn-info btn-sm"  tooltip="View"
+                            tooltip-placement="top" tooltip-trigger="mouseenter">
+                            <span class="glyphicon glyphicon-eye-open"></span>
                         </button>
                         <button type="submit"
                                 ng-click="showUpdate(imanufacturer.id)"
-                                class="btn btn-primary btn-sm">
-                            <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span translate="entity.action.edit"> Edit</span>
+                                class="btn btn-primary btn-sm"  tooltip="Edit"
+                            tooltip-placement="top" tooltip-trigger="mouseenter">
+                            <span class="glyphicon glyphicon-pencil"></span>
                         </button>
                         <button type="submit"
                                 ng-click="delete(imanufacturer.id)"
-                                class="btn btn-danger btn-sm">
-                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span translate="entity.action.delete"> Delete</span>
+                                class="btn btn-danger btn-sm"  tooltip="Delete"
+                            tooltip-placement="top" tooltip-trigger="mouseenter">
+                            <span class="glyphicon glyphicon-remove-circle"></span>
                         </button>
                     </td>
                 </tr>

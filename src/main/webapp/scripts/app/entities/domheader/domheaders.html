@@ -90,6 +90,19 @@
 
                         </div>
                         <div class="form-group">
+                            <label translate="jtraceApp.domheader.toolId">toolId</label>
+                            <input type="text" class="form-control" name="toolId"
+                                   ng-model="domheader.toolId">
+
+                        </div>
+
+                        <div class="form-group">
+                            <label translate="jtraceApp.domheader.consumableId">consumableId</label>
+                            <input type="text" class="form-control" name="consumableId"
+                                   ng-model="domheader.consumableId">
+
+                        </div>
+                        <div class="form-group" hidden>
                             <label translate="jtraceApp.domheader.jmxid">jmxid</label>
                             <input type="number" class="form-control" name="jmxid"
                                    ng-model="domheader.jmxid" readonly>
@@ -137,35 +150,40 @@
         <table datatable="ng" dt-options="dtOptions" dt-columns="dtColumns" class="table table-condensed hover">
             <thead>
                 <tr>
+                    <!--
                     <th translate="jtraceApp.domheader.isAuto">IsAuto</th>
                     <th translate="jtraceApp.domheader.cycleTime">CycleTime</th>
                     <th translate="jtraceApp.domheader.isMulti">IsMulti</th>
-                    <th translate="jtraceApp.domheader.panelQty">PanelQty</th>
-                    <th translate="jtraceApp.domheader.machine">machine</th>                    
+                    <th translate="jtraceApp.domheader.panelQty">PanelQty</th>-->
+                    <th translate="jtraceApp.domheader.machine">machine</th>
+                    <th translate="jtraceApp.domheader.plantmfgline">plantmfgline</th> 
+                    <th translate="jtraceApp.domheader.plant">plant</th>                 
                     <th translate="jtraceApp.domheader.opr">Opr</th>
-                    <th translate="jtraceApp.domheader.shiftsup">Shiftsup</th>
+                    <!--<th translate="jtraceApp.domheader.shiftsup">Shiftsup</th>
                     <th translate="jtraceApp.domheader.shift">Shift</th>
                     <th translate="jtraceApp.domheader.shiftstart">Shiftstart</th>
                     <th translate="jtraceApp.domheader.shiftend">Shiftend</th>
                     <th translate="jtraceApp.domheader.solder">Solder</th>
-                    <th translate="jtraceApp.domheader.jmxid">jmxid</th>
+                    <th translate="jtraceApp.domheader.jmxid">jmxid</th>-->
                     <th></th>
                 </tr>
             </thead>
             <tbody infinite-scroll="loadPage(page + 1)" infinite-scroll-disabled="links['last'] == page">
                 <tr ng-repeat="domheader in domheaders">
-                    <td><a ui-sref="domheaderDetail({id:domheader.id})">{{domheader.isAuto}}</a></td>
+                    <!--<td><a ui-sref="domheaderDetail({id:domheader.id})">{{domheader.isAuto}}</a></td>
                     <td>{{domheader.cycleTime}}</td>
                     <td>{{domheader.isMulti}}</td>
-                    <td>{{domheader.panelQty}}</td>
-                    <td>{{domheader.machine.name}}</td>
+                    <td>{{domheader.panelQty}}</td>-->
+                    <td><a ui-sref="domheaderDetail({id:domheader.id})">{{domheader.machine.name}}</a></td>
+                    <td>{{domheader.machine.plantmfgline.name}}</td>
+                    <td>{{domheader.machine.plantmfgline.plantsec.plant.code}}</td>
                     <td>{{domheader.opr}}</td>
-                    <td>{{domheader.shiftsup}}</td>
+                    <!--<td>{{domheader.shiftsup}}</td>
                     <td>{{domheader.shift}}</td>
                     <td>{{domheader.shiftstart}}</td>
                     <td>{{domheader.shiftend}}</td>
                     <td>{{domheader.solder}}</td>
-                    <td>{{domheader.jmxid}}</td>
+                    <td>{{domheader.jmxid}}</td>-->
                     <td>
                         <button type="submit"
                                 ui-sref="domheaderDetail({id:domheader.id})"

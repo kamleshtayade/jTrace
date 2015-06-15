@@ -15,15 +15,23 @@
                         <span translate="jtraceApp.workorderline.bomChildItem">BomChildItem</span>
                     </td>
                     <td>
-                        <input type="text" class="input-sm form-control" value="{{workorderline.bomChildItem}}" readonly>
+                        <input type="text" class="input-sm form-control" value="{{workorderline.itemmtr.code}}" readonly>
+                    </td>
+                </tr> 
+                <tr>
+                    <td>
+                        <span translate="jtraceApp.workorderline.workorderheader">BomChildItem</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{workorderline.workorderheader.woNumber}}" readonly>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <span translate="jtraceApp.workorderline.attrition">Attrition</span>
+                        <span translate="jtraceApp.workorderline.bomQty">Attrition</span>
                     </td>
                     <td>
-                        <input type="text" class="input-sm form-control" value="{{workorderline.attrition}}" readonly>
+                        <input type="text" class="input-sm form-control" value="{{workorderline.bomQty}}" readonly>
                     </td>
                 </tr>
                 <tr>
@@ -63,9 +71,10 @@
                         <span translate="jtraceApp.workorderline.itemctn">itemctn</span>
                     </td>
                     <td>
-                        <input type="text" class="input-sm form-control" value="{{workorderline.itemctn.id}}" readonly>
+                        <input type="text" class="input-sm form-control" value="{{workorderline.itemctn.ctn}}" readonly>
                     </td>
                 </tr>
+
             </tbody>
         </table>
     </div>

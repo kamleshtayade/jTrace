@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('jtraceApp')
-    .controller('WorkorderlineController', function ($scope, Workorderline, Workorderheader, Itemctn, ParseLinks) {
+    .controller('WorkorderlineController', function ($scope,$filter, Workorderline, Workorderheader, Itemctn, ParseLinks) {
         $scope.workorderlines = [];
         $scope.itemctns = Itemctn.query();
         $scope.workorderheaders = Workorderheader.query();
@@ -9,7 +9,9 @@ angular.module('jtraceApp')
         $scope.loadAll = function() {
             Workorderline.query({page: $scope.page, per_page: 20}, function(result, headers) {
                 $scope.links = ParseLinks.parse(headers('link'));
-                $scope.workorderlines = result;
+                for (var i = 0; i < result.length; i++) {
+                    $scope.workorderlines.push(result[i]);
+                }
             });
         };
         $scope.loadPage = function(page) {
@@ -55,5 +57,25 @@ angular.module('jtraceApp')
             $scope.editForm.$setPristine();
             $scope.editForm.$setUntouched();
             $('#saveWorkorderlineModal').collapse('hide');
+        };
+
+        /* First In First Out function*/
+        $scope.fifoCheck = function (ctnID) {
+            //alert("...."+ctnID);
+            /*var selectedCTN = $filter('filter')($scope.itemctns,{id:ctnID});
+            alert(selectedCTN.id);*/
+            var availableCTNs = $filter('filter')($scope.itemctns,{itemmfrpart:{itemmtr:{code:$scope.workorderline.itemmtr.code}}});
+            //alert(JSON.stringify(availableCTNs));
+            for (var i = 0; i < availableCTNs.length; i++) {
+                //alert(availableCTNs[i].id);
+                if(availableCTNs[i].id < ctnID) {
+                    alert("Pls use "+availableCTNs[i].ctn+" component CTN based on FIFO");
+                    break;
+                }
+            }
+            //alert(JSON.stringify(availableCTNs));
+            
+            //var availableCTNs = $filter('filter')($scope.itemctns,{itemmfrpart:{itemmtr:{code:masterItem}}});
+            //alert(JSON.stringify(availableCTNs));
         };
     });

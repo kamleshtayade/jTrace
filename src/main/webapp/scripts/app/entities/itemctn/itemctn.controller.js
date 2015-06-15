@@ -57,7 +57,7 @@ angular.module('jtraceApp')
             $('#saveItemctnModal2').modal('show');
 
             function generateBarcode() {
-              var o = $scope.itemctn.id
+              var o = $scope.itemctn.ctn;
               var value = o.toString();
               var btype = $("input[name=btype]:checked").val();
               var renderer = $("input[name=renderer]:checked").val();

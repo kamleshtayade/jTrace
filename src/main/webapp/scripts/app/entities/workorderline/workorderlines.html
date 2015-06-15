@@ -37,6 +37,11 @@
                             </div>
                         </div>
                         <div class="form-group">
+                            <label translate="jtraceApp.workorderline.workorderheader">workorderheader</label>
+                            <input type="text" class="form-control" name="workorderheader"
+                                   ng-model="workorderline.workorderheader.woNumber" readonly>
+                        </div>
+                        <div class="form-group">
                             <label translate="jtraceApp.workorderline.bomQty">bomQty</label>
                             <input type="number" class="form-control" name="requQty"
                                    ng-model="workorderline.bomQty" readonly>
@@ -61,6 +66,11 @@
 
                         </div>
                         <div class="form-group">
+                            <label translate="jtraceApp.workorderline.itemctn">itemctn</label>
+                            <select class="form-control" name="itemctn" ng-model="workorderline.itemctn.id" ng-change="fifoCheck(workorderline.itemctn.id)" ng-options="itemctn.id as itemctn.ctn for itemctn in itemctns|filter:workorderline.itemmtr.code"> 
+                            </select>
+                        </div>
+                        <div class="form-group">
                             <label translate="jtraceApp.workorderline.isCustSupplied">IsCustSupplied</label>
                             <input type="checkbox" class="form-control" name="isCustSupplied"
                                    ng-model="workorderline.isCustSupplied">
@@ -77,18 +87,6 @@
                                     This field is required to be at least 5 characters.
                                 </p>
                             </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label translate="jtraceApp.workorderline.itemctn">itemctn</label>
-                            <select class="form-control" name="itemctn" ng-model="workorderline.itemctn.id" ng-options="itemctn.id as itemctn.ctn for itemctn in itemctns"> 
-                            </select>
-                        </div>
-
-                        <div class="form-group">
-                            <label translate="jtraceApp.workorderline.workorderheader">workorderheader</label>
-                            <select class="form-control" name="workorderheader" ng-model="workorderline.workorderheader.id" ng-options="workorderheader.id as workorderheader.woNumber for workorderheader in workorderheaders">
-                            </select>
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -130,30 +128,30 @@
     </div>
 
     <div class="table-responsive">
-        <table datatable="ng" dt-options="DTOptions" dt-columns="DTColumns" class="table table-condensed hover">
+        <table class="table table-condensed hover">
             <thead>
                 <tr>
                     <th translate="jtraceApp.workorderline.bomChildItem">BomChildItem</th>
+                    <th translate="jtraceApp.workorderline.workorderheader">workorderheader</th>
                     <th translate="jtraceApp.workorderline.bomQty">Attrition</th>
                     <th translate="jtraceApp.workorderline.requQty">RequQty</th>
                     <th translate="jtraceApp.workorderline.issuedQty">IssuedQty</th>
                     <th translate="jtraceApp.workorderline.isCustSupplied">IsCustSupplied</th>
+                    <th translate="jtraceApp.workorderline.itemctn">Itemctn</th>
                     <th translate="jtraceApp.workorderline.remark">Remark</th>
-                    <th translate="jtraceApp.workorderline.itemctn">itemctn</th>
-                    <th translate="jtraceApp.workorderline.workorderheader">workorderheader</th>
                     <th></th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody infinite-scroll="loadPage(page + 1)" infinite-scroll-disabled="links['last'] == page">
                 <tr ng-repeat="workorderline in workorderlines">
                     <td><a ui-sref="workorderlineDetail({id:workorderline.id})">{{workorderline.itemmtr.code}}</td>
+                    <td>{{workorderline.workorderheader.woNumber}}</td>
                     <td>{{workorderline.bomQty}}</td>
                     <td>{{workorderline.requQty}}</td>
                     <td>{{workorderline.issuedQty}}</td>
                     <td>{{workorderline.isCustSupplied}}</td>
-                    <td>{{workorderline.remark}}</td>
                     <td>{{workorderline.itemctn.ctn}}</td>
-                    <td>{{workorderline.workorderheader.woNumber}}</td>
+                    <td>{{workorderline.remark}}</td>
                     <td>
                         <button type="submit"
                                 ui-sref="workorderlineDetail({id:workorderline.id})"

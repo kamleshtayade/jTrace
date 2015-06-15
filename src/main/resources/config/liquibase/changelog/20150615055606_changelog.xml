@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
+   <changeSet author="ktayade (generated)" id="1434347777251-1">
+      <createTable tableName="SUPPLIER_MANUFACTURER">
+         <column name="suppliers_id" type="BIGINT">
+            <constraints nullable="false"/>
+         </column>
+         <column name="manufacturers_id" type="BIGINT">
+            <constraints nullable="false"/>
+         </column>
+      </createTable>
+   </changeSet>
+   <changeSet author="ktayade (generated)" id="1434347777251-2">
+      <addColumn tableName="WORKORDERLINE">
+         <column name="bom_qty" type="int4"/>
+      </addColumn>
+   </changeSet>
+   <changeSet author="ktayade (generated)" id="1434347777251-3">
+      <addColumn tableName="BOMLINE">
+         <column name="bomheader_id" type="int8"/>
+      </addColumn>
+   </changeSet>
+   <changeSet author="ktayade (generated)" id="1434347777251-4">
+      <addColumn tableName="ITEMSUBCAT">
+         <column name="classcode" type="int4"/>
+      </addColumn>
+   </changeSet>
+   <changeSet author="ktayade (generated)" id="1434347777251-5">
+      <addColumn tableName="DOMHEADER">
+         <column name="consumable_id" type="varchar(255)"/>
+      </addColumn>
+   </changeSet>
+   <changeSet author="ktayade (generated)" id="1434347777251-6">
+      <addColumn tableName="ITEMCTN">
+         <column name="customer_id" type="int8"/>
+      </addColumn>
+   </changeSet>
+   <changeSet author="ktayade (generated)" id="1434347777251-7">
+      <addColumn tableName="ITEMCTN">
+         <column name="date_code" type="varchar(255)"/>
+      </addColumn>
+   </changeSet>
+   <changeSet author="ktayade (generated)" id="1434347777251-8">
+      <addColumn tableName="ITEMMFRPART">
+         <column name="isupplier_id" type="int8"/>
+      </addColumn>
+   </changeSet>
+   <changeSet author="ktayade (generated)" id="1434347777251-9">
+      <addColumn tableName="ITEMCTN">
+         <column name="itemmfrpart_id" type="int8"/>
+      </addColumn>
+   </changeSet>
+   <changeSet author="ktayade (generated)" id="1434347777251-10">
+      <addColumn tableName="BOMHEADER">
+         <column name="itemmtr_id" type="int8"/>
+      </addColumn>
+   </changeSet>
+   <changeSet author="ktayade (generated)" id="1434347777251-11">
+      <addColumn tableName="WORKORDERLINE">
+         <column name="itemmtr_id" type="int8"/>
+      </addColumn>
+   </changeSet>
+   <changeSet author="ktayade (generated)" id="1434347777251-12">
+      <addColumn tableName="WORKORDERHEADER">
+         <column name="itemserial" type="varchar(255)"/>
+      </addColumn>
+   </changeSet>
+   <changeSet author="ktayade (generated)" id="1434347777251-13">
+      <addColumn tableName="DOMHEADER">
+         <column name="jmxid" type="varchar(255)"/>
+      </addColumn>
+   </changeSet>
+   <changeSet author="ktayade (generated)" id="1434347777251-14">
+      <addColumn tableName="DOMLINE">
+         <column name="jmxid" type="varchar(255)"/>
+      </addColumn>
+   </changeSet>
+   <changeSet author="ktayade (generated)" id="1434347777251-15">
+      <addColumn tableName="ITEMCTN">
+         <column name="lot_code" type="varchar(255)"/>
+      </addColumn>
+   </changeSet>
+   <changeSet author="ktayade (generated)" id="1434347777251-16">
+      <addColumn tableName="DOMHEADER">
+         <column name="machine_id" type="int8"/>
+      </addColumn>
+   </changeSet>
+   <changeSet author="ktayade (generated)" id="1434347777251-17">
+      <addColumn tableName="ITEMMFRPART">
+         <column name="manufacturer_id" type="int8"/>
+      </addColumn>
+   </changeSet>
+   <changeSet author="ktayade (generated)" id="1434347777251-18">
+      <addColumn tableName="PLANT">
+         <column name="org_id" type="int8"/>
+      </addColumn>
+   </changeSet>
+   <changeSet author="ktayade (generated)" id="1434347777251-19">
+      <addColumn tableName="ITEMCTN">
+         <column name="sr_no_from" type="varchar(255)"/>
+      </addColumn>
+   </changeSet>
+   <changeSet author="ktayade (generated)" id="1434347777251-20">
+      <addColumn tableName="DOMHEADER">
+         <column name="tool_id" type="varchar(255)"/>
+      </addColumn>
+   </changeSet>
+   <changeSet author="ktayade (generated)" id="1434347777251-21">
+      <addColumn tableName="WORKORDERLINE">
+         <column name="workorderheader_id" type="int8"/>
+      </addColumn>
+   </changeSet>
+   <changeSet author="ktayade (generated)" id="1434347777251-22">
+      <addPrimaryKey columnNames="suppliers_id, manufacturers_id"
+                     tableName="SUPPLIER_MANUFACTURER"/>
+   </changeSet>
+   <changeSet author="ktayade (generated)" id="1434347777251-23">
+      <addForeignKeyConstraint baseColumnNames="suppliers_id"
+                               baseTableName="SUPPLIER_MANUFACTURER"
+                               constraintName="FK_4pgdsl41rs2im8p4fougjllju"
+                               deferrable="false"
+                               initiallyDeferred="false"
+                               referencedColumnNames="id"
+                               referencedTableName="SUPPLIER"/>
+   </changeSet>
+   <changeSet author="ktayade (generated)" id="1434347777251-24">
+      <addForeignKeyConstraint baseColumnNames="manufacturer_id"
+                               baseTableName="ITEMMFRPART"
+                               constraintName="FK_5bcuxs20ql4dw2211nlvxasv7"
+                               deferrable="false"
+                               initiallyDeferred="false"
+                               referencedColumnNames="id"
+                               referencedTableName="IMANUFACTURER"/>
+   </changeSet>
+   <changeSet author="ktayade (generated)" id="1434347777251-25">
+      <addForeignKeyConstraint baseColumnNames="isupplier_id"
+                               baseTableName="ITEMMFRPART"
+                               constraintName="FK_6vnbii3ct3frp4t2nj65sxsqm"
+                               deferrable="false"
+                               initiallyDeferred="false"
+                               referencedColumnNames="id"
+                               referencedTableName="ISUPPLIER"/>
+   </changeSet>
+   <changeSet author="ktayade (generated)" id="1434347777251-26">
+      <addForeignKeyConstraint baseColumnNames="workorderheader_id"
+                               baseTableName="WORKORDERLINE"
+                               constraintName="FK_c45y2989p0wwg4nqpuemtqh4y"
+                               deferrable="false"
+                               initiallyDeferred="false"
+                               referencedColumnNames="id"
+                               referencedTableName="WORKORDERHEADER"/>
+   </changeSet>
+   <changeSet author="ktayade (generated)" id="1434347777251-27">
+      <addForeignKeyConstraint baseColumnNames="customer_id"
+                               baseTableName="ITEMCTN"
+                               constraintName="FK_dpaiwlqm8jnnttyvhat0foac"
+                               deferrable="false"
+                               initiallyDeferred="false"
+                               referencedColumnNames="id"
+                               referencedTableName="CUSTOMER"/>
+   </changeSet>
+   <changeSet author="ktayade (generated)" id="1434347777251-28">
+      <addForeignKeyConstraint baseColumnNames="itemmtr_id"
+                               baseTableName="WORKORDERLINE"
+                               constraintName="FK_hmedjov352pxvfubhksnamad8"
+                               deferrable="false"
+                               initiallyDeferred="false"
+                               referencedColumnNames="id"
+                               referencedTableName="ITEMMTR"/>
+   </changeSet>
+   <changeSet author="ktayade (generated)" id="1434347777251-29">
+      <addForeignKeyConstraint baseColumnNames="bomheader_id"
+                               baseTableName="BOMLINE"
+                               constraintName="FK_jicdspohqk4l5942c4a056tum"
+                               deferrable="false"
+                               initiallyDeferred="false"
+                               referencedColumnNames="id"
+                               referencedTableName="BOMHEADER"/>
+   </changeSet>
+   <changeSet author="ktayade (generated)" id="1434347777251-30">
+      <addForeignKeyConstraint baseColumnNames="manufacturers_id"
+                               baseTableName="SUPPLIER_MANUFACTURER"
+                               constraintName="FK_ovktvtv4q4y5490w0nmflgb4k"
+                               deferrable="false"
+                               initiallyDeferred="false"
+                               referencedColumnNames="id"
+                               referencedTableName="MANUFACTURER"/>
+   </changeSet>
+   <changeSet author="ktayade (generated)" id="1434347777251-31">
+      <addForeignKeyConstraint baseColumnNames="itemmtr_id"
+                               baseTableName="BOMHEADER"
+                               constraintName="FK_qd8h5qcqvblyqwicof4sfymn7"
+                               deferrable="false"
+                               initiallyDeferred="false"
+                               referencedColumnNames="id"
+                               referencedTableName="ITEMMTR"/>
+   </changeSet>
+   <changeSet author="ktayade (generated)" id="1434347777251-32">
+      <addForeignKeyConstraint baseColumnNames="machine_id"
+                               baseTableName="DOMHEADER"
+                               constraintName="FK_romnxy5jucev6brky7if7tc0m"
+                               deferrable="false"
+                               initiallyDeferred="false"
+                               referencedColumnNames="id"
+                               referencedTableName="PLANTMC"/>
+   </changeSet>
+   <changeSet author="ktayade (generated)" id="1434347777251-33">
+      <addForeignKeyConstraint baseColumnNames="org_id"
+                               baseTableName="PLANT"
+                               constraintName="FK_rsrupnjb7kricw14wprta0wh0"
+                               deferrable="false"
+                               initiallyDeferred="false"
+                               referencedColumnNames="id"
+                               referencedTableName="ORGANIZATION"/>
+   </changeSet>
+   <changeSet author="ktayade (generated)" id="1434347777251-34">
+      <addForeignKeyConstraint baseColumnNames="itemmfrpart_id"
+                               baseTableName="ITEMCTN"
+                               constraintName="FK_teo433u5n9omxwdr6467uoiw8"
+                               deferrable="false"
+                               initiallyDeferred="false"
+                               referencedColumnNames="id"
+                               referencedTableName="ITEMMFRPART"/>
+   </changeSet>
+   <changeSet author="ktayade (generated)" id="1434347777251-35">
+      <dropForeignKeyConstraint baseTableName="itemctn" constraintName="fk_itemctn_itemmtr_id"/>
+   </changeSet>
+   <changeSet author="ktayade (generated)" id="1434347777251-36">
+      <dropColumn columnName="bom_child_item" tableName="workorderline"/>
+   </changeSet>
+   <changeSet author="ktayade (generated)" id="1434347777251-37">
+      <dropColumn columnName="item" tableName="itemctn"/>
+   </changeSet>
+   <changeSet author="ktayade (generated)" id="1434347777251-38">
+      <dropColumn columnName="itemmtr_id" tableName="itemctn"/>
+   </changeSet>
+   <changeSet author="ktayade (generated)" id="1434347777251-39">
+      <dropColumn columnName="machinepk" tableName="domheader"/>
+   </changeSet>
+</databaseChangeLog>

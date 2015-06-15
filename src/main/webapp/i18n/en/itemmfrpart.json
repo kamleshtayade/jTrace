@@ -2,15 +2,15 @@
     "jtraceApp": {
         "itemmfrpart" : {
             "home": {
-                "title": "Item MFR Parts",
-                "createLabel": "Create a new Item MFR Part",
-                "createOrEditLabel": "Create or edit a Item MFR Part"
+                "title": "Approved Manufacturer",
+                "createLabel": "Create a new AML",
+                "createOrEditLabel": "Create or edit a AML"
             },
             "delete": {
-                "question": "Are you sure you want to delete Item MFR Part {{ id }}?"
+                "question": "Are you sure you want to delete AML {{ id }}?"
             },
             "detail": {
-                "title": "Item MFR Part"
+                "title": "Approved Manufacturer"
             },
             "mfrpart": "MFR Part",
             "status": "Status",
