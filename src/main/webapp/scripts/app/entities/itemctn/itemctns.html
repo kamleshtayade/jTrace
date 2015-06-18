@@ -33,14 +33,14 @@
 									<div class="form-group">
 										<div id="generator"></div>
 									</div>
-									<div id="submit1" class="col-md-5">
+									<!--<div id="submit1" class="col-md-5">
 										<div id="barcodeTarget" class="barcodeTarget"
 											style="padding-bottom: 80px"></div>
-									</div>
-									<!--<div id="submit1" class="col-md-3">
+									</div>-->
+									<div id="submit1" class="col-md-3">
 										<div id="barTarget1" class="barTarget1"
 											style="padding-top: 40px"></div>
-									</div>-->
+									</div>
 									<div id="submit1" class="col-md-4">
 										<div id="barTarget" class="barTarget"
 											style="padding-top: 10px"></div>
@@ -95,7 +95,7 @@
 									}
 								</script>
 								<button type="submit" class="btn btn-primary" class="close"
-									onclick="printDiv('barTarget')" data-dismiss="modal">
+									onclick="printDiv('barTarget1')" data-dismiss="modal">
 									<span class="glyphicon glyphicon-print"></span>&nbsp;<span
 										translate="jtraceApp.itemctn.print">Print</span>
 								</button>
@@ -185,7 +185,7 @@
                         <div class="col-md-6 form-group">
                             <label translate="jtraceApp.itemctn.poQty">PoQty</label>
                             <input type="number" class="form-control" name="poQty"
-                                   ng-model="itemctn.poQty" required>
+                                   ng-model="itemctn.poQty">
   
                             <div ng-show="editForm.poQty.$invalid">
                                 <p class="help-block"
@@ -202,7 +202,7 @@
                         <div class="col-md-6 form-group">
                             <label translate="jtraceApp.itemctn.reqdQty">ReqdQty</label>
                             <input type="number" class="form-control" name="reqdQty"
-                                   ng-model="itemctn.reqdQty" required>
+                                   ng-model="itemctn.reqdQty">
 
                             <div ng-show="editForm.reqdQty.$invalid">
                                 <p class="help-block"
@@ -218,7 +218,7 @@
                         <div class="col-md-6 form-group">
                             <label translate="jtraceApp.itemctn.recdDt">RecdDt</label>
                             <input type="date" class="form-control" name="recdDt"
-                                   ng-model="itemctn.recdDt" required>
+                                   ng-model="itemctn.recdDt" >
 
                             <div ng-show="editForm.recdDt.$invalid">
                                 <p class="help-block"
@@ -266,6 +266,22 @@
                                 <p class="help-block"
                                    ng-show="editForm.lotcode.$error.required" translate="entity.validation.required">
                                     This field is required.
+                                </p>
+                            </div>
+                        </div>                       
+                        <div class="col-md-6 form-group">
+                            <label translate="jtraceApp.itemctn.lotQty">lotQty</label>
+                            <input type="number" class="form-control" name="lotQty"
+                                   ng-model="itemctn.lotQty" required>
+
+                            <div ng-show="editForm.lotQty.$invalid">
+                                <p class="help-block"
+                                   ng-show="editForm.lotQty.$error.required" translate="entity.validation.required">
+                                    This field is required.
+                                </p>
+                                <p class="help-block"
+                                   ng-show="editForm.lotQty.$error.number" translate="entity.validation.number">
+                                    This field should be a number.
                                 </p>
                             </div>
                         </div>

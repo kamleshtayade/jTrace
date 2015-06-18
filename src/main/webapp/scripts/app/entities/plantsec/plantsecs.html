@@ -116,9 +116,8 @@
                 <tr>
                     <th translate="jtraceApp.plantsec.name">Name</th>
                     <th translate="jtraceApp.plantsec.description">Description</th>
-                    <th translate="jtraceApp.plantsec.isenabled">Isenabled</th>
-                    <th translate="jtraceApp.plantsec.capacity">Capacity</th>
                     <th translate="jtraceApp.plantsec.plant">plant</th>
+                    <th translate="jtraceApp.plantsec.isenabled">Isenabled</th>
                     <th></th>
                 </tr>
             </thead>
@@ -126,9 +125,8 @@
                 <tr ng-repeat="plantsec in plantsecs">
                     <td><a ui-sref="plantsecDetail({id:plantsec.id})">{{plantsec.name}}</a></td>
                     <td>{{plantsec.description}}</td>
-                    <td>{{plantsec.isenabled}}</td>
-                    <td>{{plantsec.capacity}}</td>
                     <td>{{plantsec.plant.code}}</td>
+                    <td>{{plantsec.isenabled}}</td>
                     <td>
                         <button type="submit"
                                 ui-sref="plantsecDetail({id:plantsec.id})"

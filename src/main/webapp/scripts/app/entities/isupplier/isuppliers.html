@@ -140,9 +140,9 @@
 			<thead>
 				<tr>
 					<th translate="jtraceApp.isupplier.code">Code</th>
-					<th translate="jtraceApp.isupplier.isenabled">Isenabled</th>
 					<th translate="jtraceApp.isupplier.address">Address</th>
 					<th translate="jtraceApp.isupplier.remark">Remark</th>
+					<th translate="jtraceApp.isupplier.isenabled">Isenabled</th>
 					<th></th>
 				</tr>
 			</thead>
@@ -150,9 +150,9 @@
 				infinite-scroll-disabled="links['last'] == page">
 				<tr ng-repeat="isupplier in isuppliers">
 					<td><a ui-sref="isupplierDetail({id:isupplier.id})">{{isupplier.code}}</a></td>
-					<td>{{isupplier.isenabled}}</td>
 					<td>{{isupplier.address}}</td>
 					<td>{{isupplier.remark}}</td>
+					<td>{{isupplier.isenabled}}</td>
 					<td>
 						<button type="submit" ui-sref="isupplierDetail({id:isupplier.id})"
 							class="btn btn-info btn-sm" tooltip="View">

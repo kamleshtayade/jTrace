@@ -18,7 +18,10 @@
             "qty": "Quantity",
             "itemmtr": "Item",
             "plantmfgline": "Plant MFG Line", 
-            "itemserial": "Item Serial numbers",           
+            "itemserial": "Item Serial numbers", 
+            "selectAll": "Select All",
+            "barCode": "Serial Numbers" ,
+            "print": "Print",         
             "workorderline" : {
                 "home": {
                     "title": "Work Order Lines",

@@ -13,7 +13,7 @@
                 "title": "Manufacturer"
             },
             "name": "Name",
-            "isenabled": "IsActive",
+            "isenabled": "Is Active",
             "code": "Code",
             "mfrcat": "Mfr Category",
             "address": "Address",

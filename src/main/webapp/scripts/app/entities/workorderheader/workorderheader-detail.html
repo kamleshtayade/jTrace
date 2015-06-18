@@ -57,6 +57,25 @@
                     <td>
                         <input type="text" class="input-sm form-control" value="{{workorderheader.plantmfgline.id}}" readonly>
                     </td>
+                </tr>                
+                <tr>
+                    <td>
+                        <span translate="jtraceApp.workorderheader.plantmfgline">plantmfgline</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{workorderheader.itemserial}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="jtraceApp.workorderheader.plantmfgline">plantmfgline</span>
+                    </td>
+                    <td>
+                        <div >
+                           <div id="{{dyn}}" ng-repeat="dyn in barcode" class="form-group"
+                                            style="margin-top: 20px">{{dyn}}</div>
+                        </div>
+                    </td>
                 </tr>
             </tbody>
         </table>

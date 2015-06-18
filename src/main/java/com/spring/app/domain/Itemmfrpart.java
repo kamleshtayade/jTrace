@@ -1,15 +1,27 @@
 package com.spring.app.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import java.io.Serializable;
+import java.util.Objects;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
+import org.hibernate.annotations.Type;
+import org.joda.time.LocalDate;
 
-import javax.persistence.*;
-import javax.validation.constraints.*;
-import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.Objects;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.spring.app.domain.util.CustomLocalDateSerializer;
+import com.spring.app.domain.util.ISO8601LocalDateDeserializer;
 
 /**
  * A Itemmfrpart.
@@ -46,6 +58,18 @@ public class Itemmfrpart implements Serializable {
 
     @ManyToOne
     private Isupplier isupplier; 
+    
+    @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalDate")
+    @JsonSerialize(using = CustomLocalDateSerializer.class)
+    @JsonDeserialize(using = ISO8601LocalDateDeserializer.class)
+    @Column(name = "activefrom")
+    private LocalDate activefrom;
+
+    @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalDate")
+    @JsonSerialize(using = CustomLocalDateSerializer.class)
+    @JsonDeserialize(using = ISO8601LocalDateDeserializer.class)
+    @Column(name = "activetill")
+    private LocalDate activetill;
     
 	public Isupplier getIsupplier() {
 		return isupplier;
@@ -110,8 +134,24 @@ public class Itemmfrpart implements Serializable {
     public void setItemmtr(Itemmtr itemmtr) {
         this.itemmtr = itemmtr;
     }
+    
+    public LocalDate getActivefrom() {
+		return activefrom;
+	}
 
-    @Override
+	public void setActivefrom(LocalDate activefrom) {
+		this.activefrom = activefrom;
+	}
+
+	public LocalDate getActivetill() {
+		return activetill;
+	}
+
+	public void setActivetill(LocalDate activetill) {
+		this.activetill = activetill;
+	}
+
+	@Override
     public boolean equals(Object o) {
         if (this == o) {
             return true;
@@ -139,6 +179,8 @@ public class Itemmfrpart implements Serializable {
                 ", mfrpart='" + mfrpart + "'" +
                 ", status='" + status + "'" +
                 ", supplier='" + supplier + "'" +
+                ", activefrom='" + activefrom + "'" +
+                ", activetill='" + activetill + "'" +
                 ", remark='" + remark + "'" +
                 '}';
     }

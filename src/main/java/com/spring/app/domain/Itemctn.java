@@ -33,15 +33,15 @@ public class Itemctn implements Serializable {
     @Column(name = "ctn", nullable = false)
     private String ctn;
 
-    @NotNull
-    @Column(name = "reqd_qty", nullable = false)
+
+    @Column(name = "reqd_qty")
     private Integer reqdQty;
 
-    @NotNull
+
     @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalDate")
     @JsonSerialize(using = CustomLocalDateSerializer.class)
     @JsonDeserialize(using = ISO8601LocalDateDeserializer.class)
-    @Column(name = "recd_dt", nullable = false)
+    @Column(name = "recd_dt")
     private LocalDate recdDt;
 
 
@@ -66,6 +66,8 @@ public class Itemctn implements Serializable {
     @Column(name = "lot_code")
     private String lotCode;
 
+    @Column(name = "lot_qty")
+    private Integer lotQty;
     
     @ManyToOne
     private Itemmfrpart itemmfrpart;
@@ -176,6 +178,14 @@ public class Itemctn implements Serializable {
 	public void setPoQty(Integer poQty) {
 		this.poQty = poQty;
 	}
+	
+	public Integer getLotQty() {
+		return lotQty;
+	}
+
+	public void setLotQty(Integer lotQty) {
+		this.lotQty = lotQty;
+	}
 
 	@Override
     public boolean equals(Object o) {
@@ -205,6 +215,7 @@ public class Itemctn implements Serializable {
                 ", ctn='" + ctn + "'" +
                 ", poQty='"+poQty+"'"+
                 ", reqdQty='" + reqdQty + "'" +
+                ", lotQty='"+lotQty+"'"+
                 ", recdDt='" + recdDt + "'" +
                 ", srNoTo='" + srNoTo + "'" +
                 ", selfLife='" + selfLife + "'" +

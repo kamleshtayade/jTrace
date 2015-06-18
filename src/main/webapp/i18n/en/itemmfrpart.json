@@ -18,7 +18,9 @@
             "remark": "Remark",
             "itemmtr": "Item",
             "manufacturer":"Manufacturer",
-            "supppart" : "Supplier Part"
+            "supppart" : "Supplier Part",
+            "activefrom": "Effective From",
+            "activetill": "Effective Till"
         }
     }
 }

@@ -94,7 +94,76 @@
             </div>
         </div>
     </div>
+<!-- Modal for Barcode -->
+	<div class="modal fade" id="printWorkorderheaderModal" tabindex="-1"
+		role="dialog" aria-labelledby="myItemctnLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<form name="editForm" id="form_edit" role="form" show-validation>
 
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"
+							aria-hidden="true" ng-click="clearAll()">&times;</button>
+						<h4 class="modal-title" id="myItemctnLabel"
+							translate="jtraceApp.workorderheader.barCode">Generated Bar code for {{workorderheader.woNumber}}</h4>
+					</div>
+
+					<div class="row">
+						<div class="modal-body">
+                                
+    							<div class="row">
+    								<div class="col-md-8" style="margin-left: 440px">
+    									<label translate="jtraceApp.workorderheader.selectAll">Select
+    										All</label>
+    								</div>
+
+    								<div class="col-md-4" style="margin-left: 395px">
+    									<input type="checkbox" ng-model="parent" id="selectAll"
+    										ng-checked="{{dynamicDivs14}}" class="form-control"
+    										style="margin-bottom: 10px" ng-model="parent">
+    								</div>
+    							</div>
+    							<div class="col-md-12">
+    								<div class="col-md-8">
+                                        <div id="barCodw" class="col-md-4" style="margin-bottom:2px" ></div>
+    								</div>
+    								<div class="col-md-4">
+    									<input type="checkbox" id="{{dyn1}}" ng-model="dynamicDivs144"
+    										ng-repeat="dyn1 in dynamicDivs1" ng-checked="parent"
+    										class="form-control" style="margin-top: 28px">
+    								</div>
+    							</div>
+						</div>
+					</div>
+					<input type="radio" name="btype"
+						id="datamatrix" value="datamatrix" checked="checked" hidden>
+					<input type="text" id="bgColor" value="#FFFFFF" size="7" hidden>
+					<input type="text" id="color" value="#000000" size="7" hidden>
+					<input type="text" id="barWidth" value="1" size="3" hidden>
+					<input type="text" id="barHeight" value="20" size="3" hidden>
+					<input type="text" id="moduleSize" value="9" size="3" hidden>
+					<input type="text" id="quietZoneSize" value="1" size="3" hidden>
+					<input type="text" id="quietZoneSize" value="5" size="3" hidden>
+					<br /> 
+                    <input type="checkbox" name="rectangular" id="rectangular"
+						checked="checked" hidden> <br /> <input type="text"
+						id="posX" value="10" size="3" hidden> <br /> <input
+						type="text" id="posY" value="20" size="3" hidden> <br />
+					<input type="radio" id="css" name="renderer" value="css"
+						checked="checked" hidden>
+
+					<div class="modal-footer">
+						<button type="submit" class="btn btn-primary" class="close"
+							ng-click="printDivDynamic('barCode')" data-dismiss="modal">
+							<span class="glyphicon glyphicon-save"></span>&nbsp;<span
+								translate="jtraceApp.workorderheader.print">Print</span>
+						</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<!-- End : Modal for Barcode -->
     <div class="table-responsive">
         <table class="table table-condensed hover">
             <thead>
@@ -131,6 +200,11 @@
                                 ng-click="delete(workorderheader.id)"
                                 class="btn btn-danger btn-sm" tooltip="Delete">
                             <span class="glyphicon glyphicon-trash"></span>
+                        </button>
+                        <button type="submit"
+                                ng-click="createCode(workorderheader.id)"
+                                class="btn btn-primary btn-sm"  tooltip="Serial Numbers">
+                            <span class="glyphicon glyphicon-barcode"></span>
                         </button>
                     </td>
                 </tr>

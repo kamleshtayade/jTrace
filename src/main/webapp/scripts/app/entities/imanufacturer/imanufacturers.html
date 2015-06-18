@@ -132,9 +132,9 @@
 				<tr>
 					<th translate="jtraceApp.imanufacturer.code">Code</th>
 					<th translate="jtraceApp.imanufacturer.name">Name</th>
-					<th translate="jtraceApp.imanufacturer.isenabled">Isenabled</th>
 					<th translate="jtraceApp.imanufacturer.mfrcat">Mfrcat</th>
 					<th translate="jtraceApp.imanufacturer.address">Address</th>
+                    <th translate="jtraceApp.imanufacturer.isenabled">Isenabled</th>
 					<th></th>
 				</tr>
 			</thead>
@@ -143,9 +143,9 @@
 				<tr ng-repeat="imanufacturer in imanufacturers">
 					<td><a ui-sref="imanufacturerDetail({id:imanufacturer.id})">{{imanufacturer.code}}</a></td>
 					<td>{{imanufacturer.name}}</td>
-					<td>{{imanufacturer.isenabled}}</td>
 					<td>{{imanufacturer.mfrcat}}</td>
 					<td>{{imanufacturer.address}}</td>
+                    <td>{{imanufacturer.isenabled}}</td>
 					<td>
 						<button type="submit"
 							ui-sref="imanufacturerDetail({id:imanufacturer.id})"

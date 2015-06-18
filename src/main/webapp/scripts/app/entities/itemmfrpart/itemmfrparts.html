@@ -36,13 +36,7 @@
                         <div class="form-group">
                             <label translate="jtraceApp.itemmfrpart.supppart">SupplierPart Number</label>
                             <input type="text" class="form-control" name="supplier"
-                                   ng-model="itemmfrpart.supplier" required>
-                            <div ng-show="editForm.mfrpart.$invalid">
-                                <p class="help-block"
-                                   ng-show="editForm.mfrpart.$error.required" translate="entity.validation.required">
-                                    This field is required.
-                                </p>
-                            </div>       
+                                   ng-model="itemmfrpart.supplier">                                  
 
                         </div>
 
@@ -57,10 +51,23 @@
                             <select class="form-control" name="itemcat" ng-model="itemmfrpart.manufacturer.id" ng-options="manufacturer.id as manufacturer.code for manufacturer in manufacturers">
                             </select>
                         </div>
+
                         <div class="form-group">
                             <label translate="jtraceApp.itemmfrpart.supplier">Supplier</label>
                             <select class="form-control" name="itemcat" ng-model="itemmfrpart.isupplier.id" ng-disabled="!itemmfrpart.manufacturer.id" ng-options="sup.id as sup.code for sup in suppliers">
                             </select>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label translate="jtraceApp.itemmfrpart.activefrom">Activefrom</label>
+                            <input type="date" class="form-control" name="activefrom" ng-model="itemmfrpart.activefrom">
+
+                        </div>
+                        <div class="form-group">
+                            <label translate="jtraceApp.itemmfrpart.activetill">Activetill</label>
+                            <input type="date" class="form-control" name="activetill" ng-model="itemmfrpart.activetill">
+
                         </div>
 
                         <div class="form-group">
@@ -130,10 +137,10 @@
             <thead>
                 <tr>
                     <th translate="jtraceApp.itemmfrpart.mfrpart">Mfrpart</th>
-                    <th translate="jtraceApp.itemmfrpart.supppart">Supplierpart</th>
                     <th translate="jtraceApp.itemmfrpart.itemmtr">itemmtr</th>
                     <th translate="jtraceApp.itemmfrpart.manufacturer">Manufacturer</th>
-                    <th translate="jtraceApp.itemmfrpart.supplier">Supplier</th>
+                    <th translate="jtraceApp.itemmfrpart.activefrom">Activefrom</th>
+                    <th translate="jtraceApp.itemmfrpart.activetill">Activetill</th>
                     <th translate="jtraceApp.itemmfrpart.remark">Remark</th>
                     <th translate="jtraceApp.itemmfrpart.status">Status</th>
                     <th></th>
@@ -142,10 +149,10 @@
             <tbody>
                 <tr ng-repeat="itemmfrpart in itemmfrparts">
                     <td><a ui-sref="itemmfrpartDetail({id:itemmfrpart.id})">{{itemmfrpart.mfrpart}}</a></td>
-                    <td>{{itemmfrpart.supplier}}</td>
                     <td>{{itemmfrpart.itemmtr.code}}</td>
                     <td>{{itemmfrpart.manufacturer.code}}</td>
-                    <td>{{itemmfrpart.isupplier.code}}</td>
+                    <td>{{itemmfrpart.activefrom}}</td>
+                    <td>{{itemmfrpart.activetill}}</td>
                     <td>{{itemmfrpart.remark}}</td>
                     <td>{{itemmfrpart.status}}</td>
                     <td>

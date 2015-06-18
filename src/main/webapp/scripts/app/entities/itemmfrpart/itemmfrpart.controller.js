@@ -52,7 +52,7 @@ angular.module('jtraceApp')
         };
 
         $scope.clear = function () {
-            $scope.itemmfrpart = {mfrpart: null, status: null, supplier: null, remark: null, id: null};
+            $scope.itemmfrpart = {mfrpart: null, status: null, supplier: null, activefrom:null, activetill:null, remark: null, id: null};
             $scope.editForm.$setPristine();
             $scope.editForm.$setUntouched();
         };

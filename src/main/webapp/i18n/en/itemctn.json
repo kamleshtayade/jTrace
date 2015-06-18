@@ -21,6 +21,7 @@
             "srNoFrom": "Serial No From",
             "selfLife": "Shelf Life",
             "poQty": "PO Qty",
+            "lotQty": "Lot Qty",
             "invoice": "Invoice",
             "itemmtr": "Item",
             "dateCode": "Date Code",
