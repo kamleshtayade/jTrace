@@ -72,9 +72,8 @@ angular.module('jtraceApp')
             $scope.editForm.$setUntouched();
         };
         /* Barcode */
-        //$scope.barVal2 = ['201524PDr0001','201524PDr0002','201524PDr0003'];
-       // $scope.barVal2 = [];
-       //alert($scope.workorderheader.itemserial);
+
+       $scope.bardiv = [];
         /*  Start : BarCode Generation */
         $scope.createCode = function(id) {
           Workorderheader.get({id: id}, function(result) { 
@@ -82,12 +81,7 @@ angular.module('jtraceApp')
                 $scope.workorderheader = result;
                 var barVal = $scope.workorderheader.itemserial;
                 $scope.barVal2= barVal.split(",");
-                $('#printWorkorderheaderModal').modal('show');
-
-               // $interval(generateBarcode(), 500, [30]);
-
-           // function generateBarcode() {
-                //$scope.barVal2 = id.split(",");   
+                $('#printWorkorderheaderModal').modal('show'); 
 
                 var btype = "datamatrix";
                 var renderer = "css";
@@ -109,31 +103,30 @@ angular.module('jtraceApp')
                     addQuietZone: $("#quietZoneSize").val()
                 };            
 
+
+                var currentDiv2 = document.getElementById('barCodw');
+                
+
+                for(var j=0;j<$scope.bardiv.length;j++){
+
+                    currentDiv2.removeChild($scope.bardiv[j]);                    
+                }
+
+                $scope.bardiv = [];
+
                 for (var i = 0; i < $scope.barVal2.length; i++) {
                     var barCodeValue = $scope.barVal2[i];
                     var value = barCodeValue.toString();
-
-                    value = {code:value, rect: true};
                     
                     var x = $scope.barVal2[i];
-                    var barCod = document.createElement('div')
-                    var currentDiv2 = document.getElementById('barCodw')
-                    barCod.setAttribute('id',x)
+                    var barCod = document.createElement('div');
+                    barCod.setAttribute('id',x);
                     currentDiv2.appendChild(barCod);
+                    $scope.bardiv.push(barCod);
 
                     $("#" + x).html("").show().barcode(value, btype, settings);
 
-                   // $("#bcTarget"+x).barcode(value,btype,settings);
-
-                }                
-                
-                //$scope.flag = true;
-
-                
-               // $( "#first" ).slideUp( 300 ).fadeIn( 400 );
-               // $( "#second" ).slideUp( 300 ).delay( 5000 ).fadeIn( 400 );
-            //};
-            /* end : generateBarcode*/
+                } 
 
             /*  Start: child checkboxes seletion dependency on parent*/
             $(function() {
@@ -165,11 +158,6 @@ angular.module('jtraceApp')
             /*End*/
 
 
-
-
-
-            
-
         /* Start: Print selected Barcodes */
         $scope.printDivDynamic = function(divName) {
             var s = ""
@@ -200,56 +188,4 @@ angular.module('jtraceApp')
             }
         };
                /* End */
-
-
-        $scope.clearAll = function() {
-                
-                    /* for(var i = 0 ; i<$scope.dynamicDivs1.length ; i++){
-
-                    if($("#"+$scope.dynamicDivs1[i]).is(':checked')){
-                    $("#"+$scope.dynamicDivs1[i]).attr('checked', false) 
-                    } 
-
-                    } */
-                $scope.barVal2 = ['33566', '7877888', '45345', '564', '54544', '7664767', '555598', 't76ttt', 'dsgfds676', 'hu5555', 'ewwr56656'];
-                for (var i = 0; i < $scope.barVal2.length; i++) {
-                    var barCodeValue = $scope.barVal2[i]
-                    var value = barCodeValue.toString();
-                    var btype = "datamatrix";
-                    var renderer = "css";
-                    var btype1 = "code11";
-                    //var quietZone = false;
-
-                    value = {
-                        code: value,
-                        rect: true
-                    };
-                    var checkFlag = false;
-
-                    var settings = {
-                        output: renderer,
-                        bgColor: $("#bgColor").val(),
-                        color: $("#color").val(),
-                        barWidth: $("#barWidth").val(),
-                        barHeight: $("#barHeight").val(),
-                        moduleSize: $("#moduleSize").val(),
-                        posX: $("#posX").val(),
-                        posY: $("#posY").val(),
-                        addQuietZone: $("#quietZoneSize").val()
-                    };
-                    var x = $scope.barVal2[i]
-                    
-                        //var barCod = document.createElement('div')
-                    var currentDiv2 = document.getElementById('barCodw');
-                    
-                    var barCod = document.getElementById(x);
-                        //barCod.setAttribute('id',x)
-                    currentDiv2.removeChild(barCod);
-                    
-
-                    //$("#"+x).html("").show().barcode(value, btype, settings);
-                }
-            };
-
-
     });
