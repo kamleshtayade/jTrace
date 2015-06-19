@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
+   <changeSet author="ktayade (generated)" id="1434630409583-1">
+      <addColumn tableName="ITEMMFRPART">
+         <column name="activefrom" type="date"/>
+      </addColumn>
+   </changeSet>
+   <changeSet author="ktayade (generated)" id="1434630409583-2">
+      <addColumn tableName="ITEMMFRPART">
+         <column name="activetill" type="date"/>
+      </addColumn>
+   </changeSet>
+   <changeSet author="ktayade (generated)" id="1434630409583-3">
+      <addColumn tableName="ITEMCTN">
+         <column name="lot_qty" type="int4"/>
+      </addColumn>
+   </changeSet>
+   <changeSet author="ktayade (generated)" id="1434630409583-4">
+      <dropNotNullConstraint columnDataType="date" columnName="recd_dt" tableName="ITEMCTN"/>
+   </changeSet>
+   <changeSet author="ktayade (generated)" id="1434630409583-5">
+      <dropNotNullConstraint columnDataType="int4" columnName="reqd_qty" tableName="ITEMCTN"/>
+   </changeSet>
+</databaseChangeLog>

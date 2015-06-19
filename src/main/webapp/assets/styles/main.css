@@ -814,11 +814,7 @@ html { height: 100%;}
 	width: 93%;
 }
 
-#workorder-menu, #language-menu, #administration-menu, #account-menu {
-	padding: 0;
-}
-
-#entity-menu, #item-menu, #plant-menu, #organization-menu , #workorder-menu{
+#entity-menu, #item-menu, #plant-menu, #organization-menu , #workorder-menu, #account-menu , #administration-menu, #language-menu{
 	padding-left: 15px;
 }
 /*End: Fancy Sidebar*/
