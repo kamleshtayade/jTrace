@@ -28,10 +28,10 @@
     <include file="classpath:config/liquibase/changelog/20150607083225_added_entity_Imanufacturer.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20150607083657_added_entity_Isupplier.xml" relativeToChangelogFile="false"/>
     <!-- Added for Demo App post 0.2.9 version release -->
-    <!-- <include file="classpath:config/liquibase/changelog/20150615055606_changelog.xml"/>
-    <include file="classpath:config/liquibase/changelog/20150618122639_changelog.xml"/>-->
+    <include file="classpath:config/liquibase/changelog/20150615055606_changelog.xml"/>
+    <include file="classpath:config/liquibase/changelog/20150618122639_changelog.xml"/>
     <!-- Individual DB instance add liquibase changelogs here -->
-    <include file="classpath:config/liquibase/changelog/20150606114052_changelog.xml"/>
+    <!-- <include file="classpath:config/liquibase/changelog/20150606114052_changelog.xml"/>
     <include file="classpath:config/liquibase/changelog/20150607031546_changelog.xml"/>
     <include file="classpath:config/liquibase/changelog/20150607065033_changelog.xml"/>
     <include file="classpath:config/liquibase/changelog/20150607091019_changelog.xml"/>
@@ -40,5 +40,5 @@
     <include file="classpath:config/liquibase/changelog/20150607185135_changelog.xml"/>
     <include file="classpath:config/liquibase/changelog/20150607190247_changelog.xml"/>
     <include file="classpath:config/liquibase/changelog/20150611053925_changelog.xml"/>
-    <include file="classpath:config/liquibase/changelog/20150618044622_changelog.xml"/>
+    <include file="classpath:config/liquibase/changelog/20150618044622_changelog.xml"/>-->
 </databaseChangeLog>
