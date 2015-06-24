@@ -4,7 +4,7 @@
 
     <div>
             <h2 translate="jtraceApp.workorderline.home.title">Workorderline</h2>
-                <button class="btn btn-primary" data-toggle="modal" data-target="#saveWorkorderlineModal" ng-click="clear()">
+                <button class="btn btn-primary" data-toggle="modal" data-target="#saveWorkorderlineModal" ng-click="clear()" disabled>
                     <span class="glyphicon glyphicon-plus"></span> <span translate="entity.action.create">Create a new Workorderline</span>
                 </button><br><br>
     </div>
@@ -124,7 +124,11 @@
         </div>
     </div>
 
-    <div class="table-responsive">
+    <div id="search">
+        <input type="text" size="60" ng-model="search_query" placeholder="Search...">
+    </div>   
+
+    <div class="table-responsive">        
         <table class="table table-condensed hover">
             <thead>
                 <tr>
@@ -140,7 +144,7 @@
                 </tr>
             </thead>
             <tbody infinite-scroll="loadPage(page + 1)" infinite-scroll-disabled="links['last'] == page">
-                <tr ng-repeat="workorderline in workorderlines">
+                <tr ng-repeat="workorderline in workorderlines | filter:search_query">
                     <td><a ui-sref="workorderlineDetail({id:workorderline.id})">{{workorderline.itemmtr.code}}</td>
                     <td>{{workorderline.workorderheader.woNumber}}</td>
                     <td>{{workorderline.bomQty}}</td>

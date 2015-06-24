@@ -164,7 +164,10 @@
 		</div>
 	</div>
 	<!-- End : Modal for Barcode -->
-    <div class="table-responsive">
+    <div id="search">
+        <input type="text" size="60" ng-model="search_query" placeholder="Search...">
+    </div>
+    <div class="table-responsive">        
         <table class="table table-condensed hover">
             <thead>
                 <tr>
@@ -178,7 +181,7 @@
                 </tr>
             </thead>
             <tbody infinite-scroll="loadPage(page + 1)" infinite-scroll-disabled="links['last'] == page">
-                <tr ng-repeat="workorderheader in workorderheaders">
+                <tr ng-repeat="workorderheader in workorderheaders | filter:search_query">
                     <td><a ui-sref="workorderheaderDetail({id:workorderheader.id})">{{workorderheader.woNumber}}</a></td>
                     <td>{{workorderheader.kitNumber}}</td>
                     <td>{{workorderheader.status}}</td>
@@ -209,6 +212,6 @@
                     </td>
                 </tr>
             </tbody>
-        </table>
+        </table>        
     </div>
 </div>

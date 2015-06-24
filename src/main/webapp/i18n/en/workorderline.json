@@ -2,7 +2,7 @@
     "jtraceApp": {
         "workorderline" : {
             "home": {
-                "title": "Work Order Lines",
+                "title": "Kitting Details",
                 "createLabel": "Create a new Work Order Line",
                 "createOrEditLabel": "Create or edit a Work Order Line"
             },

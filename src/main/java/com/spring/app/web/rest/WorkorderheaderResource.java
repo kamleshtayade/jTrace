@@ -63,8 +63,6 @@ public class WorkorderheaderResource {
             return ResponseEntity.badRequest().header("Failure", "A new workorderheader cannot already have an ID").build();
         }
         workorderheaderRepository.save(workorderheader);
-        workorderheader.setItemserial(CodeUtil.generateCode("WOSerial", workorderheader.getId(), workorderheader.getQty()));
-        workorderheaderRepository.save(workorderheader);
         
         /**
          * Start - Add WOline entries         * 
@@ -85,6 +83,13 @@ public class WorkorderheaderResource {
         		woline = null;
         	}
         }
+        
+        log.debug("Done with adding lines");
+        log.debug("Serial Number:+"+workorderheader.getItemserial()+" id: "+workorderheader.getId());
+       if(workorderheader.getItemserial() == null) {
+        workorderheader.setItemserial(CodeUtil.generateCode("WOSerial", workorderheader.getId(), workorderheader.getQty()));
+        workorderheaderRepository.save(workorderheader);
+       }
         /**
          *  End - Add Woline entries
          */       
