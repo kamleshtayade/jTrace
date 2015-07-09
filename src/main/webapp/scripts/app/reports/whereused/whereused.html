@@ -1,0 +1,48 @@
+<div class="container">
+
+    
+
+    <div>
+            <h2 translate="jtraceApp.whereused.home.title">ReportName</h2>
+                <!--<button class="btn btn-primary" data-toggle="modal" data-target="#saveBomlineModal" ng-click="clear()" disabled>
+                    <span class="glyphicon glyphicon-plus"></span> <span translate="entity.action.create">Create a new Bomline</span>
+                </button>--><br><br>
+    </div>
+
+    <div id="search">
+        <input type="text" size="60" ng-model="search_query" placeholder="Search...">
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-condensed hover">
+            <thead>
+                <tr>
+                    <th translate="jtraceApp.whereused.bomheader">bomheader</th>
+                    <th translate="jtraceApp.whereused.itemmtr">itemmtr</th>
+                    <th translate="jtraceApp.whereused.quantity">Quantity</th>
+                    <th translate="jtraceApp.whereused.lotcode">Quantity</th>
+                    <th translate="jtraceApp.whereused.datecode">Quantity</th>
+                    <th translate="jtraceApp.whereused.mfgpartno">Quantity</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody infinite-scroll="loadPage(page + 1)" infinite-scroll-disabled="links['last'] == page">
+                <tr ng-repeat="bomline in bomlines | filter:search_query">
+                    <td><a ui-sref="whereusedDetail({id:bomline.id})">{{bomline.bomheader.itemmtr.code}}</a></td>                    
+                    <td>{{bomline.itemmtr.code}}</td>
+                    <td>{{bomline.quantity}}</td>
+                    <td>{{bomline.itemctn.lotCode}}</td>
+                    <td>{{bomline.itemctn.dateCode}}</td>
+                    <td>{{bomline.itemctn.itemmfrpart.mfrpart}}</td>
+                    <td>
+                        <button type="submit"
+                                ui-sref="whereusedDetail({id:bomline.id})"
+                                class="btn btn-info btn-sm" tooltip="View">
+                            <span class="glyphicon glyphicon-eye-open"></span>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -32,9 +32,6 @@ module.exports = function (config) {
             'main/webapp/bower_components/ngInfiniteScroll/build/ng-infinite-scroll.js',
             'main/webapp/bower_components/angular-animate/angular-animate.js',
             'main/webapp/bower_components/angular-bootstrap/ui-bootstrap-tpls.js',
-            'main/webapp/bower_components/raphael/raphael.js',
-            'main/webapp/bower_components/mocha/mocha.js',
-            'main/webapp/bower_components/morris.js/morris.js',
             'main/webapp/bower_components/datatables/media/js/jquery.dataTables.js',
             'main/webapp/bower_components/angular-datatables/dist/angular-datatables.js',
             'main/webapp/bower_components/angular-datatables/dist/plugins/bootstrap/angular-datatables.bootstrap.js',
@@ -48,6 +45,8 @@ module.exports = function (config) {
             'main/webapp/bower_components/barcode-jquery/jquery-barcode.js',
             'main/webapp/bower_components/barcode-jquery/jquery-barcode.min.js',
             'main/webapp/bower_components/angular-flash/dist/angular-flash.js',
+            'main/webapp/bower_components/Chart.js/Chart.js',
+            'main/webapp/bower_components/angular-chart.js/dist/angular-chart.js',
             'main/webapp/bower_components/angular-mocks/angular-mocks.js',
             // endbower
             'main/webapp/scripts/app/app.js',

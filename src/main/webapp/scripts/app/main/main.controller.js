@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('jtraceApp')
-    .controller('MainController', function ($scope, Principal) {
+    .controller('MainController', function ($scope, Principal,CountService) {
         Principal.identity().then(function(account) {
             $scope.account = account;
             $scope.isAuthenticated = Principal.isAuthenticated;
@@ -13,6 +13,11 @@ angular.module('jtraceApp')
 		$scope.closeAlert = function(index) {
     		$scope.alerts.splice(index, 1);
   		};
+
+       /* CountSevice.Count().then(function(countdata){
+            $scope.countdata=countdata;
+            alert($scope.countdata);
+        });*/
 
         // Area Chart
         $scope.labelsLine = ["January", "February", "March", "April", "May", "June", "July"];

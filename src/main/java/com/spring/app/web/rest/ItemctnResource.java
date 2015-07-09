@@ -1,10 +1,12 @@
 package com.spring.app.web.rest;
 
-import com.codahale.metrics.annotation.Timed;
-import com.spring.app.domain.Itemctn;
-import com.spring.app.repository.ItemctnRepository;
-import com.spring.app.web.rest.util.CodeUtil;
-import com.spring.app.web.rest.util.PaginationUtil;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.util.List;
+
+import javax.inject.Inject;
+import javax.servlet.http.HttpServletResponse;
+import javax.validation.Valid;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,17 +15,18 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
-import javax.inject.Inject;
-import javax.validation.Valid;
-
-import java.net.URI;
-import java.net.URISyntaxException;
-
-import javax.servlet.http.HttpServletResponse;
-
-import java.util.List;
+import com.codahale.metrics.annotation.Timed;
+import com.spring.app.domain.Itemctn;
+import com.spring.app.repository.ItemctnRepository;
+import com.spring.app.web.rest.util.CodeUtil;
+import com.spring.app.web.rest.util.PaginationUtil;
 
 /**
  * REST controller for managing Itemctn.
@@ -36,6 +39,7 @@ public class ItemctnResource {
 
     @Inject
     private ItemctnRepository itemctnRepository;
+    
 
     /**
      * POST  /itemctns -> Create a new itemctn.
@@ -97,6 +101,11 @@ public class ItemctnResource {
     public ResponseEntity<Itemctn> get(@PathVariable Long id, HttpServletResponse response) {
         log.debug("REST request to get Itemctn : {}", id);
         Itemctn itemctn = itemctnRepository.findOne(id);
+        log.debug("Get itemctn contain +"+itemctn);
+        log.debug("Get lotCode"+itemctn.getLotCode());
+        log.debug("Get Count:"+itemctnRepository.count());
+        log.debug("Get count by lotcode"+itemctnRepository.countByLotCode(itemctn.getLotCode()));
+        
         if (itemctn == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }

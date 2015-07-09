@@ -1,0 +1,43 @@
+{
+    "jtraceApp": {
+        "whereused" : {
+            "home": {
+                "title": "Item Whereused Report",
+                "createLabel": "Create a new Bomline",
+                "createOrEditLabel": "Create or edit a Bomline"
+            },
+            "delete": {
+                "question": "Are you sure you want to delete Bomline {{ id }}?"
+            },
+            "detail": {
+                "title": "BOM Parent Item"
+            },
+            "mfr": "Manufaturer",
+            "mfgpartno":"Mfgpart Number",
+            "quantity": "Quantity",
+            "lotcode": "Lot Code",
+            "datecode": "Date Code",
+            "itemmtr": "Child Item",
+            "itemctn": "CTN",
+            "bomheader":"Parent Item"
+        },
+        "serialno" : {
+            "home": {
+                "title": "Serial Number Report",
+                "createLabel": "Create a new DOM line",
+                "createOrEditLabel": "Create or edit a DOM line"
+            },
+            "delete": {
+                "question": "Are you sure you want to delete DOM line {{ id }}?"
+            },
+            "detail": {
+                "title": "Serial Number"
+            },
+            "serialno": "Serial No",
+            "mfgdate": "Manufacturing Date",
+            "opr": "Operator",
+            "plantmfgline": "Mfg Line",
+            "plant":"Plant"
+        }
+    }
+}

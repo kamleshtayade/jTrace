@@ -52,6 +52,11 @@
                 "apidocs": "API",
                 "database": "Database"
             },
+            "report": {
+                "main": "Reports",
+                "whereused": "Whereused",
+                "serialno":"Serial Number"
+            },
             "language": "Language"
         },
         "form": {

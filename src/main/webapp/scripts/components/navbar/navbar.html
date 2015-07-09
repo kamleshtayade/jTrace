@@ -171,7 +171,7 @@
 
 					<li ng-controller="LanguageController" id="language"><a
 						data-toggle="collapse" data-parent="#sidebar-menu"
-						href="#language-menu"> <i class="fa fa-flag"></i>&nbsp; <span
+						href="#language-menu"> <i class="fa fa-language"></i>&nbsp; <span
 							translate="global.menu.language">Language</span>&nbsp; <i
 							class="fa fa-caret-down"></i>
 					</a>
@@ -181,6 +181,19 @@
 									+ language| translate}}</a>
 							</li>
 						</ul></li>
+
+					<li ng-class="{active: $state.includes('admin')}"
+						ng-switch-when="true" has-role="ROLE_ADMIN" id="report"><a
+						data-toggle="collapse" data-parent="#sidebar-menu"
+						href="#report-menu"><i class="fa fa-flag"></i>&nbsp;<span
+							class="hidden-tablet" translate="global.menu.report.main">Report</span>&nbsp;<i
+							class="fa fa-caret-down"></i></a></li>
+					<ul id="report-menu" class="collapse">
+                        <li><a ui-sref="whereused"><i class="fa fa-tasks"></i>&nbsp;<span
+                                        translate="global.menu.report.whereused"></span></a></li>
+                        <li><a ui-sref="serialno"><i class="fa fa-tasks"></i>&nbsp;<span
+                                        translate="global.menu.report.serialno"></span></a></li>
+					</ul>						
 
 
 					<li ng-class="{active: $state.includes('admin')}"

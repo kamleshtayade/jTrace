@@ -45,3 +45,7 @@ And then re-deploy it with
 # remote App      
 git remote rm heroku
 git remote add heroku git@heroku.com:your-app.git
+
+n3-pie
+ng-epoch
+ng-dashboard

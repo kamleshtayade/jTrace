@@ -1,7 +1,8 @@
 'use strict';
 
 angular.module('jtraceApp', ['LocalStorageModule', 'tmh.dynamicLocale','ngResource', 'ui.router', 'ngCookies', 'pascalprecht.translate', 
-    'ngCacheBuster', 'infinite-scroll','ngAnimate','ui.bootstrap','datatables','datatables.bootstrap','angular-flash.service', 'angular-flash.flash-alert-directive','chart.js'])
+    'ngCacheBuster', 'infinite-scroll','ngAnimate','ui.bootstrap','datatables','datatables.bootstrap','angular-flash.service',
+    'angular-flash.flash-alert-directive','chart.js'])
 
     .run(function ($rootScope, $location, $window, $http, $state, $translate, Auth, Principal, Language, ENV, VERSION) {
         $rootScope.ENV = ENV;

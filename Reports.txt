@@ -1,0 +1,369 @@
+Reports for Traceability Application:
+1. whareused Report:
+	Input : Component Part Number / Item * , Manf Name, plant location, Mfgpart number, Date code and Lot Code, From date to-date. 
+	Output: List of Serial Numbers , Manf Name, plant location, Mfgpart number, Quantity, Date code and Lot Code
+	
+2. Serial Number:
+	Input: Serial Number*
+	OutPut: Date of Manuf, Plant location, Operator, Time, Mfg Line, BOM Child Item
+		Item Ctn - 
+		
+3. Top Five Suppliers, Top Consume items		
+
+DOM Line: Scan Time : till seconds
+
+
+{
+  "id": 0,
+  "lineid": 0,
+  "quantity": 0,
+  "refdesignator": "",
+  "physical": 0,
+  "itemmtr": {
+    "id": 0,
+    "code": "",
+    "description": "",
+    "specification": "",
+    "itemsubcat": {
+      "id": 0,
+      "name": "",
+      "description": "",
+      "classcode": 0,
+      "enabled": false,
+      "itemcat": {
+        "id": 0,
+        "name": "",
+        "description": "",
+        "enabled": false
+      }
+    }
+  },
+  "itemctn": {
+    "id": 0,
+    "ctn": "",
+    "reqdQty": 0,
+    "recdDt": {
+      "year": 0,
+      "dayOfMonth": 0,
+      "dayOfWeek": 0,
+      "era": 0,
+      "dayOfYear": 0,
+      "chronology": {
+        "zone": {
+          "fixed": false
+        }
+      },
+      "weekyear": 0,
+      "yearOfCentury": 0,
+      "centuryOfEra": 0,
+      "monthOfYear": 0,
+      "yearOfEra": 0,
+      "weekOfWeekyear": 0,
+      "fields": [
+        {
+          "name": "",
+          "type": {
+            "name": "",
+            "durationType": {
+              "name": ""
+            },
+            "rangeDurationType": {
+              "name": ""
+            }
+          },
+          "supported": false,
+          "lenient": false,
+          "durationField": {
+            "name": "",
+            "type": {
+              "name": ""
+            },
+            "supported": false,
+            "unitMillis": 0,
+            "precise": false
+          },
+          "maximumValue": 0,
+          "minimumValue": 0,
+          "rangeDurationField": {
+            "name": "",
+            "type": {
+              "name": ""
+            },
+            "supported": false,
+            "unitMillis": 0,
+            "precise": false
+          },
+          "leapDurationField": {
+            "name": "",
+            "type": {
+              "name": ""
+            },
+            "supported": false,
+            "unitMillis": 0,
+            "precise": false
+          }
+        }
+      ],
+      "values": [
+        0
+      ],
+      "fieldTypes": [
+        {
+          "name": "",
+          "durationType": {
+            "name": ""
+          },
+          "rangeDurationType": {
+            "name": ""
+          }
+        }
+      ]
+    },
+    "srNoTo": "",
+    "srNoFrom": "",
+    "selfLife": "",
+    "poQty": 0,
+    "invoice": "",
+    "dateCode": "",
+    "lotCode": "",
+    "lotQty": 0,
+    "itemmfrpart": {
+      "id": 0,
+      "mfrpart": "",
+      "status": false,
+      "supplier": "",
+      "remark": "",
+      "itemmtr": {
+        "id": 0,
+        "code": "",
+        "description": "",
+        "specification": "",
+        "itemsubcat": {
+          "id": 0,
+          "name": "",
+          "description": "",
+          "classcode": 0,
+          "enabled": false,
+          "itemcat": {
+            "id": 0,
+            "name": "",
+            "description": "",
+            "enabled": false
+          }
+        }
+      },
+      "manufacturer": {
+        "id": 0,
+        "name": "",
+        "isenabled": false,
+        "code": "",
+        "mfrcat": "",
+        "address": ""
+      },
+      "isupplier": {
+        "id": 0,
+        "code": "",
+        "isenabled": false,
+        "remark": "",
+        "address": "",
+        "imanufacturers": [
+          {
+            "id": 0,
+            "name": "",
+            "isenabled": false,
+            "code": "",
+            "mfrcat": "",
+            "address": ""
+          }
+        ]
+      },
+      "activefrom": {
+        "year": 0,
+        "dayOfMonth": 0,
+        "dayOfWeek": 0,
+        "era": 0,
+        "dayOfYear": 0,
+        "chronology": {
+          "zone": {
+            "fixed": false
+          }
+        },
+        "weekyear": 0,
+        "yearOfCentury": 0,
+        "centuryOfEra": 0,
+        "monthOfYear": 0,
+        "yearOfEra": 0,
+        "weekOfWeekyear": 0,
+        "fields": [
+          {
+            "name": "",
+            "type": {
+              "name": "",
+              "durationType": {
+                "name": ""
+              },
+              "rangeDurationType": {
+                "name": ""
+              }
+            },
+            "supported": false,
+            "lenient": false,
+            "durationField": {
+              "name": "",
+              "type": {
+                "name": ""
+              },
+              "supported": false,
+              "unitMillis": 0,
+              "precise": false
+            },
+            "maximumValue": 0,
+            "minimumValue": 0,
+            "rangeDurationField": {
+              "name": "",
+              "type": {
+                "name": ""
+              },
+              "supported": false,
+              "unitMillis": 0,
+              "precise": false
+            },
+            "leapDurationField": {
+              "name": "",
+              "type": {
+                "name": ""
+              },
+              "supported": false,
+              "unitMillis": 0,
+              "precise": false
+            }
+          }
+        ],
+        "values": [
+          0
+        ],
+        "fieldTypes": [
+          {
+            "name": "",
+            "durationType": {
+              "name": ""
+            },
+            "rangeDurationType": {
+              "name": ""
+            }
+          }
+        ]
+      },
+      "activetill": {
+        "year": 0,
+        "dayOfMonth": 0,
+        "dayOfWeek": 0,
+        "era": 0,
+        "dayOfYear": 0,
+        "chronology": {
+          "zone": {
+            "fixed": false
+          }
+        },
+        "weekyear": 0,
+        "yearOfCentury": 0,
+        "centuryOfEra": 0,
+        "monthOfYear": 0,
+        "yearOfEra": 0,
+        "weekOfWeekyear": 0,
+        "fields": [
+          {
+            "name": "",
+            "type": {
+              "name": "",
+              "durationType": {
+                "name": ""
+              },
+              "rangeDurationType": {
+                "name": ""
+              }
+            },
+            "supported": false,
+            "lenient": false,
+            "durationField": {
+              "name": "",
+              "type": {
+                "name": ""
+              },
+              "supported": false,
+              "unitMillis": 0,
+              "precise": false
+            },
+            "maximumValue": 0,
+            "minimumValue": 0,
+            "rangeDurationField": {
+              "name": "",
+              "type": {
+                "name": ""
+              },
+              "supported": false,
+              "unitMillis": 0,
+              "precise": false
+            },
+            "leapDurationField": {
+              "name": "",
+              "type": {
+                "name": ""
+              },
+              "supported": false,
+              "unitMillis": 0,
+              "precise": false
+            }
+          }
+        ],
+        "values": [
+          0
+        ],
+        "fieldTypes": [
+          {
+            "name": "",
+            "durationType": {
+              "name": ""
+            },
+            "rangeDurationType": {
+              "name": ""
+            }
+          }
+        ]
+      }
+    },
+    "customer": {
+      "id": 0,
+      "code": "",
+      "name": "",
+      "billToAddress": "",
+      "shipToAddress": "",
+      "contactName": "",
+      "email": "",
+      "phone": ""
+    }
+  },
+  "bomheader": {
+    "id": 0,
+    "code": "",
+    "itemmtr": {
+      "id": 0,
+      "code": "",
+      "description": "",
+      "specification": "",
+      "itemsubcat": {
+        "id": 0,
+        "name": "",
+        "description": "",
+        "classcode": 0,
+        "enabled": false,
+        "itemcat": {
+          "id": 0,
+          "name": "",
+          "description": "",
+          "enabled": false
+        }
+      }
+    }
+  }
+}
