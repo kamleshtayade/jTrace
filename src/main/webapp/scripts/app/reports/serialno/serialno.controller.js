@@ -2,6 +2,7 @@
 
 angular.module('jtraceApp')
     .controller('SerialnoController', function ($scope, Domline, Domheader, ParseLinks) {
+        $scope.isCollapsed = true;
         $scope.domlines = [];
         $scope.domheaders = Domheader.query();
         $scope.page = 1;

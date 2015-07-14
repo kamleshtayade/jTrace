@@ -3,7 +3,7 @@
         "whereused" : {
             "home": {
                 "title": "Item Whereused Report",
-                "createLabel": "Create a new Bomline",
+                "createLabel": "View Report",
                 "createOrEditLabel": "Create or edit a Bomline"
             },
             "delete": {
@@ -24,7 +24,7 @@
         "serialno" : {
             "home": {
                 "title": "Serial Number Report",
-                "createLabel": "Create a new DOM line",
+                "createLabel": "View Report",
                 "createOrEditLabel": "Create or edit a DOM line"
             },
             "delete": {

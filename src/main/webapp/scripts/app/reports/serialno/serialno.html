@@ -9,38 +9,48 @@
                 </button>--><br><br>
     </div>
 
-    <div id="search">
-        <input type="text" size="60" ng-model="search_query" placeholder="Search...">
-    </div>   
     
-    <div class="table-responsive">        
-        <table class="table table-condensed hover">
-            <thead>
-                <tr>
-                    <th translate="jtraceApp.serialno.serialno">Serialno</th>
-                    <th translate="jtraceApp.serialno.mfgdate">Scantime</th>
-                    <th translate="jtraceApp.serialno.opr">domheader</th>
-                    <th translate="jtraceApp.serialno.plantmfgline">domheader</th>
-                    <th translate="jtraceApp.serialno.plant">domheader</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody infinite-scroll="loadPage(page + 1)" infinite-scroll-disabled="links['last'] == page">
-                <tr ng-repeat="domline in domlines | filter:search_query">
-                    <td><a ui-sref="serialnoDetail({id:domline.id})">{{domline.serialno}}</a></td>
-                    <td>{{domline.scantime}}</td>
-                    <td>{{domline.domheader.opr}}</td>
-                    <td>{{domline.domheader.machine.plantmfgline.name}}</td>
-                    <td>{{domline.domheader.machine.plantmfgline.plantsec.plant.code}}</td>
-                    <td>
-                        <button type="submit"
-                                ui-sref="serialnoDetail({id:domline.id})"
-                                class="btn btn-info btn-sm" tooltip="View">
-                            <span class="glyphicon glyphicon-eye-open"></span>
-                        </button>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+    <div class="row">
+        <div id="search" class="col-md-4">
+            <input type="text" size="60" ng-model="search_query" placeholder="Serial No Search..." typeahead="domline.serialno as domline.serialno for domline in domlines | filter:$viewValue | limitTo:8" class="form-control">
+        </div>
+        <div class="col-md-4">
+            <button class="btn btn-sm btn-warning" ng-click="isCollapsed = !isCollapsed"><span translate="jtraceApp.whereused.home.createLabel">View a Report</span></button>
+        </div>
+    </div>
+    <hr>
+    <div collapse="isCollapsed">
+        <div class="well well-lg">
+            <div class="table-responsive">        
+                <table class="table table-condensed hover">
+                    <thead>
+                        <tr>
+                            <th translate="jtraceApp.serialno.serialno">Serialno</th>
+                            <th translate="jtraceApp.serialno.mfgdate">Scantime</th>
+                            <th translate="jtraceApp.serialno.opr">domheader</th>
+                            <th translate="jtraceApp.serialno.plantmfgline">domheader</th>
+                            <th translate="jtraceApp.serialno.plant">domheader</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody infinite-scroll="loadPage(page + 1)" infinite-scroll-disabled="links['last'] == page">
+                        <tr ng-repeat="domline in domlines | filter:search_query">
+                            <td><a ui-sref="serialnoDetail({id:workorderline.id})">{{domline.serialno}}</a></td>
+                            <td>{{domline.scantime}}</td>
+                            <td>{{domline.domheader.opr}}</td>
+                            <td>{{domline.domheader.machine.plantmfgline.name}}</td>
+                            <td>{{domline.domheader.machine.plantmfgline.plantsec.plant.code}}</td>
+                            <td>
+                                <button type="submit"
+                                        ui-sref="serialnoDetail({id:domline.id})"
+                                        class="btn btn-info btn-sm" tooltip="View">
+                                    <span class="glyphicon glyphicon-eye-open"></span>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div> 
     </div>
 </div>

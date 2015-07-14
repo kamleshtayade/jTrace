@@ -2,6 +2,7 @@
 
 angular.module('jtraceApp')
     .controller('WhereusedController', function ($scope, Bomline,Bomheader, Itemmtr, Itemctn,Itemmfrpart, ParseLinks,flash) {
+        $scope.isCollapsed = true;
         $scope.bomlines = [];
         $scope.itemmtrs = Itemmtr.query();
         $scope.itemctns = Itemctn.query();
