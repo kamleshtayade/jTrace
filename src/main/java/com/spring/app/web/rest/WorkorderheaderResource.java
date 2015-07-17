@@ -124,6 +124,8 @@ public class WorkorderheaderResource {
         throws URISyntaxException {
         Page<Workorderheader> page = workorderheaderRepository.findAll(PaginationUtil.generatePageRequest(offset, limit));
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/workorderheaders", offset, limit);
+        
+        log.debug("Workorder header with serialno"+workorderheaderRepository.findByItemserialContaining("201524Lwh090002"));
         return new ResponseEntity<List<Workorderheader>>(page.getContent(), headers, HttpStatus.OK);
     }
 
@@ -137,6 +139,22 @@ public class WorkorderheaderResource {
     public ResponseEntity<Workorderheader> get(@PathVariable Long id, HttpServletResponse response) {
         log.debug("REST request to get Workorderheader : {}", id);
         Workorderheader workorderheader = workorderheaderRepository.findOne(id);
+        if (workorderheader == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(workorderheader, HttpStatus.OK);
+    }
+    
+    /**
+     * GET  /workorderheaders/:itemserial -> get the "id" workorderheader.
+     */
+   @RequestMapping(value = "/woheaders/{itemserial}",
+            method = RequestMethod.GET,
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    @Timed
+    public ResponseEntity<Workorderheader> get(@PathVariable String itemserial, HttpServletResponse response) {
+        log.debug("REST request to get Workorderheader : {}", itemserial);
+        Workorderheader workorderheader = workorderheaderRepository.findByItemserialContaining(itemserial);
         if (workorderheader == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }

@@ -10,4 +10,7 @@ import java.util.List;
  */
 public interface WorkorderheaderRepository extends JpaRepository<Workorderheader,Long> {
 
+	// workorderheader containing serial no
+	Workorderheader findByItemserialContaining(String itemserial);
+	
 }

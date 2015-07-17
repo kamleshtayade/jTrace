@@ -10,9 +10,11 @@ angular.module('jtraceApp')
                 AuthServerProvider.login(credentials).then(function (data) {
                     // retrieve the logged account information
                     Principal.identity(true).then(function(account) {
+                      
                         // After the login the language will be changed to
                         // the language selected by the user during his registration
                         $translate.use(account.langKey);
+                        $translate.refresh();
                         Tracker.sendActivity();
                         deferred.resolve(data);
                     });
@@ -99,7 +101,7 @@ angular.module('jtraceApp')
                     return cb(err);
                 }).$promise;
             },
-            
+
             resetPasswordInit: function (mail, callback) {
                 var cb = callback || angular.noop;
 
@@ -108,7 +110,6 @@ angular.module('jtraceApp')
                 }, function (err) {
                     return cb(err);
                 }).$promise;
-
             },
 
             resetPasswordFinish: function(key, newPassword, callback) {

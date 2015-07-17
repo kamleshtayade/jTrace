@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('jtraceApp')
-    .controller('MainController', function ($scope, Principal,CountService) {
+    .controller('MainController', function ($scope, Principal,Bomheader,Itemmtr,Workorderheader,Imanufacturer) {
         Principal.identity().then(function(account) {
             $scope.account = account;
             $scope.isAuthenticated = Principal.isAuthenticated;
@@ -14,11 +14,21 @@ angular.module('jtraceApp')
     		$scope.alerts.splice(index, 1);
   		};
 
-       /* CountSevice.Count().then(function(countdata){
-            $scope.countdata=countdata;
-            alert($scope.countdata);
-        });*/
+        /*Statistics*/
+        Itemmtr.query(function(data){
+            $scope.itemmtrcount = data.length;
+        });
+        Bomheader.query(function(data) {
+            $scope.bomheadercount = data.length;
+        });
+        Workorderheader.query(function(data){
+            $scope.wocount = data.length;
+        });
+        Imanufacturer.query(function(data){
+            $scope.mfrcount = data.length;
+        });
 
+        /*End - Statistics */
         // Area Chart
         $scope.labelsLine = ["January", "February", "March", "April", "May", "June", "July"];
         $scope.seriesLine = ['Series A', 'Series B'];

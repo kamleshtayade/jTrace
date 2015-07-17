@@ -7,15 +7,15 @@
                         <div class="panel-heading">
                             <div class="row">
                                 <div class="col-xs-3">
-                                    <i class="fa fa-comments fa-5x"></i>
+                                    <i class="fa fa-tasks fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class="huge"><span class="badge">26</span></div>
-                                    <div>New Comments!</div>
+                                    <div class="huge"><span class="badge">{{itemmtrcount}}</span></div>
+                                    <div>Items!</div>
                                 </div>
                             </div>
                         </div>
-                        <a href="#">
+                        <a ui-sref="itemmtr">
                             <div class="panel-footer">
                                 <span class="pull-left">View Details</span>
                                 <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -29,15 +29,15 @@
                         <div class="panel-heading">
                             <div class="row">
                                 <div class="col-xs-3">
-                                    <i class="fa fa-tasks fa-5x"></i>
+                                    <i class="fa fa-sitemap fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class="huge"><span class="badge">12</span></div>
-                                    <div>New Tasks!</div>
+                                    <div class="huge"><span class="badge">{{bomheadercount}}</span></div>
+                                    <div>BOMs!</div>
                                 </div>
                             </div>
                         </div>
-                        <a href="#">
+                        <a ui-sref="bomheader">
                             <div class="panel-footer">
                                 <span class="pull-left">View Details</span>
                                 <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -54,12 +54,12 @@
                                     <i class="fa fa-shopping-cart fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class="huge"><span class="badge">124</span></div>
-                                    <div>New Orders!</div>
+                                    <div class="huge"><span class="badge">{{wocount}}</span></div>
+                                    <div>Work Orders!</div>
                                 </div>
                             </div>
                         </div>
-                        <a href="#">
+                        <a ui-sref="workorderheader">
                             <div class="panel-footer">
                                 <span class="pull-left">View Details</span>
                                 <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -73,15 +73,15 @@
                         <div class="panel-heading">
                             <div class="row">
                                 <div class="col-xs-3">
-                                    <i class="fa fa-support fa-5x"></i>
+                                    <i class="fa fa-cogs fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class="huge"><span class="badge">13</span></div>
-                                    <div>Support Tickets!</div>
+                                    <div class="huge"><span class="badge">{{mfrcount}}</span></div>
+                                    <div>Manufacturers!</div>
                                 </div>
                             </div>
                         </div>
-                        <a href="#">
+                        <a ui-sref="imanufacturer">
                             <div class="panel-footer">
                                 <span class="pull-left">View Details</span>
                                 <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -97,7 +97,7 @@
                 <div class="col-lg-8">
                     <div class="panel panel-primary">
                         <div class="panel-heading">
-                            <i class="fa fa-bar-chart-o fa-fw"></i> Area Chart Example
+                            <i class="fa fa-area-chart fa-fw"></i> Area Chart Example
                             <div class="pull-right">
                                 <div class="btn-group">
                                     <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
@@ -172,7 +172,7 @@
                 <div class="col-lg-4">
                     <div class="panel panel-success">
                         <div class="panel-heading">
-                            <i class="fa fa-bar-chart-o fa-fw"></i> Donut Chart Example
+                            <i class="fa fa-pie-chart fa-fw"></i> Donut Chart Example
                         </div>
                         <div class="panel-body">
                             <canvas id="doughnut" class="chart chart-doughnut" data="data"
@@ -269,7 +269,7 @@
                 </div>
                 <div class="col-lg-6 col-sm-12">
                   <div class="panel panel-warning">
-                    <div class="panel-heading">Reactive Chart</div>
+                    <div class="panel-heading"><i class="fa fa-area-chart fa-fw"></i> Reactive Chart</div>
                     <div class="panel-body">
                       <canvas id="tables" class="chart chart-line" data="data" labels="labels"></canvas>
                     </div>

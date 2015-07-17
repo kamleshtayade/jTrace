@@ -8,6 +8,19 @@
                     <span class="glyphicon glyphicon-plus"></span> <span translate="entity.action.create">Create a new Bomline</span>
                 </button>--><br><br>
     </div>
+    <!--<div class="col-lg-4">
+                    <div class="panel panel-success">
+                        <div class="panel-heading">
+                            <i class="fa fa-bar-chart-o fa-fw"></i> Donut Chart Example
+                        </div>
+                        <div class="panel-body">
+                            <canvas id="pie" class="chart chart-pie" data="data"
+                                labels="labels" colours="colours">
+                            </canvas>                             
+                            <a href="#" class="btn btn-default btn-block">View Details</a>
+                        </div>
+                    </div>
+    </div>-->
 
     <div class="row">
         <div id="search" class="col-md-4">
@@ -19,9 +32,17 @@
     </div>
     <hr>
     <div collapse="isCollapsed">
-        <div class="well well-lg">
+        <div class="well well-lg">            
             <div class="table-responsive">
                 <table class="table table-condensed hover">
+                    <thead>
+                        <tr>
+                            <th><span>{{CurrentDate | date:'dd/MM/yyyy HH:mm:ss'}}</span></th>
+                            <th>
+                                <h3 translate="jtraceApp.whereused.home.title">ReportName</h3>
+                            </th>
+                        </tr>
+                    </thead>
                     <thead>
                         <tr>
                             <th translate="jtraceApp.whereused.bomheader">bomheader</th>

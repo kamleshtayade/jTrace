@@ -3,12 +3,19 @@
 angular.module('jtraceApp')
     .controller('WhereusedController', function ($scope, Bomline,Bomheader, Itemmtr, Itemctn,Itemmfrpart, ParseLinks,flash) {
         $scope.isCollapsed = true;
+        $scope.CurrentDate = new Date();
         $scope.bomlines = [];
         $scope.itemmtrs = Itemmtr.query();
         $scope.itemctns = Itemctn.query();
         $scope.bomheaders = Bomheader.query();
         $scope.itemmfrparts = Itemmfrpart.query();
         $scope.page = 1;
+
+        Bomheader.query(function(data) {
+        $scope.prperties = data;
+        console.log("Data Count "+data.length);
+        });
+
         $scope.loadAll = function() {
             Bomline.query({page: $scope.page, per_page: 20}, function(result, headers) {
                 $scope.links = ParseLinks.parse(headers('link'));
@@ -88,4 +95,8 @@ angular.module('jtraceApp')
             }
         };            
         /* End Modified for Quanity and Ref Designator */
+        /* Chart */
+        $scope.labels = ["Download Sales", "In-Store Sales", "Mail-Order Sales"];
+        $scope.data = [300, 500, 100];
+        $scope.colours=['#27ae60','#e67e22','#2c3e50'];
     });

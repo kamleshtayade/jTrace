@@ -23,6 +23,26 @@ angular.module('jtraceApp')
                     }]
                 }
             })
+            .state('serialnoreport', {
+                parent:'serialno',
+                url:'/:id',
+                data:{
+                    roles: ['ROLE_USER'],
+                    pageTitle: 'jtraceApp.workorderline.detail.title'
+                },
+                views:{
+                    'subcontent':{
+                        templateUrl:'scripts/app/reports/serialno/serialno-report.html',
+                        controller: 'SerialnoReportController'
+                    }
+                },
+                resolve: {
+                    translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
+                        $translatePartialLoader.addPart('report');
+                        return $translate.refresh();
+                    }]
+                }                
+            })
             .state('serialnoDetail', {
                 parent: 'report',
                 url: '/serailno/:id',
