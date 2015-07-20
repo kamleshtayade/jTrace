@@ -105,4 +105,20 @@ public class DomlineResource {
         log.debug("REST request to delete Domline : {}", id);
         domlineRepository.delete(id);
     }
+    
+    /**
+     * GET Report /domlines/:id -> get the "id" domline.
+     */
+    @RequestMapping(value = "/reportdomlines/{id}",
+            method = RequestMethod.GET,
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    @Timed
+    public ResponseEntity<Domline> get(@PathVariable String id, HttpServletResponse response) {
+        log.debug("REST request to get Domline : {}", id);
+        Domline domline = domlineRepository.findBySerialno(id);
+        if (domline == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(domline, HttpStatus.OK);
+    }
 }

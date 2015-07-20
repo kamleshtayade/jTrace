@@ -14,4 +14,17 @@ angular.module('jtraceApp')
             },
             'update': { method:'PUT' }
         });
+    })
+    .factory('Rdomline',function ($resource) {
+        return $resource('api/reportdomlines/:id',{},{
+            'query': { method:'GET',isArray:true},
+            'get':{
+                method:'GET',
+                transformResponse:function(data){
+                    data=angular.fromJson(data);
+                    if (data.scantime != null) data.scantime = new Date(data.scantime);
+                    return data;
+                }
+            }
+        });
     });

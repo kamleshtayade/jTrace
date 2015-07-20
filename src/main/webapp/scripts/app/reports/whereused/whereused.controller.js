@@ -13,7 +13,6 @@ angular.module('jtraceApp')
 
         Bomheader.query(function(data) {
         $scope.prperties = data;
-        console.log("Data Count "+data.length);
         });
 
         $scope.loadAll = function() {
@@ -93,10 +92,15 @@ angular.module('jtraceApp')
                 var msg="Reference Designtor and Quantity mismatch, Please review if needed";
                 flash.info=msg;
             }
-        };            
-        /* End Modified for Quanity and Ref Designator */
-        /* Chart */
-        $scope.labels = ["Download Sales", "In-Store Sales", "Mail-Order Sales"];
-        $scope.data = [300, 500, 100];
-        $scope.colours=['#27ae60','#e67e22','#2c3e50'];
+        };
+
+        /* alert messages */
+        $scope.alerts = [
+            { type: 'warning', msg: 'To view report! Search Item and submit View Report.' },
+            { type: 'info', msg: 'In Report : first search criteria get searched at BOM child level then at BOM parent level. Report get auto-refreshed as per change in search criteria ' }
+          ];
+
+        $scope.closeAlert = function(index) {
+            $scope.alerts.splice(index, 1);
+        };
     });

@@ -144,22 +144,6 @@ public class WorkorderheaderResource {
         }
         return new ResponseEntity<>(workorderheader, HttpStatus.OK);
     }
-    
-    /**
-     * GET  /workorderheaders/:itemserial -> get the "id" workorderheader.
-     */
-   @RequestMapping(value = "/woheaders/{itemserial}",
-            method = RequestMethod.GET,
-            produces = MediaType.APPLICATION_JSON_VALUE)
-    @Timed
-    public ResponseEntity<Workorderheader> get(@PathVariable String itemserial, HttpServletResponse response) {
-        log.debug("REST request to get Workorderheader : {}", itemserial);
-        Workorderheader workorderheader = workorderheaderRepository.findByItemserialContaining(itemserial);
-        if (workorderheader == null) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-        return new ResponseEntity<>(workorderheader, HttpStatus.OK);
-    }
 
     /**
      * DELETE  /workorderheaders/:id -> delete the "id" workorderheader.
@@ -171,5 +155,21 @@ public class WorkorderheaderResource {
     public void delete(@PathVariable Long id) {
         log.debug("REST request to delete Workorderheader : {}", id);
         workorderheaderRepository.delete(id);
+    }
+    
+    /**
+     * GET  Report /workorderheaders/:itemserial -> get the "id" workorderheader.
+     */
+   @RequestMapping(value = "/reportwoheaders/{id}",
+            method = RequestMethod.GET,
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    @Timed
+    public ResponseEntity<Workorderheader> get(@PathVariable String id, HttpServletResponse response) {
+        log.debug("REST request to get Workorderheader : {}", id);
+        Workorderheader workorderheader = workorderheaderRepository.findByItemserialContaining(id);
+        if (workorderheader == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(workorderheader, HttpStatus.OK);
     }
 }

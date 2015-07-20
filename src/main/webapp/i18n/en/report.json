@@ -24,6 +24,7 @@
         "serialno" : {
             "home": {
                 "title": "Serial Number Report",
+                "subtitle":"Bom details",
                 "createLabel": "View Report",
                 "createOrEditLabel": "Create or edit a DOM line"
             },
@@ -33,20 +34,26 @@
             "detail": {
                 "title": "Serial Number"
             },
-            "serialno": "Serial No",
+            "serialno": "Product Serial No",
             "mfgdate": "Manufacturing Date",
             "opr": "Operator",
             "plantmfgline": "Mfg Line",
             "plant":"Plant",
             "bomChildItem": "BOM Child Item",
             "bomQty": "BOM Qty",
-            "attrition": "Attrition",
             "requQty": "Required Qty",
             "issuedQty": "Issued Qty",
-            "isCustSupplied": "Is Customer Supplied",
-            "remark": "Remark",
             "itemctn": "Item CTN",
-            "workorderheader" : "Work Order Number"
+            "workorderheader" : "WO Number",
+            "itemmtr":"Product / Item Code",
+            "quantity": "Quantity",
+            "refdesignator": "Referance Designator",
+            "lotcode": "Lot Code",
+            "datecode":"Date Code",
+            "recdDt":"Recieved Date",
+            "bomheader":"Parent Item",
+            "mfr":"Manufacturer",
+            "mfrpart":"Manufacturer Part Number"
         }
     }
 }

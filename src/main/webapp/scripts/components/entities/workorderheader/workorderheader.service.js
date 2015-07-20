@@ -14,8 +14,8 @@ angular.module('jtraceApp')
             'update': { method:'PUT' }
         });
     })
-    .factory('Woheader',function($resource){
-        return $resource('api/woheaders/:itemserial',{},{
+    .factory('Rwoheader',function($resource){
+        return $resource('api/reportwoheaders/:id',{},{
             'query':{method:'GET',isArray:true},
             'get':{
                 method:'GET',

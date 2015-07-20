@@ -1,12 +1,10 @@
 <div class="container">
 
-    
+    <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
 
     <div>
             <h2 translate="jtraceApp.whereused.home.title">ReportName</h2>
-                <!--<button class="btn btn-primary" data-toggle="modal" data-target="#saveBomlineModal" ng-click="clear()" disabled>
-                    <span class="glyphicon glyphicon-plus"></span> <span translate="entity.action.create">Create a new Bomline</span>
-                </button>--><br><br>
+            <br>
     </div>
     <!--<div class="col-lg-4">
                     <div class="panel panel-success">
@@ -32,17 +30,13 @@
     </div>
     <hr>
     <div collapse="isCollapsed">
-        <div class="well well-lg">            
+        <div class="well well-lg">
+            <blockquote>
+                <p translate="jtraceApp.whereused.home.title">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+                <footer>Date <cite title="Source Title">{{CurrentDate | date:'dd/MM/yyyy HH:mm:ss'}}</cite></footer>
+            </blockquote>            
             <div class="table-responsive">
                 <table class="table table-condensed hover">
-                    <thead>
-                        <tr>
-                            <th><span>{{CurrentDate | date:'dd/MM/yyyy HH:mm:ss'}}</span></th>
-                            <th>
-                                <h3 translate="jtraceApp.whereused.home.title">ReportName</h3>
-                            </th>
-                        </tr>
-                    </thead>
                     <thead>
                         <tr>
                             <th translate="jtraceApp.whereused.bomheader">bomheader</th>
@@ -56,19 +50,13 @@
                     </thead>
                     <tbody infinite-scroll="loadPage(page + 1)" infinite-scroll-disabled="links['last'] == page">
                         <tr ng-repeat="bomline in bomlines | filter:search_query">
-                            <td><a ui-sref="whereusedDetail({id:bomline.id})">{{bomline.bomheader.itemmtr.code}}</a></td>                    
+                            <td>{{bomline.bomheader.itemmtr.code}}</td>                    
                             <td>{{bomline.itemmtr.code}}</td>
                             <td>{{bomline.quantity}}</td>
                             <td>{{bomline.itemctn.lotCode}}</td>
                             <td>{{bomline.itemctn.dateCode}}</td>
                             <td>{{bomline.itemctn.itemmfrpart.mfrpart}}</td>
-                            <td>
-                                <button type="submit"
-                                        ui-sref="whereusedDetail({id:bomline.id})"
-                                        class="btn btn-info btn-sm" tooltip="View">
-                                    <span class="glyphicon glyphicon-eye-open"></span>
-                                </button>
-                            </td>
+                            <td></td>
                         </tr>
                     </tbody>
                 </table>

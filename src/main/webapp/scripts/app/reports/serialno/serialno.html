@@ -1,12 +1,10 @@
 <div class="container">
 
+    <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
     
-
     <div>
             <h2 translate="jtraceApp.serialno.home.title">Workorderline</h2>
-                <!--<button class="btn btn-primary" data-toggle="modal" data-target="#saveWorkorderlineModal" ng-click="clear()" disabled>
-                    <span class="glyphicon glyphicon-plus"></span> <span translate="entity.action.create">Create a new Workorderline</span>
-                </button>--><br>
+            <br>
     </div>
 
     
@@ -15,84 +13,11 @@
             <input type="text" size="60" ng-model="search_query" placeholder="Serial No Search..." typeahead="domline.serialno as domline.serialno for domline in domlines | filter:$viewValue | limitTo:8" class="form-control">
         </div>
         <div class="col-md-4">
-            <button class="btn btn-sm btn-warning" <a ui-sref="serialnoreport({id:15})" ng-click="isCollapsed = !isCollapsed"><span translate="jtraceApp.whereused.home.createLabel">View a Report</span></button>
+            <button class="btn btn-sm btn-warning" <a ui-sref="serialnoreport({id:search_query})" ng-click="isCollapsed = !isCollapsed"><span translate="jtraceApp.whereused.home.createLabel">View a Report</span></button>
         </div>
     </div>
     <hr>
     <div collapse="isCollapsed">
-        <div class="well well-lg">
-            <div class="row">
-                <div class="col-xs-6">
-                    <div class="table-responsive">        
-                        <table class="table table-condensed hover">
-                            <!--<thead>
-                                <tr>
-                                    <th><span>{{CurrentDate | date:'dd/MM/yyyy HH:mm:ss'}}</span></th>
-                                    <th>
-                                        <h3 translate="jtraceApp.serialno.home.title">ReportName</h3>
-                                    </th>
-                                </tr>
-                            </thead>-->
-                            <thead>
-                                <tr>
-                                    <th translate="jtraceApp.serialno.serialno">Serialno</th>
-                                    <th translate="jtraceApp.serialno.mfgdate">Scantime</th>
-                                    <th translate="jtraceApp.serialno.opr">domheader</th>
-                                    <th translate="jtraceApp.serialno.plantmfgline">domheader</th>
-                                    <th translate="jtraceApp.serialno.plant">domheader</th>
-                                    <!--<th></th>-->
-                                </tr>
-                            </thead>
-                            <tbody infinite-scroll="loadPage(page + 1)" infinite-scroll-disabled="links['last'] == page" >
-                                <tr ng-repeat="domline in domlines | filter:search_query">
-                                    <td><a ui-sref="serialnoDetail({id:domline.id})">{{domline.serialno}}</a></td>
-                                    <td>{{domline.scantime}}</td>
-                                    <td>{{domline.domheader.opr}}</td>
-                                    <td>{{domline.domheader.machine.plantmfgline.name}}</td>
-                                    <td>{{domline.domheader.machine.plantmfgline.plantsec.plant.code}}</td>
-                                    <!--<td>
-                                        <button type="submit"
-                                                ui-sref="serialnoDetail({id:domline.id})"
-                                                class="btn btn-info btn-sm" tooltip="View">
-                                            <span class="glyphicon glyphicon-eye-open"></span>
-                                        </button>
-                                    </td>-->
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-                <div class="col-xs-6">    
-                    <div class="table-responsive">        
-                        <table class="table table-condensed hover">
-                            <thead>
-                                <tr>
-                                    <th translate="jtraceApp.serialno.bomChildItem">BomChildItem</th>
-                                    <th translate="jtraceApp.serialno.workorderheader">workorderheader</th>
-                                    <th translate="jtraceApp.serialno.itemctn">Itemctn</th>
-                                    <th translate="jtraceApp.serialno.remark">Remark</th>
-                                </tr>
-                            </thead>
-                            <tbody infinite-scroll="loadPage(page + 1)" infinite-scroll-disabled="links['last'] == page">
-                                <tr ng-repeat="workorderline in workorderlines| filter:search_query">
-                                    <td><a ui-sref="workorderlineDetail({id:workorderline.id})">{{workorderline.itemmtr.code}}</td>
-                                    <td>{{workorderline.workorderheader.woNumber}}</td>
-                                    <td>{{workorderline.itemctn.ctn}}</td>
-                                    <td style="word-wrap: break-word;min-width: 160px;max-width: 160px;white-space:normal;">{{workorderline.workorderheader.itemserial}}</td>
-                                    <!--<td>
-                                        <button type="submit"
-                                                ui-sref="workorderlineDetail({id:workorderline.id})"
-                                                class="btn btn-info btn-sm" tooltip="View">
-                                            <span class="glyphicon glyphicon-eye-open"></span>
-                                        </button>
-                                    </td>-->
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>       
-        </div>
-        <div class="well" ui-view="subcontent"></div> 
+        <div ui-view="subcontent"></div> 
     </div>
 </div>

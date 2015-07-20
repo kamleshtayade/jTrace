@@ -8,9 +8,9 @@
 					class="icon-bar"></span>
 			</button> -->
 			<a class="navbar-brand" ui-sref="home"><span translate="global.title">zentrace</span>
-				<span class="navbar-version">v{{VERSION}}</span></a>                
+				<span class="navbar-version">v{{VERSION}}</span></a>
 		</div>
-		<!-- <div class="collapse navbar-collapse" id="navbar-collapse"
+		<!--<div class="collapse navbar-collapse" id="navbar-collapse"
 			ng-switch="isAuthenticated()">
 			<ul class="nav navbar-nav nav-pills navbar-right">
 				<form class="navbar-form navbar-left" role="search">
@@ -47,7 +47,7 @@
 							ui-sref="register"><i class="fa fa-plus fa-fw"></i> &#xA0;<span
 								translate="global.menu.account.register">Register</span></a></li>
 					</ul></li>
-		</div> -->
+		</div>-->
 		<!-- /cornermorph-->
 
 		<div class="menu-wrap">
@@ -147,7 +147,7 @@
     							<li><a ui-sref="itemctn" id="itemctn-a"><span
     									translate="global.menu.entities.itemctn"></span></a></li>
     						</ul>
-                            
+
 						<li id="workorder"><a data-toggle="collapse" href="#workorder-menu"><i
 								class="fa fa-briefcase"></i>&nbsp;<span
 								translate="global.menu.entities.workorder&bom">Work Order
@@ -169,19 +169,6 @@
 
 					</ul>
 
-					<li ng-controller="LanguageController" id="language"><a
-						data-toggle="collapse" data-parent="#sidebar-menu"
-						href="#language-menu"> <i class="fa fa-language"></i>&nbsp; <span
-							translate="global.menu.language">Language</span>&nbsp; <i
-							class="fa fa-caret-down"></i>
-					</a>
-						<ul id="language-menu" class="collapse">
-							<li active-menu="{{language}}" ng-repeat="language in languages">
-								<a href="" ng-click="changeLanguage(language)">{{'language.'
-									+ language| translate}}</a>
-							</li>
-						</ul></li>
-
 					<li ng-class="{active: $state.includes('admin')}"
 						ng-switch-when="true" has-role="ROLE_ADMIN" id="report"><a
 						data-toggle="collapse" data-parent="#sidebar-menu"
@@ -193,7 +180,7 @@
                                         translate="global.menu.report.whereused"></span></a></li>
                         <li><a ui-sref="serialno"><i class="fa fa-tasks"></i>&nbsp;<span
                                         translate="global.menu.report.serialno"></span></a></li>
-					</ul>						
+					</ul>
 
 
 					<li ng-class="{active: $state.includes('admin')}"
@@ -244,6 +231,19 @@
 							ui-sref="register"><i class="fa fa-plus fa-fw"></i> &#xA0;<span
 								translate="global.menu.account.register">Register</span></a></li>
 					</ul>
+
+					<li ng-controller="LanguageController" id="language"><a
+						data-toggle="collapse" data-parent="#sidebar-menu"
+						href="#language-menu"> <i class="fa fa-language"></i>&nbsp; <span
+							translate="global.menu.language">Language</span>&nbsp; <i
+							class="fa fa-caret-down"></i>
+					</a>
+						<ul id="language-menu" class="collapse">
+							<li active-menu="{{language}}" ng-repeat="language in languages">
+								<a href="" ng-click="changeLanguage(language)">{{'language.'
+									+ language| translate}}</a>
+							</li>
+						</ul></li>
 
 				</ul>
 			</nav>

@@ -1,47 +1,63 @@
-
-<div>
-    <h2><span translate="jtraceApp.serialno.detail.title">Domline</span> {{domline.id}}</h2>
-    <div class="table-responsive">
-        <table class="table table-striped">
+<div class="well well-lg">
+    <blockquote>
+        <p translate="jtraceApp.serialno.home.title">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+        <footer>Date <cite title="Source Title">{{CurrentDate | date:'dd/MM/yyyy HH:mm:ss'}}</cite></footer>
+    </blockquote> 
+    <div class="table-responsive">        
+        <table class="table table-condensed hover">
             <thead>
                 <tr>
-                    <th translate="entity.detail.field">Field</th>
-                    <th translate="entity.detail.value">Value</th>
+                    <th translate="jtraceApp.serialno.serialno">Serialno</th>
+                    <th translate="jtraceApp.serialno.itemmtr">Item</th>
+                    <th translate="jtraceApp.serialno.workorderheader">WOheader</th>
+                    <th translate="jtraceApp.serialno.mfgdate">Scantime</th>
+                    <th translate="jtraceApp.serialno.opr">domheader</th>
+                    <th translate="jtraceApp.serialno.plantmfgline">domheader</th>
+                    <th translate="jtraceApp.serialno.plant">domheader</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td>
-                        <span translate="jtraceApp.serialno.serialno">Serialno</span>
-                    </td>
-                    <td>
-                        <input type="text" class="input-sm form-control" value="{{domline.serialno}}" readonly>
-                    </td>
+                    <td>{{domline.serialno}}</td>
+                    <td>{{woheader.itemmtr.code}}</td>
+                    <td>{{woheader.woNumber}}</td>
+                    <td>{{domline.scantime}}</td>
+                    <td>{{domline.domheader.opr}}</td>
+                    <td>{{domline.domheader.machine.plantmfgline.name}}</td>
+                    <td>{{domline.domheader.machine.plantmfgline.plantsec.plant.code}}</td>
+                    <td></td>
                 </tr>
+            </tbody>
+        </table>
+    </div>
+    <h4><span translate="jtraceApp.serialno.home.subtitle">Domline</span>&nbsp;:&nbsp;{{woheader.itemmtr.code}}</h4>
+    <div class="table-responsive">
+        <table class="table table-condensed hover">
+            <thead>
                 <tr>
-                    <td>
-                        <span translate="jtraceApp.serialno.scantime">Scantime</span>
-                    </td>
-                    <td>
-                        <input type="text" class="input-sm form-control" value="{{domline.scantime}}" readonly>
-                    </td>
+                    <th translate="jtraceApp.serialno.bomChildItem">itemmtr</th>
+                    <th translate="jtraceApp.serialno.quantity">Quantity</th>
+                    <th translate="jtraceApp.serialno.mfr">mfr</th>
+                    <th translate="jtraceApp.serialno.mfrpart">mfrpart</th>
+                    <th translate="jtraceApp.serialno.lotcode">Lotcode</th>
+                    <th translate="jtraceApp.serialno.datecode">datacode</th>
+                    <th translate="jtraceApp.serialno.recdDt">recdDt</th>
+                    <th translate="jtraceApp.serialno.refdesignator">Refdesignator</th>
+                    <th></th>
                 </tr>
-                <tr>
-                    <td>
-                        <span translate="jtraceApp.serialno.domheader">domheader</span>
-                    </td>
-                    <td>
-                        <input type="text" class="input-sm form-control" value="{{domline.domheader.id}}" readonly>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>
-                        <span translate="jtraceApp.serialno.domheader">domheader</span>
-                    </td>
-                    <td>
-                        <input type="text" class="input-sm form-control" value="{{woheader.woNumber}}" readonly>
-                    </td>
+            </thead>
+            <tbody infinite-scroll="loadPage(page + 1)" infinite-scroll-disabled="links['last'] == page">
+                <tr ng-repeat="bomline in bomlines">                    
+                    <td>{{bomline.itemmtr.code}}</td>
+                    <td>{{bomline.quantity}}</td>
+                    <td>{{bomline.itemctn.itemmfrpart.manufacturer.name}}</td>
+                    <td>{{bomline.itemctn.itemmfrpart.mfrpart}}</td>
+                    <td>{{bomline.itemctn.lotCode}}</td>
+                    <td>{{bomline.itemctn.dateCode}}</td>
+                    <td>{{bomline.itemctn.recdDt}}</td>
+                    <td>{{bomline.refdesignator}}</td>
+                    <td></td>
                 </tr>
             </tbody>
         </table>

@@ -76,6 +76,7 @@ public class BomlineResource {
         throws URISyntaxException {
         Page<Bomline> page = bomlineRepository.findAll(PaginationUtil.generatePageRequest(offset, limit));
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/bomlines", offset, limit);
+       
         return new ResponseEntity<List<Bomline>>(page.getContent(), headers, HttpStatus.OK);
     }
 
@@ -105,5 +106,21 @@ public class BomlineResource {
     public void delete(@PathVariable Long id) {
         log.debug("REST request to delete Bomline : {}", id);
         bomlineRepository.delete(id);
+    }
+
+    /**
+     * GET  Report/bomlines/:id -> get the "itemmtr" bomline.
+     */
+    @RequestMapping(value = "/reportbomlines/{id}",
+            method = RequestMethod.GET,
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    @Timed
+    public ResponseEntity<List<Bomline>> getbyitem(@PathVariable Long id, @RequestParam(value = "page" , required = false) Integer offset,
+            @RequestParam(value = "per_page", required = false) Integer limit,HttpServletResponse response) throws URISyntaxException {
+        log.debug("REST request to get Bomline by item : {}", id);
+        Page<Bomline> page = bomlineRepository.findByItemmtrId(id,PaginationUtil.generatePageRequest(offset, limit));
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/bomlines", offset, limit);
+        
+        return new ResponseEntity<List<Bomline>>(page.getContent(), headers, HttpStatus.OK);
     }
 }
